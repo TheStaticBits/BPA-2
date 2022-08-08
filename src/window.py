@@ -32,6 +32,7 @@ class Window:
         self.mousePos = (0, 0)
         self.mousePressed = {}
 
+
     def update(self, constants):
         """ Updates the display with what has been rendered in the past frame
             and cap FPS """
@@ -43,6 +44,7 @@ class Window:
         if constants["window"]["maxFPS"] != 0:
             self.clock.tick(constants["window"]["maxFPS"])
     
+    
     def handle_inputs(self):
         """ Handling inputs """
         self.mousePos = pygame.mouse.get_pos()
@@ -52,7 +54,7 @@ class Window:
                 self.close = True
             
             elif event.type == pygame.KEYUP:
-                for key in self.keys:
+                for key in self.keys: # Find key that was pressed
                     if event.type in self.keys[key]:
                         self.inputs[key] = False
                         
