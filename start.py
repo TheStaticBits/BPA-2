@@ -1,8 +1,8 @@
 # Run this file to run the game!
 import src.game
-import src.utility
+import pygame
 
-src.utility.setup_logger()
+pygame.init()
 
 game = src.game.Game()
 game.start_loop()
