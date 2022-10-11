@@ -43,3 +43,10 @@ class Window:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.close = True
+    
+
+    # Getters
+    def getMouse(self, button): return self.mousePressed[button]
+    def getMousePos(self): return self.mousePos
+
+    def isClosed(self): return self.close
