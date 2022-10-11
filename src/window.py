@@ -1,6 +1,8 @@
 import pygame
 import logging
 
+import time
+
 class Window:
     """ Handles window and inputs """
     def __init__(self, constants):
@@ -18,6 +20,9 @@ class Window:
         self.mousePos = (0, 0)
         self.mousePressed = {}
 
+        self.prevTime = time.time() # seconds
+        self.deltaTime = 0
+
 
     def update(self, constants):
         """ Updates the display with what has been rendered in the past frame
@@ -25,6 +30,11 @@ class Window:
         
         pygame.display.flip() # Update display
         self.window.fill((0, 0, 0)) # Clear the window with black
+        
+        # update delta time, seconds since last frame
+        # Any movement will be multiplied by this, making any movement 
+        # move at the same speed regardless of framerate 
+        self.deltaTime = time.time() - self.prevTime
 
         # Cap framerate
         if constants["window"]["maxFPS"] != 0:
@@ -48,5 +58,8 @@ class Window:
     # Getters
     def getMouse(self, button): return self.mousePressed[button]
     def getMousePos(self): return self.mousePos
+    
+    def getDeltaTime(self): return self.deltaTime
 
     def isClosed(self): return self.close
+
