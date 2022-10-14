@@ -1,7 +1,7 @@
 import pygame
 import logging
 
-import window
+import src.window as window
 
 class Texture:
     """ Renderable object """

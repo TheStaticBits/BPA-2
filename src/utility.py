@@ -1,13 +1,25 @@
+import pygame
 import logging
 import json
 
-def load_constants():
-    """ Loads constants file for constant data values within the game """
-    with open("data/constants.json") as f:
+def loadJson(filePath):
+    """ Loads JSON file """
+    with open(filePath) as f:
         return json.load(f)
 
+def loadTex(path):
+    """ Loads texture that is not trasparent. 
+        The pygame convert() function is speedier than pygame's convert_alpha(), 
+        although any transparency will be removed. """ 
+    return pygame.image.load(path).convert()
 
-def setup_logger(constants):
+def loadTexTransparent(path):
+    """ Loads transparent texture.
+        Slower than normal loadTex due to including alpha values. """
+    return pygame.image.load(path).convert_alpha()
+
+
+def setupLogger(constants):
     """ Setup the Python logger for use """
     logger = logging.getLogger("")
     

@@ -8,5 +8,12 @@
         "title": "BPA Game: 2022-2023",
         "size": [ 800, 600 ],
         "maxFPS": 60
+    },
+
+    "map": {
+        "paths": {
+            "maps": "data/maps/",
+            "imgs": "res/tiles/"
+        }
     }
 }
