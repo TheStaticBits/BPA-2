@@ -2,9 +2,14 @@ import pygame
 import logging
 import json
 
-def loadJson(filePath):
+def loadFile(path):
+    """ Loads text file """
+    with open(path) as f:
+        return f.read()
+
+def loadJson(path):
     """ Loads JSON file """
-    with open(filePath) as f:
+    with open(path) as f:
         return json.load(f)
 
 def loadTex(path):
