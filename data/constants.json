@@ -7,6 +7,6 @@
     "window": {
         "title": "BPA Game: 2022-2023",
         "size": [ 800, 600 ],
-        "maxFPS": 60
+        "maxFPS": -1
     }
 }

@@ -35,13 +35,14 @@ class Window:
         # Any movement will be multiplied by this, making any movement 
         # move at the same speed regardless of framerate 
         self.deltaTime = time.time() - self.prevTime
+        self.prevTime = time.time()
 
         # Cap framerate
-        if constants["window"]["maxFPS"] != 0:
+        if constants["window"]["maxFPS"] <= 0:
             self.clock.tick(constants["window"]["maxFPS"])
     
     
-    def handle_inputs(self):
+    def handleInputs(self):
         """ Handling inputs """
         self.mousePos = pygame.mouse.get_pos()
         
@@ -55,11 +56,15 @@ class Window:
                 self.close = True
     
 
+    def draw(self, texture, position):
+        """ Draws texture to the window at the given position """
+        self.window.blit(texture, position)
+    
+
     # Getters
     def getMouse(self, button): return self.mousePressed[button]
     def getMousePos(self): return self.mousePos
-    
+
     def getDeltaTime(self): return self.deltaTime
 
     def isClosed(self): return self.close
-
