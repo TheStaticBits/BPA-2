@@ -54,6 +54,11 @@ class Window:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.close = True
+
+    
+    def render(self, tex, pos):
+        """ Render a texture to the window at pos """
+        self.window.blit(tex, pos)
     
 
     def draw(self, texture, position):
