@@ -12,7 +12,7 @@ class Tileset:
         
         self.layout = self.loadTiles(map, consts)
         
-        self.createTiles(self.layout, consts)
+        self.createTiles(self.layout, map, consts)
     
 
     @classmethod
@@ -28,7 +28,7 @@ class Tileset:
         return layout
     
     
-    def createTiles(self, layout, consts):
+    def createTiles(self, layout, map, consts):
         """ Creates each Tile object for every tile in the map """
         tileJson = util.loadJson(f"{consts['map']['paths']['maps']}/{map}/tiles.json")
 
@@ -38,6 +38,13 @@ class Tileset:
             rowList = []
 
             for x, type in enumerate(row):
-                rowList.append(tile.Tile(type, (x, y), tileJson))
+                rowList.append(tile.Tile(type, (x, y), consts, tileJson))
             
             self.tiles.append(rowList)
+        
+    
+    def render(self, window):
+        """ Renders all tiles in the tileset """
+        for row in self.tiles:
+            for tile in row:
+                tile.render(window)

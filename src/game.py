@@ -3,6 +3,7 @@ import logging
 
 import src.utility as util
 import src.window as window
+import src.round as round
 
 class Game:
     """ Handles scenes and the functionality of the entire game """
@@ -19,6 +20,7 @@ class Game:
 
         # Init objects
         self.window = window.Window(self.constants)
+        self.round = round.Round("amapwow", self.constants)
     
 
     def start_loop(self):
@@ -26,5 +28,7 @@ class Game:
         
         while not self.window.isClosed():
             self.window.handleInputs()
+
+            self.round.render(self.window)
 
             self.window.update(self.constants)

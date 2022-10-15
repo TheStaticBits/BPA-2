@@ -12,8 +12,8 @@
 
     "map": {
         "paths": {
-            "maps": "data/maps/",
-            "imgs": "res/tiles/"
+            "maps": "data/maps",
+            "tiles": "res/tiles"
         }
     }
 }

@@ -1,0 +1,9 @@
+{
+    "imgs": {
+        "h": "exampleTiles/baseTile.png",
+        "e": "exampleTileSet"
+    },
+    "functionality": {
+        "e": "left"
+    }
+}

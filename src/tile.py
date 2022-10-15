@@ -16,8 +16,8 @@ class Tile:
 
         self.type = type
         # Coordinates given multiplied by the tile size
-        self.pos = [ coord[0] * textures[type].get_width(),
-                     coord[1] * textures[type].get_height() ]
+        self.pos = [ coord[0] * self.textures[type].get_width(),
+                     coord[1] * self.textures[type].get_height() ]
         
         if type in tileJson["functionality"]:
             self.functionality = tileJson["functionality"][type]
@@ -27,10 +27,11 @@ class Tile:
     
     def loadTex(self, type, consts, tileJson):
         """ Loads texture into class variable if it hasn't already been loaded """
-        path = tileJson["imgs"][type]
+        # consts contains the path to the tiles image folder
+        path = f"{consts['map']['paths']['tiles']}/{tileJson['imgs'][type]}"
     
         if type not in self.textures:
-            self.textures[path] = pygame.image.load(path)
+            self.textures[type] = util.loadTexTransparent(path)
     
     
     def render(self, window): # window is the Window object
