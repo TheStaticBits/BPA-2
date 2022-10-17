@@ -18,7 +18,7 @@ class Animation:
         self.totalFrames = frameCount
 
         # Creating each frame 
-        for i in range(frames):
+        for i in range(frameCount):
             frame = pygame.Surface(frameSize)
             frame.blit(img, (-i * frameSize[0], 0))
             self.imgs.append(frame)
@@ -36,7 +36,7 @@ class Animation:
             self.timer = 0
             self.currentFrame += 1
 
-            if self.currentFrame > self.totalFrames:
+            if self.currentFrame >= self.totalFrames:
                 self.currentFrame = 0
     
 
@@ -46,6 +46,6 @@ class Animation:
     
 
     # Getters
-    def getSize(self):   return self.frames[0].get_size()
+    def getSize(self):   return self.imgs[0].get_size()
     def getWidth(self):  return self.getSize()[0]
     def getHeight(self): return self.getSize()[1]

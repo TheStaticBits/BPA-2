@@ -10,7 +10,7 @@ class Game:
     def __init__(self):
         """ Loads game data and needed scene objects """
 
-        self.constants = util.loadJson("data/constants.jsonc")
+        self.constants = util.loadJson("data/constants.json")
 
         # Setup logging
         util.setupLogger(self.constants)
@@ -29,6 +29,7 @@ class Game:
         while not self.window.isClosed():
             self.window.handleInputs()
 
+            self.round.update(self.window)
             self.round.render(self.window)
 
             self.window.update(self.constants)

@@ -14,6 +14,12 @@ class Round:
         self.tileset = tileset.Tileset(map, consts)
     
     
+    def update(self, window):
+        """ Updates everything for the frame """
+        self.tileset.update(window)
+    
+    
     def render(self, window):
         """ Render tileset and eventually towers"""
-        self.tileset.render(window)
+        self.tileset.renderTiles(window)
+        self.tileset.renderDeco(window)

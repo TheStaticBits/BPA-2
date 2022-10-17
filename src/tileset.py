@@ -17,6 +17,8 @@ class Tileset:
 
     def loadTiles(self, map, consts):
         """ Loads and returns tileset layout text file """
+        self.log.info(f"Loading map \"{map}\"")
+
         file = util.loadFile(f"{consts['map']['paths']['maps']}/{map}/{consts['map']['paths']['layoutFile']}")
         
         layout = []
@@ -29,6 +31,8 @@ class Tileset:
     
     def createTiles(self, layout, map, consts):
         """ Creates each Tile object for every tile in the map """
+        self.log.info(f"Generating tiles for \"{map}\"")
+
         tileJson = util.loadJson(f"{consts['map']['paths']['maps']}/{map}/{consts['map']['paths']['tilesJson']}")
 
         self.tiles = []
@@ -40,10 +44,24 @@ class Tileset:
                 rowList.append(tile.Tile(type, (x, y), consts, tileJson))
             
             self.tiles.append(rowList)
-        
     
-    def render(self, window):
-        """ Renders all tiles in the tileset """
+
+    def update(self, window):
+        """ New frame, updates all tiles """
+        for row in self.tiles:
+            for tile in row:
+                tile.update(window)
+    
+
+    def renderTiles(self, window):
+        """ Renders only the square tile image, no deco """
         for row in self.tiles:
             for tile in row:
                 tile.render(window)
+    
+    
+    def renderDeco(self, window):
+        """ Renders any decoration on the tiles"""
+        for row in self.tiles:
+            for tile in row:
+                tile.renderDeco(window)

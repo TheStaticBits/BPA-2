@@ -15,6 +15,7 @@ class Tile:
         
         self.type = type
 
+
         self.isDeco = type in tileJson["deco"] # Deco = Decoration
         if not self.isDeco:
             # Direction the tile moves enemies (deco tiles cannot move enemies)
@@ -25,15 +26,23 @@ class Tile:
 
             # Animation of decoration on the tile
             animData = tileJson["deco"][type]["animation"]
-            self.deco = anim.Animation(animData["path"], animData["frames"], animData["delay"])
+
+            # Folder path + the given path to the file
+            path = f"{consts['map']['paths']['tiles']}/{animData['img']}"
+            
+            self.deco = anim.Animation(path, animData["frames"], animData["delay"])
 
             self.decoOffset = tileJson["deco"][type]["offset"]
 
+
         self.loadTex(type, consts, tileJson)
 
+        # Gets tile type
+        t = self.decoTile if self.isDeco else type
+
         # Coordinates given multiplied by the tile size
-        self.pos = [ coord[0] * self.textures[type].get_width(),
-                     coord[1] * self.textures[type].get_height() ]
+        self.pos = [ coord[0] * self.textures[t].get_width(),
+                     coord[1] * self.textures[t].get_height() ]
     
     
     def loadTex(self, type, consts, tileJson):
