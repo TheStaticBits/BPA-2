@@ -1,0 +1,27 @@
+{
+    "tiles": { // Normal tiles
+        "h": {
+            "img": "exampleTiles/baseTile.png",
+            "move": "none"
+        },
+        
+        "e": {
+            "img": "exampleTileSet",
+            "move": "none"
+        }
+    },
+
+    "deco": { // Tiles with decoration
+        "t": {
+            "tile": "h", // Background tile (a normal tile)
+            // Offset from the top-left of the tile in pixels 
+            // for the center of the deco
+            "offset": [35, 23], 
+            "animation": {
+                "img": "exampleTiles/deco/tree.png",
+                "frames": 1,
+                "delay": 0.2 // Seconds between frames
+            }
+        }
+    }
+}

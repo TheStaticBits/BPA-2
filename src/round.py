@@ -4,7 +4,8 @@ import logging
 import src.tileset as tileset
 
 class Round:
-    """ Handles the game content, such as the world, tileset, and towers """
+    """ Handles the game content, such as the world, tileset, and towers
+        for every game that the player plays. """
 
     def __init__(self, map, consts):
         """ Setup tileset object, etc. """

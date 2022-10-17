@@ -15,10 +15,9 @@ class Tileset:
         self.createTiles(self.layout, map, consts)
     
 
-    @classmethod
-    def loadTiles(cls, map, consts):
-        """ Loads and creates all tiles needed for the tileset """
-        file = util.loadFile(f"{consts['map']['paths']['maps']}/{map}/layout.txt")
+    def loadTiles(self, map, consts):
+        """ Loads and returns tileset layout text file """
+        file = util.loadFile(f"{consts['map']['paths']['maps']}/{map}/{consts['map']['paths']['layoutFile']}")
         
         layout = []
 
@@ -30,7 +29,7 @@ class Tileset:
     
     def createTiles(self, layout, map, consts):
         """ Creates each Tile object for every tile in the map """
-        tileJson = util.loadJson(f"{consts['map']['paths']['maps']}/{map}/tiles.json")
+        tileJson = util.loadJson(f"{consts['map']['paths']['maps']}/{map}/{consts['map']['paths']['tilesJson']}")
 
         self.tiles = []
         

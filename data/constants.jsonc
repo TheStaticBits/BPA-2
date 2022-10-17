@@ -13,7 +13,9 @@
     "map": {
         "paths": {
             "maps": "data/maps",
-            "tiles": "res/tiles"
+            "tiles": "res/tiles",
+            "tilesJson": "tiles.jsonc",
+            "layoutFile": "layout.txt"
         }
     }
 }

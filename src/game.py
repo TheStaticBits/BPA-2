@@ -10,7 +10,7 @@ class Game:
     def __init__(self):
         """ Loads game data and needed scene objects """
 
-        self.constants = util.loadJson("data/constants.json")
+        self.constants = util.loadJson("data/constants.jsonc")
 
         # Setup logging
         util.setupLogger(self.constants)
