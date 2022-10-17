@@ -1,6 +1,7 @@
 import pygame
 import logging
 import json
+import os
 
 def loadFile(path):
     """ Loads text file """
@@ -27,6 +28,14 @@ def loadTexTransparent(path):
 def setupLogger(constants):
     """ Setup the Python logger for use """
     logger = logging.getLogger("")
+
+    # If the folder that the event.log is in does not exist, create it
+    paths = constants["log"]["output"].split("/")
+    # Creates string of the directory to the file, not including the 
+    # file (last element of the path)
+    path = "/".join([i for n, i in enumerate(paths) if n != len(paths) - 1])
+    if not os.path.exists(path):
+        os.makedirs(path)
     
     # Set level based on what is set in constants JSON file
     if   (constants["log"]["level"] == "DEBUG"):   logger.setLevel(logging.DEBUG)

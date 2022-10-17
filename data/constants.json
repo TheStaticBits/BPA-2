@@ -1,7 +1,7 @@
 {
     "log": {
         "level": "DEBUG",
-        "output": "saves/log"
+        "output": "saves/log/log"
     },
     
     "window": {
