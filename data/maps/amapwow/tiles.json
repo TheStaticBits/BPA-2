@@ -4,6 +4,12 @@
             "img": "exampleTiles/baseTile.png",
             "move": "none"
         },
+
+        "r": {
+            "img": "exampleTiles/baseTile.png",
+            "move": "none",
+            "rotate": 90
+        },
         
         "e": {
             "img": "exampleTileSet",

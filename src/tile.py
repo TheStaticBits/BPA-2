@@ -55,13 +55,18 @@ class Tile:
         
         # consts contains the path to the tiles image folder
         path = f"{consts['map']['paths']['tiles']}/{tileJson['tiles'][type]['img']}"
-        
-        self.textures[type] = util.loadTexTransparent(path)
-    
+
+        img = util.loadTexTransparent(path)
+
+        # rotate option
+        if "rotate" in tileJson["tiles"][type]:
+            self.textures[type] = pygame.transform.rotate(img, tileJson["tiles"][type]["rotate"])
+        else:
+            self.textures[type] = img
 
     def update(self, window):
         """ Updates decoration animation if there is one """
-        if self.isDeco: self.deco.update(window) 
+        if self.isDeco: self.deco.update(window)
 
     
     def render(self, window): # window is the Window object
