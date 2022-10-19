@@ -9,22 +9,32 @@ class Animation:
         """ Loads animation """
         self.log = logging.getLogger(__name__)
 
+        self.log.info(f"Loading animation at \"{path}\"")
+
         self.imgs = []
         img = util.loadTexTransparent(path) # Entire animation
-        size = img.get_size()
-        frameSize = (size[0] // frameCount, size[1])
+        size = self.getSize()
+        frameSize = Vect(size.x // frameCount, size.y)
 
         self.delay = delay
         self.totalFrames = frameCount
 
         # Creating each frame 
         for i in range(frameCount):
-            frame = pygame.Surface(frameSize)
-            frame.blit(img, (-i * frameSize[0], 0))
+            frame = pygame.Surface(frameSize.getTuple())
+            frame.blit(img, (-i * frameSize.x, 0))
             self.imgs.append(frame)
 
         self.timer = 0
         self.currentFrame = 0
+    
+
+    def __init__(self, animData):
+        """ Loads data from a dictionary of animation data """
+        
+        self.__init__( animData["path"], 
+                       animData["frames"], 
+                       animData["delay"] ) 
 
 
     def update(self, window):
@@ -46,6 +56,6 @@ class Animation:
     
 
     # Getters
-    def getSize(self):   return self.imgs[0].get_size()
-    def getWidth(self):  return self.getSize()[0]
-    def getHeight(self): return self.getSize()[1]
+    def getSize(self):   return Vect(self.imgs[0].get_size())
+    def getWidth(self):  return self.getSize().x
+    def getHeight(self): return self.getSize().y

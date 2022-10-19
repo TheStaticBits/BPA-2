@@ -30,19 +30,17 @@ class Tile:
             # Folder path + the given path to the file
             path = f"{consts['map']['paths']['tiles']}/{animData['img']}"
             
-            self.deco = anim.Animation(path, animData["frames"], animData["delay"])
+            self.deco = anim.Animation(path, animData)
 
-            self.decoOffset = tileJson["deco"][type]["offset"]
-
+            self.decoOffset = Vect(tileJson["deco"][type]["offset"])
 
         self.loadTex(type, consts, tileJson)
 
         # Gets tile type
-        t = self.decoTile if self.isDeco else type
+        t = self.getTileType()
 
         # Coordinates given multiplied by the tile size
-        self.pos = [ coord[0] * self.textures[t].get_width(),
-                     coord[1] * self.textures[t].get_height() ]
+        self.pos = Vect(coord) * Vect(self.textures[t].get_size())
     
     
     def loadTex(self, type, consts, tileJson):
@@ -64,6 +62,7 @@ class Tile:
         else:
             self.textures[type] = img
 
+
     def update(self, window):
         """ Updates decoration animation if there is one """
         if self.isDeco: self.deco.update(window)
@@ -71,11 +70,7 @@ class Tile:
     
     def render(self, window): # window is the Window object
         """ Render the tile itself """ 
-
-        if self.isDeco: type = self.decoTile
-        else:           type = self.type
-
-        window.render(self.textures[type], self.pos)
+        window.render(self.textures[self.getTileType()], self.pos)
     
     
     def renderDeco(self, window):
@@ -83,7 +78,23 @@ class Tile:
         if not self.isDeco: return None
 
         # Centers image on the offset from the tile
-        pos = ( self.pos[0] + self.decoOffset[0] - (self.deco.getWidth()  // 2),
-                self.pos[1] + self.decoOffset[1] - (self.deco.getHeight() // 2))
+        pos = (self.pos + self.decoOffset - (self.deco.getSize() // 2))
         
         self.deco.render(window, pos)
+    
+
+    # Getters
+    def getMoveDir(self):
+        """ Gets enemy move direction for the tile """
+        if self.isDeco: return False
+        return self.move
+
+    def getCenter(self):
+        """ Returns center of tile position """ 
+        return self.pos + (self.getSize() // 2)
+    
+    def getSize(self):   return Vect(self.textures[self.getTileType()].get_size())
+    def getWidth(self):  return self.getSize().x
+    def getHeight(self): return self.getSize().y
+
+    def getTileType(self): return (self.decoTile if self.isDeco else type)

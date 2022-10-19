@@ -7,8 +7,20 @@
 
         "r": {
             "img": "exampleTiles/baseTile.png",
-            "move": "none",
+            "move": "right",
             "rotate": 90
+        },
+
+        "4": {
+            "img": "exampleTiles/baseTile.png",
+            "move": "right",
+            "rotate": 180
+        },
+
+        "s": {
+            "img": "exampleTiles/baseTile.png",
+            "move": "startFrom left",
+            "rotate": 180
         },
         
         "e": {

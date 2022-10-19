@@ -17,5 +17,10 @@
             "tilesJson": "tiles.json",
             "layoutFile": "layout.txt"
         }
+    },
+
+    "animations": {
+        "enemies": "res/enemies/enemies.json",
+        "towers": "res/towers/towers.json"
     }
 }
