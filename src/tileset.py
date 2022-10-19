@@ -65,3 +65,7 @@ class Tileset:
         for row in self.tiles:
             for tile in row:
                 tile.renderDeco(window)
+
+    # Getters
+    def getTileAt(self, coords):
+        return self.tiles[coords.y][coords.x]

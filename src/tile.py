@@ -3,6 +3,7 @@ import logging
 
 import src.utility as util
 import src.animation as anim
+import src.enemy as enemy
 
 class Tile:
     """ Handles each tile and the images and functionality """
@@ -13,54 +14,55 @@ class Tile:
         """ Setup tile """
         self.log = logging.getLogger(__name__)
         
-        self.type = type
+        self.coord = Vect(coord)
 
+        self.loadTileData(type, consts, tileJson)
 
-        self.isDeco = type in tileJson["deco"] # Deco = Decoration
-        if not self.isDeco:
-            # Direction the tile moves enemies (deco tiles cannot move enemies)
-            self.move = tileJson["tiles"][type]["move"]
-        else:
-            # Tile type of the tile behind deco
-            self.decoTile = tileJson["deco"][type]["tile"]
-
-            # Animation of decoration on the tile
-            animData = tileJson["deco"][type]["animation"]
-
-            # Folder path + the given path to the file
-            path = f"{consts['map']['paths']['tiles']}/{animData['img']}"
-            
-            self.deco = anim.Animation(path, animData)
-
-            self.decoOffset = Vect(tileJson["deco"][type]["offset"])
-
-        self.loadTex(type, consts, tileJson)
-
-        # Gets tile type
-        t = self.getTileType()
+        self.loadTex(consts, tileJson)
 
         # Coordinates given multiplied by the tile size
-        self.pos = Vect(coord) * Vect(self.textures[t].get_size())
+        # (position on screen)
+        self.pos = Vect(coord) * Vect(self.textures[self.type].get_size())
+
     
+    def loadTileData(self, type, consts, tileJson):
+        self.isDeco = type in tileJson["deco"]
+        self.rotate = None
+
+        if self.isDeco:
+            self.type = tileJson["deco"][type]["tile"] # Tile type of the tile behind deco
+            self.decoTile = type
+            self.decoOffset = Vect(tileJson["deco"][type]["offset"])
+
+            animData = tileJson["deco"][type]["animation"]
+            # Folder path + file in folder path
+            path = f"{consts['map']['paths']['tiles']}/{animData['img']}" 
+
+            self.deco = anim.Animation(path, animData["frames"], animData["delay"])
+
+        else:
+            if type in tileJson["rotated"]:
+                type = tileJson["rotated"][type]["tile"]
+                self.rotate = tileJson["rotated"][type]["degrees"]
+            
+            if type not in tileJson["tiles"]:
+                self.log.error(f"Tile \"{type}\" not declared in tiles.json")
+            
+            self.type = type
+            self.move = tileJson["tiles"][type]["move"]
+
+            # if self.move not in enemy.Enemy.DIR_TO_VECT:
+            #     self.log.error(f"Direction \"{self.move}\" is not a valid direction.")
     
-    def loadTex(self, type, consts, tileJson):
+    def loadTex(self, consts, tileJson):
         """ Loads texture into class variable if it hasn't already been loaded """
-        # Decoration tile
-        if self.isDeco: type = self.decoTile
         
         # don't continue if the tile img is already loaded
-        if type in self.textures: return None
+        if self.type in self.textures: return None
         
-        # consts contains the path to the tiles image folder
-        path = f"{consts['map']['paths']['tiles']}/{tileJson['tiles'][type]['img']}"
-
-        img = util.loadTexTransparent(path)
-
-        # rotate option
-        if "rotate" in tileJson["tiles"][type]:
-            self.textures[type] = pygame.transform.rotate(img, tileJson["tiles"][type]["rotate"])
-        else:
-            self.textures[type] = img
+        # load image
+        path = f"{consts['map']['paths']['tiles']}/{tileJson['tiles'][self.type]['img']}"
+        self.textures[self.type] = util.loadTexTransparent(path)
 
 
     def update(self, window):
@@ -70,7 +72,12 @@ class Tile:
     
     def render(self, window): # window is the Window object
         """ Render the tile itself """ 
-        window.render(self.textures[self.getTileType()], self.pos)
+        tex = self.textures[self.type]
+
+        if self.rotate != None: 
+            pygame.transform.rotate(tex, self.rotate)
+        
+        window.render(tex, self.pos)
     
     
     def renderDeco(self, window):
@@ -79,22 +86,21 @@ class Tile:
 
         # Centers image on the offset from the tile
         pos = (self.pos + self.decoOffset - (self.deco.getSize() // 2))
-        
         self.deco.render(window, pos)
     
 
     # Getters
     def getMoveDir(self):
         """ Gets enemy move direction for the tile """
-        if self.isDeco: return False
-        return self.move
+        return False if self.isDeco else self.move
 
     def getCenter(self):
         """ Returns center of tile position """ 
         return self.pos + (self.getSize() // 2)
     
-    def getSize(self):   return Vect(self.textures[self.getTileType()].get_size())
+    def getSize(self):   return Vect(self.textures[self.type].get_size())
     def getWidth(self):  return self.getSize().x
     def getHeight(self): return self.getSize().y
 
-    def getTileType(self): return (self.decoTile if self.isDeco else type)
+    def getCoord(self): return self.coord
+    def getPos(self): return self.pos

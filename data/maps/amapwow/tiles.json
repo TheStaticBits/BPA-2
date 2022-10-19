@@ -1,32 +1,13 @@
 {
     "tiles": {
-        "h": {
-            "img": "exampleTiles/baseTile.png",
-            "move": "none"
-        },
+        "h": { "move": "none",    "img": "exampleTiles/baseTile.png" },
+        "r": { "move": "right",   "img": "exampleTiles/baseTile.png" },
+        "-": { "move": "forward", "img": "exampleTiles/baseTile.png" },
+        "s": { "move": "forward", "img": "exampleTiles/baseTile.png" }
+    },
 
-        "r": {
-            "img": "exampleTiles/baseTile.png",
-            "move": "right",
-            "rotate": 90
-        },
-
-        "4": {
-            "img": "exampleTiles/baseTile.png",
-            "move": "right",
-            "rotate": 180
-        },
-
-        "s": {
-            "img": "exampleTiles/baseTile.png",
-            "move": "startFrom left",
-            "rotate": 180
-        },
-        
-        "e": {
-            "img": "exampleTileSet",
-            "move": "none"
-        }
+    "rotated": {
+        "|": { "tile": "-", "degrees": -90 }
     },
 
     "deco": {

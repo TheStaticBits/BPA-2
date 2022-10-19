@@ -101,3 +101,7 @@ class Vect:
         elif isinstance(other, int):
             self.x //= other
             self.y //= other
+    
+
+    def abs(self):
+        return Vect(abs(x), abs(y))
