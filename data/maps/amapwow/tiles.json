@@ -1,9 +1,10 @@
 {
+    "start": { "tile": [0, 5], "facingDir": [-1, 0] },
+
     "tiles": {
         "h": { "move": "none",    "img": "exampleTiles/baseTile.png" },
         "r": { "move": "right",   "img": "exampleTiles/baseTile.png" },
-        "-": { "move": "forward", "img": "exampleTiles/baseTile.png" },
-        "s": { "move": "forward", "img": "exampleTiles/baseTile.png" }
+        "-": { "move": "forward", "img": "exampleTiles/baseTile.png" }
     },
 
     "rotated": {
@@ -13,7 +14,7 @@
     "deco": {
         "t": {
             "tile": "h",
-            "offset": [35, 23], 
+            "offset": [35, 23],
             "animation": {
                 "img": "exampleTiles/deco/baseTile.png",
                 "frames": 1,
