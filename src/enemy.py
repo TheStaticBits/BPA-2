@@ -13,15 +13,14 @@ class Enemy:
                     "right": Vect( 1,  0),
                     "up":    Vect( 0, -1),
                     "down":  Vect( 0,  1) }
-    
-    RIGHT = Vect()
 
     TURN_RIGHT = { (-1, 0) > (0, -1) > (1, 0) > (0, 1) > (-1, 0)}
 
     def __init__(self, type, startTile, enemiesJson, consts):
         self.log = logging.getLogger(__name__)
 
-        self.anim = anim.Animation(enemiesJson[type]["animation"])
+        animData = enemiesJson[type]["animation"]
+        self.anim = anim.Animation(animData["path"], animData["frames"], animData["delay"])
 
         givenDir = startTile.getMoveDir()
 

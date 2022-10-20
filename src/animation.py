@@ -2,6 +2,7 @@ import pygame
 import logging
 
 import src.utility as util
+from src.vector import Vect
 
 class Animation:
     """ Handles animations (only horizontal spritesheets) """
@@ -13,7 +14,7 @@ class Animation:
 
         self.imgs = []
         img = util.loadTexTransparent(path) # Entire animation
-        size = self.getSize()
+        size = Vect(img.get_width() // frameCount, img.get_height())
         frameSize = Vect(size.x // frameCount, size.y)
 
         self.delay = delay
@@ -21,21 +22,15 @@ class Animation:
 
         # Creating each frame 
         for i in range(frameCount):
-            frame = pygame.Surface(frameSize.getTuple())
-            frame.blit(img, (-i * frameSize.x, 0))
+            frame = pygame.Surface(frameSize.getTuple(), 
+                                   flags=pygame.SRCALPHA)
+            frame.blit(img, (-i * frameSize.x, 0), 
+                       special_flags = pygame.BLEND_RGBA_MAX)
             self.imgs.append(frame)
 
         self.timer = 0
         self.currentFrame = 0
     
-
-    def __init__(self, animData):
-        """ Loads data from a dictionary of animation data """
-        
-        self.__init__( animData["path"], 
-                       animData["frames"], 
-                       animData["delay"] ) 
-
 
     def update(self, window):
         """ Moves to the next frame if the delay is up """

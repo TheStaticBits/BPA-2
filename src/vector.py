@@ -1,20 +1,21 @@
 
+from re import X
+
+
 class Vect:
     """ Stores two digits """
 
-    def __init__(self, list):
-        """ Init from list/tuple """
-        self.x = list[0]
-        self.y = list[1]
+    def __init__(self, *args):
+        """ Init from either given x and y or a single list/tuple """
+        if len(args) == 2: # Init from x and y
+            self.x = args[0]
+            self.y = args[1]
+        elif len(args) == 1: # Init from list/tuple
+            self.x = args[0][0]
+            self.y = args[0][1]
     
-
-    def __init__(self, x, y):
-        """ Init from given x & y"""
-        self.x = x
-        self.y = y
-
-    
-    def getTuple(self): return (x, y)
+    def getTuple(self): 
+        return (self.x, self.y)
 
 
     """ Operator overloading for ease of use """

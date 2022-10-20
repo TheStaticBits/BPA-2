@@ -3,7 +3,7 @@ import logging
 
 import src.utility as util
 import src.animation as anim
-import src.enemy as enemy
+from src.vector import Vect
 
 class Tile:
     """ Handles each tile and the images and functionality """
@@ -42,18 +42,16 @@ class Tile:
 
         else:
             if type in tileJson["rotated"]:
-                type = tileJson["rotated"][type]["tile"]
                 self.rotate = tileJson["rotated"][type]["degrees"]
+                type = tileJson["rotated"][type]["tile"]
             
             if type not in tileJson["tiles"]:
                 self.log.error(f"Tile \"{type}\" not declared in tiles.json")
             
             self.type = type
             self.move = tileJson["tiles"][type]["move"]
-
-            # if self.move not in enemy.Enemy.DIR_TO_VECT:
-            #     self.log.error(f"Direction \"{self.move}\" is not a valid direction.")
-    
+            
+                
     def loadTex(self, consts, tileJson):
         """ Loads texture into class variable if it hasn't already been loaded """
         

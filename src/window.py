@@ -58,7 +58,7 @@ class Window:
     
     def render(self, tex, pos):
         """ Render a texture to the window at pos """
-        self.window.blit(tex, pos)
+        self.window.blit(tex, pos.getTuple())
     
 
     def draw(self, texture, position):
