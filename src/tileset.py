@@ -33,7 +33,7 @@ class Tileset:
         """ Creates each Tile object for every tile in the map """
         self.log.info(f"Generating tiles for \"{map}\"")
 
-        tileJson = util.loadJson(f"{consts['map']['paths']['maps']}/{map}/{consts['map']['paths']['tilesJson']}")
+        self.tileJson = util.loadJson(f"{consts['map']['paths']['maps']}/{map}/{consts['map']['paths']['tilesJson']}")
 
         self.tiles = []
         
@@ -41,7 +41,7 @@ class Tileset:
             rowList = []
 
             for x, type in enumerate(row):
-                rowList.append(tile.Tile(type, (x, y), consts, tileJson))
+                rowList.append(tile.Tile(type, (x, y), consts, self.tileJson))
             
             self.tiles.append(rowList)
     

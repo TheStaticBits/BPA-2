@@ -12,7 +12,7 @@ class Enemy:
     # Moving: ------------ Left ------- Up -------- Right ----- Down
     DIR_CLOCKWISE = [ Vect(-1, 0), Vect(0, -1), Vect(1, 0), Vect(0, 1) ]
 
-    def __init__(self, type, tileset, tilesJson, enemiesJson):
+    def __init__(self, type, tileset, tileJson, enemiesJson):
         self.log = logging.getLogger(__name__)
 
         animData = enemiesJson[type]["animation"]
@@ -22,9 +22,9 @@ class Enemy:
         self.health = enemiesJson[type]["health"]
 
         # Gets start tile
-        startTile = tileset.getTileAt(Vect(tilesJson["start"]["tile"]))
-        self.moveDir = Vect(tilesJson["start"]["facingDir"])
-        self.nextTile = startTile.getCoord() # Moving ot start tile from offscreen
+        startTile = tileset.getTileAt(Vect(tileJson["start"]["tile"]))
+        self.moveDir = Vect(tileJson["start"]["facingDir"])
+        self.nextTile = startTile.getCoord() # Moving to start tile from offscreen
 
         # Position offscreen, moving onto the start tile
         self.pos = self.getPosOnTile(startTile) - (self.moveDir * startTile.getSize())
