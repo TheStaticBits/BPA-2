@@ -105,4 +105,4 @@ class Vect:
     
 
     def abs(self):
-        return Vect(abs(x), abs(y))
+        return Vect(abs(self.x), abs(self.y))
