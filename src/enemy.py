@@ -12,14 +12,15 @@ class Enemy:
     # Moving: ------------ Left ------- Up -------- Right ----- Down
     DIR_CLOCKWISE = [ Vect(-1, 0), Vect(0, -1), Vect(1, 0), Vect(0, 1) ]
 
-    def __init__(self, type, tileset, tileJson, enemiesJson):
+    def __init__(self, type, tileset, enemiesJson):
         self.log = logging.getLogger(__name__)
-
-        animData = enemiesJson[type]["animation"]
-        self.anim = anim.Animation(animData["path"], animData["frames"], animData["delay"])
 
         self.speed = enemiesJson[type]["speed"]
         self.health = enemiesJson[type]["health"]
+        animData = enemiesJson[type]["animation"]
+        self.anim = anim.Animation(animData["path"], animData["frames"], animData["delay"])
+
+        tileJson = tileset.getTileJson()
 
         # Gets start tile
         startTile = tileset.getTileAt(Vect(tileJson["start"]["tile"]))
