@@ -96,6 +96,3 @@ class Enemy:
         """ Render enemy """
 
         self.anim.render(window, self.pos.getTuple())
-
-        # Difference between the position the enemy is at 
-        # and the next tile

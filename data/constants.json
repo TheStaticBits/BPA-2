@@ -19,8 +19,9 @@
         }
     },
 
-    "animations": {
-        "enemies": "res/enemies/enemies.json",
-        "towers": "res/towers/towers.json"
+    "jsonPaths": {
+        "enemies": "data/enemies.json",
+        "towers": "data/towers.json",
+        "waves": "data/waves.json"
     }
 }
