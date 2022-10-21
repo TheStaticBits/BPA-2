@@ -1,4 +1,6 @@
 {
+    "start": { "tile": [0, 5], "facingDir": [-1, 0] },
+
     "tiles": {
         "h": { "move": "none",    "img": "exampleTiles/baseTile.png" },
         "-": { "move": "forward", "img": "exampleTiles/baseTile.png" },

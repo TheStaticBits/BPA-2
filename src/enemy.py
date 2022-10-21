@@ -9,33 +9,43 @@ class Enemy:
     """ Any enemies are inherited from this class.
         Handles enemy movement and enemy animations. """
 
-    DIR_TO_VECT = { "left":  Vect(-1,  0),
-                    "right": Vect( 1,  0),
-                    "up":    Vect( 0, -1),
-                    "down":  Vect( 0,  1) }
+    # Moving: ------------ Left ------- Up -------- Right ----- Down
+    DIR_CLOCKWISE = [ Vect(-1, 0), Vect(0, -1), Vect(1, 0), Vect(0, 1) ]
 
-    TURN_RIGHT = { (-1, 0) > (0, -1) > (1, 0) > (0, 1) > (-1, 0)}
-
-    def __init__(self, type, startTile, enemiesJson, consts):
+    def __init__(self, type, tileset, tilesJson, enemiesJson, consts):
         self.log = logging.getLogger(__name__)
 
         animData = enemiesJson[type]["animation"]
         self.anim = anim.Animation(animData["path"], animData["frames"], animData["delay"])
 
-        givenDir = startTile.getMoveDir()
-
-        startFrom = self.DIR_TO_VECT[givenDir[1]]
-
-        # Start from direction is the direction off screen from the tile,
-        # so the direction the enemy has to move to get onto the tile
-        # is the opposite of that direction, onto the start tile
-        self.moveDir = startFrom * -1
-        self.nextTile = startTile.getCoord()
-
-        self.pos = self.getPosOnTile(startTile) + (startFrom * startTile.getSize())
-                
         self.speed = enemiesJson[type]["speed"]
         self.health = enemiesJson[type]["health"]
+
+        # Gets start tile
+        startTile = tileset.getTileAt(Vect(tilesJson["start"]["tile"]))
+        self.moveDir = Vect(tilesJson["start"]["facingDir"])
+        self.nextTile = startTile.getCoord() # Moving ot start tile from offscreen
+
+        # Position offscreen, moving onto the start tile
+        self.pos = self.getPosOnTile(startTile) - (self.moveDir * startTile.getSize())
+    
+
+    def turn(self, direction):
+        """ Implements turning left, right, and turning around """
+        index = self.DIR_CLOCKWISE.index(self.moveDir)
+
+        # Clockwise, counter clockwise, turning around
+        if direction == "right":         index += 1
+        elif direction == "left":        index -= 1
+        elif direction == "turn around": index += 2
+
+        # Wrap around the list, end or start
+        if index >= len(self.DIR_CLOCKWISE): 
+            index -= len(self.DIR_CLOCKWISE)
+        elif index < 0: 
+            index = len(self.DIR_CLOCKWISE) - 1
+        
+        self.moveDir = self.DIR_CLOCKWISE[index]
 
     
     def getPosOnTile(self, tile):
@@ -45,7 +55,12 @@ class Enemy:
     def findNextTile(self, currentTile):
         """ Finds next tile to move to based on given direction """
 
-        self.moveDir = self.DIR_TO_VECT[currentTile.getMoveDir()]
+        tileMoveDir = currentTile.getMoveDir()
+
+        if tileMoveDir == False:
+            self.log.error("Enemy moved onto a non-move tile")
+
+        self.turn(currentTile.getMoveDir())
         self.nextTile = currentTile.getCoord() + self.moveDir
     
 
