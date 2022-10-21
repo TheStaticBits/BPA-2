@@ -17,7 +17,6 @@ class Tile:
         self.coord = Vect(coord)
 
         self.loadTileData(type, consts, tileJson)
-
         self.loadTex(consts, tileJson)
 
         # Coordinates given multiplied by the tile size
