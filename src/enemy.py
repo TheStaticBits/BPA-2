@@ -12,7 +12,7 @@ class Enemy:
     # Moving: ------------ Left ------- Up -------- Right ----- Down
     DIR_CLOCKWISE = [ Vect(-1, 0), Vect(0, -1), Vect(1, 0), Vect(0, 1) ]
 
-    def __init__(self, type, tileset, tilesJson, enemiesJson, consts):
+    def __init__(self, type, tileset, tilesJson, enemiesJson):
         self.log = logging.getLogger(__name__)
 
         animData = enemiesJson[type]["animation"]
