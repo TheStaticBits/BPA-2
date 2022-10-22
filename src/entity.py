@@ -42,4 +42,5 @@ class Entity:
     def getAnim(self): return self.anim
 
     def setPos(self, pos): self.pos = pos
+    def addToPos(self, x): self.pos += x
     def getPos(self): return self.pos

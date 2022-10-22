@@ -44,7 +44,7 @@ class Enemy(entity.Entity):
         super().updateAnim(window)
 
         # Move
-        super().setPos(super().getPos() + self.moveDir * (self.speed * window.getDeltaTime()))
+        super().addToPos(self.moveDir * (self.speed * window.getDeltaTime()))
         
         # Reached the next tile destination
         onTile = tileset.getTileAt(self.nextTile)
