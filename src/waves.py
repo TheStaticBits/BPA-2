@@ -69,8 +69,9 @@ class Waves:
             self.waveDelay = self.wavesJson[self.waveNum]["delay"] # delay between waves
             self.waveNum += 1
 
-            if self.waveNum >= len(self.enemiesJson):
+            if self.waveNum >= len(self.wavesJson):
                 self.log.error("Reached the end of the waves?? Oops!")
+                self.waveNum = 0
             
             self.updateSpawnData(self.waveNum)
             
