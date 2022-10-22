@@ -16,7 +16,7 @@ class Animation:
             self.log.info(f"Loading animation at \"{img}\"")
             img = util.loadTexTransparent(img) # Entire animation
         
-        size = Vect(img.get_width() // frameCount, img.get_height())
+        size = Vect(img.get_size())
         frameSize = Vect(size.x // frameCount, size.y)
 
         self.delay = delay

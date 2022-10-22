@@ -1,11 +1,11 @@
 {
     "jony aplseed": {
-        "speed": 160,
+        "speed": 80,
         "health": 1,
         "damage": 20,
         "animation": {
             "path": "res/enemies/jonyaplseed.png",
-            "frames": 1,
+            "frames": 2,
             "delay": 0.4
         }
     }
