@@ -70,28 +70,32 @@ class Tile:
             self.textures[self.type] = util.loadTexTransparent(path)
     
 
-    def updateMouseHover(self, window):
-        if (self.hasDeco and not self.isPlacable) or self.move != "none": return None
+    def updateMouseHover(self, window, consts):
+        """ Updates tile moving up and down when mouse hovers over it """
+
+        if self.canBePlacedOn():
+            # Tile will not move upon hovering
+            return None
 
         if util.pointRectCollision(window.getMousePos(), self.pos, Vect(self.getWidth())):
             # The chin/shadow under the square tile height
             moveTo = self.getHeight() - self.getWidth()
             # slowly moves to moveTo
-            self.hoverOffset += 10 * window.getDeltaTime() * (moveTo - self.hoverOffset)
+            self.hoverOffset += consts["game"]["tileHoverSpeed"] * window.getDeltaTime() * (moveTo - self.hoverOffset)
         else:
             if self.hoverOffset < 0.5:
                 self.hoverOffset = 0
             else:
                 # Move down to zero
-                self.hoverOffset += 10 * window.getDeltaTime() * (-self.hoverOffset)
+                self.hoverOffset -= consts["game"]["tileHoverSpeed"] * window.getDeltaTime() * self.hoverOffset
 
 
-    def update(self, window):
+    def update(self, window, consts):
         """ Updates tile hovering, deco animations """
         if self.hasDeco: 
             self.deco.updateAnim(window)
 
-        self.updateMouseHover(window)
+        self.updateMouseHover(window, consts)
 
     
     def render(self, window): # window is the Window object
@@ -99,7 +103,7 @@ class Tile:
         tex = self.textures[self.type]
 
         if self.rotate != None: 
-            pygame.transform.rotate(tex, self.rotate)
+            tex = pygame.transform.rotate(tex, self.rotate)
 
         renderPos = self.pos.copy()
         renderPos.y -= self.hoverOffset
@@ -127,3 +131,5 @@ class Tile:
 
     def getCoord(self): return self.coord
     def getPos(self):   return self.pos
+
+    def canBePlacedOn(self): return (self.hasDeco and not self.isPlacable) or self.move != "none"

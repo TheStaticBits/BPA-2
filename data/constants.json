@@ -13,7 +13,8 @@
 
     "game": {
         "playerHealth": 200,
-        "imgScale": 2
+        "imgScale": 2,
+        "tileHoverSpeed": 20
     },
 
     "mapPaths": {

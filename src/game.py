@@ -31,7 +31,7 @@ class Game:
         while not self.window.isClosed():
             self.window.handleInputs()
 
-            self.round.update(self.window)
+            self.round.update(self.window, self.constants)
             self.round.render(self.window)
             
             self.window.update(self.constants)

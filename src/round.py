@@ -17,9 +17,9 @@ class Round:
         self.waves = waves.Waves(consts)
     
     
-    def update(self, window):
+    def update(self, window, consts):
         """ Updates everything for the frame """
-        self.tileset.update(window)
+        self.tileset.update(window, consts)
         self.waves.update(window, self.tileset)
     
     

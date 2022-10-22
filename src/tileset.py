@@ -47,11 +47,11 @@ class Tileset:
             self.tiles.append(rowList)
     
 
-    def update(self, window):
+    def update(self, window, consts):
         """ New frame, updates all tiles """
         for row in self.tiles:
             for tile in row:
-                tile.update(window)
+                tile.update(window, consts)
     
 
     def renderTiles(self, window):
