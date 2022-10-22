@@ -73,8 +73,7 @@ class Tile:
         """ Updates tile hovering, deco animations """
         if self.hasDeco: 
             self.deco.updateAnim(window)
-        
-        if 
+    
 
     
     def render(self, window): # window is the Window object

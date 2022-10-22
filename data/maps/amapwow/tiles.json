@@ -15,7 +15,7 @@
         "t": {
             "tile": " ",
             "placable": false,
-            "offset": [27, 25], 
+            "offset": [10, 10], 
             "animation": {
                 "path": "res/tiles/exampleTiles/deco/rock.png",
                 "frames": 1,
