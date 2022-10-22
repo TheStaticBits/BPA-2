@@ -45,7 +45,7 @@ def rectCollision(pos1: Vect, size1: Vect,
              pos2.y < pos1.y + size1.y )
 
 def pointRectCollision(point: Vect, pos: Vect, size: Vect):
-    return pos <= point <= (pos + size)
+    return pos <= point < (pos + size)
 
 
 def setupLogger(constants):

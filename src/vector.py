@@ -10,15 +10,22 @@ class Vect:
         if len(args) == 2: # Init from x and y
             self.x = args[0]
             self.y = args[1]
-        elif len(args) == 1: # Init from list/tuple
-            self.x = args[0][0]
-            self.y = args[0][1]
+        elif len(args) == 1: # Init from list/tuple or one digit
+            if isinstance(args[0], int) or isinstance(args[0], float):
+                self.x = args[0]
+                self.y = args[0]
+            else: # list/tuple
+                self.x = args[0][0]
+                self.y = args[0][1]
     
     def getTuple(self): 
         return (self.x, self.y)
     
     def abs(self): 
-        return Vect(abs(self.x), abs(self.y))    
+        return Vect(abs(self.x), abs(self.y))
+    
+    def copy(self):
+        return Vect(self.x, self.y)
     
     def __str__(self): 
         return f"({self.x}, {self.y})"

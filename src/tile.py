@@ -21,6 +21,7 @@ class Tile:
         self.loadTex(tileJson)
 
         self.mouseOnTile = False
+        self.hoverOffset = 0
 
         # Coordinates given multiplied by the tile size
         # (position on screen)
@@ -67,13 +68,30 @@ class Tile:
             # tiles of the same type
             path = tileJson["tiles"][self.type]["path"]
             self.textures[self.type] = util.loadTexTransparent(path)
+    
+
+    def updateMouseHover(self, window):
+        if (self.hasDeco and not self.isPlacable) or self.move != "none": return None
+
+        if util.pointRectCollision(window.getMousePos(), self.pos, Vect(self.getWidth())):
+            # The chin/shadow under the square tile height
+            moveTo = self.getHeight() - self.getWidth()
+            # slowly moves to moveTo
+            self.hoverOffset += 10 * window.getDeltaTime() * (moveTo - self.hoverOffset)
+        else:
+            if self.hoverOffset < 0.5:
+                self.hoverOffset = 0
+            else:
+                # Move down to zero
+                self.hoverOffset += 10 * window.getDeltaTime() * (-self.hoverOffset)
 
 
     def update(self, window):
         """ Updates tile hovering, deco animations """
         if self.hasDeco: 
             self.deco.updateAnim(window)
-    
+
+        self.updateMouseHover(window)
 
     
     def render(self, window): # window is the Window object
@@ -82,8 +100,11 @@ class Tile:
 
         if self.rotate != None: 
             pygame.transform.rotate(tex, self.rotate)
+
+        renderPos = self.pos.copy()
+        renderPos.y -= self.hoverOffset
         
-        window.render(tex, self.pos)
+        window.render(tex, renderPos)
     
     
     def renderDeco(self, window):

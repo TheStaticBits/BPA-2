@@ -3,6 +3,8 @@ import logging
 
 import time
 
+from src.vector import Vect
+
 class Window:
     """ Handles window and inputs """
     def __init__(self, constants):
@@ -86,7 +88,7 @@ class Window:
 
     # Getters
     def getMouse(self, button): return self.mousePressed[button]
-    def getMousePos(self): return self.mousePos
+    def getMousePos(self): return Vect(self.mousePos)
 
     def getDeltaTime(self): return self.deltaTime
 
