@@ -1,7 +1,8 @@
 {
     "jony aplseed": {
-        "speed": 30,
+        "speed": 160,
         "health": 1,
+        "damage": 20,
         "animation": {
             "path": "res/enemies/jonyaplseed.png",
             "frames": 1,

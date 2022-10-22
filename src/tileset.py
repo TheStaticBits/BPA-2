@@ -3,6 +3,7 @@ import logging
 
 import src.tile as tile
 import src.utility as util
+from src.vector import Vect
 
 class Tileset:
     """ Manages the tiles and towers"""
@@ -19,7 +20,7 @@ class Tileset:
         """ Loads and returns tileset layout text file """
         self.log.info(f"Loading map \"{map}\"")
 
-        file = util.loadFile(f"{consts['map']['paths']['maps']}/{map}/{consts['map']['paths']['layoutFile']}")
+        file = util.loadFile(f"{consts['mapPaths']['maps']}/{map}/{consts['mapPaths']['layoutFile']}")
         
         layout = []
 
@@ -33,7 +34,7 @@ class Tileset:
         """ Creates each Tile object for every tile in the map """
         self.log.info(f"Generating tiles for \"{map}\"")
 
-        self.tileJson = util.loadJson(f"{consts['map']['paths']['maps']}/{map}/{consts['map']['paths']['tilesJson']}")
+        self.tileJson = util.loadJson(f"{consts['mapPaths']['maps']}/{map}/{consts['mapPaths']['tilesJson']}")
 
         self.tiles = []
         
@@ -67,5 +68,14 @@ class Tileset:
                 tile.renderDeco(window)
 
     # Getters
-    def getTileAt(self, coords): return self.tiles[coords.y][coords.x]
+    def getTileAt(self, coords): 
+        if coords.x < len(self.tiles[0]) and coords.y < len(self.tiles):
+            return self.tiles[coords.y][coords.x]
+        else: return False # Out of index
+
     def getTileJson(self): return self.tileJson
+
+    def getBoardSize(self):
+        tileSize = self.tiles[0].getSize()
+        size = Vect(len(self.tiles[0]), len(self.tiles)) * tileSize
+        return size

@@ -13,6 +13,8 @@ class Waves:
 
         self.wavesJson = util.loadJson(consts["jsonPaths"]["waves"])
         self.enemiesJson = util.loadJson(consts["jsonPaths"]["enemies"])
+        
+        self.health = consts["game"]["playerHealth"]
         self.waveNum = 0
         self.waveDelay = 0
         self.enemies = []
@@ -23,21 +25,29 @@ class Waves:
     def updateSpawnData(self, waveNum):
         """ Creates data dictionary for spawning enemies"""
         self.spawnData = {}
-        for enemy, data in self.wavesJson[waveNum].items():
-            self.spawnData[enemy] = {}
-            self.spawnData[enemy]["amountLeft"] = data["amount"]
-            self.spawnData[enemy]["delay"] = data["startDelay"] # Delay from start of wave
+        for enemy, data in self.wavesJson[waveNum]["enemies"].items():
+            self.spawnData[enemy] = { "amountLeft": data["amount"],
+                                      "delay": data["startDelay"] }
     
 
     def update(self, window, tileset):
         """ Update enemies and delays, and creates enemies """
+        
+        remove = []
+        for enemy in self.enemies:
+            enemy.update(window, tileset)
+            
+            if enemy.hasReachedMapEnd(tileset):
+                self.health -= enemy.getDamage() # take damage
+                remove.append(enemy)
+
+        # Remove enemies that reached the end of the map
+        for enemy in remove: self.enemies.remove(enemy)
+        
+
         if self.waveDelay > 0:
             self.waveDelay -= window.getDeltaTime()
             return None # No wave to update, currently between waves
-
-
-        for enemy in self.enemies:
-            enemy.update(window, tileset)
 
         # Update wave delays and spawn any enemies
         for enemy, data in self.spawnData.items():
@@ -46,7 +56,7 @@ class Waves:
             if data["delay"] > 0: continue
 
             # Reset delay and spawn enemy
-            data["delay"] = self.wavesJson[self.waveNum][enemy]["spawnDelay"]
+            data["delay"] = self.wavesJson[self.waveNum]["enemies"][enemy]["spawnDelay"]
             data["amountLeft"] -= 1
 
             self.enemies.append(en.Enemy(enemy, tileset, self.enemiesJson))

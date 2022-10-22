@@ -1,7 +1,44 @@
 [
     {
-        "jony aplseed": { "amount": 10,   "startDelay": 0,    "spawnDelay": 0.5 },
-
+        "enemies": {
+            "jony aplseed": { "amount": 10,   "startDelay": 0,    "spawnDelay": 0.5 }
+        },
+        "delay": 100
+    },
+    {
+        "enemies": {
+            "jony aplseed": { "amount": 10,   "startDelay": 0,    "spawnDelay": 0.5 }
+        },
+        "delay": 100
+    },{
+        "enemies": {
+            "jony aplseed": { "amount": 10,   "startDelay": 0,    "spawnDelay": 0.5 }
+        },
+        "delay": 100
+    },{
+        "enemies": {
+            "jony aplseed": { "amount": 10,   "startDelay": 0,    "spawnDelay": 0.5 }
+        },
+        "delay": 100
+    },{
+        "enemies": {
+            "jony aplseed": { "amount": 10,   "startDelay": 0,    "spawnDelay": 0.5 }
+        },
+        "delay": 100
+    },{
+        "enemies": {
+            "jony aplseed": { "amount": 10,   "startDelay": 0,    "spawnDelay": 0.5 }
+        },
+        "delay": 100
+    },{
+        "enemies": {
+            "jony aplseed": { "amount": 10,   "startDelay": 0,    "spawnDelay": 0.5 }
+        },
+        "delay": 100
+    },{
+        "enemies": {
+            "jony aplseed": { "amount": 10,   "startDelay": 0,    "spawnDelay": 0.5 }
+        },
         "delay": 100
     }
 ]

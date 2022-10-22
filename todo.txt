@@ -1,0 +1,4 @@
+Programming TO-DO:
+ - Make animations stored in a class variable for enemies
+ - Make deco tiles have an option to be placable or not
+ - Make test for having reached the end of the map

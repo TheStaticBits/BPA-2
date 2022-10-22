@@ -3,6 +3,8 @@ import logging
 import json
 import os
 
+from src.vector import Vect
+
 def loadFile(path):
     """ Loads text file """
     with open(path) as f:
@@ -23,6 +25,15 @@ def loadTexTransparent(path):
     """ Loads transparent texture.
         Slower than normal loadTex due to including alpha values. """
     return pygame.image.load(path).convert_alpha()
+
+
+def rectCollision(pos1: Vect, size1: Vect, 
+                  pos2: Vect, size2: Vect):
+    """ Checks rectangle collision with given Vect objects """
+    return ( pos1.x < pos2.x + size2.x and 
+             pos2.x < pos1.x + size1.x and 
+             pos1.y < pos2.y + size2.y and
+             pos2.y < pos1.y + size1.y )
 
 
 def setupLogger(constants):

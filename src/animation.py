@@ -6,14 +6,16 @@ from src.vector import Vect
 
 class Animation:
     """ Handles animations (only horizontal spritesheets) """
-    def __init__(self, path, frameCount, delay):
+    def __init__(self, img, frameCount, delay):
         """ Loads animation """
         self.log = logging.getLogger(__name__)
 
-        self.log.info(f"Loading animation at \"{path}\"")
-
         self.imgs = []
-        img = util.loadTexTransparent(path) # Entire animation
+
+        if isinstance(img, str): # If img parameter is the path 
+            self.log.info(f"Loading animation at \"{img}\"")
+            img = util.loadTexTransparent(img) # Entire animation
+        
         size = Vect(img.get_width() // frameCount, img.get_height())
         frameSize = Vect(size.x // frameCount, size.y)
 
@@ -31,7 +33,6 @@ class Animation:
         self.timer = 0
         self.currentFrame = 0
     
-
     def update(self, window):
         """ Moves to the next frame if the delay is up """
 

@@ -32,10 +32,11 @@ class Tile:
             self.type = tileJson["deco"][type]["tile"] # Tile type of the tile behind deco
             self.decoTile = type
             self.decoOffset = Vect(tileJson["deco"][type]["offset"])
+            self.isPlacable = tileJson["deco"][type]["placable"]
 
             animData = tileJson["deco"][type]["animation"]
             # Folder path + file in folder path
-            path = f"{consts['map']['paths']['tiles']}/{animData['img']}" 
+            path = f"{consts['mapPaths']['tiles']}/{animData['img']}" 
 
             self.deco = anim.Animation(path, animData["frames"], animData["delay"])
 
@@ -58,7 +59,7 @@ class Tile:
         if self.type in self.textures: return None
         
         # load image
-        path = f"{consts['map']['paths']['tiles']}/{tileJson['tiles'][self.type]['img']}"
+        path = f"{consts['mapPaths']['tiles']}/{tileJson['tiles'][self.type]['img']}"
         self.textures[self.type] = util.loadTexTransparent(path)
 
 
@@ -100,4 +101,4 @@ class Tile:
     def getHeight(self): return self.getSize().y
 
     def getCoord(self): return self.coord
-    def getPos(self): return self.pos
+    def getPos(self):   return self.pos

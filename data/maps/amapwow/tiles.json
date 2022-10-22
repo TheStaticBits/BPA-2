@@ -1,20 +1,20 @@
 {
-    "start": { "tile": [0, 5], "facingDir": [-1, 0] },
+    "start": { "tile": [0, 5], "facingDir": [1, 0] },
 
     "tiles": {
-        "h": { "move": "none",    "img": "exampleTiles/baseTile.png" },
-        "-": { "move": "forward", "img": "exampleTiles/baseTile.png" },
-        "s": { "move": "forward", "img": "exampleTiles/baseTile.png" },
-        "e": { "move": "forward", "img": "exampleTiles/baseTile.png" }
-    },
-
+        " ": { "move": "none",    "img": "exampleTiles/baseTile.png" },
+        "l": { "move": "left",    "img": "exampleTiles/baseTile.png" },
+        "r": { "move": "right",   "img": "exampleTiles/baseTile.png" },
+        "-": { "move": "forward", "img": "exampleTiles/baseTile.png" }
+    }, 
     "rotated": {
         "|": { "tile": "-", "degrees": -90 }
     },
 
     "deco": {
         "t": {
-            "tile": "h",
+            "tile": " ",
+            "placable": false,
             "offset": [27, 25], 
             "animation": {
                 "img": "exampleTiles/deco/rock.png",

@@ -1,12 +1,12 @@
-hhhhhhhhhhhh
-hhhhhhhhhhhh
-hhhh----hhhh
-hhhh|hh|hhhh
-hhhh|hh|hhhh
-s----hh----e
-hhhhhhhhhhhh
-hhhhhhhhhhhh
-hhhhhhhhhhhh
-hhhhhhhhhhhh
-hhhhhhhhhhhh
-hhhhhhhhhhht
+            
+            
+ r----r     
+ |    |     
+ |    |     
+-l    l---- 
+            
+            
+            
+            
+            
+           t

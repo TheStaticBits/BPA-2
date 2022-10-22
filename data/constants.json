@@ -10,13 +10,15 @@
         "maxFPS": -1
     },
 
-    "map": {
-        "paths": {
-            "maps": "data/maps",
-            "tiles": "res/tiles",
-            "tilesJson": "tiles.json",
-            "layoutFile": "layout.txt"
-        }
+    "game": {
+        "playerHealth": 200
+    },
+
+    "mapPaths": {
+        "maps": "data/maps",
+        "tiles": "res/tiles",
+        "tilesJson": "tiles.json",
+        "layoutFile": "layout.txt"
     },
 
     "jsonPaths": {
