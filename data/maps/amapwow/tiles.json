@@ -2,10 +2,10 @@
     "start": { "tile": [0, 5], "facingDir": [1, 0] },
 
     "tiles": {
-        " ": { "move": "none",    "img": "exampleTiles/baseTile.png" },
-        "l": { "move": "left",    "img": "exampleTiles/baseTile.png" },
-        "r": { "move": "right",   "img": "exampleTiles/baseTile.png" },
-        "-": { "move": "forward", "img": "exampleTiles/baseTile.png" }
+        " ": { "move": "none",    "path": "res/tiles/exampleTiles/baseTile.png" },
+        "l": { "move": "left",    "path": "res/tiles/exampleTiles/baseTile.png" },
+        "r": { "move": "right",   "path": "res/tiles/exampleTiles/baseTile.png" },
+        "-": { "move": "forward", "path": "res/tiles/exampleTiles/baseTile.png" }
     }, 
     "rotated": {
         "|": { "tile": "-", "degrees": -90 }
@@ -17,7 +17,7 @@
             "placable": false,
             "offset": [27, 25], 
             "animation": {
-                "img": "exampleTiles/deco/rock.png",
+                "path": "res/tiles/exampleTiles/deco/rock.png",
                 "frames": 1,
                 "delay": 0.2
             }

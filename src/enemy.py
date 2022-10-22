@@ -4,9 +4,10 @@ import logging
 
 import src.utility as util
 import src.animation as anim
+import src.entity as entity
 from src.vector import Vect
 
-class Enemy:
+class Enemy(entity.Entity):
     """ Any enemies are inherited from this class.
         Handles enemy movement and enemy animations. """
 
@@ -21,9 +22,6 @@ class Enemy:
         self.speed =  enemiesJson[type]["speed"]
         self.health = enemiesJson[type]["health"]
         self.damage = enemiesJson[type]["damage"]
-        
-        animData = enemiesJson[type]["animation"]
-        self.anim = anim.Animation(animData["path"], animData["frames"], animData["delay"])
 
         tileJson = tileset.getTileJson()
 
@@ -32,32 +30,31 @@ class Enemy:
         self.moveDir = Vect(tileJson["start"]["facingDir"])
         self.nextTile = startTile.getCoord() # Moving to start tile from offscreen
 
+        animData = enemiesJson[type]["animation"]
+        super().__init__(animData) # sets up animation 
+        
         # Position offscreen, moving onto the start tile
-        self.pos = self.getPosOnTile(startTile) - (self.moveDir * startTile.getSize())
+        pos = self.getPosOnTile(startTile) - (self.moveDir * startTile.getSize())
+        super().setPos(pos) # setup position
 
 
     def update(self, window, tileset):
         """ updates animation and position of enemy """
         
-        self.anim.update(window)
+        super().updateAnim(window)
 
         # Move
-        self.pos += self.moveDir * (self.speed * window.getDeltaTime())
+        super().setPos(super().getPos() + self.moveDir * (self.speed * window.getDeltaTime()))
         
         # Reached the next tile destination
         onTile = tileset.getTileAt(self.nextTile)
         if self.onNextTile(window, onTile): # turn to next tile and set dest
 
-            self.pos = self.getPosOnTile(onTile) # center on tile
+            super().setPos(self.getPosOnTile(onTile)) # center on tile
             self.turn(onTile.getMoveDir())
             
             # moving destination by one board coordinate
             self.nextTile = onTile.getCoord() + self.moveDir
-
-
-    def render(self, window):
-        """ Render enemy """
-        self.anim.render(window, self.pos)
     
 
     def onNextTile(self, window, tile):
@@ -68,7 +65,7 @@ class Enemy:
             return False
         
         # Finding difference in x/y between the tile and where it needs to move to
-        diff = (self.getPosOnTile(tile) - self.pos).abs()
+        diff = (self.getPosOnTile(tile) - super().getPos()).abs()
 
         # amount moved per frame
         frameDistance = self.speed * window.getDeltaTime()
@@ -96,15 +93,15 @@ class Enemy:
     
     
     def getPosOnTile(self, tile):
-        return tile.getCenter() - (self.anim.getSize() / 2)
+        return tile.getCenter() - (super().getAnim().getSize() / 2)
     
 
     def hasReachedMapEnd(self, tileset):
         if not self.reachedEnd: return False
 
         # Check if on board
-        return not util.rectCollision(self.pos,   self.anim.getSize(),
-                                      Vect(0, 0), tileset.getBoardSize())
+        return not util.rectCollision(super().getPos(), super().getAnim().getSize(),
+                                      Vect(0, 0),       tileset.getBoardSize())
 
     def getDamage(self):
         return self.damage 

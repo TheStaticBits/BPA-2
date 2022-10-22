@@ -3,6 +3,7 @@ import logging
 
 import src.utility as util
 import src.animation as anim
+import src.entity as entity
 from src.vector import Vect
 
 class Tile:
@@ -10,35 +11,37 @@ class Tile:
     
     textures = {} # Dict, {tileTypeChar: pygame.Surface} 
 
-    def __init__(self, type, coord, consts, tileJson):
+    def __init__(self, type, coord, tileJson):
         """ Setup tile """
         self.log = logging.getLogger(__name__)
         
         self.coord = Vect(coord)
 
-        self.loadTileData(type, consts, tileJson)
-        self.loadTex(consts, tileJson)
+        self.loadTileData(type, tileJson)
+        self.loadTex(tileJson)
 
         # Coordinates given multiplied by the tile size
         # (position on screen)
         self.pos = Vect(coord) * Vect(self.textures[self.type].get_size())
 
+        if self.hasDeco:
+            # Setup decoration centered at offset
+            pos = (self.pos + self.decoOffset - (self.deco.getAnim().getSize() // 2))
+            self.deco.setPos(pos)
+
     
-    def loadTileData(self, type, consts, tileJson):
-        self.isDeco = type in tileJson["deco"]
+    def loadTileData(self, type, tileJson):
+        self.hasDeco = type in tileJson["deco"]
         self.rotate = None
 
-        if self.isDeco:
+        if self.hasDeco:
             self.type = tileJson["deco"][type]["tile"] # Tile type of the tile behind deco
             self.decoTile = type
             self.decoOffset = Vect(tileJson["deco"][type]["offset"])
             self.isPlacable = tileJson["deco"][type]["placable"]
 
             animData = tileJson["deco"][type]["animation"]
-            # Folder path + file in folder path
-            path = f"{consts['mapPaths']['tiles']}/{animData['img']}" 
-
-            self.deco = anim.Animation(path, animData["frames"], animData["delay"])
+            self.deco = entity.Entity(animData)
 
         else:
             if type in tileJson["rotated"]:
@@ -52,20 +55,20 @@ class Tile:
             self.move = tileJson["tiles"][type]["move"]
             
                 
-    def loadTex(self, consts, tileJson):
+    def loadTex(self, tileJson):
         """ Loads texture into class variable if it hasn't already been loaded """
         
-        # don't continue if the tile img is already loaded
-        if self.type in self.textures: return None
-        
-        # load image
-        path = f"{consts['mapPaths']['tiles']}/{tileJson['tiles'][self.type]['img']}"
-        self.textures[self.type] = util.loadTexTransparent(path)
+        if self.type not in self.textures:
+            # load and add tex to class variable textures, for future
+            # tiles of the same type
+            path = tileJson["tiles"][self.type]["path"]
+            self.textures[self.type] = util.loadTexTransparent(path)
 
 
     def update(self, window):
         """ Updates decoration animation if there is one """
-        if self.isDeco: self.deco.update(window)
+        if self.hasDeco: 
+            self.deco.updateAnim(window)
 
     
     def render(self, window): # window is the Window object
@@ -80,17 +83,13 @@ class Tile:
     
     def renderDeco(self, window):
         """ Renders the decoration at the offset if there's any deco """
-        if not self.isDeco: return None
-
-        # Centers image on the offset from the tile
-        pos = (self.pos + self.decoOffset - (self.deco.getSize() // 2))
-        self.deco.render(window, pos)
+        if self.hasDeco: self.deco.render(window)
     
 
     # Getters
     def getMoveDir(self):
         """ Gets enemy move direction for the tile """
-        return False if self.isDeco else self.move
+        return False if self.hasDeco else self.move
 
     def getCenter(self):
         """ Returns center of tile position """ 

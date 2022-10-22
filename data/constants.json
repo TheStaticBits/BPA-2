@@ -16,7 +16,6 @@
 
     "mapPaths": {
         "maps": "data/maps",
-        "tiles": "res/tiles",
         "tilesJson": "tiles.json",
         "layoutFile": "layout.txt"
     },

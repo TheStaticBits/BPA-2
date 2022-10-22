@@ -33,16 +33,17 @@ class Waves:
     def update(self, window, tileset):
         """ Update enemies and delays, and creates enemies """
         
-        remove = []
+        stillAlive = []
         for enemy in self.enemies:
             enemy.update(window, tileset)
             
             if enemy.hasReachedMapEnd(tileset):
                 self.health -= enemy.getDamage() # take damage
-                remove.append(enemy)
-
-        # Remove enemies that reached the end of the map
-        for enemy in remove: self.enemies.remove(enemy)
+                self.log.info(f"Player health now at {self.health}")
+            else:
+                stillAlive.append(enemy)
+            
+        self.enemies = stillAlive
         
 
         if self.waveDelay > 0:

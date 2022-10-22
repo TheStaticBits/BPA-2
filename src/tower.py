@@ -1,9 +1,10 @@
 import pygame
 import logging
 
+import src.entity as entity
 from src.vector import Vect
 
-class Tower:
+class Tower(entity.Entity):
     """ All towers inherit from this class.
         Manages the placement and rendering """
     

@@ -42,7 +42,7 @@ class Tileset:
             rowList = []
 
             for x, type in enumerate(row):
-                rowList.append(tile.Tile(type, (x, y), consts, self.tileJson))
+                rowList.append(tile.Tile(type, (x, y), self.tileJson))
             
             self.tiles.append(rowList)
     
