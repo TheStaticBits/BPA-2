@@ -23,6 +23,9 @@ class Window:
         self.prevTime = time.time() # seconds
         self.deltaTime = 0
 
+        self.FPSTimer = self.prevTime
+        self.pastSecondFPS = []
+
 
     def update(self, constants):
         """ Updates the display with what has been rendered in the past frame
@@ -36,6 +39,21 @@ class Window:
         # move at the same speed regardless of framerate 
         self.deltaTime = time.time() - self.prevTime
         self.prevTime = time.time()
+
+        # FPS tracker
+        if constants["window"]["outputFPS"]:
+            if self.deltaTime != 0:
+                self.pastSecondFPS.append(1 / self.deltaTime)
+
+            if self.prevTime >= self.FPSTimer:
+                self.FPSTimer += 1
+
+                # average
+                fpsAverage = 0 
+                for fps in self.pastSecondFPS: fpsAverage += fps
+                fpsAverage /= len(self.pastSecondFPS)
+                
+                self.log.info(f"FPS: {round(fpsAverage)}")
 
         # Cap framerate
         if constants["window"]["maxFPS"] <= 0:

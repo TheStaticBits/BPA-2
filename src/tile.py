@@ -20,9 +20,11 @@ class Tile:
         self.loadTileData(type, tileJson)
         self.loadTex(tileJson)
 
+        self.mouseOnTile = False
+
         # Coordinates given multiplied by the tile size
         # (position on screen)
-        self.pos = Vect(coord) * Vect(self.textures[self.type].get_size())
+        self.pos = Vect(coord) * self.textures[self.type].get_width()
 
         if self.hasDeco:
             # Setup decoration centered at offset
@@ -31,6 +33,8 @@ class Tile:
 
     
     def loadTileData(self, type, tileJson):
+        """ Loads data for the tile into variables, 
+            including tile decorations if any, and more """
         self.hasDeco = type in tileJson["deco"]
         self.rotate = None
 
@@ -66,9 +70,11 @@ class Tile:
 
 
     def update(self, window):
-        """ Updates decoration animation if there is one """
+        """ Updates tile hovering, deco animations """
         if self.hasDeco: 
             self.deco.updateAnim(window)
+        
+        if 
 
     
     def render(self, window): # window is the Window object

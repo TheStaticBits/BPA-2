@@ -33,5 +33,5 @@ class Game:
 
             self.round.update(self.window)
             self.round.render(self.window)
-
+            
             self.window.update(self.constants)

@@ -39,7 +39,7 @@ class Waves:
             
             if enemy.hasReachedMapEnd(tileset):
                 self.health -= enemy.getDamage() # take damage
-                self.log.info(f"Player health now at {self.health}")
+                # self.log.info(f"Player health now at {self.health}")
             else:
                 stillAlive.append(enemy)
             
