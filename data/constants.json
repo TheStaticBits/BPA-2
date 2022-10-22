@@ -11,7 +11,8 @@
     },
 
     "game": {
-        "playerHealth": 200
+        "playerHealth": 200,
+        "imgScale": 2
     },
 
     "mapPaths": {

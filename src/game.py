@@ -12,6 +12,8 @@ class Game:
 
         self.constants = util.loadJson("data/constants.json")
 
+        util.imgScale = self.constants["game"]["imgScale"]
+
         # Setup logging
         util.setupLogger(self.constants)
 

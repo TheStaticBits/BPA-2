@@ -5,6 +5,8 @@ import os
 
 from src.vector import Vect
 
+imgScale = 1
+
 def loadFile(path):
     """ Loads text file """
     with open(path) as f:
@@ -19,12 +21,19 @@ def loadTex(path):
     """ Loads texture that is not trasparent. 
         The pygame convert() function is speedier than pygame's convert_alpha(), 
         although any transparency will be removed. """ 
-    return pygame.image.load(path).convert()
+    return scale(pygame.image.load(path).convert())
 
 def loadTexTransparent(path):
     """ Loads transparent texture.
         Slower than normal loadTex due to including alpha values. """
-    return pygame.image.load(path).convert_alpha()
+    return scale(pygame.image.load(path).convert_alpha())
+
+def scale(img: pygame.Surface):
+    """ Scales up to the default image scale and returns it """
+    if imgScale == 1: return img
+
+    size = Vect(img.get_size())
+    return pygame.transform.scale(img, (size * imgScale).getTuple())
 
 
 def rectCollision(pos1: Vect, size1: Vect, 
