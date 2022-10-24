@@ -76,8 +76,10 @@ class Tile:
         if self.canBePlacedOn():
             # Tile will not move upon hovering
             return None
+        
+        collide = util.pointRectCollision(window.getMousePos(), self.pos, Vect(self.getWidth()))
 
-        if util.pointRectCollision(window.getMousePos(), self.pos, Vect(self.getWidth())):
+        if collide and not window.getMouse("left"):
             # The chin/shadow under the square tile height
             moveTo = self.getHeight() - self.getWidth()
             # slowly moves to moveTo
