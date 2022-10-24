@@ -5,6 +5,7 @@ import logging
 import src.utility as util
 import src.animation as anim
 import src.entity as entity
+from src.timer import Timer
 from src.vector import Vect
 
 class Enemy(entity.Entity):
@@ -22,6 +23,12 @@ class Enemy(entity.Entity):
         self.speed =  enemiesJson[type]["speed"]
         self.health = enemiesJson[type]["health"]
         self.damage = enemiesJson[type]["damage"]
+
+        if "ability" in enemiesJson[type]:
+            self.ability = enemiesJson[type]["execute"]
+            self.abilityTimer = Timer(enemiesJson[type]["delay"])
+        else:
+            self.ability = None
 
         tileJson = tileset.getTileJson()
 
@@ -55,6 +62,15 @@ class Enemy(entity.Entity):
             
             # moving destination by one board coordinate
             self.nextTile = onTile.getCoord() + self.moveDir
+    
+
+    def updateAbilty(self, window):
+        """ Updates ability timer if there is one """
+        if self.ability != None:
+            self.abilityTimer.update(window)
+
+            if self.abilityTimer.activated():
+                exec(self.ability) 
     
 
     def onNextTile(self, window, tile):

@@ -2,6 +2,7 @@ import pygame
 import logging
 
 import src.utility as util
+from src.timer import Timer
 from src.vector import Vect
 
 class Animation:
@@ -19,8 +20,9 @@ class Animation:
         size = Vect(img.get_size())
         frameSize = Vect(size.x // frameCount, size.y)
 
-        self.delay = delay
+        self.timer = Timer(delay)
         self.totalFrames = frameCount
+        self.currentFrame = 0
 
         # Creating each frame 
         for i in range(frameCount):
@@ -30,16 +32,13 @@ class Animation:
                        special_flags = pygame.BLEND_RGBA_MAX)
             self.imgs.append(frame)
 
-        self.timer = 0
-        self.currentFrame = 0
     
     def update(self, window):
         """ Moves to the next frame if the delay is up """
 
-        self.timer += window.getDeltaTime()
+        self.timer.update(window)
 
-        if self.timer > self.delay:
-            self.timer = 0
+        if self.timer.activated():
             self.currentFrame += 1
 
             if self.currentFrame >= self.totalFrames:

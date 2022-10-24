@@ -10,6 +10,7 @@ class Tower(entity.Entity):
     
     # Tile parameter is the tile object the tower was placed on
     def __init__(self, tile): 
+        self.log = logging.getLogger(__name__)
         pass
     
     
