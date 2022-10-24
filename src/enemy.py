@@ -22,7 +22,6 @@ class Enemy(entity.Entity):
         
         self.speed =  enemiesJson[type]["speed"]
         self.health = enemiesJson[type]["health"]
-        self.damage = enemiesJson[type]["damage"]
 
         if "ability" in enemiesJson[type]:
             self.ability = enemiesJson[type]["execute"]
@@ -62,6 +61,8 @@ class Enemy(entity.Entity):
             
             # moving destination by one board coordinate
             self.nextTile = onTile.getCoord() + self.moveDir
+        
+        self.updateAbility(window)
     
 
     def updateAbilty(self, window):
@@ -120,5 +121,6 @@ class Enemy(entity.Entity):
                                       Vect(0, 0),       tileset.getBoardSize())
 
     def getDamage(self):
-        return self.damage 
-        # Damage done to the player's health upon reaching the end
+        return self.health
+        # Damage done to the player's health upon reaching the end,
+        # the health remaining on the enemy is dealt to the player's health as damage

@@ -4,7 +4,7 @@
                        "frames": 2, 
                        "delay": 0.4 },
 
-        "speed": 80, "health": 1, "damage": 20,
+        "speed": 80, "health": 1,
 
         "ability": { "delay": 7, "execute": "self.health += 1" }
     }
