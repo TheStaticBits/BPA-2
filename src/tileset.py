@@ -79,7 +79,7 @@ class Tileset:
         """ Finds and returns the tile that the mouse is on,
             or returns False if the mouse is not on a tile """ 
         for row in self.tiles:
-            for tile in self.row:
+            for tile in row:
                 if tile.mouseIsOnTile():
                     return tile
         

@@ -46,10 +46,10 @@ class Tower(entity.Entity):
 
     def towerPosOnTile(self, tile, consts):
         """ Finds the position of the tower on the tile """
-        pos = tile.getPos()
+        pos = tile.getPos().copy()
         
         pos.x += (tile.getWidth() // 2) - (super().getAnim().getWidth() // 2)
-        pos.y += tile.getHeight() - super().getAnim().getHeight() - consts["game"]["towerYOffset"]
+        pos.y += tile.getHeight() - super().getAnim().getHeight() - consts["towers"]["tileYOffset"] - tile.getHoverOffset()
 
         return pos
     
@@ -91,14 +91,14 @@ class Tower(entity.Entity):
             # Render range circle
             if self.canBePlaced: color = consts["towers"]["rangeCircleRed"]
             else:                color = consts["towers"]["rangeCircleGreen"]
-
+            
             range = Vect(self.range)
 
             # Create transparent circle with radious as self.range
             circleSurf = pygame.Surface((range * 2).getTuple(), pygame.SRCALPHA)
-            pygame.draw.circle(circleSurf, color, range, self.range)
+            pygame.draw.circle(circleSurf, color, range.getTuple(), self.range)
 
-            window.render(circleSurf, super().getPos())
+            window.render(circleSurf, super().getPos() + (super().getAnim().getSize() // 2) - self.range)
 
         
         if self.placing and self.canBePlaced:
@@ -114,7 +114,7 @@ class Tower(entity.Entity):
             # Blend red onto the tower image
             img.blit(redSurf, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
 
-            window.render(img, super().getPos())
+            window.render(img, super().getPos() + (super().getAnim().getSize() // 2) - self.range)
         
         else:
             # Render normally

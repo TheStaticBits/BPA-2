@@ -24,8 +24,8 @@ class Enemy(entity.Entity):
         self.health = enemiesJson[type]["health"]
 
         if "ability" in enemiesJson[type]:
-            self.ability = enemiesJson[type]["execute"]
-            self.abilityTimer = Timer(enemiesJson[type]["delay"])
+            self.ability = enemiesJson[type]["ability"]["execute"]
+            self.abilityTimer = Timer(enemiesJson[type]["ability"]["delay"])
         else:
             self.ability = None
 
@@ -65,7 +65,7 @@ class Enemy(entity.Entity):
         self.updateAbility(window)
     
 
-    def updateAbilty(self, window):
+    def updateAbility(self, window):
         """ Updates ability timer if there is one """
         if self.ability != None:
             self.abilityTimer.update(window)
