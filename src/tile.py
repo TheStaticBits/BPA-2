@@ -134,4 +134,6 @@ class Tile:
     def getCoord(self): return self.coord
     def getPos(self):   return self.pos
 
+    def mouseIsOnTile(self): return self.mouseOnTile
+
     def canBePlacedOn(self): return (self.hasDeco and not self.isPlacable) or self.move != "none"

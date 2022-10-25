@@ -17,6 +17,13 @@
         "tileHoverSpeed": 20
     },
 
+    "towers": {
+        "tileYOffset": 10,
+        "redOverlayColor": [ 255, 0, 0, 150 ],
+        "rangeCircleRed": [ 255, 0, 0, 150 ],
+        "rangeCircleGreen": [ 0, 255, 0, 150 ]
+    },
+
     "mapPaths": {
         "maps": "data/maps",
         "tilesJson": "tiles.json",

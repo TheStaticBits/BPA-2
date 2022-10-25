@@ -69,9 +69,21 @@ class Tileset:
 
     # Getters
     def getTileAt(self, coords): 
+        """ Returns the tile at the given board coordinates,
+            returns False if the coordinates are outside of the tileset """
         if coords.x < len(self.tiles[0]) and coords.y < len(self.tiles):
             return self.tiles[coords.y][coords.x]
         else: return False # Out of index
+    
+    def getMouseTile(self):
+        """ Finds and returns the tile that the mouse is on,
+            or returns False if the mouse is not on a tile """ 
+        for row in self.tiles:
+            for tile in self.row:
+                if tile.mouseIsOnTile():
+                    return tile
+        
+        return False
 
     def getTileJson(self): return self.tileJson
 

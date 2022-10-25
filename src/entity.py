@@ -17,8 +17,7 @@ class Entity:
         self.log = logging.getLogger(__name__)
 
         self.loadSpritesheet(animData["path"])
-        self.anim = anim.Animation(self.spritesheets[animData["path"]], 
-                                   animData["frames"], animData["delay"])
+        self.loadAnim(animData)
         self.pos = pos
 
     
@@ -27,6 +26,11 @@ class Entity:
         if path not in self.spritesheets:
             self.log.info(f"Loading entity spritesheet at {path}")
             self.spritesheets[path] = util.loadTexTransparent(path)
+    
+    def loadAnim(self, animData):
+        """ Creates animation object """
+        self.anim = anim.Animation(self.spritesheets[animData["path"]], 
+                                   animData["frames"], animData["delay"])
 
 
     def updateAnim(self, window):

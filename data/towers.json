@@ -1,3 +1,15 @@
 {
-    "insert tower name": {}
+    "Placeholder bro": { 
+        "animation": { "path": "res/enemies/jonyaplseed.png", 
+                       "frames": 2, 
+                       "delay": 0.4 },
+
+        "upgrades": [
+            { "costs": { "wood": 10, "steel": 0, "uranium": 0, "plasma": 0 },
+              "stats": { "range": 80, "damage": 1, "attackCooldown": 0.5   } },
+            
+            { "costs": { "wood": 5, "steel": 1, "uranium": 0, "plasma": 0  },
+              "stats": { "range": 120, "damage": 2, "attackCooldown": 0.25 } }
+        ]
+    }
 }
