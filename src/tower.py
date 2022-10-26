@@ -17,6 +17,8 @@ class Tower(entity.Entity):
         super().__init__(animData)
         
         self.upgradeInfo = towersJson[type]["upgrades"]
+        self.damageFrame = towersJson[type]["dealDMGFrame"]
+        self.upgradeNum = 0
 
         self.loadUpgrade(0) # Initial statistics
 
@@ -71,14 +73,14 @@ class Tower(entity.Entity):
 
     
     def dealDamage(self, waves):
-        """ Deals damage to the first enemy in the range """ 
+        """ Deals damage to the first enemy in the range, overriden """ 
         collided = self.getCollidedEnemies(waves)
         
         if len(collided) != 0:
             collided[0].takeDamage(self.damage)
     
     
-    def update(self, window, tileset, wavesObj, consts, towersJson):
+    def update(self, window, tileset, wavesObj, consts):
         """ Updates animation if placed and when firing at an enemy """
 
         if not self.placing:
@@ -90,17 +92,20 @@ class Tower(entity.Entity):
                     self.waitingForEnemy = True
             
             else:
-                if not self.waitingForEnemy:
+                if self.waitingForEnemy:
+                    # Test to see if there is an enemy in the tower range
+                    if len(self.getCollidedEnemies(wavesObj)) != 0:
+                        self.waitingForEnemy = False
+
+                else: # Attacking
                     super().updateAnim(window)
 
-                    if super().getAnim().getFrameNum() == towersJson[self.type]["dealDMGFrame"]:
+                    if super().getAnim().getFrameNum() == self.damageFrame:
                         self.dealDamage(wavesObj)
 
                     if super().getAnim().finished():
                         self.attacking = False
 
-                elif len(self.getCollidedEnemies(wavesObj)) != 0:
-                    self.waitingForEnemy = False
         
         else:
             posTile = tileset.getMouseTile() # Returns the tile the mouse is on
