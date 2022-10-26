@@ -89,8 +89,8 @@ class Tower(entity.Entity):
 
         if self.showRange:
             # Render range circle
-            if self.canBePlaced: color = consts["towers"]["rangeCircleRed"]
-            else:                color = consts["towers"]["rangeCircleGreen"]
+            if self.canBePlaced: color = consts["towers"]["rangeCircleGreen"]
+            else:                color = consts["towers"]["rangeCircleRed"]
             
             range = Vect(self.range)
 
@@ -98,23 +98,24 @@ class Tower(entity.Entity):
             circleSurf = pygame.Surface((range * 2).getTuple(), pygame.SRCALPHA)
             pygame.draw.circle(circleSurf, color, range.getTuple(), self.range)
 
+            # Center circle on the tower
             window.render(circleSurf, super().getPos() + (super().getAnim().getSize() // 2) - self.range)
 
         
-        if self.placing and self.canBePlaced:
+        if self.placing and not self.canBePlaced:
             # Render with a red tint
             
             img = super().getAnim().getImgFrame()
             size = super().getAnim().getSize()
 
-            # Red image
+            # Semi-transparent red image
             redSurf = pygame.Surface(size.getTuple(), flags=pygame.SRCALPHA)
             redSurf.fill(consts["towers"]["redOverlayColor"])
             
             # Blend red onto the tower image
             img.blit(redSurf, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
 
-            window.render(img, super().getPos() + (super().getAnim().getSize() // 2) - self.range)
+            window.render(img, super().getPos())
         
         else:
             # Render normally

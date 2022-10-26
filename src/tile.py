@@ -73,11 +73,11 @@ class Tile:
     def updateMouseHover(self, window, consts):
         """ Updates tile moving up and down when mouse hovers over it """
 
+        self.mouseOnTile = util.pointRectCollision(window.getMousePos(), self.pos, Vect(self.getWidth()))
+
         if self.canBePlacedOn():
             # Tile will not move upon hovering
             return None
-        
-        self.mouseOnTile = util.pointRectCollision(window.getMousePos(), self.pos, Vect(self.getWidth()))
 
         if self.mouseOnTile and not window.getMouse("left"):
             # The chin/shadow under the square tile height
