@@ -4,6 +4,9 @@
                        "frames": 2, 
                        "delay": 0.4 },
 
+        "dealDMGFrame": 1,
+        "attackMode": "Attack Once",
+
         "upgrades": [
             { "costs": { "wood": 10, "steel": 0, "uranium": 0, "plasma": 0 },
               "stats": { "range": 80, "damage": 1, "attackCooldown": 0.5   } },

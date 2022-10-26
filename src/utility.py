@@ -3,6 +3,7 @@ import logging
 import json
 import os
 
+import src.enemy as enemy
 from src.vector import Vect
 
 imgScale = 1
@@ -46,6 +47,24 @@ def rectCollision(pos1: Vect, size1: Vect,
 
 def pointRectCollision(point: Vect, pos: Vect, size: Vect):
     return pos <= point < (pos + size)
+
+def pixelPerfectCollision(entity1=None,         entity2=None,
+                          img1=None, pos1=None, img2=None, pos2=None):
+    """ Uses Pygame mask objects to detect pixel perfect collisions """
+
+    if entity1 != None and entity2 != None:
+        ent1Mask = pygame.mask.from_surface(entity1.getAnim().getImgFrame())
+        ent2Mask = pygame.mask.from_surface(entity2.getAnim().getImgFrame())
+
+        offset = entity2.getPos() - entity1.getPos()
+    
+    else:
+        ent1Mask = pygame.mask.from_surface(img1)
+        ent2Mask = pygame.mask.from_surface(img2)
+
+        offset = pos2 - pos1
+
+    return ent1Mask.overlap(ent2Mask, offset.getTuple())
 
 
 def setupLogger(constants):

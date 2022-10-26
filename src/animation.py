@@ -23,7 +23,7 @@ class Animation:
         self.timer = Timer(delay)
         self.totalFrames = frameCount
         self.currentFrame = 0
-        self.finished = False
+        self.hasFinished = False
 
         # Creating each frame 
         for i in range(frameCount):
@@ -36,7 +36,7 @@ class Animation:
     
     def update(self, window):
         """ Moves to the next frame if the delay is up """
-        self.finished = False
+        self.hasFinished = False
 
         self.timer.update(window)
 
@@ -45,21 +45,23 @@ class Animation:
 
             if self.currentFrame >= self.totalFrames:
                 self.currentFrame = 0
-                self.finished = True
+                self.hasFinished = True
     
 
     def render(self, window, pos):
         """ Renders the current frame at pos """
         window.render(self.imgs[self.currentFrame], pos)
-    
+
+
+    # Getters
     def getImgFrame(self):
         """ Returns the texture of the current frame of the animation """ 
         return self.imgs[self.currentFrame]
 
-
-    # Getters
     def getSize(self):   return Vect(self.imgs[0].get_size())
     def getWidth(self):  return self.getSize().x
     def getHeight(self): return self.getSize().y
+    
+    def getFrameNum(self): return self.currentFrame
 
-    def finished(self): return self.finished
+    def finished(self): return self.hasFinished

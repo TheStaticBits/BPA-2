@@ -108,19 +108,31 @@ class Enemy(entity.Entity):
         
         self.moveDir = self.DIR_CLOCKWISE[index]
     
+
+    def takeDamage(self, amount):
+        """ Enemy takes damage of amount """
+        self.health -= amount
+
+        # Future effects upon enemy death here
+    
     
     def getPosOnTile(self, tile):
         return tile.getCenter() - (super().getAnim().getSize() / 2)
     
 
     def hasReachedMapEnd(self, tileset):
+        """ Returns true if the enemy has moved off the screen """
         if not self.reachedEnd: return False
 
         # Check if on board
         return not util.rectCollision(super().getPos(), super().getAnim().getSize(),
                                       Vect(0, 0),       tileset.getBoardSize())
+    
+    def isDead(self, tileset):
+        """ Returns true if the enemy has died """
+        return self.health <= 0
 
     def getDamage(self):
         return self.health
         # Damage done to the player's health upon reaching the end,
-        # the health remaining on the enemy is dealt to the player's health as damage
+        # the health remaining on the enemy is dealt to the player's health as 

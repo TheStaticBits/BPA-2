@@ -38,9 +38,10 @@ class Waves:
             enemy.update(window, tileset)
             
             if enemy.hasReachedMapEnd(tileset):
-                self.health -= enemy.getDamage() # take damage
+                self.health -= enemy.getDamage() # player take damage
                 # self.log.info(f"Player health now at {self.health}")
-            else:
+            
+            elif not enemy.isDead(tileset):
                 stillAlive.append(enemy)
             
         self.enemies = stillAlive
@@ -80,3 +81,16 @@ class Waves:
         """ Renders enemies """
         for enemy in self.enemies:
             enemy.render(window)
+    
+
+    def getCollided(self, img, pos):
+        """ Returns a list of enemies that collide pixel perfect with the given img """
+        collided = []
+
+        for enemy in self.enemies:
+            enemyImg, enemyPos = enemy.getAnim().getImgFrame(), enemy.getPos()
+
+            if util.pixelPerfectCollide(img1=img, pos1=pos, img2=enemyImg, pos2=enemyPos):
+                collided.append(tile)
+        
+        return collided

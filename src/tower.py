@@ -24,6 +24,7 @@ class Tower(entity.Entity):
         self.showRange = True
         self.canBePlaced = False
         self.attacking = False
+        self.waitingForEnemy = False
 
     
     @staticmethod
@@ -44,6 +45,17 @@ class Tower(entity.Entity):
         self.attackTimer = Timer( self.upgradeInfo[upgradeNum]["stats"]["attackCooldown"] )
     
 
+    def getTilesInRange(self, tileset):
+        """ Returns a list of tiles that are within the range of the tower """
+        range = Vect(self.range)
+
+        # Creates a surface of width and height 
+        rangeCollision = pygame.Surface((self.range * 2).getTuple())
+        pos = super().getPos() - range
+
+        return tileset.getCollidedTiles(rangeCollision, pos)
+
+    
     def towerPosOnTile(self, tile, consts):
         """ Finds the position of the tower on the tile """
         pos = tile.getPos().copy()
@@ -53,8 +65,20 @@ class Tower(entity.Entity):
 
         return pos
     
+
+    def getCollidedEnemies(self, waves):
+        return waves.getCollided(super().getAnim().getImgFrame(), super().getPos())
+
     
-    def update(self, window, tileset, consts):
+    def dealDamage(self, waves):
+        """ Deals damage to the first enemy in the range """ 
+        collided = self.getCollidedEnemies(waves)
+        
+        if len(collided) != 0:
+            collided[0].takeDamage(self.damage)
+    
+    
+    def update(self, window, tileset, wavesObj, consts, towersJson):
         """ Updates animation if placed and when firing at an enemy """
 
         if not self.placing:
@@ -63,12 +87,20 @@ class Tower(entity.Entity):
                 self.attackTimer.update(window)
                 if self.attackTimer.activated():
                     self.attacking = True
+                    self.waitingForEnemy = True
             
             else:
-                super().updateAnim(window)
+                if not self.waitingForEnemy:
+                    super().updateAnim(window)
 
-                if super().getAnim().finished():
-                    self.attacking = False
+                    if super().getAnim().getFrameNum() == towersJson[self.type]["dealDMGFrame"]:
+                        self.dealDamage(wavesObj)
+
+                    if super().getAnim().finished():
+                        self.attacking = False
+
+                elif len(self.getCollidedEnemies(wavesObj)) != 0:
+                    self.waitingForEnemy = False
         
         else:
             posTile = tileset.getMouseTile() # Returns the tile the mouse is on
