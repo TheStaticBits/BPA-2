@@ -14,6 +14,9 @@ class Vect:
             if isinstance(args[0], int) or isinstance(args[0], float):
                 self.x = args[0]
                 self.y = args[0]
+            elif isinstance(args[0], Vect):
+                self.x = args[0].x
+                self.y = args[0].y
             else: # list/tuple
                 self.x = args[0][0]
                 self.y = args[0][1]

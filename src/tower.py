@@ -62,9 +62,9 @@ class Tower(entity.Entity):
     
     def getTowerPosOnTile(self, tile, consts):
         """ Finds the position of the tower on the tile """
-        pos = tile.getPos().copy()
+        pos = tile.getCenter().copy()
         
-        pos.x += (tile.getWidth() // 2) - (super().getAnim().getWidth() // 2)
+        pos.x -= (super().getAnim().getWidth() // 2)
         pos.y += consts["towers"]["tileYOffset"] - super().getAnim().getHeight()
 
         return pos
@@ -77,8 +77,19 @@ class Tower(entity.Entity):
         return pos
     
 
+    def getRangeCircle(self, color=(255, 255, 255, 255)):
+        """ Returns a circle texture of the range of the tower """
+        range = Vect(self.range)
+
+        # Create transparent circle with radius as self.range
+        circleSurf = pygame.Surface((range * 2).getTuple(), pygame.SRCALPHA)
+        pygame.draw.circle(circleSurf, color, range.getTuple(), self.range)
+
+        return circleSurf
+    
+
     def getCollidedEnemies(self, waves):
-        return waves.getCollided(super().getAnim().getImgFrame(), super().getPos())
+        return waves.getCollided(self.getRangeCircle(), super().getPos())
 
     
     def dealDamage(self, waves):
@@ -130,35 +141,37 @@ class Tower(entity.Entity):
             if posTile != False: # Mouse is on a tile
                 # new tile position
                 if posTile != self.tileOn:
-                    super().setPos(pos := self.getTowerPosOnTile(posTile, consts))
-                    print(pos)
+                    super().setPos(self.getTowerPosOnTile(posTile, consts))
                     self.tileOn = posTile
                 
                 self.canBePlaced = posTile.canBePlacedOn()
             
+            else:
+                self.tileOn = None
+                self.canBePlaced = False
+            
             if self.canBePlaced and window.getMouseReleased("left"): # Placed
                 self.placing = False
-                self.showRange = False
+            
+        if window.getMouseReleased("left"):
+            self.showRange = not self.showRange
     
 
     def render(self, window, consts):
         """ Renders the tower to the screen, 
             with range circle if selected,
-            and with transparency if being placed. """ 
+            and with transparency if being placed. """
+
+        # Does not render if the mouse is not on any tile
+        if self.tileOn == None: return None 
 
         if self.showRange:
             # Render range circle
             if self.canBePlaced: color = consts["towers"]["rangeCircleGreen"]
             else:                color = consts["towers"]["rangeCircleRed"]
             
-            range = Vect(self.range)
-
-            # Create transparent circle with radius as self.range
-            circleSurf = pygame.Surface((range * 2).getTuple(), pygame.SRCALPHA)
-            pygame.draw.circle(circleSurf, color, range.getTuple(), self.range)
-
             # Center circle on the tower
-            window.render(circleSurf, super().getPos() + (super().getAnim().getSize() // 2) - self.range)
+            window.render(self.getRangeCircle(color), self.tileOn.getCenter() - self.range)
         
         if self.tileOn == None: offset = 0
         else: offset = -self.tileOn.getHoverOffset()

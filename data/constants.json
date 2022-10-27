@@ -12,16 +12,16 @@
     },
 
     "game": {
+        "mapOffset": [0, 0],
         "playerHealth": 200,
         "imgScale": 2,
         "tileHoverSpeed": 20
     },
 
     "towers": {
-        "tileYOffset": 30,
-        "redOverlayColor":  [ 255, 0, 0, 150 ],
-        "rangeCircleRed":   [ 255, 0, 0, 150 ],
-        "rangeCircleGreen": [ 0, 255, 0, 150 ]
+        "tileYOffset": 10,
+        "rangeCircleRed":   [ 255, 0, 0, 80 ],
+        "rangeCircleGreen": [ 0, 255, 0, 120 ]
     },
 
     "mapPaths": {

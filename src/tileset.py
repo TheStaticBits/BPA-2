@@ -12,6 +12,7 @@ class Tileset:
         self.log = logging.getLogger(__name__)
         
         self.layout = self.loadTiles(map, consts)
+        self.offset = Vect(consts["game"]["mapOffset"])
         
         self.createTiles(self.layout, map, consts)
     
@@ -42,7 +43,8 @@ class Tileset:
             rowList = []
 
             for x, type in enumerate(row):
-                rowList.append(tile.Tile(type, (x, y), self.tileJson))
+                pos = Vect(x, y) + self.offset
+                rowList.append(tile.Tile(type, pos, self.tileJson))
             
             self.tiles.append(rowList)
     

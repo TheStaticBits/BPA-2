@@ -15,7 +15,7 @@ class Tile:
         """ Setup tile """
         self.log = logging.getLogger(__name__)
         
-        self.coord = Vect(coord)
+        self.coord = coord
 
         self.loadTileData(type, tileJson)
         self.loadTex(tileJson)
@@ -25,7 +25,8 @@ class Tile:
 
         # Coordinates given multiplied by the tile size
         # (position on screen)
-        self.pos = Vect(coord) * self.textures[self.type].get_width()
+        self.pos = coord * self.textures[self.type].get_width()
+        print(self.pos)
 
         if self.hasDeco:
             # Setup decoration centered at offset
@@ -125,7 +126,7 @@ class Tile:
 
     def getCenter(self):
         """ Returns center of tile position """ 
-        return self.pos + (self.getSize() // 2)
+        return self.pos + (self.getWidth() // 2)
     
     def getSize(self):   return Vect(self.textures[self.type].get_size())
     def getWidth(self):  return self.getSize().x
