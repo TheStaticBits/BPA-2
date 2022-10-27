@@ -4,7 +4,8 @@
             "jony aplseed": { "amount": 10,   "startDelay": 0,    "spawnDelay": 0.5 }
         },
         "delay": 10
-    }, {
+    }, 
+    {
         "enemies": {
             "jony aplseed": { "amount": 20,   "startDelay": 0,    "spawnDelay": 0.25 }
         },

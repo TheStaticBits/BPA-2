@@ -18,9 +18,9 @@
     },
 
     "towers": {
-        "tileYOffset": 20,
-        "redOverlayColor": [ 255, 0, 0, 150 ],
-        "rangeCircleRed": [ 255, 0, 0, 150 ],
+        "tileYOffset": 30,
+        "redOverlayColor":  [ 255, 0, 0, 150 ],
+        "rangeCircleRed":   [ 255, 0, 0, 150 ],
         "rangeCircleGreen": [ 0, 255, 0, 150 ]
     },
 

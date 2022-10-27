@@ -38,9 +38,9 @@ class Entity:
         self.anim.update(window)
     
     
-    def render(self, window):
+    def render(self, window, xOffset=0, yOffset=0):
         """ Render animation at position """
-        self.anim.render(window, self.pos)
+        self.anim.render(window, self.pos + Vect(xOffset, yOffset))
     
     
     def getAnim(self): return self.anim

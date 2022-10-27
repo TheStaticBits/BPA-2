@@ -1,7 +1,7 @@
 {
     "Placeholder bro": { 
-        "animation": { "path": "res/enemies/jonyaplseed.png", 
-                       "frames": 2, 
+        "animation": { "path": "res/towers/towerExample.png", 
+                       "frames": 1, 
                        "delay": 0.4 },
 
         "dealDMGFrame": 1,

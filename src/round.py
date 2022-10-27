@@ -30,7 +30,7 @@ class Round:
         self.waves.update(window, self.tileset)
 
         for tower in self.towers:
-            tower.update(window, self.tileset, consts)
+            tower.update(window, self.tileset, self.waves, consts)
     
     
     def render(self, window, consts):

@@ -75,7 +75,7 @@ class Tile:
 
         self.mouseOnTile = util.pointRectCollision(window.getMousePos(), self.pos, Vect(self.getWidth()))
 
-        if self.canBePlacedOn():
+        if not self.canBePlacedOn():
             # Tile will not move upon hovering
             return None
 
@@ -138,4 +138,7 @@ class Tile:
 
     def mouseIsOnTile(self): return self.mouseOnTile
 
-    def canBePlacedOn(self): return (self.hasDeco and not self.isPlacable) or self.move != "none"
+    def canBePlacedOn(self): 
+        """ Returns true if towers can be placed on the tile """
+        if self.hasDeco: return self.isPlacable
+        else: return self.move == "none"

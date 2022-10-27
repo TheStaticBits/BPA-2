@@ -20,7 +20,8 @@ class Window:
         self.clock = pygame.time.Clock()
 
         self.mousePos = (0, 0)
-        self.mousePressed = {}
+        self.mousePressed =  { "left": False, "right": False }
+        self.mouseReleased = { "left": False, "right": False }
 
         self.prevTime = time.time() # seconds
         self.deltaTime = 0
@@ -56,6 +57,7 @@ class Window:
                 fpsAverage /= len(self.pastSecondFPS)
                 
                 self.log.info(f"FPS: {round(fpsAverage)}")
+                self.pastSecondFPS.clear()
 
         # Cap framerate
         if constants["window"]["maxFPS"] <= 0:
@@ -67,6 +69,10 @@ class Window:
         self.mousePos = pygame.mouse.get_pos()
         
         pressed = pygame.mouse.get_pressed()
+
+        self.mouseReleased["left"] = not pressed[0] and self.mousePressed["left"]
+        self.mouseReleased["right"] = not pressed[2] and self.mousePressed["right"]
+
         self.mousePressed["left"] =  pressed[0]
         self.mousePressed["right"] = pressed[2]
 
@@ -88,6 +94,7 @@ class Window:
 
     # Getters
     def getMouse(self, button): return self.mousePressed[button]
+    def getMouseReleased(self, button): return self.mouseReleased[button]
     def getMousePos(self): return Vect(self.mousePos)
 
     def getDeltaTime(self): return self.deltaTime

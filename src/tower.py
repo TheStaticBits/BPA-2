@@ -28,6 +28,8 @@ class Tower(entity.Entity):
         self.attacking = False
         self.waitingForEnemy = False
 
+        self.tileOn = None
+
     
     @staticmethod
     def getCost(type, towersJson, upgradeNum):
@@ -58,13 +60,20 @@ class Tower(entity.Entity):
         return tileset.getCollidedTiles(rangeCollision, pos)
 
     
-    def towerPosOnTile(self, tile, consts):
+    def getTowerPosOnTile(self, tile, consts):
         """ Finds the position of the tower on the tile """
         pos = tile.getPos().copy()
         
         pos.x += (tile.getWidth() // 2) - (super().getAnim().getWidth() // 2)
-        pos.y += tile.getHeight() - super().getAnim().getHeight() - consts["towers"]["tileYOffset"] - tile.getHoverOffset()
+        pos.y += consts["towers"]["tileYOffset"] - super().getAnim().getHeight()
 
+        return pos
+    
+    def towerPosOnTile(self, tile, consts):
+        """ Gets the tower's render position, adds tile offset """
+        pos = self.getTowerPosOnTile(tile, consts)
+        pos.y -= tile.getHoverOffset()
+        
         return pos
     
 
@@ -78,43 +87,56 @@ class Tower(entity.Entity):
         
         if len(collided) != 0:
             collided[0].takeDamage(self.damage)
+            self.log.info("dealt damage")
+    
+
+    def updateAttack(self, window, wavesObj):
+        """ Updates delay between attacks, then updates attack 
+            animation when a tower is in range and deals damage """
+        if not self.attacking:
+            self.attackTimer.update(window)
+            if self.attackTimer.activated():
+                self.attacking = True
+                self.waitingForEnemy = True
+        
+        else:
+            if self.waitingForEnemy:
+                # Test to see if there is an enemy in the tower range
+                if len(self.getCollidedEnemies(wavesObj)) != 0:
+                    self.waitingForEnemy = False
+                    # Allows the enemy to attack the frame it detects an enemy
+
+            if not self.waitingForEnemy: # Attacking
+                super().updateAnim(window)
+
+                # Animation reached frame on which it deals damage to enemies
+                if super().getAnim().getFrameNum() == self.damageFrame:
+                    self.dealDamage(wavesObj)
+
+                # Finished attack animation
+                if super().getAnim().finished():
+                    self.attacking = False
     
     
     def update(self, window, tileset, wavesObj, consts):
         """ Updates animation if placed and when firing at an enemy """
 
         if not self.placing:
-            # Switches between delay between attacks and attacking with animation updating
-            if not self.attacking:
-                self.attackTimer.update(window)
-                if self.attackTimer.activated():
-                    self.attacking = True
-                    self.waitingForEnemy = True
-            
-            else:
-                if self.waitingForEnemy:
-                    # Test to see if there is an enemy in the tower range
-                    if len(self.getCollidedEnemies(wavesObj)) != 0:
-                        self.waitingForEnemy = False
-
-                else: # Attacking
-                    super().updateAnim(window)
-
-                    if super().getAnim().getFrameNum() == self.damageFrame:
-                        self.dealDamage(wavesObj)
-
-                    if super().getAnim().finished():
-                        self.attacking = False
-
+            self.updateAttack(window, wavesObj)
         
         else:
             posTile = tileset.getMouseTile() # Returns the tile the mouse is on
             
             if posTile != False: # Mouse is on a tile
-                super().setPos(self.towerPosOnTile(posTile, consts))
+                # new tile position
+                if posTile != self.tileOn:
+                    super().setPos(pos := self.getTowerPosOnTile(posTile, consts))
+                    print(pos)
+                    self.tileOn = posTile
+                
                 self.canBePlaced = posTile.canBePlacedOn()
             
-            if self.canBePlaced and window.getMouse("left"): # Placed
+            if self.canBePlaced and window.getMouseReleased("left"): # Placed
                 self.placing = False
                 self.showRange = False
     
@@ -131,29 +153,15 @@ class Tower(entity.Entity):
             
             range = Vect(self.range)
 
-            # Create transparent circle with radious as self.range
+            # Create transparent circle with radius as self.range
             circleSurf = pygame.Surface((range * 2).getTuple(), pygame.SRCALPHA)
             pygame.draw.circle(circleSurf, color, range.getTuple(), self.range)
 
             # Center circle on the tower
             window.render(circleSurf, super().getPos() + (super().getAnim().getSize() // 2) - self.range)
-
         
-        if self.placing and not self.canBePlaced:
-            # Render with a red tint
-            
-            img = super().getAnim().getImgFrame()
-            size = super().getAnim().getSize()
-
-            # Semi-transparent red image
-            redSurf = pygame.Surface(size.getTuple(), flags=pygame.SRCALPHA)
-            redSurf.fill(consts["towers"]["redOverlayColor"])
-            
-            # Blend red onto the tower image
-            img.blit(redSurf, (0, 0), special_flags=pygame.BLEND_RGBA_MULT)
-
-            window.render(img, super().getPos())
+        if self.tileOn == None: offset = 0
+        else: offset = -self.tileOn.getHoverOffset()
         
-        else:
-            # Render normally
-            super().render(window)
+        # Render tower at offset of the tile hovering effect
+        super().render(window, yOffset=offset)
