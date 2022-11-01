@@ -99,6 +99,7 @@ class Tower(entity.Entity):
         if len(collided) != 0:
             collided[0].takeDamage(self.damage)
             self.log.info("dealt damage")
+        
     
 
     def updateAttack(self, window, wavesObj):
