@@ -134,6 +134,9 @@ class Tower(entity.Entity):
 
         if not self.placing:
             self.updateAttack(window, wavesObj)
+
+            if window.getMouseReleased("left"):
+                self.showRange = not self.showRange
         
         else:
             posTile = tileset.getMouseTile() # Returns the tile the mouse is on
@@ -152,9 +155,7 @@ class Tower(entity.Entity):
             
             if self.canBePlaced and window.getMouseReleased("left"): # Placed
                 self.placing = False
-            
-        if window.getMouseReleased("left"):
-            self.showRange = not self.showRange
+                self.showRange = False
     
 
     def render(self, window, consts):
