@@ -89,7 +89,7 @@ class Tower(entity.Entity):
     
 
     def getCollidedEnemies(self, waves):
-        return waves.getCollided(self.getRangeCircle(), super().getPos())
+        return waves.getCollided(self.getRangeCircle(), self.getCirclePos())
 
     
     def dealDamage(self, waves):
@@ -121,7 +121,7 @@ class Tower(entity.Entity):
                 super().updateAnim(window)
 
                 # Animation reached frame on which it deals damage to enemies
-                if super().getAnim().getFrameNum() == self.damageFrame:
+                if super().getAnim().getFrameNum() == self.damageFrame - 1:
                     self.dealDamage(wavesObj)
 
                 # Finished attack animation
@@ -136,7 +136,8 @@ class Tower(entity.Entity):
             self.updateAttack(window, wavesObj)
 
             if window.getMouseReleased("left"):
-                self.showRange = not self.showRange
+                if tileset.getMouseTile() == self.tileOn:
+                    self.showRange = not self.showRange
         
         else:
             posTile = tileset.getMouseTile() # Returns the tile the mouse is on
@@ -172,10 +173,15 @@ class Tower(entity.Entity):
             else:                color = consts["towers"]["rangeCircleRed"]
             
             # Center circle on the tower
-            window.render(self.getRangeCircle(color), self.tileOn.getCenter() - self.range)
+            window.render(self.getRangeCircle(color), self.getCirclePos())
         
         if self.tileOn == None: offset = 0
         else: offset = -self.tileOn.getHoverOffset()
         
         # Render tower at offset of the tile hovering effect
         super().render(window, yOffset=offset)
+    
+
+    def getCirclePos(self): 
+        """ Finds the top left of where the range circle should be rendered"""
+        return self.tileOn.getCenter() - self.range
