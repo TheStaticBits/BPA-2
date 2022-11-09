@@ -29,8 +29,12 @@ class Round:
         self.tileset.update(window, consts)
         self.waves.update(window, self.tileset)
 
-        for tower in self.towers:
-            tower.update(window, self.tileset, self.waves, consts)
+        for t in self.towers:
+            t.update(window, self.tileset, self.waves, consts)
+
+        if window.getMouseReleased("right"): # New tower in your hand, temp
+            towersJson = util.loadJson(consts["jsonPaths"]["towers"])
+            self.towers.append(tower.Tower("Placeholder bro", towersJson))
     
     
     def render(self, window, consts):
