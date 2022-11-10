@@ -1,0 +1,5 @@
+{
+    "buttons": {
+        "example": { "path": "res/ui/buttons/example.png", "height": 31 }
+    }
+}
