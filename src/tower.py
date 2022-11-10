@@ -28,7 +28,7 @@ class Tower(entity.Entity):
         self.attacking = False
         self.waitingForEnemy = False
 
-        self.tileOn = None
+        self.tileOn = None # Reference to the Tile object the tower is on
 
     
     @staticmethod
