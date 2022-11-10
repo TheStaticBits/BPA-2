@@ -28,7 +28,7 @@ class Tower(entity.Entity):
         self.attacking = False
         self.waitingForEnemy = False
 
-        self.tileOn = None
+        self.tileOn = None # Reference to the Tile object the tower is on
 
     
     @staticmethod
@@ -47,34 +47,6 @@ class Tower(entity.Entity):
         self.range =  self.upgradeInfo[upgradeNum]["stats"]["range"]
         self.damage = self.upgradeInfo[upgradeNum]["stats"]["damage"]
         self.attackTimer = Timer( self.upgradeInfo[upgradeNum]["stats"]["attackCooldown"] )
-    
-
-    def getTilesInRange(self, tileset):
-        """ Returns a list of tiles that are within the range of the tower """
-        range = Vect(self.range)
-
-        # Creates a surface of width and height 
-        rangeCollision = pygame.Surface((self.range * 2).getTuple())
-        pos = super().getPos() - range
-
-        return tileset.getCollidedTiles(rangeCollision, pos)
-
-    
-    def getTowerPosOnTile(self, tile, consts):
-        """ Finds the position of the tower on the tile """
-        pos = tile.getCenter().copy()
-        
-        pos.x -= (super().getAnim().getWidth() // 2)
-        pos.y += consts["towers"]["tileYOffset"] - super().getAnim().getHeight()
-
-        return pos
-    
-    def towerPosOnTile(self, tile, consts):
-        """ Gets the tower's render position, adds tile offset """
-        pos = self.getTowerPosOnTile(tile, consts)
-        pos.y -= tile.getHoverOffset()
-        
-        return pos
     
 
     def getRangeCircle(self, color=(255, 255, 255, 255)):

@@ -46,6 +46,7 @@ def rectCollision(pos1: Vect, size1: Vect,
              pos2.y < pos1.y + size1.y )
 
 def pointRectCollision(point: Vect, pos: Vect, size: Vect):
+    """ Collision between a rectangle and a point """
     return pos <= point < (pos + size)
 
 def pixelPerfectCollision(entity1=None,         entity2=None,
