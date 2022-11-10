@@ -49,6 +49,24 @@ class Tower(entity.Entity):
         self.attackTimer = Timer( self.upgradeInfo[upgradeNum]["stats"]["attackCooldown"] )
     
 
+    def getTowerPosOnTile(self, tile, consts):
+        """ Finds the position of the tower on the tile """
+        pos = tile.getCenter().copy()
+
+        pos.x -= (super().getAnim().getWidth() // 2)
+        pos.y += consts["towers"]["tileYOffset"] - super().getAnim().getHeight()
+
+        return pos
+
+
+    def towerPosOnTile(self, tile, consts):
+        """ Gets the tower's render position, adds tile offset """
+        pos = self.getTowerPosOnTile(tile, consts)
+        pos.y -= tile.getHoverOffset()
+
+        return pos
+
+
     def getRangeCircle(self, color=(255, 255, 255, 255)):
         """ Returns a circle texture of the range of the tower """
         range = Vect(self.range)

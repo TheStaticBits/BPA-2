@@ -34,7 +34,6 @@ class Round:
 
         if window.getMouseReleased("right"):
             self.towers.append(tower.Tower("Placeholder bro", self.towersJson))
-
     
     
     def render(self, window, consts):
