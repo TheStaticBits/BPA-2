@@ -140,7 +140,7 @@ class Tower(entity.Entity):
                     super().setPos(self.getTowerPosOnTile(posTile, consts))
                     self.tileOn = posTile
                 
-                self.canBePlaced = posTile.canBePlacedOn()
+                self.canBePlaced = posTile.canBePlacedOn() and not posTile.getHasTower()
             
             else:
                 self.tileOn = None
@@ -149,6 +149,7 @@ class Tower(entity.Entity):
             if self.canBePlaced and window.getMouseReleased("left"): # Placed
                 self.placing = False
                 self.showRange = False
+                self.tileOn.placedTower()
     
 
     def render(self, window, consts):

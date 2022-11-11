@@ -22,6 +22,8 @@ class Tile:
 
         self.mouseOnTile = False
         self.hoverOffset = 0
+        
+        self.hasTower = False
 
         # Coordinates given multiplied by the tile size
         # (position on screen)
@@ -143,3 +145,9 @@ class Tile:
         """ Returns true if towers can be placed on the tile """
         if self.hasDeco: return self.isPlacable
         else: return self.move == "none"
+        
+    def getHasTower(self): return self.hasTower
+    
+    # Setters
+    def placedTower(self): self.hasTower = True
+    def removedTower(self): self.hasTower = False

@@ -12,7 +12,7 @@
     },
 
     "game": {
-        "mapOffset": [0, 0],
+        "mapOffset": [ 0, 0 ],
         "playerHealth": 200,
         "imgScale": 2,
         "tileHoverSpeed": 20
