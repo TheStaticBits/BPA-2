@@ -34,7 +34,7 @@ class Enemy(entity.Entity):
         # Gets start tile
         startTile = tileset.getTileAt(Vect(tileJson["start"]["tile"]))
         self.moveDir = Vect(tileJson["start"]["facingDir"])
-        self.nextTile = startTile.getCoord() # Moving to start tile from offscreen
+        self.nextTile = startTile.getCoords() # Moving to start tile from offscreen
 
         animData = enemiesJson[type]["animation"]
         super().__init__(animData) # sets up animation 
@@ -60,7 +60,7 @@ class Enemy(entity.Entity):
             self.turn(onTile.getMoveDir())
             
             # moving destination by one board coordinate
-            self.nextTile = onTile.getCoord() + self.moveDir
+            self.nextTile = onTile.getCoords() + self.moveDir
         
         self.updateAbility(window)
     

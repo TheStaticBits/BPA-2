@@ -89,8 +89,10 @@ class Tileset:
         
 
     def getTileJson(self): return self.tileJson
+    
+    def getTilesSize(self): return Vect(len(self.tiles[0]), len(self.tiles))
 
     def getBoardSize(self):
         tileSize = self.tiles[0][0].getSize()
-        size = Vect(len(self.tiles[0]), len(self.tiles)) * tileSize
+        size = self.getTilesSize() * tileSize
         return size

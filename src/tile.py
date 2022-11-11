@@ -11,11 +11,11 @@ class Tile:
     
     textures = {} # Dict, {tileTypeChar: pygame.Surface} 
 
-    def __init__(self, type, coord, tileJson):
+    def __init__(self, type, coords, tileJson):
         """ Setup tile """
         self.log = logging.getLogger(__name__)
         
-        self.coord = coord
+        self.coords = coords
 
         self.loadTileData(type, tileJson)
         self.loadTex(tileJson)
@@ -27,7 +27,7 @@ class Tile:
 
         # Coordinates given multiplied by the tile size
         # (position on screen)
-        self.pos = coord * self.textures[self.type].get_width()
+        self.pos = coords * self.textures[self.type].get_width()
         print(self.pos)
 
         if self.hasDeco:
@@ -134,7 +134,7 @@ class Tile:
     def getWidth(self):  return self.getSize().x
     def getHeight(self): return self.getSize().y
 
-    def getCoord(self): return self.coord
+    def getCoords(self): return self.coords
     def getPos(self):   return self.pos
 
     def getHoverOffset(self): return self.hoverOffset
@@ -145,7 +145,7 @@ class Tile:
         """ Returns true if towers can be placed on the tile """
         if self.hasDeco: return self.isPlacable
         else: return self.move == "none"
-        
+
     def getHasTower(self): return self.hasTower
     
     # Setters

@@ -178,3 +178,6 @@ class Tower(entity.Entity):
     def getCirclePos(self): 
         """ Finds the top left of where the range circle should be rendered"""
         return self.tileOn.getCenter() - self.range
+
+    # Basic getters
+    def getTileOn(self): return self.tileOn

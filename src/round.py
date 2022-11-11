@@ -42,5 +42,18 @@ class Round:
         self.tileset.renderDeco(window)
         self.waves.render(window)
 
-        for tower in self.towers:
-            tower.render(window, consts)
+        self.renderTowers(window, consts)
+    
+    
+    def renderTowers(self, window, consts):
+        """ Renders towers in order from the top to the bottom of the map
+            in order to prevent tower overlap in the wrong direction """
+
+        height = self.tileset.getTilesSize().y
+
+        for row in range(height):
+            for tower in self.towers:
+                if tower.getTileOn() == None: continue
+
+                elif tower.getTileOn().getCoords().y == row:
+                    tower.render(window, consts)
