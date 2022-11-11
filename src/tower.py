@@ -110,9 +110,11 @@ class Tower(entity.Entity):
             if not self.waitingForEnemy: # Attacking
                 super().updateAnim(window)
 
-                # Animation reached frame on which it deals damage to enemies
-                if super().getAnim().getFrameNum() == self.damageFrame - 1:
-                    self.dealDamage(wavesObj)
+                
+                if super().getAnim().changedFrame():
+                    # Animation reached frame on which it deals damage to enemies
+                    if super().getAnim().getFrameNum() == self.damageFrame - 1:
+                        self.dealDamage(wavesObj)
 
                 # Finished attack animation
                 if super().getAnim().finished():

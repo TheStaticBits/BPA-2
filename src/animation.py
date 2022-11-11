@@ -24,6 +24,7 @@ class Animation:
         self.totalFrames = frameCount
         self.currentFrame = 0
         self.hasFinished = False
+        self.flippedFrame = False
 
         # Creating each frame 
         for i in range(frameCount):
@@ -37,11 +38,13 @@ class Animation:
     def update(self, window):
         """ Moves to the next frame if the delay is up """
         self.hasFinished = False
+        self.flippedFrame = False
 
         self.timer.update(window)
 
         if self.timer.activated():
             self.currentFrame += 1
+            self.flippedFrame = True
 
             if self.currentFrame >= self.totalFrames:
                 self.currentFrame = 0
@@ -65,3 +68,4 @@ class Animation:
     def getFrameNum(self): return self.currentFrame
 
     def finished(self): return self.hasFinished
+    def changedFrame(self): return self.flippedFrame
