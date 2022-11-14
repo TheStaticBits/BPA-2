@@ -200,7 +200,7 @@
         ]
     },
 
-    "Nuclear Tower [unf]": {
+    "Nuclear Tower": {
         "animation": { "path": "res/towers/towerExample.png", 
                        "frames": 1, 
                        "delay": 0.4 },
@@ -209,21 +209,21 @@
         "attackMode": "Attack Once",
 
         "upgrades": [
-          { "costs": { "wood": 5, "steel": 0, "uranium": 0, "plasma": 0 },
-            "stats": { "range": 80, "damage": 1, "attackCooldown": 1   } },
+          { "costs": { "wood": 0, "steel": 200, "uranium": 200, "plasma": 0 },
+            "stats": { "range": 40, "damage": 8, "attackCooldown": 3.6   } },
 
-          { "costs": { "wood": 10, "steel": 2, "uranium": 0, "plasma": 0 },
-            "stats": { "range": 120, "damage": 1.5, "attackCooldown": 1   } },
+          { "costs": { "wood": 0, "steel": 200, "uranium": 150, "plasma": 0 },
+            "stats": { "range": 60, "damage": 10, "attackCooldown": 3.4   } },
 
-          { "costs": { "wood": 20, "steel": 5, "uranium": 0, "plasma": 0 },
-            "stats": { "range": 120, "damage": 2.5, "attackCooldown": 1   } },
+          { "costs": { "wood": 0, "steel": 200, "uranium": 250, "plasma": 0 },
+            "stats": { "range": 80, "damage": 12, "attackCooldown": 3.1   } },
 
-          { "costs": { "wood": 50, "steel": 25, "uranium": 0, "plasma": 0 },
-            "stats": { "range": 130, "damage": 3, "attackCooldown": 0.8   } }
+          { "costs": { "wood": 0, "steel": 250, "uranium": 400, "plasma": 0 },
+            "stats": { "range": 110, "damage": 15, "attackCooldown": 2.6   } }
         ]
     },
 
-    "Beacon Tower [unf]": {
+    "Beacon Tower": {
         "animation": { "path": "res/towers/towerExample.png", 
                        "frames": 1, 
                        "delay": 0.4 },
@@ -232,17 +232,17 @@
         "attackMode": "Attack Once",
 
         "upgrades": [
-          { "costs": { "wood": 5, "steel": 0, "uranium": 0, "plasma": 0 },
-            "stats": { "range": 80, "damage": 1, "attackCooldown": 1   } },
+          { "costs": { "wood": 20, "steel": 100, "uranium": 20, "plasma": 0 },
+            "stats": { "range": 180, "damage": 3, "attackCooldown": 1   } },
 
-          { "costs": { "wood": 10, "steel": 2, "uranium": 0, "plasma": 0 },
-            "stats": { "range": 120, "damage": 1.5, "attackCooldown": 1   } },
+          { "costs": { "wood": 10, "steel": 200, "uranium": 15, "plasma": 0 },
+            "stats": { "range": 220, "damage": 4.5, "attackCooldown": 1   } },
 
-          { "costs": { "wood": 20, "steel": 5, "uranium": 0, "plasma": 0 },
-            "stats": { "range": 120, "damage": 2.5, "attackCooldown": 1   } },
+          { "costs": { "wood": 20, "steel": 250, "uranium": 30, "plasma": 2 },
+            "stats": { "range": 230, "damage": 5.5, "attackCooldown": 0.9   } },
 
-          { "costs": { "wood": 50, "steel": 25, "uranium": 0, "plasma": 0 },
-            "stats": { "range": 130, "damage": 3, "attackCooldown": 0.8   } }
+          { "costs": { "wood": 50, "steel": 250, "uranium": 40, "plasma": 5 },
+            "stats": { "range": 240, "damage": 6, "attackCooldown": 0.8   } }
         ]
     }
     
