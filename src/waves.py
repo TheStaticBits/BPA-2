@@ -3,6 +3,7 @@ import logging
 
 import src.utility as util
 import src.enemy as en
+from src.vector import Vect
 
 class Waves:
     """ Handles waves interpreter and stores enemies """
@@ -92,8 +93,8 @@ class Waves:
 
             # Testing rectangle collision first,
             # to save performance on the costly pixel perfect collision
-            if util.rectCollision(pos1=enemyPos, size1=enemyImg.get_size(),
-                                  pos2=pos, size2=img.get_size()):
+            if util.rectCollision(pos1=Vect(enemyPos), size1=Vect(enemyImg.get_size()),
+                                  pos2=pos, size2=Vect(img.get_size())):
                                   
                 if util.pixelPerfectCollision(img1=img, pos1=pos, img2=enemyImg, pos2=enemyPos):
                     collided.append(enemy)
