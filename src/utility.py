@@ -40,10 +40,8 @@ def scale(img: pygame.Surface):
 def rectCollision(pos1: Vect, size1: Vect, 
                   pos2: Vect, size2: Vect):
     """ Checks rectangle collision with given Vect objects """
-    return ( pos1.x < pos2.x + size2.x and 
-             pos2.x < pos1.x + size1.x and 
-             pos1.y < pos2.y + size2.y and
-             pos2.y < pos1.y + size1.y )
+    return pygame.Rect.colliderect(pygame.Rect(pos1.x, pos1.y, size1.x, size1.y),
+                                   pygame.Rect(pos2.x, pos2.y, size2.x, size2.y))
 
 def pointRectCollision(point: Vect, pos: Vect, size: Vect):
     """ Collision between a rectangle and a point """

@@ -90,7 +90,12 @@ class Waves:
         for enemy in self.enemies:
             enemyImg, enemyPos = enemy.getAnim().getImgFrame(), enemy.getPos()
 
-            if util.pixelPerfectCollision(img1=img, pos1=pos, img2=enemyImg, pos2=enemyPos):
-                collided.append(enemy)
+            # Testing rectangle collision first,
+            # to save performance on the costly pixel perfect collision
+            if util.rectCollision(pos1=enemyPos, size1=enemyImg.get_size(),
+                                  pos2=pos, size2=img.get_size()):
+                                  
+                if util.pixelPerfectCollision(img1=img, pos1=pos, img2=enemyImg, pos2=enemyPos):
+                    collided.append(enemy)
         
         return collided
