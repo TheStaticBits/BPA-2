@@ -4,6 +4,7 @@ import logging
 from src.button import Button
 
 class UI:
+    """ Object for more specific UI interfaces to inherit from to handle buttons, etc. """
     def __init__(self, display): 
         self.log = logging.getLogger(__name__)
 
@@ -11,8 +12,13 @@ class UI:
         self.displaying = display
     
     def load(self, type, data):
-        """ Loads all objects """
+        """ Loads all UI objects """
         self.data = data[type]
 
         for buttonName, buttonData in self.data["buttons"].items():
             self.objects.append(Button(buttonName, buttonData))
+    
+    def update(self, window):
+        """ Updates the UI objects """
+        for obj in self.objects:
+            pass

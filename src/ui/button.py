@@ -1,22 +1,21 @@
 import pygame
 import logging
 
-import utility as util
-from vector import Vect
+import src.utility.utility as util
+from src.utility.vector import Vect
+from src.ui.uiElement import UIElement
 
-class Button:
-    """ Button """
+class Button(UIElement):
+    """ Button object for the UI, inherits from UIElement """
+    
     def __init__(self, pos, buttonName, buttonData):
         """ Initializes the button from the given button name and button data JSONs. """
         self.log = logging.getLogger(__name__)
 
         data = buttonData[buttonName]
-        self.pos = pos
         self.pxHeight = data["height"]
         self.offsets = data["offsets"]
-
-        self.img = util.loadTex(data["path"])
-        self.size = Vect(self.image.get_size())
+        super().__init__(data["pos"], data["path"])
 
         self.heightOffset = 0
         self.moveToOffset = 0
@@ -27,7 +26,7 @@ class Button:
         """ Updates the button hover based on the mouse position, etc. """
         self.pressed = False
 
-        if util.pointRectCollision(window.getMousePos(), self.pos, self.size):
+        if util.pointRectCollision(window.getMousePos(), super().getPos(), super().getSize()):
             if window.getMouse("left"):
                 self.heightOffset = self.offsets["pressed"] # Moves down
             elif window.getMouseReleased("left"):
@@ -39,14 +38,14 @@ class Button:
             self.heightOffset = self.offsets["default"]
         
         # Moves the y position slowly to the offset
-        self.pos.y += (self.heightOffset - self.pos.y) * window.getDeltaTime() * self.offsets["moveSpeed"]
+        super().addToPos((self.heightOffset - super().getPos().y) * window.getDeltaTime() * self.offsets["moveSpeed"])
 
     def render(self, window):
         """ Cuts off the bottom of the button when at an offset and renders it """ 
         if self.heightOffset != 0:
-            img = pygame.Surface(self.size.getTuple())
-            img.blit(self.img, (0, self.heightOffset))
+            img = pygame.Surface(super().getSize().getTuple())
+            img.blit(super().getImg(), (0, self.heightOffset))
         else:
-            img = self.img
+            img = super().getImg()
         
-        window.render(img, self.pos)
+        super().render(window, img)
