@@ -1,9 +1,9 @@
 import pygame
 import logging
 
-import src.tile as tile
-import src.utility as util
-from src.vector import Vect
+import src.entities.tile as tile
+import src.utility.utility as util
+from src.utility.vector import Vect
 
 class Tileset:
     """ Manages the tiles and towers"""

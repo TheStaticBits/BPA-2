@@ -1,10 +1,10 @@
 import pygame
 import logging
 
-import src.utility as util
-import src.animation as anim
-import src.entity as entity
-from src.vector import Vect
+import src.utility.utility as util
+import src.utility.animation as anim
+import src.entities.entity as entity
+from src.utility.vector import Vect
 
 class Tile:
     """ Handles each tile and the images and functionality """

@@ -1,9 +1,9 @@
 import pygame
 import logging
 
-import src.utility as util
-import src.animation as anim
-from src.vector import Vect
+import src.utility.utility as util
+import src.utility.animation as anim
+from src.utility.vector import Vect
 
 class Entity:
     """ Towers and Enemies inherit from this class.

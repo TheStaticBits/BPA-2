@@ -1,9 +1,9 @@
 import pygame
 import logging
 
-import src.utility as util
-import src.enemy as en
-from src.vector import Vect
+import src.utility.utility as util
+import src.entities.enemy as en
+from src.utility.vector import Vect
 
 class Waves:
     """ Handles waves interpreter and stores enemies """

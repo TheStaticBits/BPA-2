@@ -1,7 +1,7 @@
 import pygame
 import logging
 
-import src.utility as util
+import src.utility.utility as util
 import src.window as window
 import src.round as round
 

@@ -1,7 +1,7 @@
 import pygame
 import logging
 
-from src.button import Button
+from src.ui.button import Button
 
 class UI:
     """ Object for more specific UI interfaces to inherit from to handle buttons, etc. """

@@ -1,9 +1,9 @@
 import pygame
 import logging
 
-import src.entity as entity
-from src.timer import Timer
-from src.vector import Vect
+import src.entities.entity as entity
+from src.utility.timer import Timer
+from src.utility.vector import Vect
 
 class Tower(entity.Entity):
     """ All towers inherit from this class.

@@ -3,8 +3,8 @@ import logging
 import json
 import os
 
-import src.enemy as enemy
-from src.vector import Vect
+import src.entities.enemy as enemy
+from src.utility.vector import Vect
 
 imgScale = 1
 

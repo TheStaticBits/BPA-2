@@ -1,9 +1,9 @@
 import pygame
 import logging
 
-import src.utility as util
+import src.utility.utility as util
 import src.tileset as tileset
-import src.tower as tower
+import src.entities.tower as tower
 import src.waves as waves
 
 class Round:

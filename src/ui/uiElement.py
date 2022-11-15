@@ -1,6 +1,8 @@
 import pygame
 import logging
 
+from src.utility.vector import Vect
+
 class UIElement:
     def __init_(self, pos, imgPath):
         self.log = logging.getLogger(__name__)
