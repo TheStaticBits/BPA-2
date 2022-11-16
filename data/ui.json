@@ -1,6 +1,9 @@
 {
-    "buttons": {
-        "example": { "path": "res/ui/buttons/example.png", "height": 31,
-                     "pos": "" }
+    "shop": {
+        "buttons": {
+            "example": { "path": "res/ui/buttons/example.png", 
+                         "offsets": { "default": 5, "pressed": 26, "moveSpeed": 20 },
+                         "pos": [ 0, 0 ] }
+        }
     }
 }

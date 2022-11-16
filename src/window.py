@@ -3,7 +3,7 @@ import logging
 
 import time
 
-from src.vector import Vect
+from src.utility.vector import Vect
 
 class Window:
     """ Handles window and inputs """

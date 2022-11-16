@@ -1,9 +1,9 @@
 import pygame
 import logging
 
-import src.utility as util
-from src.timer import Timer
-from src.vector import Vect
+import src.utility.utility as util
+from src.utility.timer import Timer
+from src.utility.vector import Vect
 
 class Animation:
     """ Handles animations (only horizontal spritesheets) """

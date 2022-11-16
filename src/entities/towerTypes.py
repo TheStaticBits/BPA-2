@@ -1,7 +1,7 @@
 import pygame
 import logging
 
-import src.tower as tower
+import src.entities.tower as tower
 
 class OneEnemyTower(tower.Tower):
     """ Overrides tower attack, attacks one enemy in the range at a time """
