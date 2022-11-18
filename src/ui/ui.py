@@ -11,6 +11,7 @@ class UI:
         self.objects = []
         self.displaying = display
     
+
     def load(self, type, data):
         """ Loads all UI objects """
         self.data = data[type]
@@ -18,7 +19,14 @@ class UI:
         for buttonName, buttonData in self.data["buttons"].items():
             self.objects.append(Button(buttonName, buttonData))
     
+
     def update(self, window):
         """ Updates the UI objects """
         for obj in self.objects:
-            pass
+            obj.update(window)
+
+
+    def render(self, window):
+        """ Renders the UI objects """
+        for obj in self.objects:
+            obj.render(window)
