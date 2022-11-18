@@ -2,6 +2,7 @@ import pygame
 import logging
 
 from src.utility.vector import Vect
+import src.utility.utility as util
 
 class UIElement:
     def __init_(self, pos, imgPath):
@@ -19,6 +20,11 @@ class UIElement:
             window.render(self.img, self.pos)
         else:
             window.render(img, self.pos)
+    
+    
+    def update(self, window):
+        # Overriden in subclasses
+        pass
         
         
     # Getters
