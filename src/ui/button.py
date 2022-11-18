@@ -22,6 +22,7 @@ class Button(UIElement):
 
         self.pressed = False
 
+
     def update(self, window):
         """ Updates the button hover based on the mouse position, etc. """
         self.pressed = False
@@ -40,6 +41,7 @@ class Button(UIElement):
         # Moves the y position slowly to the offset
         super().addToPos((self.heightOffset - super().getPos().y) * window.getDeltaTime() * self.offsets["moveSpeed"])
 
+
     def render(self, window):
         """ Cuts off the bottom of the button when at an offset and renders it """ 
         if self.heightOffset != 0:
@@ -49,3 +51,6 @@ class Button(UIElement):
             img = super().getImg()
         
         super().render(window, img)
+    
+
+    def getPressed(self): return self.pressed
