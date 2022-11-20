@@ -4,7 +4,7 @@
 
         "buttons": {
             "example": { "path": "res/ui/buttons/example.png", 
-                         "offsets": { "default": 8, "pressed": 14, "moveSpeed": 20 },
+                         "offsets": { "default": 6, "pressed": 14, "moveSpeed": 20 },
                          "pos": [ 100, 50 ], "centered": true,
                          "text": "ee", "chinHeight": 18 }
         },

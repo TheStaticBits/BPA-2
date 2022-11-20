@@ -16,7 +16,7 @@ class Button(UIElement):
         super().__init__(buttonName, buttonData["pos"], offset, 
                          buttonData["centered"], imgPath=buttonData["path"])
 
-        self.heightOffset = 0
+        self.heightOffset = self.offsets["default"]
         self.moveToOffset = 0
 
         self.pressed = False
@@ -54,7 +54,7 @@ class Button(UIElement):
                 self.moveToOffset = self.offsets["pressed"] # Moves down
             elif window.getMouseReleased("left"):
                 self.pressed = True
-                self.log.info(f"Pressed {super().getName()}")
+                self.log.info(f"Pressed button \"{super().getName()}\"")
             else:
                 self.moveToOffset = 0 # Moves all the way to the top
         
