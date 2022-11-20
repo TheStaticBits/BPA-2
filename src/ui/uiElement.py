@@ -5,11 +5,13 @@ from src.utility.vector import Vect
 import src.utility.utility as util
 
 class UIElement:
-    def __init__(self, name, pos, offset, imgPath=None):
+    def __init__(self, name, pos, offset, centered, imgPath=None):
         self.log = logging.getLogger(__name__)
         
         self.name = name
         self.pos = Vect(pos) + offset
+        # Whether or not it should be centered at the position
+        self.centered = centered 
 
         if imgPath != None:
             self.setImg(util.loadTex(imgPath))
@@ -20,22 +22,28 @@ class UIElement:
     
     def render(self, window, img=None):
         """ Renders the element with a different image if provided """
-        
         if img == None:
-            window.render(self.img, self.pos)
+            window.render(self.img, self.getPos())
         else:
-            window.render(img, self.pos)
+            window.render(img, self.getPos())
     
     
     def update(self, window):
         # Overriden in subclasses
         pass
+
+
+    def getPos(self):
+        """ Accounts for whether the UI element centered as well """
+        if self.centered:
+            return self.pos - (self.getSize() / 2)
+        else:
+            return self.pos
         
         
     # Getters
     def getSize(self): return self.size
     def getImg(self): return self.img
-    def getPos(self): return self.pos
     def getName(self): return self.name
 
     # Setters

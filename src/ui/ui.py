@@ -22,7 +22,7 @@ class UI:
 
         # Loading all static images
         for imgName, imgData in self.data["images"].items():
-            self.objects.append(UIElement(imgName, imgData["pos"], self.offset, imgData["path"]))
+            self.objects.append(UIElement(imgName, imgData["pos"], self.offset, imgData["centered"], imgPath=imgData["path"], ))
         
         # Loading text objects
         for textName, textData in self.data["text"].items():

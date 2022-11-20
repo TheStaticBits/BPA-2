@@ -17,10 +17,12 @@ class Text(UIElement):
 
         if "pos" in textData:
             pos = textData["pos"]
+            centered = textData["centered"]
         else:
             pos = Vect(0, 0)
+            centered = False
 
-        super().__init__(textName, pos, offset)
+        super().__init__(textName, pos, offset, centered)
 
         self.text = textData["text"]
         self.fontSize = textData["fontSize"]

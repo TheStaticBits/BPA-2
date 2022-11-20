@@ -4,15 +4,17 @@
 
         "buttons": {
             "example": { "path": "res/ui/buttons/example.png", 
-                         "offsets": { "default": 5, "pressed": 26, "moveSpeed": 20 },
-                         "pos": [ 0, 0 ], "text": "ee" }
+                         "offsets": { "default": 8, "pressed": 14, "moveSpeed": 20 },
+                         "pos": [ 100, 50 ], "centered": true,
+                         "text": "ee", "chinHeight": 18 }
         },
         "text": { 
             "ee": { "text": "Buy", "fontSize": 30,
                     "color": [ 255, 255, 255 ] }
         },
         "images": {
-            "eee": { "path": "res/ui/backgrounds/shopBG.png", "pos": [ 0, 0 ] }
+            "eee": { "path": "res/ui/backgrounds/shopBG.png", 
+                     "pos": [ 0, 0 ], "centered": false }
         }
     }
 }

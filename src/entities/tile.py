@@ -28,7 +28,6 @@ class Tile:
         # Coordinates given multiplied by the tile size
         # (position on screen)
         self.pos = coords * self.textures[self.type].get_width()
-        print(self.pos)
 
         if self.hasDeco:
             # Setup decoration centered at offset

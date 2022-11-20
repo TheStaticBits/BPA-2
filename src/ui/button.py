@@ -13,13 +13,19 @@ class Button(UIElement):
         self.log = logging.getLogger(__name__)
 
         self.offsets = buttonData["offsets"]
-        super().__init__(buttonName, buttonData["pos"], offset, buttonData["path"])
+        super().__init__(buttonName, buttonData["pos"], offset, 
+                         buttonData["centered"], imgPath=buttonData["path"])
 
         self.heightOffset = 0
         self.moveToOffset = 0
 
         self.pressed = False
         self.text = text
+
+        if self.text != None:
+            # Height of the shadowed area of the button image
+            # Only needed for centering the text
+            self.chinHeight = buttonData["chinHeight"]
     
 
     def centerText(self):
@@ -31,7 +37,7 @@ class Button(UIElement):
 
         textPos = super().getPos().copy()
         # Centers text on the upper part of the button
-        textPos += Vect(size.x, size.y - self.offsets["pressed"]) / 2
+        textPos += Vect(size.x, size.y - self.chinHeight) / 2
         textPos -= self.text.getSize() / 2
 
         textPos.y += self.heightOffset
@@ -45,17 +51,18 @@ class Button(UIElement):
 
         if util.pointRectCollision(window.getMousePos(), super().getPos(), super().getSize()):
             if window.getMouse("left"):
-                self.heightOffset = self.offsets["pressed"] # Moves down
+                self.moveToOffset = self.offsets["pressed"] # Moves down
             elif window.getMouseReleased("left"):
                 self.pressed = True
+                self.log.info(f"Pressed {super().getName()}")
             else:
-                self.heightOffset = 0 # Moves all the way to the top
+                self.moveToOffset = 0 # Moves all the way to the top
         
         else:
-            self.heightOffset = self.offsets["default"]
+            self.moveToOffset = self.offsets["default"]
         
         # Moves the y position slowly to the offset
-        super().addToPos((self.heightOffset - super().getPos().y) * window.getDeltaTime() * self.offsets["moveSpeed"])
+        self.heightOffset += (self.moveToOffset - self.heightOffset) * window.getDeltaTime() * self.offsets["moveSpeed"]
 
         self.centerText()
     
@@ -67,7 +74,8 @@ class Button(UIElement):
 
 
     def render(self, window):
-        """ Cuts off the bottom of the button when at an offset and renders it """ 
+        """ Cuts off the bottom of the button when at an offset and renders it """
+
         if self.heightOffset != 0:
             img = pygame.Surface(super().getSize().getTuple(), 
                                  flags=pygame.SRCALPHA)
