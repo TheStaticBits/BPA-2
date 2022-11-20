@@ -6,12 +6,18 @@
         "l": { "move": "left",    "path": "res/tiles/exampleTiles/turnLeft.png" },
         "r": { "move": "right",   "path": "res/tiles/exampleTiles/turnRight.png" },
         "-": { "move": "forward", "path": "res/tiles/exampleTiles/moveRight.png" },
-        "+": { "move": "forward", "path": "res/tiles/exampleTiles/moveRight.png" }
+        "+": { "move": "forward", "path": "res/tiles/exampleTiles/cross.png" }
     }, 
     "rotated": {
         "|": { "tile": "-", "degrees":  90 },
-        "g": { "tile": "r", "degrees": -90 },
-        "h": { "tile": "l", "degrees": -90 }
+
+        "R": { "tile": "r", "degrees": -90 },
+        "k": { "tile": "r", "degrees": 180 },
+        "K": { "tile": "r", "degrees":  90 },
+        
+        "L": { "tile": "l", "degrees":  90 },
+        "i": { "tile": "l", "degrees": 180 },
+        "I": { "tile": "l", "degrees": -90 }
     },
 
     "deco": {
