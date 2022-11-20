@@ -40,6 +40,7 @@ class UIElement:
 
     # Setters
     def addToPos(self, vect): self.pos += vect
+    def setPos(self, vect): self.pos = vect
     def setImg(self, img):
         self.img = img
         self.size = Vect(self.img.get_size())

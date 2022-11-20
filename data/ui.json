@@ -5,10 +5,10 @@
         "buttons": {
             "example": { "path": "res/ui/buttons/example.png", 
                          "offsets": { "default": 5, "pressed": 26, "moveSpeed": 20 },
-                         "pos": [ 0, 0 ] }
+                         "pos": [ 0, 0 ], "text": "ee" }
         },
         "text": { 
-            "ee": { "text": "Hello!", "fontSize": 30, "pos": [ 2, 3 ],
+            "ee": { "text": "Buy", "fontSize": 30,
                     "color": [ 255, 255, 255 ] }
         },
         "images": [

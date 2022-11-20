@@ -15,7 +15,12 @@ class Text(UIElement):
         """ Loads the text data, Pygame font object, and the text image """
         self.log = logging.getLogger(__name__)
 
-        super().__init__(textName, textData["pos"], offset)
+        if "pos" in textData:
+            pos = textData["pos"]
+        else:
+            pos = Vect(0, 0)
+
+        super().__init__(textName, pos, offset)
 
         self.text = textData["text"]
         self.fontSize = textData["fontSize"]

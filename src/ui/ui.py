@@ -19,12 +19,22 @@ class UI:
         self.data = data[type]
         self.offset = Vect(self.data["offset"])
 
-        for buttonName, buttonData in self.data["buttons"].items():
-            print(buttonData)
-            self.objects.append(Button(buttonName, buttonData, self.offset))
-        
         for textName, textData in self.data["text"].items():
             self.objects.append(Text(textName, textData, consts, self.offset))
+
+        for buttonName, buttonData in self.data["buttons"].items():
+            
+            text = None
+            if "text" in buttonData: # Button has text on it
+                # Find matching text object in already loaded text objects
+                for obj in self.objects:
+                    if obj.getName() == buttonData["text"]:
+                        text = obj
+                    
+                        self.objects.remove(obj)
+                        break
+
+            self.objects.append(Button(buttonName, buttonData, self.offset, text))
     
 
     def update(self, window):

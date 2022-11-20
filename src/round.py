@@ -43,7 +43,11 @@ class Round:
 
             if tower.justSelected(): 
                 # Unselecting every tower besides the one just selected
-                self.unselectTowers(notTower=tower)
+                if not self.isPlacingATower():
+                    self.unselectTowers(notTower=tower)
+                else:
+                    # A tower is being placed, and the player just clicked on a different tower
+                    tower.unselect()
 
         if window.getMouseReleased("right"):
             if not self.isPlacingATower():
