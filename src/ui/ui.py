@@ -21,10 +21,10 @@ class UI:
 
         for buttonName, buttonData in self.data["buttons"].items():
             print(buttonData)
-            self.objects.append(Button(buttonName, buttonData))
+            self.objects.append(Button(buttonName, buttonData, self.offset))
         
         for textName, textData in self.data["text"].items():
-            self.objects.append(Text(textName, textData, consts))
+            self.objects.append(Text(textName, textData, consts, self.offset))
     
 
     def update(self, window):
@@ -36,4 +36,4 @@ class UI:
     def render(self, window):
         """ Renders the UI objects """
         for obj in self.objects:
-            obj.render(window, self.offset)
+            obj.render(window)

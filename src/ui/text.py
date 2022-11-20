@@ -11,11 +11,11 @@ class Text(UIElement):
     # Static variable containing all pygame.font.Font objects of different font sizes
     fonts = {}
 
-    def __init__(self, textName, textData, consts):
+    def __init__(self, textName, textData, consts, offset):
         """ Loads the text data, Pygame font object, and the text image """
         self.log = logging.getLogger(__name__)
 
-        super().__init__(textName, textData["pos"])
+        super().__init__(textName, textData["pos"], offset)
 
         self.text = textData["text"]
         self.fontSize = textData["fontSize"]

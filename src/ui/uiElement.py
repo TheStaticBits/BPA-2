@@ -5,11 +5,11 @@ from src.utility.vector import Vect
 import src.utility.utility as util
 
 class UIElement:
-    def __init__(self, name, pos, imgPath=None):
+    def __init__(self, name, pos, offset, imgPath=None):
         self.log = logging.getLogger(__name__)
         
         self.name = name
-        self.pos = Vect(pos)
+        self.pos = Vect(pos) + offset
 
         if imgPath != None:
             self.setImg(util.loadTex(imgPath))
@@ -18,13 +18,13 @@ class UIElement:
             self.size = None
 
     
-    def render(self, window, offset, img=None):
+    def render(self, window, img=None):
         """ Renders the element with a different image if provided """
         
         if img == None:
-            window.render(self.img, self.pos + offset)
+            window.render(self.img, self.pos)
         else:
-            window.render(img, self.pos + offset)
+            window.render(img, self.pos)
     
     
     def update(self, window):
