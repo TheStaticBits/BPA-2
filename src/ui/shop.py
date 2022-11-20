@@ -11,9 +11,14 @@ class Shop(UI):
         super().load(consts, "shop", uiData)
     
 
-    def update(self, window):
+    def update(self, window, money):
         """ Handles button events and shop-related updates """
         super().update(window)
+
+        # Updates amount of money displayed
+        for name, amount in money.items():
+            obj = super().getObj(name + "Txt")
+            obj.changeText(str(amount))
 
     
     def render(self, window):

@@ -8,13 +8,13 @@ from src.ui.uiElement import UIElement
 class Button(UIElement):
     """ Button object for the UI, inherits from UIElement """
     
-    def __init__(self, buttonName, buttonData, offset, text=None):
+    def __init__(self, buttonData, offset, text=None):
         """ Initializes the button from the given button name and button data JSONs. """
         self.log = logging.getLogger(__name__)
 
         self.offsets = buttonData["offsets"]
-        super().__init__(buttonName, buttonData["pos"], offset, 
-                         buttonData["centered"], imgPath=buttonData["path"])
+        super().__init__(buttonData["pos"], offset, buttonData["centered"], 
+                         imgPath=buttonData["path"])
 
         self.heightOffset = self.offsets["default"]
         self.moveToOffset = 0
@@ -54,7 +54,7 @@ class Button(UIElement):
                 self.moveToOffset = self.offsets["pressed"] # Moves down
             elif window.getMouseReleased("left"):
                 self.pressed = True
-                self.log.info(f"Pressed button \"{super().getName()}\"")
+                self.log.info(f"Pressed button")
             else:
                 self.moveToOffset = 0 # Moves all the way to the top
         
@@ -75,6 +75,7 @@ class Button(UIElement):
 
     def render(self, window):
         """ Cuts off the bottom of the button when at an offset and renders it """
+        if not super().getDisplaying(): False
 
         if self.heightOffset != 0:
             img = pygame.Surface(super().getSize().getTuple(), 

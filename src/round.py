@@ -27,6 +27,12 @@ class Round:
         self.towers = []
 
         self.towersJson = util.loadJson(consts["jsonPaths"]["towers"])
+
+        self.money = {
+            "wood": 0,
+            "steel": 0,
+            "uranium": 0
+        }
         
         # Temporary
         self.towers.append(Tower("Placeholder bro", self.towersJson))
@@ -36,7 +42,7 @@ class Round:
         """ Updates everything for the frame """
         self.tileset.update(window, consts)
         self.waves.update(window, self.tileset)
-        self.shop.update(window)
+        self.shop.update(window, self.money)
 
         for tower in self.towers:
             tower.update(window, self.tileset, self.waves, consts)

@@ -5,16 +5,33 @@
         "buttons": {
             "example": { "path": "res/ui/buttons/example.png", 
                          "offsets": { "default": 6, "pressed": 14, "moveSpeed": 20 },
-                         "pos": [ 100, 50 ], "centered": true,
+                         "pos": [ 100, 520 ], "centered": true,
                          "text": "ee", "chinHeight": 18 }
         },
         "text": { 
             "ee": { "text": "Buy", "fontSize": 30,
-                    "color": [ 255, 255, 255 ] }
+                    "color": [ 255, 255, 255 ] },
+
+            "woodTxt":    { "text": "", "fontSize": 25,
+                            "pos": [ 60, 8 ], "centered": false,
+                            "color": [ 0, 0, 0 ] },
+            "steelTxt":   { "text": "", "fontSize": 25,
+                            "pos": [ 60, 48 ], "centered": false,
+                            "color": [ 0, 0, 0 ] },
+            "uraniumTxt": { "text": "", "fontSize": 25,
+                            "pos": [ 60, 88 ], "centered": false,
+                            "color": [ 0, 0, 0 ] }
         },
         "images": {
-            "eee": { "path": "res/ui/backgrounds/shopBG.png", 
-                     "pos": [ 0, 0 ], "centered": false }
+            "bg": { "path": "res/ui/backgrounds/shopBG.png", 
+                     "pos": [ 0, 0 ], "centered": false },
+
+            "woodImg":    { "path": "res/ui/shop/wood.png",
+                            "pos": [ 10, 10 ], "centered": false},
+            "steelImg":   { "path": "res/ui/shop/steel.png",
+                            "pos": [ 10, 50 ], "centered": false},
+            "uraniumImg": { "path": "res/ui/shop/steel.png",
+                            "pos": [ 10, 90 ], "centered": false}
         }
     }
 }
