@@ -9,3 +9,13 @@ class Shop(UI):
         super().__init__(True)
 
         super().load(consts, "shop", uiData)
+    
+
+    def update(self, window):
+        """ Handles button events and shop-related updates """
+        super().update(window)
+
+    
+    def render(self, window):
+        """ Handles shop-specific rendering events """
+        super().render(window)

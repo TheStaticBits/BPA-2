@@ -1,6 +1,6 @@
 {
     "shop": {
-        "offset": [ 450, 0 ],
+        "offset": [ 600, 0 ],
 
         "buttons": {
             "example": { "path": "res/ui/buttons/example.png", 
@@ -11,7 +11,8 @@
             "ee": { "text": "Buy", "fontSize": 30,
                     "color": [ 255, 255, 255 ] }
         },
-        "images": [
-        ]
+        "images": {
+            "eee": { "path": "res/ui/backgrounds/shopBG.png", "pos": [ 0, 0 ] }
+        }
     }
 }
