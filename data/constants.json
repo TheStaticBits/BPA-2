@@ -33,6 +33,11 @@
     "jsonPaths": {
         "enemies": "data/enemies.json",
         "towers": "data/towers.json",
-        "waves": "data/waves.json"
+        "waves": "data/waves.json",
+        "ui": "data/ui.json"
+    },
+
+    "miscPaths": {
+        "font": "res/font/monogram.ttf"
     }
 }

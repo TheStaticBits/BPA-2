@@ -2,6 +2,8 @@ import pygame
 import logging
 
 from src.ui.button import Button
+from src.ui.text import Text
+from src.utility.vector import Vect
 
 class UI:
     """ Object for more specific UI interfaces to inherit from to handle buttons, etc. """
@@ -12,12 +14,17 @@ class UI:
         self.displaying = display
     
 
-    def load(self, type, data):
+    def load(self, consts, type, data):
         """ Loads all UI objects """
         self.data = data[type]
+        self.offset = Vect(self.data["offset"])
 
         for buttonName, buttonData in self.data["buttons"].items():
+            print(buttonData)
             self.objects.append(Button(buttonName, buttonData))
+        
+        for textName, textData in self.data["text"].items():
+            self.objects.append(Text(textName, textData, consts))
     
 
     def update(self, window):
@@ -29,4 +36,4 @@ class UI:
     def render(self, window):
         """ Renders the UI objects """
         for obj in self.objects:
-            obj.render(window)
+            obj.render(window, self.offset)

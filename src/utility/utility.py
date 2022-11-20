@@ -6,7 +6,7 @@ import os
 import src.entities.enemy as enemy
 from src.utility.vector import Vect
 
-imgScale = 1
+imgScale = 1 # Updated to the value in constants.json
 
 def loadFile(path):
     """ Loads text file """
@@ -28,6 +28,12 @@ def loadTexTransparent(path):
     """ Loads transparent texture.
         Slower than normal loadTex due to including alpha values. """
     return scale(pygame.image.load(path).convert_alpha())
+
+def renderFont(text, font, color):
+    """ Renders an image of text, scales it, and returns it.
+        font parameter is an object of pygame.font.Font """
+    
+    return scale(font.render(text, False, color))
 
 def scale(img: pygame.Surface):
     """ Scales up to the default image scale and returns it """

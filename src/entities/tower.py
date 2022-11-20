@@ -27,6 +27,7 @@ class Tower(entity.Entity):
         self.canBePlaced = False
         self.attacking = False
         self.waitingForEnemy = False
+        self.clickedOn = False
 
         self.tileOn = None # Reference to the Tile object the tower is on
 
@@ -123,6 +124,7 @@ class Tower(entity.Entity):
     
     def update(self, window, tileset, wavesObj, consts):
         """ Updates animation if placed and when firing at an enemy """
+        self.clickedOn = False
 
         if not self.placing:
             self.updateAttack(window, wavesObj)
@@ -130,6 +132,9 @@ class Tower(entity.Entity):
             if window.getMouseReleased("left"):
                 if tileset.getMouseTile() == self.tileOn:
                     self.showRange = not self.showRange
+                    
+                    if self.showRange:
+                        self.clickedOn = True
         
         else:
             posTile = tileset.getMouseTile() # Returns the tile the mouse is on
@@ -181,3 +186,9 @@ class Tower(entity.Entity):
 
     # Basic getters
     def getTileOn(self): return self.tileOn
+    def isPlacing(self): return self.placing
+    def isSelected(self): return self.showRange
+    def justSelected(self): return self.clickedOn
+
+    # Setters
+    def unselect(self): self.showRange = False

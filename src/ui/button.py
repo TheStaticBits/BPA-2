@@ -8,14 +8,12 @@ from src.ui.uiElement import UIElement
 class Button(UIElement):
     """ Button object for the UI, inherits from UIElement """
     
-    def __init__(self, pos, buttonName, buttonData):
+    def __init__(self, buttonName, buttonData):
         """ Initializes the button from the given button name and button data JSONs. """
         self.log = logging.getLogger(__name__)
 
-        data = buttonData[buttonName]
-        self.pxHeight = data["height"]
-        self.offsets = data["offsets"]
-        super().__init__(data["pos"], data["path"])
+        self.offsets = buttonData["offsets"]
+        super().__init__(buttonName, buttonData["pos"], buttonData["path"])
 
         self.heightOffset = 0
         self.moveToOffset = 0
@@ -42,15 +40,16 @@ class Button(UIElement):
         super().addToPos((self.heightOffset - super().getPos().y) * window.getDeltaTime() * self.offsets["moveSpeed"])
 
 
-    def render(self, window):
+    def render(self, window, offset):
         """ Cuts off the bottom of the button when at an offset and renders it """ 
         if self.heightOffset != 0:
-            img = pygame.Surface(super().getSize().getTuple())
+            img = pygame.Surface(super().getSize().getTuple(), 
+                                 flags=pygame.SRCALPHA)
             img.blit(super().getImg(), (0, self.heightOffset))
         else:
             img = super().getImg()
         
-        super().render(window, img)
+        super().render(window, offset, img=img)
     
 
     def getPressed(self): return self.pressed
