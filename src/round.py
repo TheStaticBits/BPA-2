@@ -28,11 +28,8 @@ class Round:
 
         self.towersJson = util.loadJson(consts["jsonPaths"]["towers"])
 
-        self.money = {
-            "wood": 0,
-            "steel": 0,
-            "uranium": 0
-        }
+        self.resources = { "wood": 0, "steel": 0, "uranium": 0 }
+
         
         # Temporary
         self.towers.append(Tower("Placeholder bro", self.towersJson))
@@ -42,7 +39,9 @@ class Round:
         """ Updates everything for the frame """
         self.tileset.update(window, consts)
         self.waves.update(window, self.tileset)
-        self.shop.update(window, self.money)
+        self.addDrops(self.waves.getFrameDrops())
+        
+        self.shop.update(window, self.resources)
 
         for tower in self.towers:
             tower.update(window, self.tileset, self.waves, consts)
@@ -59,6 +58,12 @@ class Round:
             if not self.isPlacingATower():
                 self.unselectTowers()
                 self.towers.append(Tower("Placeholder bro", self.towersJson))
+    
+    
+    def addDrops(self, drops):
+        """ Adds resources dropped from the enemy to the player's money """
+        for resource, amount in drops.items():
+            self.resources[resource] += amount
     
     
     def render(self, window, consts):

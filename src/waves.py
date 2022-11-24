@@ -19,6 +19,7 @@ class Waves:
         self.waveNum = 0
         self.waveDelay = 0
         self.enemies = []
+        self.drops = {}
 
         self.updateSpawnData(0)
     
@@ -34,6 +35,8 @@ class Waves:
     def update(self, window, tileset):
         """ Update enemies and delays, and creates enemies """
         
+        self.drops = { "wood": 0, "steel": 0, "uranium": 0 }
+        
         stillAlive = []
         for enemy in self.enemies:
             enemy.update(window, tileset)
@@ -42,8 +45,15 @@ class Waves:
                 self.health -= enemy.getDamage() # player take damage
                 # self.log.info(f"Player health now at {self.health}")
             
-            elif not enemy.isDead(tileset):
+            elif not enemy.isDead(tileset): # Enemy alive still
                 stillAlive.append(enemy)
+            
+            else: # Enemy died
+                drops = enemy.getDrops()
+                
+                # adding drops to the current frame's drops
+                for drop, amount in drops.items():
+                    self.drops[drop] += amount
             
         self.enemies = stillAlive
         
@@ -100,3 +110,6 @@ class Waves:
                     collided.append(enemy)
         
         return collided
+    
+
+    def getFrameDrops(self): return self.drops

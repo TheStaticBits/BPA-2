@@ -1,6 +1,7 @@
 from inspect import _void
 import pygame
 import logging
+import random
 
 import src.utility.utility as util
 import src.utility.animation as anim
@@ -22,6 +23,9 @@ class Enemy(entity.Entity):
         
         self.speed =  enemiesJson[type]["speed"]
         self.health = enemiesJson[type]["health"]
+
+        self.dropAmount = enemiesJson[type]["dropAmount"]
+        self.dropChances = enemiesJson[type]["dropChances"]
 
         if "ability" in enemiesJson[type]:
             self.ability = enemiesJson[type]["ability"]["execute"]
@@ -136,3 +140,22 @@ class Enemy(entity.Entity):
         return self.health
         # Damage done to the player's health upon reaching the end,
         # the health remaining on the enemy is dealt to the player's health as 
+
+    
+    def getDrops(self):
+        """ Returns a dictionary of how much of each resource the enemy dropped """
+        drops = { "wood": 0, "steel": 0, "uranium": 0 }
+
+        for i in range(self.dropAmount):
+            num = random.randint(0, 100)
+
+            # Matches up the random number with a drop chance and 
+            # adds one drop to the resource randomly chosen
+            for resource, chance in self.dropChances.items():
+                if num <= chance:
+                    drops[resource] += 1
+                    break
+                else:
+                    num -= chance
+        
+        return drops

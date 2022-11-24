@@ -30,7 +30,7 @@
                             "pos": [ 10, 10 ], "centered": false},
             "steelImg":   { "path": "res/ui/shop/steel.png",
                             "pos": [ 10, 50 ], "centered": false},
-            "uraniumImg": { "path": "res/ui/shop/steel.png",
+            "uraniumImg": { "path": "res/ui/shop/uranium.png",
                             "pos": [ 10, 90 ], "centered": false}
         }
     }

@@ -6,6 +6,9 @@
 
         "speed": 80, "health": 1,
 
-        "ability": { "delay": 7, "execute": "self.health += 1" }
+        "ability": { "delay": 7, "execute": "self.health += 1" },
+
+        "dropAmount": 1,
+        "dropChances": { "wood": 70, "steel": 30 }
     }
 }
