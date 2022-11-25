@@ -10,5 +10,41 @@
 
         "dropAmount": 1,
         "dropChances": { "wood": 70, "steel": 30 }
+    },
+    "jonathan lasanga": {
+        "animation": { "path": "res/enemies/jonyaplseed.png", 
+                       "frames": 2, 
+                       "delay": 0.4 },
+
+        "speed": 100, "health": 2,
+
+        "ability": { "delay": 7, "execute": "self.health += 1" },
+
+        "dropAmount": 2,
+        "dropChances": { "wood": 65, "steel": 35 }
+    },
+    "peter pizza": {
+        "animation": { "path": "res/enemies/jonyaplseed.png", 
+                       "frames": 2, 
+                       "delay": 0.4 },
+
+        "speed": 120, "health": 3,
+
+        "ability": { "delay": 7, "execute": "self.health += 1" },
+
+        "dropAmount": 3,
+        "dropChances": { "wood": 60, "steel": 40 }
+    },
+    "rockrick raviolli": {
+        "animation": { "path": "res/enemies/jonyaplseed.png", 
+                       "frames": 2, 
+                       "delay": 0.4 },
+
+        "speed": 200, "health": 2,
+
+        "ability": { "delay": 7, "execute": "self.health += 1" },
+
+        "dropAmount": 5,
+        "dropChances": { "wood": 35, "steel": 55, "uranium": 10 }
     }
 }
