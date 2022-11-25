@@ -10,5 +10,12 @@
             "jony aplseed": { "amount": 20,   "startDelay": 0,    "spawnDelay": 0.25 }
         },
         "delay": 10
+    },
+    {
+        "enemies": {
+            "jony aplseed": { "amount": 5,   "startDelay": 0,    "spawnDelay": 0.5 },
+            "jonathan lasanga": { "amount": 2,   "startDelay": 3,    "spawnDelay": 3 }
+        },
+        "delay": 10
     }
 ]
