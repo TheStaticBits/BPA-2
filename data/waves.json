@@ -3,12 +3,26 @@
         "enemies": {
             "jony aplseed": { "amount": 10,   "startDelay": 0,    "spawnDelay": 0.5 }
         },
-        "delay": 10
+        "delay": 12
     }, 
     {
         "enemies": {
-            "jony aplseed": { "amount": 20,   "startDelay": 0,    "spawnDelay": 0.25 }
+            "jony aplseed": { "amount": 15,   "startDelay": 0,    "spawnDelay": 0.3 }
         },
-        "delay": 10
+        "delay": 15
+    },
+    {
+        "enemies": {
+            "jony aplseed": { "amount": 5,   "startDelay": 0,    "spawnDelay": 0.5 },
+            "jonathan lasanga": { "amount": 5,   "startDelay": 3,    "spawnDelay": 3 }
+        },
+        "delay": 26
+    },
+    {
+        "enemies": {
+            "jony aplseed": { "amount": 10,   "startDelay": 0,    "spawnDelay": 1 },
+            "jonathan lasanga": { "amount": 3,   "startDelay": 1,    "spawnDelay": 3 }
+        },
+        "delay": 25
     }
 ]
