@@ -18,6 +18,7 @@ class Tower(entity.Entity):
         
         self.upgradeInfo = towersJson[type]["upgrades"]
         self.damageFrame = towersJson[type]["dealDMGFrame"]
+        self.attackMode = towersJson[type]["attackMode"]
         self.upgradeNum = 0
 
         self.loadUpgrade(0) # Initial statistics
@@ -84,12 +85,18 @@ class Tower(entity.Entity):
 
     
     def dealDamage(self, waves):
-        """ Deals damage to the first enemy in the range, overriden """ 
+        """ Deals damage to the first enemy or all the enemies in the range
+            depending on the attack mode """ 
         collided = self.getCollidedEnemies(waves)
         
-        if len(collided) != 0:
-            collided[0].takeDamage(self.damage)
-            # self.log.info("dealt damage")
+        if self.attackMode == "one":
+            if len(collided) != 0:
+                collided[0].takeDamage(self.damage)
+                # self.log.info("dealt damage")
+        
+        elif self.attackMode == "all":
+            for tower in collided:
+                tower.takeDamage(self.damage)
     
 
     def updateAttack(self, window, wavesObj):
