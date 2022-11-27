@@ -22,14 +22,13 @@ class Round:
         self.waves = waves.Waves(consts)
         
         self.uiData = util.loadJson(consts["jsonPaths"]["ui"])
-        self.shop = shop.Shop(consts, self.uiData)
+        self.towersJson = util.loadJson(consts["jsonPaths"]["towers"])
+
+        self.shop = shop.Shop(consts, self.uiData, self.towersJson)
         
         self.towers = []
 
-        self.towersJson = util.loadJson(consts["jsonPaths"]["towers"])
-
         self.resources = { "wood": 0, "steel": 0, "uranium": 0 }
-
         
         # Temporary
         self.towers.append(Tower("Placeholder bro", self.towersJson))
@@ -40,7 +39,7 @@ class Round:
         self.tileset.update(window, consts)
         self.waves.update(window, self.tileset)
         self.addDrops(self.waves.getFrameDrops())
-        
+
         self.shop.update(window, self.resources)
 
         for tower in self.towers:

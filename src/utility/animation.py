@@ -66,6 +66,7 @@ class Animation:
     def getHeight(self): return self.getSize().y
     
     def getFrameNum(self): return self.currentFrame
+    def getFrame(self, frame): return self.imgs[frame]
 
     def finished(self): return self.hasFinished
     def changedFrame(self): return self.flippedFrame
