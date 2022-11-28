@@ -35,9 +35,22 @@ class Text(UIElement):
 
 
     def changeText(self, text):
-        self.text = text
-        self.updateTextImg()
+        """ Changes text and text image """
+        if self.text != text:
+            self.text = text
+            self.updateTextImg()
+
+
+    def changeColor(self, color):
+        """ Changes color and text image"""
+        if self.color != color:
+            self.color = color
+            self.updateTextImg()
+
     
     def updateTextImg(self):
         """ Updates the text image """
         super().setImg(util.renderFont(self.text, self.fonts[self.fontSize], self.color))
+    
+    
+    def getColor(self): return self.color

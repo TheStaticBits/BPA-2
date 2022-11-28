@@ -6,46 +6,63 @@
             "bg": { "path": "res/ui/backgrounds/shopBG.png", 
                      "pos": [ 0, 0 ], "centered": false },
 
+            "sWood":    { "path": "res/ui/shop/wood.png",
+                          "pos": [ 10, 10 ], "centered": false },
+            "sSteel":   { "path": "res/ui/shop/steel.png",
+                          "pos": [ 10, 50 ], "centered": false },
+            "sUranium": { "path": "res/ui/shop/uranium.png",
+                          "pos": [ 10, 90 ], "centered": false },
+            
             "woodImg":    { "path": "res/ui/shop/wood.png",
-                            "pos": [ 10, 10 ], "centered": false },
+                            "pos": [ 10, 230 ], "centered": false },
             "steelImg":   { "path": "res/ui/shop/steel.png",
-                            "pos": [ 10, 50 ], "centered": false },
+                            "pos": [ 10, 270 ], "centered": false },
             "uraniumImg": { "path": "res/ui/shop/uranium.png",
-                            "pos": [ 10, 90 ], "centered": false },
+                            "pos": [ 10, 310 ], "centered": false },
             
             "tower": { "path": "res/towers/towerExample.png", 
-                       "pos": [ 100, 300 ], "centered": true }
+                       "pos": [ 100, 190 ], "centered": true }
         },
         "buttons": {
-            "example": { "path": "res/ui/buttons/example.png", 
-                         "offsets": { "default": 6, "pressed": 14, "moveSpeed": 20 },
-                         "pos": [ 100, 520 ], "centered": true,
-                         "text": "ee", "chinHeight": 18 },
+            "buy": { "path": "res/ui/buttons/example.png", 
+                     "offsets": { "default": 6, "pressed": 14, "moveSpeed": 20 },
+                     "pos": [ 100, 520 ], "centered": true,
+                     "text": "buyText", "chinHeight": 18 },
 
             "left": { "path": "res/ui/buttons/left.png",
                       "offsets": { "default": 3, "pressed": 8, "moveSpeed": 20 },
-                      "pos": [ 50, 300 ], "centered": true },
+                      "pos": [ 50, 190 ], "centered": true },
             "right": { "path": "res/ui/buttons/right.png",
                        "offsets": { "default": 3, "pressed": 8, "moveSpeed": 20 },
-                       "pos": [ 150, 300 ], "centered": true }
+                       "pos": [ 150, 190 ], "centered": true }
         },
         "text": { 
-            "ee": { "text": "Buy", "fontSize": 30,
-                    "color": [ 255, 255, 255 ] },
+            "buyText": { "text": "Buy", "fontSize": 30,
+                         "color": [ 255, 255, 255 ] },
             
             "towerName": { "text": "Placeholder bro", "fontSize": 15,
-                           "pos": [ 100, 250 ], "centered": true,
+                           "pos": [ 100, 140 ], "centered": true,
                            "color": [ 0, 0, 0 ] },
 
-            "woodTxt":    { "text": "", "fontSize": 25,
-                            "pos": [ 60, 8 ], "centered": false,
-                            "color": [ 0, 0, 0 ] },
-            "steelTxt":   { "text": "", "fontSize": 25,
-                            "pos": [ 60, 48 ], "centered": false,
-                            "color": [ 0, 0, 0 ] },
-            "uraniumTxt": { "text": "", "fontSize": 25,
-                            "pos": [ 60, 88 ], "centered": false,
-                            "color": [ 0, 0, 0 ] }
+            "woodAmount":    { "text": "", "fontSize": 15,
+                                "pos": [ 60, 16 ], "centered": false,
+                                "color": [ 0, 0, 0 ] },
+            "steelAmount":   { "text": "", "fontSize": 15,
+                                "pos": [ 60, 56 ], "centered": false,
+                                "color": [ 0, 0, 0 ] },
+            "uraniumAmount": { "text": "", "fontSize": 15,
+                                "pos": [ 60, 96 ], "centered": false,
+                                "color": [ 0, 0, 0 ] },
+                            
+            "woodCost":    { "text": "", "fontSize": 15,
+                             "pos": [ 60, 236 ], "centered": false,
+                             "color": [ 0, 0, 0 ] },
+            "steelCost":   { "text": "", "fontSize": 15,
+                             "pos": [ 60, 276 ], "centered": false,
+                             "color": [ 0, 0, 0 ] },
+            "uraniumCost": { "text": "", "fontSize": 15,
+                             "pos": [ 60, 316 ], "centered": false,
+                             "color": [ 0, 0, 0 ] }
         }
     }
 }

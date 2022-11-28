@@ -5,6 +5,11 @@ from src.utility.vector import Vect
 import src.utility.utility as util
 
 class UIElement:
+    """ Button and text objects inhert from UIElement. 
+        Handles position, rendering, image data, and basic getters/setters """
+
+    imageStorage = {}
+
     def __init__(self, pos, offset, centered, imgPath=None):
         self.log = logging.getLogger(__name__)
         
@@ -13,17 +18,29 @@ class UIElement:
         self.centered = centered 
 
         if imgPath != None:
-            self.setImg(util.loadTexTransparent(imgPath))
+            self.setImg(self.loadImg(imgPath))
         else:
             self.img = None
             self.size = None
 
         self.displaying = True
 
+
+    def loadImg(self, path):
+        """ Finds the image in the static dictionary (self.imageStorage) or loads it
+            if it doesn't already exist and adds it to the dictionary """
+        
+        if path in self.imageStorage:
+            return self.imageStorage[path]
+        else:
+            img = util.loadTexTransparent(path)
+            self.imageStorage[path] = img
+            return img
+
     
     def render(self, window, img=None):
         """ Renders the element with a different image if provided """
-        if not self.displaying: False
+        if not self.displaying: return False
 
         if img == None:
             window.render(self.img, self.getPos())
@@ -52,7 +69,7 @@ class UIElement:
     # Setters
     def addToPos(self, vect): self.pos += vect
     def setPos(self, vect): self.pos = vect
-    def setInvisible(self): self.displaying = False
+    def setDisplaying(self, display): self.displaying = display
     def setImg(self, img):
         self.img = img
         self.size = Vect(self.img.get_size())

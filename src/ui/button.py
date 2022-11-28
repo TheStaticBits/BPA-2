@@ -47,6 +47,9 @@ class Button(UIElement):
 
     def update(self, window):
         """ Updates the button hover based on the mouse position, etc. """
+        # if not displaying, don't update anything and break out of the function
+        if not super().getDisplaying(): return None
+
         self.pressed = False
 
         if util.pointRectCollision(window.getMousePos(), super().getPos(), super().getSize()):

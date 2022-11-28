@@ -42,6 +42,17 @@ class Round:
 
         self.shop.update(window, self.resources)
 
+        self.checkBoughtTower()
+        self.updateTowers(window, consts)
+        
+        if window.getMouseReleased("right"):
+            if not self.isPlacingATower():
+                self.unselectTowers()
+                self.towers.append(Tower("Placeholder bro", self.towersJson))
+
+
+    def updateTowers(self, window, consts):
+        """ Updates towers and tower selecting"""
         for tower in self.towers:
             tower.update(window, self.tileset, self.waves, consts)
 
@@ -52,12 +63,19 @@ class Round:
                 else:
                     # A tower is being placed, and the player just clicked on a different tower
                     tower.unselect()
-
-        if window.getMouseReleased("right"):
-            if not self.isPlacingATower():
-                self.unselectTowers()
-                self.towers.append(Tower("Placeholder bro", self.towersJson))
     
+
+    def checkBoughtTower(self):
+        """ Checks and handles the event of the player pressing the "buy" button """
+        if self.shop.getBought():
+            # Charging the player for the resources
+            price = self.shop.getTowerPrice()
+            for resName in self.resources.keys():
+                self.resources[resName] -= price[resName]
+            
+            # Adding the tower to the tower list
+            self.towers.append(Tower(self.shop.getSelectedTowerName(), self.towersJson))
+
     
     def addDrops(self, drops):
         """ Adds resources dropped from the enemy to the player's money """
