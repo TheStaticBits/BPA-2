@@ -10,7 +10,7 @@ class Shop(UI):
         This class handles the functionality of the shop UI specifically. """
 
     def __init__(self, consts, uiData, towerData):
-        super().__init__(True)
+        super().__init__(True, __name__)
 
         super().load(consts, "shop", uiData)
         

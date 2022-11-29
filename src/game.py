@@ -4,6 +4,7 @@ import logging
 import src.utility.utility as util
 import src.window as window
 import src.round as round
+import src.ui.error as error
 
 class Game:
     """ Handles scenes and the functionality of the entire game """
@@ -21,8 +22,11 @@ class Game:
         self.log = logging.getLogger(__name__)
 
         # Init objects
+        self.log.info("Loading game scene")
         self.window = window.Window(self.constants)
         self.round = round.Round("amapwow", self.constants)
+        
+        self.errorUI = error.Error()
     
 
     def start_loop(self):

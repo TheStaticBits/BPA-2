@@ -8,8 +8,8 @@ from src.utility.vector import Vect
 
 class UI:
     """ Object for more specific UI interfaces to inherit from to handle buttons, etc. """
-    def __init__(self, display): 
-        self.log = logging.getLogger(__name__)
+    def __init__(self, display, fileName): 
+        self.log = logging.getLogger(fileName)
 
         self.objects = {}
         self.displaying = display
@@ -41,14 +41,16 @@ class UI:
 
     def update(self, window):
         """ Updates the UI objects """
-        for obj in self.objects.values():
-            obj.update(window)
+        if self.displaying:
+            for obj in self.objects.values():
+                obj.update(window)
 
 
     def render(self, window):
         """ Renders the UI objects """
-        for obj in self.objects.values():
-            obj.render(window)
+        if self.displaying:
+            for obj in self.objects.values():
+                obj.render(window)
 
 
     def getObj(self, name): return self.objects[name]

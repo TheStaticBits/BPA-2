@@ -64,5 +64,21 @@
                              "pos": [ 60, 316 ], "centered": false,
                              "color": [ 0, 0, 0 ] }
         }
+    },
+
+
+    "error": {
+        "offset": [ 0, 0 ],
+
+        "images": {
+            "bg": {}
+        },
+        "buttons": {
+            "continue": {},
+            "closeGame": {}
+        },
+        "text": {
+            "title": {}
+        }
     }
 }
