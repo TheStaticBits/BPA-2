@@ -54,3 +54,5 @@ class UI:
 
 
     def getObj(self, name): return self.objects[name]
+    
+    def setDisplaying(self, display): self.displaying = display
