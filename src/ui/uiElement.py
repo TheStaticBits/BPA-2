@@ -65,6 +65,7 @@ class UIElement:
     def getSize(self): return self.size
     def getImg(self): return self.img
     def getDisplaying(self): return self.displaying
+    def getCentered(self): return self.centered
 
     # Setters
     def addToPos(self, vect): self.pos += vect

@@ -105,11 +105,6 @@ class Shop(UI):
                 self.bought = True
 
     
-    def render(self, window):
-        """ Handles shop-specific rendering events """
-        super().render(window)
-
-    
     def getSelectedTowerName(self):
         """ Gets the name of the tower at the index of the currently selected tower """
         return list(self.towerData.keys())[self.towerSelected]

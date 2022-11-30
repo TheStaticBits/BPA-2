@@ -26,7 +26,7 @@ class Animation:
         self.hasFinished = False
         self.flippedFrame = False
 
-        # Creating each frame 
+        # Creating each frame image and adding it to the list of the animation frame images
         for i in range(frameCount):
             frame = pygame.Surface(frameSize.getTuple(), 
                                    flags=pygame.SRCALPHA)

@@ -19,6 +19,18 @@ class Error(UI):
     
 
     @staticmethod
-    def error(self):
+    def createError(self, errorMsg, recoverable=False):
+        """ Call this static method whenever there is an error to update and display the error report box """
         errored = True
+
+        textTitle = super().getObj("title")
+
+        if recoverable:
+            textTitle.changeText("An exception occured. This is a recoverable state.")
+        else:
+            textTitle.changeText("An error occured. This is nonrecoverable.")
+
         super().setDisplaying(True)
+    
+
+    def hasError(self): return self.errored

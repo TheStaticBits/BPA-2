@@ -78,7 +78,13 @@
             "closeGame": {}
         },
         "text": {
-            "title": {}
+            "title": { "text": "", "fontSize": 40,
+                       "pos": [ 10, 10 ], "centered": false,
+                       "color": [ 255, 255, 255 ] },
+
+            "errorMessage": { "text": "", "fontSize": 30,
+                              "pos": [ 10, 60 ], "centered": false,
+                              "color": [ 0, 0, 0 ], "lineSpacing": 5 }
         }
     }
 }
