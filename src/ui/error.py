@@ -17,7 +17,7 @@ class Error(UI): # Inherits from the UI class in src/ui/ui.py
         try:
             self.errorFilePath = consts["log"]["error"]
         except KeyError as exc:
-            self.createError("loading error file path", super().getLogger(), exc)
+            self.createError("Error loading error file path", super().getLogger(), exc)
 
 
     def update(self, window):
