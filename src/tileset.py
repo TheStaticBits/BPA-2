@@ -1,8 +1,8 @@
 import pygame
 import logging
 
-import src.entities.tile as tile
 import src.utility.utility as util
+from src.entities.tile import Tile
 from src.utility.vector import Vect
 from src.ui.error import Error
 
@@ -53,7 +53,7 @@ class Tileset:
 
             for x, type in enumerate(row):
                 pos = Vect(x, y) + self.offset
-                rowList.append(tile.Tile(type, pos, self.tileJson))
+                rowList.append(Tile(type, pos, self.tileJson))
             
             self.tiles.append(rowList)
     

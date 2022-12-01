@@ -2,8 +2,9 @@ import pygame
 import logging
 
 import src.utility.utility as util
-import src.entities.enemy as en
+from src.entities.enemy import Enemy
 from src.utility.vector import Vect
+from src.ui.error import Error
 
 class Waves:
     """ Handles waves interpreter and stores enemies """
@@ -95,7 +96,7 @@ class Waves:
             
             data["amountLeft"] -= 1
 
-            self.enemies.append(en.Enemy(enemy, tileset, self.enemiesJson))
+            self.enemies.append(Enemy(enemy, tileset, self.enemiesJson))
             
         # Removes anything that has finished spawning enemies
         self.spawnData = { enemy: data for enemy, data in self.spawnData.items() if data["amountLeft"] > 0 }

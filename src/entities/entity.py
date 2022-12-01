@@ -2,7 +2,7 @@ import pygame
 import logging
 
 import src.utility.utility as util
-import src.utility.animation as anim
+from src.utility.animation import Animation
 from src.utility.vector import Vect
 from src.ui.error import Error
 
@@ -35,8 +35,8 @@ class Entity:
     
     def loadAnim(self, animData):
         """ Creates animation object """
-        self.anim = anim.Animation(self.spritesheets[animData["path"]], 
-                                   animData["frames"], animData["delay"])
+        self.anim = Animation(self.spritesheets[animData["path"]], 
+                              animData["frames"], animData["delay"])
 
 
     def updateAnim(self, window):

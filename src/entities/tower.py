@@ -1,12 +1,12 @@
 import pygame
 import logging
 
-import src.entities.entity as entity
+from src.entities.entity import Entity
 from src.utility.timer import Timer
 from src.utility.vector import Vect
 from src.ui.error import Error
 
-class Tower(entity.Entity):
+class Tower(Entity):
     """ All towers inherit from this class.
         Manages the placement and rendering """
     

@@ -2,10 +2,10 @@ import pygame
 import logging
 
 import src.utility.utility as util
-import src.tileset as tileset
+from src.tileset import Tileset
 from  src.entities.tower import Tower
-import src.waves as waves
-import src.ui.shop as shop
+from src.waves import Waves
+from src.ui.shop import Shop
 from src.ui.error import Error
 
 class Round:
@@ -19,8 +19,8 @@ class Round:
         """ Setup tileset object, etc. """
         self.log = logging.getLogger(__name__)
 
-        self.tileset = tileset.Tileset(map, consts)
-        self.waves = waves.Waves(consts)
+        self.tileset = Tileset(map, consts)
+        self.waves = Waves(consts)
         
         try:
             self.uiData = util.loadJson(consts["jsonPaths"]["ui"])
@@ -28,7 +28,7 @@ class Round:
         except KeyError as exc:
             Error.createError("Unable to find the required paths to JSON files within the constants JSON.", self.log, exc)
 
-        self.shop = shop.Shop(consts, self.uiData, self.towersJson)
+        self.shop = Shop(consts, self.uiData, self.towersJson)
         
         self.towers = []
 

@@ -2,8 +2,7 @@ import pygame
 import logging
 
 import src.utility.utility as util
-import src.utility.animation as anim
-import src.entities.entity as entity
+from src.entities.entity import Entity
 from src.utility.vector import Vect
 from src.ui.error import Error
 
@@ -26,11 +25,11 @@ class Tile:
             return None
             
         
-        try: # Try loading tile animation using data from the tile's JSON file
+        try: # Try loading tile image using data from the tile's JSON file
             self.loadTex(tileJson)
 
         except KeyError as exc:
-            Error.createError(f"Unable to find required data to load the animation for the tile {type}", self.log, exc)
+            Error.createError(f"Unable to find required data to load the image for the tile {type}", self.log, exc)
             return None
 
         self.mouseOnTile = False
@@ -61,7 +60,7 @@ class Tile:
             self.isPlacable = tileJson["deco"][type]["placable"]
 
             animData = tileJson["deco"][type]["animation"]
-            self.deco = entity.Entity(animData)
+            self.deco = Entity(animData)
 
         else:
             if type in tileJson["rotated"]:

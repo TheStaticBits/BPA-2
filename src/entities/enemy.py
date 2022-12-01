@@ -1,16 +1,14 @@
-from inspect import _void
 import pygame
 import logging
 import random
 
 import src.utility.utility as util
-import src.utility.animation as anim
-import src.entities.entity as entity
+from src.entities.entity import Entity
 from src.utility.timer import Timer
 from src.utility.vector import Vect
 from src.ui.error import Error
 
-class Enemy(entity.Entity):
+class Enemy(Entity):
     """ Any enemies are inherited from this class.
         Handles enemy movement and enemy animations. """
 
