@@ -4,6 +4,7 @@ import logging
 import src.entities.tile as tile
 import src.utility.utility as util
 from src.utility.vector import Vect
+from src.ui.error import Error
 
 class Tileset:
     """ Manages the tiles and towers"""
@@ -21,7 +22,11 @@ class Tileset:
         """ Loads and returns tileset layout text file """
         self.log.info(f"Loading map \"{map}\"")
 
-        file = util.loadFile(f"{consts['mapPaths']['maps']}/{map}/{consts['mapPaths']['layoutFile']}")
+        try:
+            file = util.loadFile(f"{consts['mapPaths']['maps']}/{map}/{consts['mapPaths']['layoutFile']}")
+
+        except KeyError as exc:
+            Error.createError("Unable to find required map path data within the constants file", self.log, exc)
         
         layout = []
 
@@ -35,7 +40,11 @@ class Tileset:
         """ Creates each Tile object for every tile in the map """
         self.log.info(f"Generating tiles for \"{map}\"")
 
-        self.tileJson = util.loadJson(f"{consts['mapPaths']['maps']}/{map}/{consts['mapPaths']['tilesJson']}")
+        try:
+            self.tileJson = util.loadJson(f"{consts['mapPaths']['maps']}/{map}/{consts['mapPaths']['tilesJson']}")
+        
+        except KeyError as exc:
+            Error.createError("Unable to find required map tile JSON path data within the constants file", self.log, exc)
 
         self.tiles = []
         

@@ -4,6 +4,7 @@ import logging
 import src.entities.entity as entity
 from src.utility.timer import Timer
 from src.utility.vector import Vect
+from src.ui.error import Error
 
 class Tower(entity.Entity):
     """ All towers inherit from this class.
@@ -16,13 +17,20 @@ class Tower(entity.Entity):
         animData = towersJson[type]["animation"]
         super().__init__(animData)
         
-        self.upgradeInfo = towersJson[type]["upgrades"]
-        self.damageFrame = towersJson[type]["dealDMGFrame"]
-        self.attackMode = towersJson[type]["attackMode"]
-        self.upgradeNum = 0
+        try:
+            self.upgradeInfo = towersJson[type]["upgrades"]
+            self.damageFrame = towersJson[type]["dealDMGFrame"]
+            self.attackMode = towersJson[type]["attackMode"]
+        except KeyError as exc:
+            Error.createError(f"Unable to find required data within the JSON file for the {type} tower.", self.log, exc)
+            return None
 
+        self.upgradeNum = 0
+        
+        self.type = type
         self.loadUpgrade(0) # Initial statistics
 
+        # A bunch of default booleans used to tower actions
         self.placing = True
         self.showRange = True
         self.canBePlaced = False
@@ -31,24 +39,17 @@ class Tower(entity.Entity):
         self.clickedOn = False
 
         self.tileOn = None # Reference to the Tile object the tower is on
-
-    
-    @staticmethod
-    def getCost(type, towersJson, upgradeNum):
-        """ Finds the cost of the given tower type in the towers JSON file """
-        return towersJson[type]["upgrades"][upgradeNum]["costs"]
-
-    @staticmethod
-    def getInitialCost(type, towersJson):
-        """ Finds the initial cost of the given tower type in the towersJson file"""
-        return Tower.getCost(type, towersJson, 0) # Initial cost is the "first" upgrade
     
 
     def loadUpgrade(self, upgradeNum):
         """ Sets up variables from the tower statistics """
-        self.range =  self.upgradeInfo[upgradeNum]["stats"]["range"]
-        self.damage = self.upgradeInfo[upgradeNum]["stats"]["damage"]
-        self.attackTimer = Timer( self.upgradeInfo[upgradeNum]["stats"]["attackCooldown"] )
+        try:
+            self.range =  self.upgradeInfo[upgradeNum]["stats"]["range"]
+            self.damage = self.upgradeInfo[upgradeNum]["stats"]["damage"]
+            self.attackTimer = Timer( self.upgradeInfo[upgradeNum]["stats"]["attackCooldown"] )
+
+        except KeyError as exc:
+            Error.createError(f"Unable to find required update information for the upgrade number {upgradeNum} for the tower {type}.", self.log, exc)
     
 
     def getTowerPosOnTile(self, tile, consts):
@@ -56,7 +57,12 @@ class Tower(entity.Entity):
         pos = tile.getCenter().copy()
 
         pos.x -= (super().getAnim().getWidth() // 2)
-        pos.y += consts["towers"]["tileYOffset"] - super().getAnim().getHeight()
+
+        try:
+            pos.y += consts["towers"]["tileYOffset"] - super().getAnim().getHeight()
+
+        except KeyError as exc:
+            Error.createError("Unable to find tileYOffset for towers within the constants JSON file.", self.log, exc)
 
         return pos
 
@@ -174,8 +180,12 @@ class Tower(entity.Entity):
 
         if self.showRange:
             # Render range circle
-            if self.canBePlaced: color = consts["towers"]["rangeCircleGreen"]
-            else:                color = consts["towers"]["rangeCircleRed"]
+            try:
+                if self.canBePlaced: color = consts["towers"]["rangeCircleGreen"]
+                else:                color = consts["towers"]["rangeCircleRed"]
+            
+            except KeyError as exc:
+                Error.createError("Unable to find tower range circle color data within the constants JSON file.", self.log, exc)
             
             # Center circle on the tower
             window.render(self.getRangeCircle(color), self.getCirclePos())

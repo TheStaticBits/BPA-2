@@ -4,28 +4,47 @@ import logging
 import src.utility.utility as util
 from src.utility.vector import Vect
 from src.ui.uiElement import UIElement
+from src.ui.error import Error
 
 class Button(UIElement):
     """ Button object for the UI, inherits from UIElement """
     
-    def __init__(self, buttonData, offset, text=None):
+    def __init__(self, name, buttonData, offset, text=None):
         """ Initializes the button from the given button name and button data JSONs. """
         self.log = logging.getLogger(__name__)
-
-        self.offsets = buttonData["offsets"]
-        super().__init__(buttonData["pos"], offset, buttonData["centered"], 
-                         imgPath=buttonData["path"])
-
-        self.heightOffset = self.offsets["default"]
-        self.moveToOffset = 0
 
         self.pressed = False
         self.text = text
 
-        if self.text != None:
-            # Height of the shadowed area of the button image
-            # Only needed for centering the text
-            self.chinHeight = buttonData["chinHeight"]
+        # Loading button data from the JSON file, along with catching any potential errors
+        try:
+            self.offsets = buttonData["offsets"]
+            pos = buttonData["pos"]
+            path = buttonData["path"]
+
+            if self.text != None:
+                # Height of the shadowed area of the button image
+                # Only needed for centering the text
+                self.chinHeight = buttonData["chinHeight"]
+
+        except KeyError as exc:
+            Error.createError(f"Unable to find the following data within the {name} button's data.",
+                              self.log, exc)
+            return None
+            
+
+        try:
+            centered = buttonData["centered"]
+        except KeyError as exc:
+            Error.createError(f"Unable to find the data for \"centered\" for the {name} button. Defaulting to False.", 
+                              self.log, exc, recoverable=True)
+            centered = False
+
+
+        super().__init__(pos, offset, centered, imgPath=path)
+
+        self.heightOffset = self.offsets["default"]
+        self.moveToOffset = 0
     
 
     def centerText(self):

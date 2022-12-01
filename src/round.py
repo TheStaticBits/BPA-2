@@ -6,6 +6,7 @@ import src.tileset as tileset
 from  src.entities.tower import Tower
 import src.waves as waves
 import src.ui.shop as shop
+from src.ui.error import Error
 
 class Round:
     """ Handles the game content, such as the world, tileset, and towers
@@ -21,8 +22,11 @@ class Round:
         self.tileset = tileset.Tileset(map, consts)
         self.waves = waves.Waves(consts)
         
-        self.uiData = util.loadJson(consts["jsonPaths"]["ui"])
-        self.towersJson = util.loadJson(consts["jsonPaths"]["towers"])
+        try:
+            self.uiData = util.loadJson(consts["jsonPaths"]["ui"])
+            self.towersJson = util.loadJson(consts["jsonPaths"]["towers"])
+        except KeyError as exc:
+            Error.createError("Unable to find the required paths to JSON files within the constants JSON.", self.log, exc)
 
         self.shop = shop.Shop(consts, self.uiData, self.towersJson)
         

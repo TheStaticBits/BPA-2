@@ -41,7 +41,7 @@ class Game:
                     self.round.update(self.window, self.constants)
                     self.round.render(self.window, self.constants)
                 except Exception as exc:
-                    Error.createError("game was running. This is an unhandled error", self.log, exc)
+                    Error.createError("An unhandled error occured while the game was running.", self.log, exc)
                 
             else:
                 self.errorUI.update(self.window)

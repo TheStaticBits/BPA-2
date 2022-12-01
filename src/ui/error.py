@@ -13,6 +13,11 @@ class Error(UI): # Inherits from the UI class in src/ui/ui.py
         super().__init__(self, __name__)
 
         super().load(consts, "error", uiData) # Loading UI objects from the UI data in the JSON file
+        
+        try:
+            self.errorFilePath = consts["log"]["error"]
+        except KeyError as exc:
+            self.createError("loading error file path", super().getLogger(), exc)
 
 
     def update(self, window):
@@ -24,18 +29,23 @@ class Error(UI): # Inherits from the UI class in src/ui/ui.py
     
 
     @staticmethod
-    def createError(self, logMessage, logger, exceptionObj, recoverable=False):
+    def createError(logMessage, logger, exceptionObj, recoverable=False):
         """ Call this static method whenever there is an error to update and display the error report box """
         self.errored = True
 
-        # Logging the given message and the exception object
-        logger.error(f"Exception caught while {logMessage}.\n(see error textbox or text file for more information)\n{str(exceptionObj)}")
+        # Logging the given message using the given logger and the given exception object
+        logger.error(f"Exception: {logMessage}\n(see error textbox or text file for more information)\n{str(exceptionObj)}")
 
         # Includes error traceback, with file and line number
         detailedErrorMsg = traceback.format_exc()
 
         # Updating error message box with the error
         super().getObj("errorMsg").changeText(detailedErrorMsg)
+
+        # Appending the error to the error text file
+        if isinstance(self.errorFilePath, str):
+            with open(self.errorFilePath, "a") as file:
+                file.write(detailedErrorMsg)
 
         textTitle = super().getObj("title")
 

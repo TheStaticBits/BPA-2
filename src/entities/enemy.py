@@ -26,8 +26,10 @@ class Enemy(entity.Entity):
             self.speed =  enemiesJson[type]["speed"]
             self.health = enemiesJson[type]["health"]
 
-            self.dropAmount = enemiesJson[type]["dropAmount"]
+            self.dropAmount =  enemiesJson[type]["dropAmount"]
             self.dropChances = enemiesJson[type]["dropChances"]
+            
+            animData = enemiesJson[type]["animation"]
 
             if "ability" in enemiesJson[type]:
                 self.ability = enemiesJson[type]["ability"]["execute"]
@@ -35,17 +37,22 @@ class Enemy(entity.Entity):
             else:
                 self.ability = None
         
-        except KeyError as error:
-            Error.createError("loading Enemy JSON file", self.log, error)
+        except KeyError as exc:
+            Error.createError(f"Unable to find the following requried data value within the Enemy JSON file for the {type} enemy.", self.log, exc)
+            return None
 
         tileJson = tileset.getTileJson()
 
-        # Gets start tile
-        startTile = tileset.getTileAt(Vect(tileJson["start"]["tile"]))
-        self.moveDir = Vect(tileJson["start"]["facingDir"])
+        try:
+            # Gets start tile
+            startTile = tileset.getTileAt(Vect(tileJson["start"]["tile"]))
+            self.moveDir = Vect(tileJson["start"]["facingDir"])
+        except KeyError as exc:
+            Error.createError(f"Unable to find required tile data within the tiles JSON file for the start position of the {type} enemy.", self.log, exc)
+            return None
+        
         self.nextTile = startTile.getCoords() # Moving to start tile from offscreen
 
-        animData = enemiesJson[type]["animation"]
         super().__init__(animData) # sets up animation 
         
         # Position offscreen, moving onto the start tile
@@ -54,7 +61,7 @@ class Enemy(entity.Entity):
 
 
     def update(self, window, tileset):
-        """ updates animation and position of enemy """
+        """ Updates animation and position of enemy """
         
         super().updateAnim(window)
 

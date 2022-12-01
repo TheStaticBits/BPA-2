@@ -4,6 +4,7 @@ import logging
 import time
 
 from src.utility.vector import Vect
+from src.ui.error import Error
 
 class Window:
     """ Handles window and inputs """
@@ -12,11 +13,41 @@ class Window:
         self.log = logging.getLogger(__name__)
         
         self.log.info("Creating window")
-        self.window = pygame.display.set_mode(constants["window"]["size"])
+
+        try:
+            self.window = pygame.display.set_mode(constants["window"]["size"])
+        
+        except KeyError as exc:
+            Error.createError("Unable to find window size data in the constants JSON file. Defaulting to (800, 600).", 
+                              self.log, exc, recoverable=True)
+            self.window = pygame.display.set_mode((800, 600))
+
         self.close = False
         
-        pygame.display.set_caption(constants["window"]["title"])
+        try:
+            pygame.display.set_caption(constants["window"]["title"])
         
+        except KeyError as exc:
+            Error.createError("Unable to find window tile in the constants JSON file. Defaulting to \"Game\".",
+                              self.log, exc, recoverable=True)
+            pygame.display.set_caption("Game")
+        
+
+        try:
+            self.outputFPS = constants["window"]["outputFPS"]
+                
+        except KeyError as exc:
+            Error.createError("Unable to find window outputFPS data within constants JSON file. Defaulting to no FPS output.", self.log, exc)
+            self.outputFPS = False
+        
+
+        try:
+            self.maxFPS = constants["window"]["maxFPS"]
+        
+        except KeyError as exc:
+            Error.createError("Unable to find window max FPS data within constants JSON file. Defaulting to no FPS cap.", self.log, exc)
+            self.maxFPS = False
+
         self.clock = pygame.time.Clock()
 
         self.mousePos = (0, 0)
@@ -37,14 +68,16 @@ class Window:
         pygame.display.flip() # Update display
         self.window.fill((0, 0, 0)) # Clear the window with black
         
+        
         # update delta time, seconds since last frame
         # Any movement will be multiplied by this, making any movement 
         # move at the same speed regardless of framerate 
         self.deltaTime = time.time() - self.prevTime
         self.prevTime = time.time()
 
+
         # FPS tracker
-        if constants["window"]["outputFPS"]:
+        if self.outputFPS:
             if self.deltaTime != 0:
                 self.pastSecondFPS.append(1 / self.deltaTime)
 
@@ -59,9 +92,10 @@ class Window:
                 self.log.info(f"FPS: {round(fpsAverage)}")
                 self.pastSecondFPS.clear()
 
-        # Cap framerate
-        if constants["window"]["maxFPS"] <= 0:
-            self.clock.tick(constants["window"]["maxFPS"])
+
+            # Cap framerate
+        if self.maxFPS >= 0:
+            self.clock.tick(self.maxFPS)
     
     
     def handleInputs(self):

@@ -5,6 +5,7 @@ import src.utility.utility as util
 import src.utility.animation as anim
 import src.entities.entity as entity
 from src.utility.vector import Vect
+from src.ui.error import Error
 
 class Tile:
     """ Handles each tile and the images and functionality """
@@ -17,8 +18,20 @@ class Tile:
         
         self.coords = coords
 
-        self.loadTileData(type, tileJson)
-        self.loadTex(tileJson)
+        try: # Try loading and setting up variables using data from the tile's JSON file
+            self.loadTileData(type, tileJson)
+
+        except KeyError as exc:
+            Error.createError(f"Unable to find required data to load the tile data for the tile {type}", self.log, exc)
+            return None
+            
+        
+        try: # Try loading tile animation using data from the tile's JSON file
+            self.loadTex(tileJson)
+
+        except KeyError as exc:
+            Error.createError(f"Unable to find required data to load the animation for the tile {type}", self.log, exc)
+            return None
 
         self.mouseOnTile = False
         self.hoverOffset = 0
@@ -54,9 +67,6 @@ class Tile:
             if type in tileJson["rotated"]:
                 self.rotate = tileJson["rotated"][type]["degrees"]
                 type = tileJson["rotated"][type]["tile"]
-            
-            if type not in tileJson["tiles"]:
-                self.log.error(f"Tile \"{type}\" not declared in tiles.json")
             
             self.type = type
             self.move = tileJson["tiles"][type]["move"]

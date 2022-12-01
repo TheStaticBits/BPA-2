@@ -4,6 +4,7 @@ import logging
 import src.utility.utility as util
 import src.utility.animation as anim
 from src.utility.vector import Vect
+from src.ui.error import Error
 
 class Entity:
     """ Towers and Enemies inherit from this class.
@@ -15,10 +16,15 @@ class Entity:
         """ Loads spritesheet, animation, and creates self.pos
             animData parameter should be a dict with keys "path", "frames", and "delay" """
         self.log = logging.getLogger(__name__)
-
-        self.loadSpritesheet(animData["path"])
-        self.loadAnim(animData)
+        
         self.pos = pos
+
+        try:
+            self.loadSpritesheet(animData["path"])
+            self.loadAnim(animData)
+        
+        except KeyError as exc:
+            Error.createError("Missing the following animation data for an entity.", self.log, exc)
 
     
     def loadSpritesheet(self, path):

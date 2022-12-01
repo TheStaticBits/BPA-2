@@ -4,6 +4,7 @@ import logging
 from src.ui.ui import UI
 from src.ui.button import Button
 from src.utility.animation import Animation
+from src.ui.error import Error
 
 class Shop(UI):
     """ Inherits from UI class for handling objects on the UI and more. 
@@ -20,7 +21,12 @@ class Shop(UI):
         # Loading towers for the shop menu
         for name, data in self.towerData.items():
             anim = data["animation"]
-            temp = Animation(anim["path"], anim["frames"], anim["delay"])
+
+            # Load animation
+            try:
+                temp = Animation(anim["path"], anim["frames"], anim["delay"])
+            except KeyError as exc:
+                Error.createError(f"Unable to find some animation data for the tower {name}.", self.log, exc)
 
             self.towerImages[name] = temp.getFrame(0) # Gets first frame of tower animation
         
@@ -111,7 +117,10 @@ class Shop(UI):
     
     def getTowerPrice(self):
         """ Gets the first upgrade cost, the initial cost, of the tower """
-        return self.towerData[self.getSelectedTowerName()]["upgrades"][0]["costs"]
+        try:
+            return self.towerData[self.getSelectedTowerName()]["upgrades"][0]["costs"]
+        except KeyError as exc:
+            Error.createError(f"Unable to find the cost of the selected tower in the shop, {self.getSelectedTowerName()}.", self.log, exc)
     
 
     def getBought(self): return self.bought
