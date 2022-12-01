@@ -5,4 +5,4 @@ import pygame
 pygame.init()
 
 game = src.game.Game()
-game.start_loop()
+game.startLoop()

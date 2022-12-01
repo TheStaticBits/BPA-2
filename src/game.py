@@ -2,9 +2,9 @@ import pygame
 import logging
 
 import src.utility.utility as util
-import src.window as window
-import src.round as round
-import src.ui.error as error
+from src.window import Window
+from src.round import Round
+from src.ui.error import Error
 
 class Game:
     """ Handles scenes and the functionality of the entire game """
@@ -23,19 +23,28 @@ class Game:
 
         # Init objects
         self.log.info("Loading game scene")
-        self.window = window.Window(self.constants)
-        self.round = round.Round("amapwow", self.constants)
+        self.window = Window(self.constants)
+        self.round = Round("amapwow", self.constants)
         
-        self.errorUI = error.Error()
+        # Error menu handler
+        self.errorUI = Error(self.constants, self.round.getUIData())
     
 
-    def start_loop(self):
-        """ Game loop """
+    def startLoop(self):
+        """ Game loop, with window updating and rendering, inputs, and game content """
         
-        while not self.window.isClosed():
+        while not self.window.isClosed() and (not self.errorUI.showingError() and not self.errorUI.hasCrashed()):
             self.window.handleInputs()
 
-            self.round.update(self.window, self.constants)
-            self.round.render(self.window, self.constants)
+            if not self.errorUI.showingError():
+                try:
+                    self.round.update(self.window, self.constants)
+                    self.round.render(self.window, self.constants)
+                except Exception as exc:
+                    Error.createError("game was running. This is an unhandled error", self.log, exc)
+                
+            else:
+                self.errorUI.update(self.window)
+                self.errorUI.render(self.window)
             
             self.window.update(self.constants)

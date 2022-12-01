@@ -122,3 +122,6 @@ class Round:
         for tower in self.towers:
             if tower != notTower:
                 tower.unselect()
+    
+
+    def getUIData(self): return self.uiData

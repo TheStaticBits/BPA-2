@@ -12,7 +12,7 @@ class Shop(UI):
     def __init__(self, consts, uiData, towerData):
         super().__init__(True, __name__)
 
-        super().load(consts, "shop", uiData)
+        super().load(consts, "shop", uiData) # Loading UI objects from the UI data in the JSON file
         
         self.towerData = towerData
         self.towerImages = {}

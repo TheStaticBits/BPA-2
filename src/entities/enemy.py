@@ -8,6 +8,7 @@ import src.utility.animation as anim
 import src.entities.entity as entity
 from src.utility.timer import Timer
 from src.utility.vector import Vect
+from src.ui.error import Error
 
 class Enemy(entity.Entity):
     """ Any enemies are inherited from this class.
@@ -21,17 +22,21 @@ class Enemy(entity.Entity):
 
         self.reachedEnd = False
         
-        self.speed =  enemiesJson[type]["speed"]
-        self.health = enemiesJson[type]["health"]
+        try:
+            self.speed =  enemiesJson[type]["speed"]
+            self.health = enemiesJson[type]["health"]
 
-        self.dropAmount = enemiesJson[type]["dropAmount"]
-        self.dropChances = enemiesJson[type]["dropChances"]
+            self.dropAmount = enemiesJson[type]["dropAmount"]
+            self.dropChances = enemiesJson[type]["dropChances"]
 
-        if "ability" in enemiesJson[type]:
-            self.ability = enemiesJson[type]["ability"]["execute"]
-            self.abilityTimer = Timer(enemiesJson[type]["ability"]["delay"])
-        else:
-            self.ability = None
+            if "ability" in enemiesJson[type]:
+                self.ability = enemiesJson[type]["ability"]["execute"]
+                self.abilityTimer = Timer(enemiesJson[type]["ability"]["delay"])
+            else:
+                self.ability = None
+        
+        except KeyError as error:
+            Error.createError("loading Enemy JSON file", self.log, error)
 
         tileJson = tileset.getTileJson()
 

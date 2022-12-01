@@ -93,3 +93,4 @@ class Button(UIElement):
     
 
     def getPressed(self): return self.pressed
+    def getTextObj(self): return self.text
