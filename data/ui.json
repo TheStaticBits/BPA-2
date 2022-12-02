@@ -77,17 +77,35 @@
         "buttons": {
             "continue": { "path": "res/ui/error/continueButton.png",
                           "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
-                          "pos": [ 10, 520 ], "centered": false,
-                          "text": "continueButtonText", "chinHeight": 16 }
+                          "pos": [ 5, 520 ], "centered": false,
+                          "text": "continueButtonText", "chinHeight": 16 },
+            "email": { "path": "res/ui/error/continueButton.png",
+                        "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
+                        "pos": [ 265, 520 ], "centered": false,
+                        "text": "emailButtonText", "chinHeight": 16 },
+            "viewLogs": { "path": "res/ui/error/logsButton.png",
+                            "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
+                            "pos": [ 525, 520 ], "centered": false,
+                            "text": "viewLogs", "chinHeight": 16 },
+            "viewError": { "path": "res/ui/error/errorsButton.png",
+                          "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
+                          "pos": [ 645, 520 ], "centered": false,
+                          "text": "viewErrorText", "chinHeight": 16 }
         },
         "text": {
             "continueButtonText": { "text": "", "fontSize": 30,
                                     "color": [ 255, 255, 255 ] },
+            "emailButtonText": { "text": "Report Bug", "fontSize": 30,
+                                 "color": [ 255, 255, 255 ] },
+            "viewLogs": { "text": "Logs", "fontSize": 30,
+                          "color": [ 255, 255, 255 ]},
+            "viewErrorText": { "text": "Errors", "fontSize": 30,
+                               "color": [ 255, 255, 255 ]},
+
 
             "title": { "text": "", "fontSize": 30,
-                       "pos": [ 10, 0 ], "centered": false,
+                       "pos": [ 400, 25 ], "centered": true,
                        "color": [ 255, 255, 255 ] },
-
             "errorMsg": { "text": "", "fontSize": 15,
                           "pos": [ 10, 53 ], "centered": false,
                           "color": [ 0, 0, 0 ], "lineSpacing": 0 }

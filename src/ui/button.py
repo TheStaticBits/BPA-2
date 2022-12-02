@@ -86,6 +86,10 @@ class Button(UIElement):
         # Moves the y position slowly to the offset
         self.heightOffset += (self.moveToOffset - self.heightOffset) * window.getDeltaTime() * self.offsets["moveSpeed"]
 
+        # Only for when the deltaTime is very high, when the game freezes for a bit or more
+        if self.heightOffset < 0:
+            self.heightOffset = 0
+
         self.centerText()
     
 

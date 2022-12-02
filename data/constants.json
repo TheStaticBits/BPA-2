@@ -1,14 +1,13 @@
 {
     "log": {
         "level": "DEBUG",
-        "output": "saves/log/log",
+        "output": "saves/log/log.txt",
         "errors": "saves/log/exceptions.txt"
     },
     
     "window": {
         "title": "BPA Game: 2022-2023",
         "size": [ 800, 600 ],
-        "maxFPS": -1,
         "outputFPS": true
     },
 

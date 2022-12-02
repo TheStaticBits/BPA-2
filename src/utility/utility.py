@@ -90,7 +90,12 @@ def setupLogger(constants):
 
     fileFormatter =    logging.Formatter("[%(asctime)s] - [%(levelname)s] %(name)s: %(message)s")
     consoleFormatter = logging.Formatter("[%(levelname)s] %(name)s: %(message)s")
-    
+
+    if "log" in constants and "output" in constants["log"]:
+        logFile = constants["log"]["output"]
+    else:
+        logFile = "log"
+
     fileHandler =    logging.FileHandler(constants["log"]["output"])
     consoleHandler = logging.StreamHandler()
 

@@ -1,6 +1,7 @@
 import pygame
 import logging
 import traceback
+import os
 
 import src.ui.ui as ui
 
@@ -23,6 +24,8 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
             self.errorFilePath = consts["log"]["errors"]
         except KeyError as exc:
             self.createError("Error loading error file path", super().getLogger(), exc)
+        
+        self.logsFilePath = consts["log"]["output"]
 
 
     def update(self, window):
@@ -37,6 +40,17 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
 
                 if not self.recoverable:
                     self.crashed = True
+            
+            if super().getObj("email").getPressed():
+                self.log.info("Emailed crash information")
+            
+            if super().getObj("viewError").getPressed():
+                # Opens the errors text file using the default text editor
+                os.system("notepad " + self.errorFilePath) # Only works on Windows
+            
+            if super().getObj("viewLogs").getPressed():
+                # Opens logs file using the default text editor
+                os.system("notepad " + self.logsFilePath) # Only works on Windows
 
         else:
             self.testForError()
