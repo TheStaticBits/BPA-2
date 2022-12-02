@@ -33,10 +33,16 @@ class Game:
     def startLoop(self):
         """ Game loop, with window updating and rendering, inputs, and game content """
         
-        while not self.window.isClosed() and (not self.errorUI.showingError() and not self.errorUI.hasCrashed()):
+        while not self.window.isClosed() and not self.errorUI.hasCrashed():
             self.window.handleInputs()
+            
+            self.errorUI.update(self.window)
+            
+            if not self.errorUI.isDisplaying():
+                if self.errorUI.hasCrashed():
+                    break # User pressed "Close Game"
 
-            if not self.errorUI.showingError():
+            if not self.errorUI.isDisplaying():
                 try:
                     self.round.update(self.window, self.constants)
                     self.round.render(self.window, self.constants)
@@ -44,7 +50,7 @@ class Game:
                     Error.createError("An unhandled error occured while the game was running.", self.log, exc)
                 
             else:
-                self.errorUI.update(self.window)
                 self.errorUI.render(self.window)
+
             
             self.window.update(self.constants)

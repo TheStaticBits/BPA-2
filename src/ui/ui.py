@@ -5,7 +5,7 @@ from src.ui.uiElement import UIElement
 from src.ui.button import Button
 from src.ui.text import Text
 from src.utility.vector import Vect
-from src.ui.error import Error
+import src.ui.error as error
 
 class UI:
     """ Object for more specific UI interfaces to inherit from to handle buttons, etc. """
@@ -41,7 +41,7 @@ class UI:
                 self.objects[name] = Button(name, buttonData, self.offset, text)
         
         except KeyError as exc:
-            Error.createError(f"Unable to find required data to load the UI {type}.", self.log, exc)
+            error.Error.createError(f"Unable to find required data to load the UI {type}.", self.log, exc)
             
 
     def update(self, window):
@@ -60,5 +60,6 @@ class UI:
 
     def getObj(self, name): return self.objects[name]
     def getLogger(self): return self.log
+    def isDisplaying(self): return self.displaying
     
     def setDisplaying(self, display): self.displaying = display

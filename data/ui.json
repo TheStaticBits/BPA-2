@@ -4,7 +4,7 @@
 
         "images": {
             "bg": { "path": "res/ui/backgrounds/shopBG.png", 
-                     "pos": [ 0, 0 ], "centered": false },
+                    "pos": [ 0, 0 ], "centered": false },
 
             "sWood":    { "path": "res/ui/shop/wood.png",
                           "pos": [ 10, 10 ], "centered": false },
@@ -71,20 +71,26 @@
         "offset": [ 0, 0 ],
 
         "images": {
-            "bg": {}
+            "bg": { "path": "res/ui/error/bg.png", 
+                    "pos": [ 0, 0 ], "centered": false }
         },
         "buttons": {
-            "continue": {},
-            "email": {}
+            "continue": { "path": "res/ui/error/continueButton.png",
+                          "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
+                          "pos": [ 10, 520 ], "centered": false,
+                          "text": "continueButtonText", "chinHeight": 16 }
         },
         "text": {
-            "title": { "text": "", "fontSize": 40,
-                       "pos": [ 10, 10 ], "centered": false,
+            "continueButtonText": { "text": "", "fontSize": 30,
+                                    "color": [ 255, 255, 255 ] },
+
+            "title": { "text": "", "fontSize": 30,
+                       "pos": [ 10, 0 ], "centered": false,
                        "color": [ 255, 255, 255 ] },
 
-            "errorMsg": { "text": "", "fontSize": 30,
-                          "pos": [ 10, 60 ], "centered": false,
-                          "color": [ 0, 0, 0 ], "lineSpacing": 5 }
+            "errorMsg": { "text": "", "fontSize": 15,
+                          "pos": [ 10, 53 ], "centered": false,
+                          "color": [ 0, 0, 0 ], "lineSpacing": 0 }
         }
     }
 }

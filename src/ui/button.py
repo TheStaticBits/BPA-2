@@ -4,7 +4,7 @@ import logging
 import src.utility.utility as util
 from src.utility.vector import Vect
 from src.ui.uiElement import UIElement
-from src.ui.error import Error
+import src.ui.error as error
 
 class Button(UIElement):
     """ Button object for the UI, inherits from UIElement """
@@ -28,7 +28,7 @@ class Button(UIElement):
                 self.chinHeight = buttonData["chinHeight"]
 
         except KeyError as exc:
-            Error.createError(f"Unable to find the following data within the {name} button's data.",
+            error.Error.createError(f"Unable to find the following data within the {name} button's data.",
                               self.log, exc)
             return None
             
@@ -36,7 +36,7 @@ class Button(UIElement):
         try:
             centered = buttonData["centered"]
         except KeyError as exc:
-            Error.createError(f"Unable to find the data for \"centered\" for the {name} button. Defaulting to False.", 
+            error.Error.createError(f"Unable to find the data for \"centered\" for the {name} button. Defaulting to False.", 
                               self.log, exc, recoverable=True)
             centered = False
 
