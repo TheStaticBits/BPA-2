@@ -9,6 +9,8 @@ from src.ui.error import Error
 class Shop(UI):
     """ Inherits from UI class for handling objects on the UI and more. 
         This class handles the functionality of the shop UI specifically. """
+    
+    towerImages = {} # Stores all tower images for the UI
 
     def __init__(self, consts, uiData, towerData):
         super().__init__(True, __name__)
@@ -16,9 +18,18 @@ class Shop(UI):
         super().load(consts, "shop", uiData) # Loading UI objects from the UI data in the JSON file
         
         self.towerData = towerData
-        self.towerImages = {}
+        if self.towerImages != {}: # if it has not already been loaded
+            self.loadTowerImages()
+        
+        self.towerSelected = 0 # First tower
+        self.canBuy = False
+        self.bought = False
 
-        # Loading towers for the shop menu
+        self.updateTowerMenu()
+    
+    
+    def loadTowerImages(self):
+        """ Loading the first frame of the tower images for the shop menu """
         for name, data in self.towerData.items():
             anim = data["animation"]
 
@@ -29,12 +40,6 @@ class Shop(UI):
                 Error.createError(f"Unable to find some animation data for the tower {name}.", self.log, exc)
 
             self.towerImages[name] = temp.getFrame(0) # Gets first frame of tower animation
-        
-        self.towerSelected = 0 # First tower
-        self.canBuy = False
-        self.bought = False
-
-        self.updateTowerMenu()
     
 
     def updateTowerMenu(self):

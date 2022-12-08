@@ -110,5 +110,19 @@
                           "pos": [ 10, 53 ], "centered": false,
                           "color": [ 0, 0, 0 ], "lineSpacing": 0 }
         }
+    },
+
+    "upgrades": {
+        "offset": [0, 0],
+        
+        "images": {
+
+        },
+        "buttons": {
+
+        },
+        "text": {
+
+        }
     }
 }
