@@ -21,13 +21,19 @@ class Game:
         # Class logger
         self.log = logging.getLogger(__name__)
 
-        # Init objects
-        self.log.info("Loading game scene")
         self.window = Window(self.constants)
-        self.round = Round("amapwow", self.constants)
-        
+
+        self.uiData = util.loadJson(self.constants["jsonPaths"]["ui"])
         # Error menu handler
-        self.errorUI = Error(self.constants, self.round.getUIData())
+        self.errorUI = Error(self.constants, self.uiData)
+
+        try:
+            # Init objects
+            self.log.info("Loading game scene")
+            self.round = Round("amapwow", self.constants, self.uiData)
+
+        except Exception as exc:
+            Error.createError("Error occured while loading game", self.log, exc)
     
 
     def startLoop(self):

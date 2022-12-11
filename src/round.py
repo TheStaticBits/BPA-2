@@ -15,7 +15,7 @@ class Round:
     towersJson = None
     shopData = None
 
-    def __init__(self, map, consts):
+    def __init__(self, map, consts, uiData):
         """ Setup tileset object, etc. """
         self.log = logging.getLogger(__name__)
 
@@ -23,12 +23,11 @@ class Round:
         self.waves = Waves(consts)
         
         try:
-            self.uiData = util.loadJson(consts["jsonPaths"]["ui"])
             self.towersJson = util.loadJson(consts["jsonPaths"]["towers"])
         except KeyError as exc:
             Error.createError("Unable to find the required paths to JSON files within the constants JSON.", self.log, exc)
 
-        self.shop = Shop(consts, self.uiData, self.towersJson)
+        self.shop = Shop(consts, uiData, self.towersJson)
         
         self.towers = []
 
@@ -126,6 +125,3 @@ class Round:
         for tower in self.towers:
             if tower != notTower:
                 tower.unselect()
-    
-
-    def getUIData(self): return self.uiData
