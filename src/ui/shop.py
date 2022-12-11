@@ -18,7 +18,7 @@ class Shop(UI):
         super().load(consts, "shop", uiData) # Loading UI objects from the UI data in the JSON file
         
         self.towerData = towerData
-        if self.towerImages != {}: # if it has not already been loaded
+        if len(self.towerImages) == 0: # if it has not already been loaded
             self.loadTowerImages()
         
         self.towerSelected = 0 # First tower
