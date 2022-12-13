@@ -13,7 +13,9 @@ class UIElement:
     def __init__(self, pos, offset, centered, imgPath=None):
         self.log = logging.getLogger(__name__)
         
+        self.uiOffset = offset
         self.pos = Vect(pos) + offset
+
         # Whether or not it should be centered at the position
         self.centered = centered 
 
@@ -75,3 +77,8 @@ class UIElement:
         self.img = img
         self.size = Vect(self.img.get_size())
     
+    def setUIOffset(self, newOffset):
+        """ Changing the offset of the position """
+        self.pos -= self.uiOffset # Undoing original offset
+        self.pos += newOffset # Adding new offset
+        self.uiOffset = newOffset

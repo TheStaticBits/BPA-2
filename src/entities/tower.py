@@ -206,6 +206,7 @@ class Tower(Entity):
     def isPlacing(self): return self.placing
     def isSelected(self): return self.showRange
     def justSelected(self): return self.clickedOn
+    def getType(self): return self.type
 
     # Setters
     def unselect(self): self.showRange = False

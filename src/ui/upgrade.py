@@ -11,3 +11,13 @@ class UpgradeMenu(UI):
         super().__init__(True, __name__)
 
         super().load(consts, "upgrades", uiData) # Loading UI objects for specifically the upgrades menu
+        super().setDisplaying(False)
+    
+
+    def selectTower(self, tower):
+        """ Chooses a tower to show the upgrade menu for """
+
+        super().setDisplaying(True)
+        
+        # Change tower name displayed, upgrade level, image, price of upgrade, and upgrade stats here
+
