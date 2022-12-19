@@ -64,7 +64,7 @@ class Round:
             if tower.justSelected(): 
                 if not self.isPlacingATower(): # If not currently placing a tower
                     self.upgradeMenu.selectTower(tower) # Display upgrades
-                    self.unselectTowers(notTower=tower) # Unselect other all other towers
+                    
                 else:
                     # A tower is being placed, and the player just clicked on a different tower
                     tower.unselect()
@@ -128,8 +128,7 @@ class Round:
         return False
     
 
-    def unselectTowers(self, notTower=None):
-        """ Unhighlights every tower except for notTower """
+    def unselectTowers(self):
+        """ Unhighlights every tower, turning off showRange """
         for tower in self.towers:
-            if tower != notTower:
-                tower.unselect()
+            tower.unselect()

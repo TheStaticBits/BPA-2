@@ -143,11 +143,16 @@ class Tower(Entity):
             self.updateAttack(window, wavesObj)
 
             if window.getMouseReleased("left"):
-                if tileset.getMouseTile() == self.tileOn:
+                mouseTile = tileset.getMouseTile()
+
+                if mouseTile == self.tileOn:
                     self.showRange = not self.showRange
                     
                     if self.showRange:
                         self.clickedOn = True
+
+                elif mouseTile != False: # If the click was not on the GUI
+                    self.showRange = False
         
         else:
             posTile = tileset.getMouseTile() # Returns the tile the mouse is on
