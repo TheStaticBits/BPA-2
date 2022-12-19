@@ -20,4 +20,4 @@ class UpgradeMenu(UI):
         super().setDisplaying(True)
         
         # Change tower name displayed, upgrade level, image, price of upgrade, and upgrade stats here
-
+        super().getObj("towerName").changeText(tower.getType())

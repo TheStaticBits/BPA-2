@@ -127,7 +127,11 @@
         },
         "text": {
             "upgradeText": { "text": "Upgrade", "fontSize": 15,
-                             "color": [ 255, 255, 255] }
+                             "color": [ 255, 255, 255] },
+
+            "towerName": { "text": "Placeholder", "fontSize": 15,
+                             "pos": [ 90, 20 ], "centered": true,
+                             "color": [ 255, 255, 255 ] }
         }
     }
 }

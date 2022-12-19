@@ -101,12 +101,16 @@ class Shop(UI):
                     text.changeColor([ 0, 0, 0 ]) # Set to black (has enough to buy it)
 
 
-    def update(self, window, resources):
+    def update(self, window, resources, showingUpgrades):
         """ Updates everything within the shop menu """
-        super().update(window)
+        
+        # If the upgrades menu is not open, update shop buttons
+        if not showingUpgrades:
+            super().update(window)
+            self.updateButtons()
 
         self.updateResources(resources)
-        self.updateButtons()
+
         self.updateTowerCosts(resources)
 
         # Test for player buying a tower

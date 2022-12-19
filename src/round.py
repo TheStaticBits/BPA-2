@@ -42,7 +42,7 @@ class Round:
         self.waves.update(window, self.tileset)
         self.addDrops(self.waves.getFrameDrops())
 
-        self.shop.update(window, self.resources)
+        self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying())
         self.upgradeMenu.update(window)
 
         self.checkBoughtTower()
@@ -56,6 +56,8 @@ class Round:
 
     def updateTowers(self, window, consts):
         """ Updates towers and tower selecting"""
+        noTowers = True
+
         for tower in self.towers:
             tower.update(window, self.tileset, self.waves, consts)
 
@@ -66,7 +68,12 @@ class Round:
                 else:
                     # A tower is being placed, and the player just clicked on a different tower
                     tower.unselect()
-    
+            
+            if tower.isSelected(): noTowers = False
+
+        if self.upgradeMenu.isDisplaying() and noTowers:
+            self.upgradeMenu.setDisplaying(False)
+
 
     def checkBoughtTower(self):
         """ Checks and handles the event of the player pressing the "buy" button """
