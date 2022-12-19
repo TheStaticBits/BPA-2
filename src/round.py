@@ -6,6 +6,7 @@ from src.tileset import Tileset
 from  src.entities.tower import Tower
 from src.waves import Waves
 from src.ui.shop import Shop
+from src.ui.upgrade import UpgradeMenu
 from src.ui.error import Error
 
 class Round:
@@ -28,13 +29,11 @@ class Round:
             Error.createError("Unable to find the required paths to JSON files within the constants JSON.", self.log, exc)
 
         self.shop = Shop(consts, uiData, self.towersJson)
+        self.upgradeMenu = UpgradeMenu(consts, uiData)
         
         self.towers = []
 
-        self.resources = { "wood": 0, "steel": 0, "uranium": 0 }
-        
-        # Temporary
-        self.towers.append(Tower("Placeholder bro", self.towersJson))
+        self.resources = { "wood": 20, "steel": 0, "uranium": 0 }
     
     
     def update(self, window, consts):
@@ -44,6 +43,7 @@ class Round:
         self.addDrops(self.waves.getFrameDrops())
 
         self.shop.update(window, self.resources)
+        self.upgradeMenu.update(window)
 
         self.checkBoughtTower()
         self.updateTowers(window, consts)
@@ -60,9 +60,9 @@ class Round:
             tower.update(window, self.tileset, self.waves, consts)
 
             if tower.justSelected(): 
-                # Unselecting every tower besides the one just selected
-                if not self.isPlacingATower():
-                    self.unselectTowers(notTower=tower)
+                if not self.isPlacingATower(): # If not currently placing a tower
+                    self.upgradeMenu.selectTower(tower) # Display upgrades
+                    self.unselectTowers(notTower=tower) # Unselect other all other towers
                 else:
                     # A tower is being placed, and the player just clicked on a different tower
                     tower.unselect()
@@ -92,6 +92,7 @@ class Round:
         self.tileset.renderDeco(window)
         self.waves.render(window)
         self.shop.render(window)
+        self.upgradeMenu.render(window)
 
         self.renderTowers(window, consts)
     

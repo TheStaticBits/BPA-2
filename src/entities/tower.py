@@ -112,7 +112,6 @@ class Tower(Entity):
             self.attackTimer.update(window)
             if self.attackTimer.activated():
                 self.attacking = True
-                self.waitingForEnemy = True
         
         else:
             if self.waitingForEnemy:
@@ -133,6 +132,7 @@ class Tower(Entity):
                 # Finished attack animation
                 if super().getAnim().finished():
                     self.attacking = False
+                    self.waitingForEnemy = True
     
     
     def update(self, window, tileset, wavesObj, consts):
