@@ -7,11 +7,11 @@
                     "pos": [ 0, 0 ], "centered": false },
 
             "sWood":    { "path": "res/ui/shop/wood.png",
-                          "pos": [ 10, 10 ], "centered": false },
-            "sSteel":   { "path": "res/ui/shop/steel.png",
-                          "pos": [ 105, 10 ], "centered": false },
-            "sUranium": { "path": "res/ui/shop/uranium.png",
                           "pos": [ 10, 50 ], "centered": false },
+            "sSteel":   { "path": "res/ui/shop/steel.png",
+                          "pos": [ 105, 50 ], "centered": false },
+            "sUranium": { "path": "res/ui/shop/uranium.png",
+                          "pos": [ 10, 90 ], "centered": false },
             
             "woodImg":    { "path": "res/ui/shop/wood.png",
                             "pos": [ 10, 230 ], "centered": false },
@@ -45,13 +45,13 @@
                            "color": [ 0, 0, 0 ] },
 
             "woodAmount":    { "text": "", "fontSize": 15,
-                               "pos": [ 60, 16 ], "centered": false,
+                               "pos": [ 60, 56 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
             "steelAmount":   { "text": "", "fontSize": 15,
-                               "pos": [ 155, 16 ], "centered": false,
+                               "pos": [ 155, 56 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
             "uraniumAmount": { "text": "", "fontSize": 15,
-                               "pos": [ 60, 56 ], "centered": false,
+                               "pos": [ 60, 96 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
                             
             "woodCost":    { "text": "", "fontSize": 15,

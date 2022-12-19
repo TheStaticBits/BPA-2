@@ -83,22 +83,13 @@ class Shop(UI):
         for name, amount in resources.items():
             text = super().getObj(name + "Cost")
 
-            if prices[name] == 0:
-                # Don't render those parts when that resource's price is zero
-                super().getObj(name + "Img").setDisplaying(False)
-                super().getObj(name + "Cost").setDisplaying(False)
+            text.changeText(str(prices[name]))
             
+            if amount < prices[name]:
+                text.changeColor([ 255, 0, 0 ]) # Set to red color
+                self.canBuy = False
             else:
-                super().getObj(name + "Img").setDisplaying(True)
-                super().getObj(name + "Cost").setDisplaying(True)
-
-                text.changeText(str(prices[name]))
-                
-                if amount < prices[name]:
-                    text.changeColor([ 255, 0, 0 ]) # Set to red color
-                    self.canBuy = False
-                else:
-                    text.changeColor([ 0, 0, 0 ]) # Set to black (has enough to buy it)
+                text.changeColor([ 0, 0, 0 ]) # Set to black (has enough to buy it)
 
 
     def update(self, window, resources, showingUpgrades):
