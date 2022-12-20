@@ -33,7 +33,7 @@ class Round:
         
         self.towers = []
 
-        self.resources = { "wood": 20, "steel": 0, "uranium": 0 }
+        self.resources = { "wood": 20, "steel": 0, "uranium": 0, "plasma": 0 }
     
     
     def update(self, window, consts):

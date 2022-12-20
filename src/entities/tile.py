@@ -58,6 +58,7 @@ class Tile:
             self.decoTile = type
             self.decoOffset = Vect(tileJson["deco"][type]["offset"])
             self.isPlacable = tileJson["deco"][type]["placable"]
+            self.moveWithTile = tileJson["deco"][type]["moveWithTile"]
 
             animData = tileJson["deco"][type]["animation"]
             self.deco = Entity(animData)
@@ -126,7 +127,11 @@ class Tile:
     
     def renderDeco(self, window):
         """ Renders the decoration at the offset if there's any deco """
-        if self.hasDeco: self.deco.render(window)
+        if self.hasDeco: 
+            if self.moveWithTile: 
+                self.deco.render(window, yOffset = -self.hoverOffset)
+            else:
+                self.deco.render(window)
     
 
     # Getters

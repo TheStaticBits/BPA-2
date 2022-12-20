@@ -12,6 +12,8 @@
                           "pos": [ 105, 50 ], "centered": false },
             "sUranium": { "path": "res/ui/shop/uranium.png",
                           "pos": [ 10, 90 ], "centered": false },
+            "sPlasma": { "path": "res/ui/shop/plasma.png",
+                         "pos": [ 105, 90 ], "centered": false },
             
             "woodImg":    { "path": "res/ui/shop/wood.png",
                             "pos": [ 10, 230 ], "centered": false },
@@ -19,6 +21,8 @@
                             "pos": [ 105, 230 ], "centered": false },
             "uraniumImg": { "path": "res/ui/shop/uranium.png",
                             "pos": [ 10, 270 ], "centered": false },
+            "plasmaImg": { "path": "res/ui/shop/plasma.png",
+                           "pos": [ 105, 270 ], "centered": false },
             
             "tower": { "path": "res/towers/towerExample.png", 
                        "pos": [ 100, 190 ], "centered": true }
@@ -53,6 +57,9 @@
             "uraniumAmount": { "text": "", "fontSize": 15,
                                "pos": [ 60, 96 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
+            "plasmaAmount": { "text": "", "fontSize": 15,
+                              "pos": [ 155, 96 ], "centered": false,
+                              "color": [ 0, 0, 0 ] },
                             
             "woodCost":    { "text": "", "fontSize": 15,
                              "pos": [ 60, 236 ], "centered": false,
@@ -62,7 +69,10 @@
                              "color": [ 0, 0, 0 ] },
             "uraniumCost": { "text": "", "fontSize": 15,
                              "pos": [ 60, 276 ], "centered": false,
-                             "color": [ 0, 0, 0 ] }
+                             "color": [ 0, 0, 0 ] },
+            "plasmaCost": { "text": "", "fontSize": 15,
+                            "pos": [ 155, 276 ], "centered": false,
+                            "color": [ 0, 0, 0 ] }
         }
     },
 

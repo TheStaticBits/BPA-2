@@ -2,7 +2,7 @@
     "start": { "tile": [0, 5], "facingDir": [1, 0] },
 
     "tiles": {
-        " ": { "move": "none",    "path": "res/tiles/exampleTiles/baseTile.png" },
+        " ": { "move": "none",    "path": "res/tiles/exampleTiles/grass.png" },
         "l": { "move": "left",    "path": "res/tiles/exampleTiles/turnLeft.png" },
         "r": { "move": "right",   "path": "res/tiles/exampleTiles/turnRight.png" },
         "-": { "move": "forward", "path": "res/tiles/exampleTiles/moveRight.png" },
@@ -23,11 +23,12 @@
     "deco": {
         "t": {
             "tile": " ",
-            "placable": false,
-            "offset": [10, 10], 
+            "placable": true,
+            "moveWithTile": true,
+            "offset": [20, 20], 
             "animation": {
-                "path": "res/tiles/exampleTiles/deco/rock.png",
-                "frames": 1,
+                "path": "res/tiles/exampleTiles/deco/grassDeco.png",
+                "frames": 2,
                 "delay": 0.2
             }
         }
