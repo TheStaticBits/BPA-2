@@ -41,9 +41,10 @@ class Tileset:
         self.log.info(f"Generating tiles for \"{map}\"")
 
         try:
-            tileJsonPath = util.loadFile(f"{consts['mapPaths']['maps']}/{map}/{consts['mapPaths']['tilesJsonPathFile']}")
+            mapDataJson = util.loadJson(f"{consts['mapPaths']['maps']}/{map}/{consts['mapPaths']['mapDataJson']}")
 
-            self.tileJson = util.loadJson(tileJsonPath)
+            self.tileJson = util.loadJson(mapDataJson["tileset"])
+            self.enemyStartPos = mapDataJson["start"]
         
         except KeyError as exc:
             Error.createError("Unable to find required map tile JSON path data within the constants file", self.log, exc)
@@ -100,6 +101,7 @@ class Tileset:
         
 
     def getTileJson(self): return self.tileJson
+    def getEnemyStartPos(self): return self.enemyStartPos
     
     def getTilesSize(self): return Vect(len(self.tiles[0]), len(self.tiles))
 

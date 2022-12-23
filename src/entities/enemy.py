@@ -39,12 +39,12 @@ class Enemy(Entity):
             Error.createError(f"Unable to find the following requried data value within the Enemy JSON file for the {type} enemy.", self.log, exc)
             return None
 
-        tileJson = tileset.getTileJson()
+        startPos = tileset.getEnemyStartPos()
 
         try:
             # Gets start tile
-            startTile = tileset.getTileAt(Vect(tileJson["start"]["tile"]))
-            self.moveDir = Vect(tileJson["start"]["facingDir"])
+            startTile = tileset.getTileAt(Vect(startPos["tile"]))
+            self.moveDir = Vect(startPos["facingDir"])
         except KeyError as exc:
             Error.createError(f"Unable to find required tile data within the tiles JSON file for the start position of the {type} enemy.", self.log, exc)
             return None

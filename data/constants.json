@@ -16,7 +16,12 @@
         "mapOffset": [ 0, 0 ],
         "playerHealth": 200,
         "imgScale": 2,
-        "tileHoverSpeed": 20
+        "tileHoverSpeed": 20,
+        "particles": {
+            "size": [ 5, 5 ],
+            "lastDuration": 0.5,
+            "speed": 5
+        }
     },
 
     "towers": {
@@ -27,7 +32,7 @@
 
     "mapPaths": {
         "maps": "data/maps",
-        "tilesJsonPathFile": "tilesUsed.txt",
+        "mapDataJson": "mapData.json",
         "layoutFile": "layout.txt"
     },
 
