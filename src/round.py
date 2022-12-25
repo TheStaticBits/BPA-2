@@ -42,7 +42,7 @@ class Round:
         self.waves.update(window, self.tileset)
         self.addDrops(self.waves.getFrameDrops())
 
-        self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying())
+        self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying(), self.isPlacingATower())
         self.upgradeMenu.update(window)
 
         self.checkPurchases()

@@ -92,7 +92,7 @@ class Shop(UI):
                 text.changeColor([ 0, 0, 0 ]) # Set to black (has enough to buy it)
 
 
-    def update(self, window, resources, showingUpgrades):
+    def update(self, window, resources, showingUpgrades, isPlacingTower):
         """ Updates everything within the shop menu """
         
         # If the upgrades menu is not open, update shop buttons
@@ -104,11 +104,16 @@ class Shop(UI):
 
         self.updateTowerCosts(resources)
 
-        # Test for player buying a tower
-        self.bought = False
-        if super().getObj("buy").getPressed():
-            if self.canBuy:
-                self.bought = True
+        if not isPlacingTower:
+            super().getObj("buy").setDisplaying(True)
+            # Test for player buying a tower
+            self.bought = False
+            if super().getObj("buy").getPressed():
+                if self.canBuy:
+                    self.bought = True
+        else:
+            super().getObj("buy").setDisplaying(False)
+            self.bought = False
 
     
     def getSelectedTowerName(self):
