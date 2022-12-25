@@ -25,6 +25,7 @@ class UpgradeMenu(UI):
         """ Chooses a tower to show the upgrade menu for """
 
         super().setDisplaying(True)
+        self.tower = tower
         
         # Change tower name displayed, upgrade level, image, price of upgrade, and upgrade stats here
         super().getObj("towerName").changeText(tower.getType())
@@ -50,3 +51,11 @@ class UpgradeMenu(UI):
             super().getObj("upgradeStats").setDisplaying(False)
         
         super().getObj("tower").setImg(tower.getImg())
+    
+
+    def update(self, window):
+        super().update(window)
+
+        if super().getObj("upgrade").getPressed():
+            self.tower.upgrade()
+            self.selectTower(self.tower)
