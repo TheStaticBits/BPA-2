@@ -67,7 +67,18 @@ class Button(UIElement):
     def update(self, window):
         """ Updates the button hover based on the mouse position, etc. """
         # if not displaying, don't update anything and break out of the function
-        if not super().getDisplaying(): return None
+        if not super().getDisplaying(): 
+            if self.text != None:
+                self.text.setDisplaying(False)
+            
+            # Resetting button data while not visible in order to prevent issues
+            self.pressed = False
+            self.heightOffset = self.offsets["default"]
+            return None
+
+        else:
+            if self.text != None:
+                self.text.setDisplaying(True)
 
         self.pressed = False
 

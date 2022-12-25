@@ -29,14 +29,18 @@ class UpgradeMenu(UI):
         
         # Change tower name displayed, upgrade level, image, price of upgrade, and upgrade stats here
         super().getObj("towerName").changeText(tower.getType())
-        super().getObj("upgradeLevel").changeText(f"Lvl: {tower.getLevel()}")
+        super().getObj("upgradeLevel").changeText(f"Lvl: {tower.getLevel() + 1}")
 
         towerStats = self.format(tower.getCurrentStats())
         towerStatsStr = "\n".join(f"{key}: {value}" for key, value in towerStats.items())
 
         super().getObj("towerStats").changeText(towerStatsStr)
 
+        # If the tower has another level to upgrade to
         if len(tower.getUpgradeInfo()) - 1 > tower.getLevel():
+            super().getObj("upgradeStats").setDisplaying(True)
+            super().getObj("upgrade").setDisplaying(True)
+
             newTowerStats = self.format(tower.getUpgradeInfo()[tower.getLevel() + 1]["stats"])
 
             # Find difference between current stats and stats of a level above
@@ -49,6 +53,7 @@ class UpgradeMenu(UI):
 
         else:
             super().getObj("upgradeStats").setDisplaying(False)
+            super().getObj("upgrade").setDisplaying(False)
         
         super().getObj("tower").setImg(tower.getImg())
     
