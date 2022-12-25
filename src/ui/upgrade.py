@@ -48,3 +48,5 @@ class UpgradeMenu(UI):
 
         else:
             super().getObj("upgradeStats").setDisplaying(False)
+        
+        super().getObj("tower").setImg(tower.getImg())

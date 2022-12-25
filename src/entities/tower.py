@@ -218,6 +218,7 @@ class Tower(Entity):
     def isPlacing(self): return self.placing
     def isSelected(self): return self.showRange
     def justSelected(self): return self.clickedOn
+    def getImg(self): return super().getAnim().getFrame(0)
 
     def getType(self): return self.type
     def getLevel(self): return self.level
