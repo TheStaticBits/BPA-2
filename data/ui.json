@@ -12,8 +12,8 @@
                           "pos": [ 105, 50 ], "centered": false },
             "sUranium": { "path": "res/ui/shop/uranium.png",
                           "pos": [ 10, 90 ], "centered": false },
-            "sPlasma": { "path": "res/ui/shop/plasma.png",
-                         "pos": [ 105, 90 ], "centered": false },
+            "sPlasma":  { "path": "res/ui/shop/plasma.png",
+                          "pos": [ 105, 90 ], "centered": false },
             
             "woodImg":    { "path": "res/ui/shop/wood.png",
                             "pos": [ 10, 230 ], "centered": false },
@@ -21,8 +21,8 @@
                             "pos": [ 105, 230 ], "centered": false },
             "uraniumImg": { "path": "res/ui/shop/uranium.png",
                             "pos": [ 10, 270 ], "centered": false },
-            "plasmaImg": { "path": "res/ui/shop/plasma.png",
-                           "pos": [ 105, 270 ], "centered": false },
+            "plasmaImg":  { "path": "res/ui/shop/plasma.png",
+                            "pos": [ 105, 270 ], "centered": false },
             
             "tower": { "path": "res/towers/towerExample.png", 
                        "pos": [ 100, 190 ], "centered": true }
@@ -33,9 +33,9 @@
                      "pos": [ 100, 350 ], "centered": true,
                      "text": "buyText", "chinHeight": 18 },
 
-            "left": { "path": "res/ui/buttons/left.png",
-                      "offsets": { "default": 3, "pressed": 8, "moveSpeed": 20 },
-                      "pos": [ 50, 190 ], "centered": true },
+            "left":  { "path": "res/ui/buttons/left.png",
+                       "offsets": { "default": 3, "pressed": 8, "moveSpeed": 20 },
+                       "pos": [ 50, 190 ], "centered": true },
             "right": { "path": "res/ui/buttons/right.png",
                        "offsets": { "default": 3, "pressed": 8, "moveSpeed": 20 },
                        "pos": [ 150, 190 ], "centered": true }
@@ -57,9 +57,9 @@
             "uraniumAmount": { "text": "", "fontSize": 15,
                                "pos": [ 60, 96 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
-            "plasmaAmount": { "text": "", "fontSize": 15,
-                              "pos": [ 155, 96 ], "centered": false,
-                              "color": [ 0, 0, 0 ] },
+            "plasmaAmount":  { "text": "", "fontSize": 15,
+                               "pos": [ 155, 96 ], "centered": false,
+                               "color": [ 0, 0, 0 ] },
                             
             "woodCost":    { "text": "", "fontSize": 15,
                              "pos": [ 60, 236 ], "centered": false,
@@ -70,9 +70,9 @@
             "uraniumCost": { "text": "", "fontSize": 15,
                              "pos": [ 60, 276 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
-            "plasmaCost": { "text": "", "fontSize": 15,
-                            "pos": [ 155, 276 ], "centered": false,
-                            "color": [ 0, 0, 0 ] }
+            "plasmaCost":  { "text": "", "fontSize": 15,
+                             "pos": [ 155, 276 ], "centered": false,
+                             "color": [ 0, 0, 0 ] }
         }
     },
 
@@ -85,18 +85,18 @@
                     "pos": [ 0, 0 ], "centered": false }
         },
         "buttons": {
-            "continue": { "path": "res/ui/error/continueButton.png",
-                          "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
-                          "pos": [ 5, 520 ], "centered": false,
-                          "text": "continueButtonText", "chinHeight": 16 },
-            "email": { "path": "res/ui/error/continueButton.png",
-                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
-                       "pos": [ 265, 520 ], "centered": false,
-                       "text": "emailButtonText", "chinHeight": 16 },
-            "viewLogs": { "path": "res/ui/error/logsButton.png",
-                          "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
-                          "pos": [ 525, 520 ], "centered": false,
-                          "text": "viewLogs", "chinHeight": 16 },
+            "continue":  { "path": "res/ui/error/continueButton.png",
+                           "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
+                           "pos": [ 5, 520 ], "centered": false,
+                           "text": "continueButtonText", "chinHeight": 16 },
+            "email":     { "path": "res/ui/error/continueButton.png",
+                           "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
+                           "pos": [ 265, 520 ], "centered": false,
+                           "text": "emailButtonText", "chinHeight": 16 },
+            "viewLogs":  { "path": "res/ui/error/logsButton.png",
+                           "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
+                           "pos": [ 525, 520 ], "centered": false,
+                           "text": "viewLogs", "chinHeight": 16 },
             "viewError": { "path": "res/ui/error/errorsButton.png",
                            "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
                            "pos": [ 645, 520 ], "centered": false,
@@ -105,17 +105,17 @@
         "text": {
             "continueButtonText": { "text": "", "fontSize": 30,
                                     "color": [ 255, 255, 255 ] },
-            "emailButtonText": { "text": "Report Bug", "fontSize": 30,
-                                 "color": [ 255, 255, 255 ] },
-            "viewLogs": { "text": "Logs", "fontSize": 30,
-                          "color": [ 255, 255, 255 ]},
-            "viewErrorText": { "text": "Errors", "fontSize": 30,
-                               "color": [ 255, 255, 255 ]},
+            "emailButtonText":    { "text": "Report Bug", "fontSize": 30,
+                                    "color": [ 255, 255, 255 ] },
+            "viewLogs":           { "text": "Logs", "fontSize": 30,
+                                     "color": [ 255, 255, 255 ]},
+            "viewErrorText":      { "text": "Errors", "fontSize": 30,
+                                    "color": [ 255, 255, 255 ]},
 
 
-            "title": { "text": "", "fontSize": 30,
-                       "pos": [ 400, 25 ], "centered": true,
-                       "color": [ 255, 255, 255 ] },
+            "title":    { "text": "", "fontSize": 30,
+                          "pos": [ 400, 25 ], "centered": true,
+                          "color": [ 255, 255, 255 ] },
             "errorMsg": { "text": "", "fontSize": 15,
                           "pos": [ 10, 53 ], "centered": false,
                           "color": [ 0, 0, 0 ], "lineSpacing": 0 }
@@ -126,13 +126,11 @@
         "offset": [ 610, 130 ],
         
         "images": {
-            "bg": { "path": "res/ui/backgrounds/upgradeBG.png",
-                    "pos": [ 0, 0 ], "centered": false },
-
+            "bg":    { "path": "res/ui/backgrounds/upgradeBG.png",
+                       "pos": [ 0, 0 ], "centered": false },
             
             "tower": { "path": "res/towers/towerExample.png", 
                        "pos": [ 90, 100 ], "centered": true }
-            
         },
         "buttons": {
             "upgrade": { "path": "res/ui/buttons/upgrade.png",
@@ -141,22 +139,22 @@
                          "text": "upgradeText", "chinHeight": 16 }
         },
         "text": {
-            "upgradeText": { "text": "Upgrade", "fontSize": 15,
-                             "color": [ 0, 0, 0 ] },
+            "upgradeText":  { "text": "Upgrade", "fontSize": 15,
+                              "color": [ 0, 0, 0 ] },
             
             "upgradeTitle": { "text": "Upgrade", "fontSize": 25,
                               "pos": [ 90, 15 ], "centered": true,
                               "color": [ 0, 0, 0 ] },
-            "towerName": { "text": "Placeholder", "fontSize": 15,
-                           "pos": [ 90, 50 ], "centered": true,
-                           "color": [ 0, 0, 0 ] },
+            "towerName":    { "text": "Placeholder", "fontSize": 15,
+                              "pos": [ 90, 50 ], "centered": true,
+                              "color": [ 0, 0, 0 ] },
             "upgradeLevel": { "text": "Lvl: 0", "fontSize": 15,
                               "pos": [ 90, 145 ], "centered": true,
                               "color": [ 0, 0, 0 ] },
             
-            "towerStats": { "text": "Placeholder", "fontSize": 15,
-                            "pos": [ 10, 170 ], "centered": false,
-                            "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            "towerStats":   { "text": "Placeholder", "fontSize": 15,
+                              "pos": [ 10, 170 ], "centered": false,
+                              "color": [ 0, 0, 0 ], "lineSpacing": 0 },
             
             "upgradeStats": { "text": "Placeholder", "fontSize": 15,
                               "pos": [ 10, 265 ], "centered": false,
