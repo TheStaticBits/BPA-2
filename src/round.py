@@ -45,7 +45,7 @@ class Round:
         self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying())
         self.upgradeMenu.update(window)
 
-        self.checkBoughtTower()
+        self.checkPurchases()
         self.updateTowers(window, consts)
         
         if window.getMouseReleased("right"):
@@ -73,18 +73,23 @@ class Round:
 
         if self.upgradeMenu.isDisplaying() and noTowers:
             self.upgradeMenu.setDisplaying(False)
+    
+
+    def purchase(self, price):
+        """ Decreases the player's currency by the amount given """
+        for resName in self.resources.keys():
+            self.resources[resName] -= price[resName]
 
 
-    def checkBoughtTower(self):
+    def checkPurchases(self):
         """ Checks and handles the event of the player pressing the "buy" button """
         if self.shop.getBought():
             # Charging the player for the resources
-            price = self.shop.getTowerPrice()
-            for resName in self.resources.keys():
-                self.resources[resName] -= price[resName]
-            
+            self.purchase(self.shop.getTowerPrice())
             # Adding the tower to the tower list
             self.towers.append(Tower(self.shop.getSelectedTowerName(), self.towersJson))
+        
+        #
 
     
     def addDrops(self, drops):

@@ -28,6 +28,7 @@ class Tower(Entity):
         self.upgradeNum = 0
         
         self.type = type
+        self.level = 0
         self.loadUpgrade(0) # Initial statistics
 
         # A bunch of default booleans used to tower actions
@@ -39,6 +40,12 @@ class Tower(Entity):
         self.clickedOn = False
 
         self.tileOn = None # Reference to the Tile object the tower is on
+    
+
+    def upgrade(self):
+        """ Increments level and loads upgrade information """
+        self.level += 1
+        self.loadUpgrade(self.level)
     
 
     def loadUpgrade(self, upgradeNum):
@@ -211,7 +218,12 @@ class Tower(Entity):
     def isPlacing(self): return self.placing
     def isSelected(self): return self.showRange
     def justSelected(self): return self.clickedOn
+
     def getType(self): return self.type
+    def getLevel(self): return self.level
+
+    def getUpgradeInfo(self): return self.upgradeInfo
+    def getCurrentStats(self): return self.upgradeInfo[self.level]["stats"]
 
     # Setters
     def unselect(self): self.showRange = False

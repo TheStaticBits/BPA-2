@@ -30,7 +30,7 @@
         "buttons": {
             "buy": { "path": "res/ui/buttons/example.png", 
                      "offsets": { "default": 6, "pressed": 14, "moveSpeed": 20 },
-                     "pos": [ 100, 520 ], "centered": true,
+                     "pos": [ 100, 350 ], "centered": true,
                      "text": "buyText", "chinHeight": 18 },
 
             "left": { "path": "res/ui/buttons/left.png",
@@ -127,7 +127,12 @@
         
         "images": {
             "bg": { "path": "res/ui/backgrounds/upgradeBG.png",
-                    "pos": [ 0, 0 ], "centered": false }
+                    "pos": [ 0, 0 ], "centered": false },
+
+            
+            "tower": { "path": "res/towers/towerExample.png", 
+                       "pos": [ 90, 100 ], "centered": true }
+            
         },
         "buttons": {
             "upgrade": { "path": "res/ui/buttons/upgrade.png",
@@ -137,15 +142,25 @@
         },
         "text": {
             "upgradeText": { "text": "Upgrade", "fontSize": 15,
-                             "color": [ 0, 0, 0] },
-
+                             "color": [ 0, 0, 0 ] },
+            
+            "upgradeTitle": { "text": "Upgrade", "fontSize": 25,
+                              "pos": [ 90, 15 ], "centered": true,
+                              "color": [ 0, 0, 0 ] },
             "towerName": { "text": "Placeholder", "fontSize": 15,
-                            "pos": [ 90, 20 ], "centered": true,
-                            "color": [ 0, 0, 0 ] },
-
-            "upgradeLevel": { "text": "0", "fontSize": 15,
-                              "pos": [ 20, 90 ], "centered": false,
-                              "color": [ 0, 0, 0 ] }
+                           "pos": [ 90, 50 ], "centered": true,
+                           "color": [ 0, 0, 0 ] },
+            "upgradeLevel": { "text": "Lvl: 0", "fontSize": 15,
+                              "pos": [ 90, 145 ], "centered": true,
+                              "color": [ 0, 0, 0 ] },
+            
+            "towerStats": { "text": "Placeholder", "fontSize": 15,
+                            "pos": [ 10, 170 ], "centered": false,
+                            "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            
+            "upgradeStats": { "text": "Placeholder", "fontSize": 15,
+                              "pos": [ 10, 265 ], "centered": false,
+                              "color": [ 0, 0, 0 ], "lineSpacing": 0 }
         }
     }
 }

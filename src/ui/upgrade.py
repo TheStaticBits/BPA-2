@@ -14,6 +14,13 @@ class UpgradeMenu(UI):
         super().setDisplaying(False)
     
 
+    def format(self, stats):
+        """ Takes in tower stats dictionary and formats it for display """
+        return { "Range": int(stats["range"] / 10),
+                 "Damage": stats["damage"],
+                 "Speed": int(10 / stats["attackCooldown"]) }
+    
+
     def selectTower(self, tower):
         """ Chooses a tower to show the upgrade menu for """
 
@@ -21,3 +28,23 @@ class UpgradeMenu(UI):
         
         # Change tower name displayed, upgrade level, image, price of upgrade, and upgrade stats here
         super().getObj("towerName").changeText(tower.getType())
+        super().getObj("upgradeLevel").changeText(f"Lvl: {tower.getLevel()}")
+
+        towerStats = self.format(tower.getCurrentStats())
+        towerStatsStr = "\n".join(f"{key}: {value}" for key, value in towerStats.items())
+
+        super().getObj("towerStats").changeText(towerStatsStr)
+
+        if len(tower.getUpgradeInfo()) - 1 > tower.getLevel():
+            newTowerStats = self.format(tower.getUpgradeInfo()[tower.getLevel() + 1]["stats"])
+
+            # Find difference between current stats and stats of a level above
+            diff = {}
+            for key in towerStats.keys():
+                diff[key] = newTowerStats[key] - towerStats[key]
+
+            statsStr = "\n".join(f"+{value} {key}" for key, value in diff.items())
+            super().getObj("upgradeStats").changeText(statsStr)
+
+        else:
+            super().getObj("upgradeStats").setDisplaying(False)
