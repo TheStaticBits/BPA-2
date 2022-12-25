@@ -3,8 +3,9 @@ import logging
 
 from src.ui.ui import UI
 from src.ui.button import Button
-from src.utility.animation import Animation
 from src.ui.error import Error
+from src.utility.animation import Animation
+from src.utility.advDict import AdvDict
 
 class Shop(UI):
     """ Inherits from UI class for handling objects on the UI and more. 
@@ -22,7 +23,6 @@ class Shop(UI):
             self.loadTowerImages()
         
         self.towerSelected = 0 # First tower
-        self.canBuy = False
         self.bought = False
 
         self.updateTowerMenu()
@@ -50,6 +50,8 @@ class Shop(UI):
         super().getObj("tower").setImg(self.towerImages[towerName])
         # Change tower name
         super().getObj("towerName").changeText(towerName)
+
+        self.towerPrice = AdvDict(self.getTowerPrice())
     
 
     def updateButtons(self):
@@ -76,18 +78,13 @@ class Shop(UI):
 
     def updateTowerCosts(self, resources):
         """ Updates the costs of the towers, changing text colors as well """
-        prices = self.getTowerPrice()
+        for resource, amount in resources.items():
+            text = super().getObj(resource + "Cost")
 
-        self.canBuy = True
-
-        for name, amount in resources.items():
-            text = super().getObj(name + "Cost")
-
-            text.changeText(str(prices[name]))
+            text.changeText(str(self.towerPrice[resource]))
             
-            if amount < prices[name]:
+            if amount < self.towerPrice[resource]:
                 text.changeColor([ 255, 0, 0 ]) # Set to red color
-                self.canBuy = False
             else:
                 text.changeColor([ 0, 0, 0 ]) # Set to black (has enough to buy it)
 
@@ -101,16 +98,17 @@ class Shop(UI):
             self.updateButtons()
 
         self.updateResources(resources)
-
         self.updateTowerCosts(resources)
 
         if not isPlacingTower:
             super().getObj("buy").setDisplaying(True)
+
             # Test for player buying a tower
             self.bought = False
             if super().getObj("buy").getPressed():
-                if self.canBuy:
+                if resources >= self.towerPrice:
                     self.bought = True
+                    
         else:
             super().getObj("buy").setDisplaying(False)
             self.bought = False

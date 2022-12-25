@@ -3,6 +3,7 @@ import logging
 
 import src.utility.utility as util
 from src.tileset import Tileset
+from src.utility.advDict import AdvDict
 from  src.entities.tower import Tower
 from src.waves import Waves
 from src.ui.shop import Shop
@@ -33,14 +34,15 @@ class Round:
         
         self.towers = []
 
-        self.resources = { "wood": 20, "steel": 0, "uranium": 0, "plasma": 0 }
+        # Default resources
+        self.resources = AdvDict( { "wood": 20, "steel": 0, "uranium": 0, "plasma": 0 } )
     
     
     def update(self, window, consts):
         """ Updates everything for the frame """
         self.tileset.update(window, consts)
         self.waves.update(window, self.tileset)
-        self.addDrops(self.waves.getFrameDrops())
+        self.resources += AdvDict(self.waves.getFrameDrops())
 
         self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying(), self.isPlacingATower())
         self.upgradeMenu.update(window)
@@ -73,29 +75,15 @@ class Round:
 
         if self.upgradeMenu.isDisplaying() and noTowers:
             self.upgradeMenu.setDisplaying(False)
-    
-
-    def purchase(self, price):
-        """ Decreases the player's currency by the amount given """
-        for resName in self.resources.keys():
-            self.resources[resName] -= price[resName]
 
 
     def checkPurchases(self):
         """ Checks and handles the event of the player pressing the "buy" button """
         if self.shop.getBought():
             # Charging the player for the resources
-            self.purchase(self.shop.getTowerPrice())
+            self.resources -= AdvDict(self.shop.getTowerPrice())
             # Adding the tower to the tower list
             self.towers.append(Tower(self.shop.getSelectedTowerName(), self.towersJson))
-        
-        #
-
-    
-    def addDrops(self, drops):
-        """ Adds resources dropped from the enemy to the player's money """
-        for resource, amount in drops.items():
-            self.resources[resource] += amount
     
     
     def render(self, window, consts):

@@ -60,14 +60,15 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
     def createError(cls, logMessage, logger, exceptionObj, recoverable=False):
         """ Call this static method whenever there is an error to update and display the error report box """
 
-        cls.errored = True
-        cls.recoverable = recoverable
-
         # Logging the given message using the given logger and the given exception object
         logger.error(f"Exception: {logMessage}\n(see error textbox or text file for more information)\n{str(exceptionObj)}")
 
-        # Includes error traceback, with file and line number
-        cls.errorMsg = traceback.format_exc()
+        if not cls.errored: # If there's not already an error on screen
+            cls.errored = True
+            cls.recoverable = recoverable
+
+            # Includes error traceback, with file and line number
+            cls.errorMsg = traceback.format_exc()
     
 
     def testForError(self):

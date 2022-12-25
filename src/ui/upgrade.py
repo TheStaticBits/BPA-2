@@ -61,6 +61,8 @@ class UpgradeMenu(UI):
     def update(self, window):
         super().update(window)
 
+        self.bought = False
         if super().getObj("upgrade").getPressed():
             self.tower.upgrade()
             self.selectTower(self.tower)
+            self.bought = True
