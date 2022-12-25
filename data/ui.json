@@ -130,7 +130,16 @@
                        "pos": [ 0, 0 ], "centered": false },
             
             "tower": { "path": "res/towers/towerExample.png", 
-                       "pos": [ 90, 100 ], "centered": true }
+                       "pos": [ 90, 100 ], "centered": true },
+            
+            "woodImg":    { "path": "res/ui/shop/wood.png",
+                            "pos": [ 10, 260 ], "centered": false },
+            "steelImg":   { "path": "res/ui/shop/steel.png",
+                            "pos": [ 105, 260 ], "centered": false },
+            "uraniumImg": { "path": "res/ui/shop/uranium.png",
+                            "pos": [ 10, 300 ], "centered": false },
+            "plasmaImg":  { "path": "res/ui/shop/plasma.png",
+                            "pos": [ 105, 300 ], "centered": false }
         },
         "buttons": {
             "upgrade": { "path": "res/ui/buttons/upgrade.png",
@@ -155,10 +164,19 @@
             "towerStats":   { "text": "Placeholder", "fontSize": 15,
                               "pos": [ 10, 170 ], "centered": false,
                               "color": [ 0, 0, 0 ], "lineSpacing": 0 },
-            
-            "upgradeStats": { "text": "Placeholder", "fontSize": 15,
-                              "pos": [ 10, 265 ], "centered": false,
-                              "color": [ 0, 0, 0 ], "lineSpacing": 0 }
+                            
+            "woodCost":    { "text": "0", "fontSize": 15,
+                             "pos": [ 60, 266 ], "centered": false,
+                             "color": [ 0, 0, 0 ] },
+            "steelCost":   { "text": "0", "fontSize": 15,
+                             "pos": [ 155, 266 ], "centered": false,
+                             "color": [ 0, 0, 0 ] },
+            "uraniumCost": { "text": "0", "fontSize": 15,
+                             "pos": [ 60, 306 ], "centered": false,
+                             "color": [ 0, 0, 0 ] },
+            "plasmaCost":  { "text": "0", "fontSize": 15,
+                             "pos": [ 155, 306 ], "centered": false,
+                             "color": [ 0, 0, 0 ] }
         }
     }
 }

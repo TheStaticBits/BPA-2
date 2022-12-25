@@ -3,23 +3,35 @@ class AdvDict:
 
     def __init__(self, dict):
         self.pyDict = dict
+    
+
+    def checkType(self, obj):
+        if not isinstance(obj, AdvDict): raise TypeError
 
 
     def __isub__(self, other):
         """ -= overload """
+        self.checkType(other)
+        
         for key, value in other.pyDict.items():
             self.pyDict[key] -= value
+
         return self
     
     def __iadd__(self, other):
         """ += overload """
+        self.checkType(other)
+        
         for key, value in other.pyDict.items():
             self.pyDict[key] += value
+
         return self
 
 
     def __gt__(self, other):
         """ > overload """
+        self.checkType(other)
+        
         for key, value in other.pyDict.items():
             if self.pyDict[key] <= value:
                 return False
@@ -28,6 +40,8 @@ class AdvDict:
     
     def __ge__(self, other):
         """ >= overload """
+        self.checkType(other)
+        
         for key, value in other.pyDict.items():
             if self.pyDict[key] < value:
                 return False

@@ -100,15 +100,14 @@ class Shop(UI):
         self.updateResources(resources)
         self.updateTowerCosts(resources)
 
-        if not isPlacingTower:
+        if not isPlacingTower and resources >= self.towerPrice:
             super().getObj("buy").setDisplaying(True)
 
             # Test for player buying a tower
             self.bought = False
             if super().getObj("buy").getPressed():
-                if resources >= self.towerPrice:
-                    self.bought = True
-                    
+                self.bought = True
+
         else:
             super().getObj("buy").setDisplaying(False)
             self.bought = False

@@ -45,7 +45,7 @@ class Round:
         self.resources += AdvDict(self.waves.getFrameDrops())
 
         self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying(), self.isPlacingATower())
-        self.upgradeMenu.update(window)
+        self.upgradeMenu.update(window, self.resources)
 
         self.checkPurchases()
         self.updateTowers(window, consts)
@@ -84,6 +84,9 @@ class Round:
             self.resources -= AdvDict(self.shop.getTowerPrice())
             # Adding the tower to the tower list
             self.towers.append(Tower(self.shop.getSelectedTowerName(), self.towersJson))
+        
+        elif self.upgradeMenu.getBought():
+            self.resources -= AdvDict(self.upgradeMenu.getTower().getCurrentCosts())
     
     
     def render(self, window, consts):

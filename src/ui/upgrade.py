@@ -2,6 +2,7 @@ import pygame
 import logging
 
 from src.ui.ui import UI
+from src.utility.advDict import AdvDict
 
 class UpgradeMenu(UI):
     """ Class handling the tower upgrade menu
@@ -12,17 +13,30 @@ class UpgradeMenu(UI):
 
         super().load(consts, "upgrades", uiData) # Loading UI objects for specifically the upgrades menu
         super().setDisplaying(False)
+
+        self.bought = False
+        self.tower = None
     
 
     def format(self, stats):
         """ Takes in tower stats dictionary and formats it for display """
-        return { "Range": int(stats["range"] / 10),
-                 "Damage": stats["damage"],
-                 "Speed": int(10 / stats["attackCooldown"]) }
+        return { "RANG": int(stats["range"] / 10),
+                 "DMG": stats["damage"],
+                 "SPD": int(10 / stats["attackCooldown"]) }
+    
+
+    def setPriceVisible(self, bool):
+        """ Sets tower price to visible or not """
+        # Setting images and text for cost displaying
+        for resource in self.tower.getCurrentCosts().keys():
+            super().getObj(resource + "Img").setDisplaying(bool)
+            super().getObj(resource + "Cost").setDisplaying(bool)
     
 
     def selectTower(self, tower):
         """ Chooses a tower to show the upgrade menu for """
+
+        self.log.info(f"Loaded upgrade menu for tower {tower.getType()}")
 
         super().setDisplaying(True)
         self.tower = tower
@@ -32,13 +46,11 @@ class UpgradeMenu(UI):
         super().getObj("upgradeLevel").changeText(f"Lvl: {tower.getLevel() + 1}")
 
         towerStats = self.format(tower.getCurrentStats())
-        towerStatsStr = "\n".join(f"{key}: {value}" for key, value in towerStats.items())
-
-        super().getObj("towerStats").changeText(towerStatsStr)
+        towerStatsStr = [f"{key}: {value}" for key, value in towerStats.items()]
 
         # If the tower has another level to upgrade to
         if len(tower.getUpgradeInfo()) - 1 > tower.getLevel():
-            super().getObj("upgradeStats").setDisplaying(True)
+            self.setPriceVisible(True)
             super().getObj("upgrade").setDisplaying(True)
 
             newTowerStats = self.format(tower.getUpgradeInfo()[tower.getLevel() + 1]["stats"])
@@ -48,21 +60,58 @@ class UpgradeMenu(UI):
             for key in towerStats.keys():
                 diff[key] = newTowerStats[key] - towerStats[key]
 
-            statsStr = "\n".join(f"+{value} {key}" for key, value in diff.items())
-            super().getObj("upgradeStats").changeText(statsStr)
+            # Add difference to the end of the stats displayed
+            for index, key in enumerate(diff.keys()):
+                towerStatsStr[index] += f" + {diff[key]}"
 
         else:
-            super().getObj("upgradeStats").setDisplaying(False)
+            self.setPriceVisible(False)
             super().getObj("upgrade").setDisplaying(False)
+        
+        super().getObj("towerStats").changeText("\n".join(towerStatsStr))
         
         super().getObj("tower").setImg(tower.getImg())
     
 
-    def update(self, window):
-        super().update(window)
+    def getUpgradeCost(self):
+        """ Returns cost of the tower's level + 1 """
+        return AdvDict(self.tower.getUpgradeInfo()[self.tower.getLevel() + 1]["costs"])
+    
 
-        self.bought = False
-        if super().getObj("upgrade").getPressed():
-            self.tower.upgrade()
-            self.selectTower(self.tower)
-            self.bought = True
+    def updatePrice(self, resources):
+        """ Changes costs displayed and colors """
+        price = self.getUpgradeCost()
+        for resource, amount in resources.items():
+            text = super().getObj(resource + "Cost")
+            text.changeText(str(price[resource]))
+
+            if amount < price[resource]: 
+                text.changeColor([ 255, 0, 0 ])
+            else: 
+                text.changeColor([ 0, 0, 0 ])
+    
+
+    def update(self, window, resources):
+        """ Updates buttons and prices on upgrade screen"""
+        super().update(window)
+        if not super().isDisplaying(): return None
+            
+        self.updatePrice(resources)
+
+        if resources >= self.getUpgradeCost():
+            super().getObj("upgrade").setDisplaying(True)
+            
+            self.bought = False
+
+            if super().getObj("upgrade").getPressed():
+                self.tower.upgrade()
+                self.selectTower(self.tower)
+                self.bought = True
+
+        else:
+            super().getObj("upgrade").setDisplaying(False)
+            self.bought = False
+    
+    
+    def getBought(self): return self.bought
+    def getTower(self): return self.tower

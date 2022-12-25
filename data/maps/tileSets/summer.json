@@ -1,6 +1,6 @@
 {
     "tiles": {
-        " ": { "move": "none",    "path": "res/tiles/exampleTiles/winterTile.png" },
+        " ": { "move": "none",    "path": "res/tiles/exampleTiles/baseTile.png" },
         "l": { "move": "left",    "path": "res/tiles/exampleTiles/turnLeft.png" },
         "r": { "move": "right",   "path": "res/tiles/exampleTiles/turnRight.png" },
         "-": { "move": "forward", "path": "res/tiles/exampleTiles/moveRight.png" },

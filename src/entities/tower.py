@@ -225,6 +225,7 @@ class Tower(Entity):
 
     def getUpgradeInfo(self): return self.upgradeInfo
     def getCurrentStats(self): return self.upgradeInfo[self.level]["stats"]
+    def getCurrentCosts(self): return self.upgradeInfo[self.level]["costs"]
 
     # Setters
     def unselect(self): self.showRange = False
