@@ -69,6 +69,7 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
 
             # Includes error traceback, with file and line number
             cls.errorMsg = traceback.format_exc()
+            print("\n" + cls.errorMsg + "\n")
     
 
     def testForError(self):

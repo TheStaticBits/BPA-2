@@ -43,12 +43,13 @@ class Round:
         self.tileset.update(window, consts)
         self.waves.update(window, self.tileset)
         self.resources += AdvDict(self.waves.getFrameDrops())
+        
+        self.updateTowers(window, consts)
 
         self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying(), self.isPlacingATower())
         self.upgradeMenu.update(window, self.resources)
 
         self.checkPurchases()
-        self.updateTowers(window, consts)
         
         if window.getMouseReleased("right"):
             if not self.isPlacingATower():

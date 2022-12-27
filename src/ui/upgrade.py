@@ -16,6 +16,7 @@ class UpgradeMenu(UI):
 
         self.bought = False
         self.tower = None
+        self.displayPrice = True
     
 
     def format(self, stats):
@@ -27,6 +28,7 @@ class UpgradeMenu(UI):
 
     def setPriceVisible(self, bool):
         """ Sets tower price to visible or not """
+        self.displayPrice = bool
         # Setting images and text for cost displaying
         for resource in self.tower.getCurrentCosts().keys():
             super().getObj(resource + "Img").setDisplaying(bool)
@@ -80,6 +82,8 @@ class UpgradeMenu(UI):
 
     def updatePrice(self, resources):
         """ Changes costs displayed and colors """
+        if not self.displayPrice: return False
+
         price = self.getUpgradeCost()
         for resource, amount in resources.items():
             text = super().getObj(resource + "Cost")
@@ -98,7 +102,7 @@ class UpgradeMenu(UI):
             
         self.updatePrice(resources)
 
-        if resources >= self.getUpgradeCost():
+        if self.displayPrice and resources >= self.getUpgradeCost():
             super().getObj("upgrade").setDisplaying(True)
             
             self.bought = False
