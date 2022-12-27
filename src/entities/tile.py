@@ -71,7 +71,7 @@ class Tile:
                 self.rotate = tileJson["rotated"][type]["degrees"]
                 type = tileJson["rotated"][type]["tile"]
             
-            # Tile that cannot be moved
+            # Tile that have towers placed on it
             elif type in tileJson["unmovable"]:
                 type = tileJson["unmovable"][type]["tile"]
                 self.unmovable = True
