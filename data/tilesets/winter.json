@@ -19,5 +19,8 @@
         "i": { "tile": "l", "degrees": 180 },
         "I": { "tile": "l", "degrees": -90 }
     },
+    "unmovable": {
+        "e": { "tile": " " }
+    },
     "deco": {}
 }

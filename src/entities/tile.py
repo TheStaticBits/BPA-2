@@ -52,6 +52,7 @@ class Tile:
             including tile decorations if any, and more """
         self.hasDeco = type in tileJson["deco"]
         self.rotate = None
+        self.unmovable = False
 
         if self.hasDeco: # Decoration tile, has to load animation on tile and stuff
             self.type = tileJson["deco"][type]["tile"] # Tile type of the tile behind deco
@@ -59,14 +60,21 @@ class Tile:
             self.decoOffset = Vect(tileJson["deco"][type]["offset"])
             self.isPlacable = tileJson["deco"][type]["placable"]
             self.moveWithTile = tileJson["deco"][type]["moveWithTile"]
+            self.unmovable = True
 
             animData = tileJson["deco"][type]["animation"]
             self.deco = Entity(animData)
 
         else:
+            # Tile that is a rotated version of a normal tile
             if type in tileJson["rotated"]:
                 self.rotate = tileJson["rotated"][type]["degrees"]
                 type = tileJson["rotated"][type]["tile"]
+            
+            # Tile that cannot be moved
+            elif type in tileJson["unmovable"]:
+                type = tileJson["unmovable"][type]["tile"]
+                self.unmovable = True
             
             self.type = type
             self.move = tileJson["tiles"][type]["move"]
@@ -165,7 +173,7 @@ class Tile:
 
     def canBePlacedOn(self): 
         """ Returns true if towers can be placed on the tile """
-        if self.hasDeco: return self.isPlacable
+        if self.unmovable: return False
         else: return self.move == "none"
 
     def getHasTower(self): return self.hasTower
