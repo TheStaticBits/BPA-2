@@ -74,7 +74,7 @@ class UpgradeMenu(UI):
     
 
     def getUpgradeCost(self):
-        """ Returns cost of the tower's level + 1 """
+        """ Returns cost to upgrade the tower (the cost of the tower level + 1) """
         return AdvDict(self.tower.getUpgradeInfo()[self.tower.getLevel() + 1]["costs"])
     
 

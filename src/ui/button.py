@@ -68,17 +68,7 @@ class Button(UIElement):
         """ Updates the button hover based on the mouse position, etc. """
         # if not displaying, don't update anything and break out of the function
         if not super().getDisplaying(): 
-            if self.text != None:
-                self.text.setDisplaying(False)
-            
-            # Resetting button data while not visible in order to prevent issues
-            self.pressed = False
-            self.heightOffset = self.offsets["default"]
             return None
-
-        else:
-            if self.text != None:
-                self.text.setDisplaying(True)
 
         self.pressed = False
 
@@ -112,7 +102,16 @@ class Button(UIElement):
 
     def render(self, window):
         """ Cuts off the bottom of the button when at an offset and renders it """
-        if not super().getDisplaying(): False
+        if not super().getDisplaying(): 
+            # Makes button not visible when button is invisible
+            if self.text != None:
+                self.text.setDisplaying(False)
+
+            return False
+            
+        else:
+            if self.text != None:
+                self.text.setDisplaying(True)
 
         if self.heightOffset != 0:
             img = pygame.Surface(super().getSize().getTuple(), 
