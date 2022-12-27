@@ -45,5 +45,12 @@
 
     "miscPaths": {
         "font": "res/font/monogram.ttf"
+    },
+
+    "startingResources": {
+        "wood": 20,
+        "steel": 0,
+        "uranium": 0,
+        "plasma": 0
     }
 }

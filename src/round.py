@@ -34,8 +34,11 @@ class Round:
         
         self.towers = []
 
-        # Default resources
-        self.resources = AdvDict( { "wood": 20, "steel": 0, "uranium": 0, "plasma": 0 } )
+        try:
+            # Default resources
+            self.resources = AdvDict(consts["startingResources"])
+        except KeyError as exc:
+            Error.createError("Unable to find starting resources for the player in the constants JSON file.", self.log, exc)
     
     
     def update(self, window, consts):

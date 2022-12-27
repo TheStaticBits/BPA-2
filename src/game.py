@@ -30,7 +30,7 @@ class Game:
         try:
             # Init objects
             self.log.info("Loading game scene")
-            self.round = Round("amapwow", self.constants, self.uiData)
+            self.round = Round("wintermapone", self.constants, self.uiData)
 
         except Exception as exc:
             Error.createError("Error occured while loading game", self.log, exc)

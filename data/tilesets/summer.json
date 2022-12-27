@@ -1,4 +1,6 @@
 {
+    "baseTile": " ",
+
     "tiles": {
         " ": { "move": "none",    "path": "res/tiles/exampleTiles/baseTile.png" },
         "l": { "move": "left",    "path": "res/tiles/exampleTiles/turnLeft.png" },

@@ -53,7 +53,7 @@ class Tile:
         self.hasDeco = type in tileJson["deco"]
         self.rotate = None
 
-        if self.hasDeco:
+        if self.hasDeco: # Decoration tile, has to load animation on tile and stuff
             self.type = tileJson["deco"][type]["tile"] # Tile type of the tile behind deco
             self.decoTile = type
             self.decoOffset = Vect(tileJson["deco"][type]["offset"])
@@ -80,6 +80,12 @@ class Tile:
             # tiles of the same type
             path = tileJson["tiles"][self.type]["path"]
             self.textures[self.type] = util.loadTexTransparent(path)
+        
+        # loading base tile
+        self.baseTile = tileJson["baseTile"]
+        if tileJson["baseTile"] not in self.textures:
+            path = tileJson["tiles"][tileJson["baseTile"]]
+            self.textures[tileJson["baseTile"]] = util.loadTexTransparent(path)
     
 
     def updateMouseHover(self, window, consts):
@@ -115,6 +121,9 @@ class Tile:
     def render(self, window): # window is the Window object
         """ Render the tile itself """ 
         tex = self.textures[self.type]
+
+        if self.type != self.baseTile:
+            window.render(self.textures[self.baseTile], self.pos)
 
         if self.rotate != None: 
             tex = pygame.transform.rotate(tex, self.rotate)
