@@ -5,6 +5,7 @@ import src.utility.utility as util
 from src.window import Window
 from src.round import Round
 from src.ui.error import Error
+from src.ui.mainMenu import MainMenu
 
 class Game:
     """ Handles scenes and the functionality of the entire game """
@@ -12,20 +13,21 @@ class Game:
         """ Loads game data and needed scene objects """
 
         self.constants = util.loadJson("data/constants.json")
+        self.uiData = util.loadJson(self.constants["jsonPaths"]["ui"])
 
         util.imgScale = self.constants["game"]["imgScale"]
 
         # Setup logging
         util.setupLogger(self.constants)
-
-        # Class logger
         self.log = logging.getLogger(__name__)
 
         self.window = Window(self.constants)
 
-        self.uiData = util.loadJson(self.constants["jsonPaths"]["ui"])
         # Error menu handler
         self.errorUI = Error(self.constants, self.uiData)
+        self.mainMenu = MainMenu(self.constants, self.uiData)
+        
+        self.scene = "round"
 
         try:
             # Init objects
@@ -43,20 +45,28 @@ class Game:
             self.window.handleInputs()
             
             self.errorUI.update(self.window)
+            self.errorUI.render(self.window)
             
             if not self.errorUI.isDisplaying():
                 if self.errorUI.hasCrashed():
-                    break # User pressed "Close Game"
+                    break # User pressed "Close Game" on error menu
 
-            if not self.errorUI.isDisplaying():
+                # Run a frame
                 try:
-                    self.round.update(self.window, self.constants)
-                    self.round.render(self.window, self.constants)
+                    self.runFrame()
+
                 except Exception as exc:
                     Error.createError("An unhandled error occured while the game was running.", self.log, exc)
-                
-            else:
-                self.errorUI.render(self.window)
 
             
             self.window.update(self.constants)
+    
+
+    def runFrame(self):
+        if self.scene == "mainMenu":
+            self.mainMenu.update(self.window)
+            self.mainMenu.render(self.window)
+
+        elif self.scene == "round":
+            self.round.update(self.window, self.constants)
+            self.round.render(self.window, self.constants)

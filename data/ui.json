@@ -105,7 +105,7 @@
         "text": {
             "continueButtonText": { "text": "", "fontSize": 30,
                                     "color": [ 255, 255, 255 ] },
-            "emailButtonText":    { "text": "Report Bug", "fontSize": 30,
+            "emailButtonText":    { "text": "Email Logs", "fontSize": 30,
                                     "color": [ 255, 255, 255 ] },
             "viewLogs":           { "text": "Logs", "fontSize": 30,
                                      "color": [ 255, 255, 255 ]},
@@ -177,6 +177,21 @@
             "plasmaCost":  { "text": "0", "fontSize": 15,
                              "pos": [ 155, 306 ], "centered": false,
                              "color": [ 0, 0, 0 ] }
+        }
+    },
+
+    "mainMenu": {
+        "offset": [ 0, 0 ],
+        
+        "images": {
+            "bg": { "path": "res/ui/backgrounds/mainMenuBG.png",
+                    "pos": [ 0, 0 ], "centered": false }
+        },
+        "buttons": {
+
+        },
+        "text": {
+
         }
     }
 }

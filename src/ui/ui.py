@@ -18,6 +18,7 @@ class UI:
 
     def load(self, consts, type, data):
         """ Loads all UI objects """
+        self.type = type
         try:
             self.data = data[type]
             self.offset = Vect(self.data["offset"])
@@ -58,7 +59,13 @@ class UI:
                 obj.render(window)
 
 
-    def getObj(self, name): return self.objects[name]
+    def getObj(self, name): 
+        try:
+            return self.objects[name]
+
+        except KeyError as exc:
+            error.Error.createError(f"Unable to find required UI element object \"{name}\" in \"{self.type}\" UI.", self.log, exc)
+
     def getLogger(self): return self.log
     def isDisplaying(self): return self.displaying
     

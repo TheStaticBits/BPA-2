@@ -8,7 +8,7 @@
     "window": {
         "title": "BPA Game: 2022-2023",
         "size": [ 800, 600 ],
-        "maxFPS": -1,
+        
         "outputFPS": true
     },
 
@@ -52,5 +52,11 @@
         "steel": 0,
         "uranium": 0,
         "plasma": 0
+    },
+
+    "emailReporting": {
+        "email": "reporterofcrashes@gmail.com",
+        "encodedPassword": "dXNvcG90cG1leXVkamxsZg==",
+        "numberOfLogs": 30
     }
 }

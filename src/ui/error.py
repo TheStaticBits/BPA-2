@@ -3,6 +3,12 @@ import logging
 import traceback
 import os
 
+# for email crash reporting
+import smtplib, ssl
+import base64
+from email.message import EmailMessage
+from datetime import datetime
+
 import src.ui.ui as ui
 
 class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
@@ -20,10 +26,19 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
 
         super().load(consts, "error", uiData) # Loading UI objects from the UI data in the JSON file
         
+        # Loading data from constants.json
         try:
             self.errorFilePath = consts["log"]["errors"]
         except KeyError as exc:
             self.createError("Error loading error file path", super().getLogger(), exc)
+        
+        try:
+            self.email = consts["emailReporting"]["email"]
+            self.pwd = consts["emailReporting"]["encodedPassword"]
+            self.numberOfLogs = consts["emailReporting"]["numberOfLogs"]
+
+        except KeyError as exc:
+            self.createError("Error loading email reporter info from constants JSON.", super().getLogger(), exc)
         
         self.logsFilePath = consts["log"]["output"]
 
@@ -43,6 +58,7 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
             
             if super().getObj("email").getPressed():
                 self.log.info("Emailed crash information")
+                self.emailCrash()
             
             if super().getObj("viewError").getPressed():
                 # Opens the errors text file using the default text editor
@@ -99,6 +115,38 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
                 textTitle.changeText("A nonrecoverable error occured:")
                 # Changing the text of the button to "Close Game"
                 super().getObj("continue").getTextObj().changeText("Close Game")
+    
+
+    def emailCrash(self):
+        """ Emails the error and some log lines above the crash to our email """
+
+        # Decode email password from base64
+        pwd = base64.b64decode(self.pwd).decode("utf-8")
+        print(pwd)
+
+        # Loading logs to include some in the email
+        with open(self.logsFilePath, "r") as file:
+            logs = file.read()
+
+        # Removes everything in the logs list but the last number of lines
+        logs = logs.split("\n")
+        logs = logs[-self.numberOfLogs:]
+
+        emailBody = Error.errorMsg + "\n"
+        emailBody += "\n".join(logs) # Turns list into string separated by newlines
+
+        # Sending crash error and logs from the email to the same email
+        # for developers to look at
+        message = EmailMessage()
+        message["Subject"] = str(datetime.now()) # current time as the email subject
+        message["From"] = self.email
+        message["To"] = self.email
+        message.set_content(emailBody)
+
+        # Logging in and sending through SMPT Gmail
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as s:
+            s.login(self.email, pwd)
+            s.send_message(message)
     
 
     def hasCrashed(self): 
