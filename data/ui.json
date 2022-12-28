@@ -105,7 +105,7 @@
         "text": {
             "continueButtonText": { "text": "", "fontSize": 30,
                                     "color": [ 255, 255, 255 ] },
-            "emailButtonText":    { "text": "Email Logs", "fontSize": 30,
+            "emailButtonText":    { "text": "Send Email", "fontSize": 30,
                                     "color": [ 255, 255, 255 ] },
             "viewLogs":           { "text": "Logs", "fontSize": 30,
                                      "color": [ 255, 255, 255 ]},
