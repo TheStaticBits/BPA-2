@@ -69,15 +69,22 @@ class Tile:
             # Tile that is a rotated version of a normal tile
             if type in tileJson["rotated"]:
                 self.rotate = tileJson["rotated"][type]["degrees"]
-                type = tileJson["rotated"][type]["tile"]
+                self.type = tileJson["rotated"][type]["tile"]
+                
+                if "move" in tileJson["rotated"][type]:
+                    self.move = tileJson["rotated"][type]["move"]
+                else:
+                    self.move = tileJson["tiles"][self.type]["move"]
+
             
             # Tile that have towers placed on it
-            elif type in tileJson["unmovable"]:
-                type = tileJson["unmovable"][type]["tile"]
-                self.unmovable = True
-            
-            self.type = type
-            self.move = tileJson["tiles"][type]["move"]
+            else: 
+                if type in tileJson["unmovable"]:
+                    type = tileJson["unmovable"][type]["tile"]
+                    self.unmovable = True
+                
+                self.move = tileJson["tiles"][type]["move"]
+                self.type = type
             
                 
     def loadTex(self, tileJson):
