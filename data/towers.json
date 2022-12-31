@@ -51,13 +51,13 @@
             { "costs": { "wood": 10, "steel": 1, "uranium": 0, "plasma": 0  },
               "stats": { "range": 110, "damage": 2, "attackCooldown": 1.7   } },
 
-            { "costs": { "wood": 10, "steel": 5, "uranium": 0, "plasma": 0  },
+            { "costs": { "wood": 5, "steel": 5, "uranium": 0, "plasma": 0  },
               "stats": { "range": 120, "damage": 2, "attackCooldown": 1.6   } },
 
-            { "costs": { "wood": 35, "steel": 10, "uranium": 0, "plasma": 0 },
+            { "costs": { "wood": 25, "steel": 12, "uranium": 0, "plasma": 0 },
               "stats": { "range": 140, "damage": 2.5, "attackCooldown": 1.4 } },
 
-            { "costs": { "wood": 70, "steel": 20, "uranium": 0, "plasma": 0 },
+            { "costs": { "wood": 40, "steel": 24, "uranium": 0, "plasma": 0 },
               "stats": { "range": 150, "damage": 3, "attackCooldown": 1.1   } }
         ]
     },
