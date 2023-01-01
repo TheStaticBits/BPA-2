@@ -44,8 +44,8 @@ class UpgradeMenu(UI):
         self.tower = tower
         
         # Change tower name displayed, upgrade level, image, price of upgrade, and upgrade stats here
-        super().getObj("towerName").changeText(tower.getType())
-        super().getObj("upgradeLevel").changeText(f"Lvl: {tower.getLevel() + 1}")
+        super().getObj("towerName").setText(tower.getType())
+        super().getObj("upgradeLevel").setText(f"Lvl: {tower.getLevel() + 1}")
 
         towerStats = self.format(tower.getCurrentStats())
         towerStatsStr = [f"{key}: {value}" for key, value in towerStats.items()]
@@ -70,7 +70,7 @@ class UpgradeMenu(UI):
             self.setPriceVisible(False)
             super().getObj("upgrade").setDisplaying(False)
         
-        super().getObj("towerStats").changeText("\n".join(towerStatsStr))
+        super().getObj("towerStats").setText("\n".join(towerStatsStr))
         
         super().getObj("tower").setImg(tower.getImg())
     
@@ -87,7 +87,7 @@ class UpgradeMenu(UI):
         price = self.getUpgradeCost()
         for resource, amount in resources.items():
             text = super().getObj(resource + "Cost")
-            text.changeText(str(price[resource]))
+            text.setText(str(price[resource]))
 
             if amount < price[resource]: 
                 text.changeColor([ 255, 0, 0 ])

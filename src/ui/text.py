@@ -59,7 +59,7 @@ class Text(UIElement):
         self.updateTextImg()
 
 
-    def changeText(self, text):
+    def setText(self, text):
         """ Changes text and text image """
         if self.text != text:
             self.text = text

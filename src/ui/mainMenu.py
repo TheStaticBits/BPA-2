@@ -36,11 +36,13 @@ class MainMenu(UI):
             # Draw tiles to mapImage
             mapTiles.renderToSurf(mapImage)
 
-            mapImage = pygame.transform.scale(mapImage, ( 300, 300 ))
+            mapImage = pygame.transform.scale(mapImage, ( 250, 250 ))
 
             self.loadedMaps[self.getSelectedMap()] = mapImage
 
         super().getObj("map").setImg(self.loadedMaps[self.getSelectedMap()])
+
+        super().getObj("mapName").setText(self.mapsDict[self.getSelectedMap()])
 
 
     def update(self, window):

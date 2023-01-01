@@ -97,7 +97,7 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
             super().setDisplaying(True) # Set error UI to be displaying
             
             # Updating error message box with the error
-            super().getObj("errorMsg").changeText(self.errorMsg)
+            super().getObj("errorMsg").setText(self.errorMsg)
             
             # Appending the error to the error text file
             if isinstance(self.errorFilePath, str):
@@ -108,13 +108,13 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
 
             # Recoverable means whether or not the program can continue running after the error has occured
             if self.recoverable:
-                textTitle.changeText("A recoverable error occured:")
+                textTitle.setText("A recoverable error occured:")
                 # Gets the Button object, getting the Text object of the button object, and changing the text to "Continue"
-                super().getObj("continue").getTextObj().changeText("Continue")
+                super().getObj("continue").getTextObj().setText("Continue")
             else:
-                textTitle.changeText("A nonrecoverable error occured:")
+                textTitle.setText("A nonrecoverable error occured:")
                 # Changing the text of the button to "Close Game"
-                super().getObj("continue").getTextObj().changeText("Close Game")
+                super().getObj("continue").getTextObj().setText("Close Game")
     
 
     def emailCrash(self):

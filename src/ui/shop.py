@@ -49,7 +49,7 @@ class Shop(UI):
         # Change tower image
         super().getObj("tower").setImg(self.towerImages[towerName])
         # Change tower name
-        super().getObj("towerName").changeText(towerName)
+        super().getObj("towerName").setText(towerName)
 
         self.towerPrice = AdvDict(self.getTowerPrice())
     
@@ -73,7 +73,7 @@ class Shop(UI):
         """ Updates amount of resources displayed """
         for name, amount in resources.items():
             obj = super().getObj(name + "Amount")
-            obj.changeText(str(amount))
+            obj.setText(str(amount))
     
 
     def updateTowerCosts(self, resources):
@@ -81,7 +81,7 @@ class Shop(UI):
         for resource, amount in resources.items():
             text = super().getObj(resource + "Cost")
 
-            text.changeText(str(self.towerPrice[resource]))
+            text.setText(str(self.towerPrice[resource]))
             
             if amount < self.towerPrice[resource]:
                 text.changeColor([ 255, 0, 0 ]) # Set to red color

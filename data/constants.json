@@ -62,6 +62,7 @@
 
     "maps": {
         "wintermapone": "Winter 1",
-        "wintermaptwo": "Winter 2"
+        "wintermaptwo": "Winter 2",
+        "wintermapthree": "Winter 3"
     }
 }
