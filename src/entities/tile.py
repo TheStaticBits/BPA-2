@@ -133,12 +133,13 @@ class Tile:
         self.updateMouseHover(window, consts)
 
     
-    def render(self, window): # window is the Window object
+    def render(self, window, surf=False): # window is the Window object
         """ Render the tile itself """ 
         tex = self.textures[self.type]
 
         if self.type != self.baseTile:
-            window.render(self.textures[self.baseTile], self.pos)
+            if surf: window.blit(self.textures[self.baseTile], self.pos.getTuple())
+            else: window.render(self.textures[self.baseTile], self.pos)
 
         if self.rotate != None: 
             tex = pygame.transform.rotate(tex, self.rotate)
@@ -146,7 +147,8 @@ class Tile:
         renderPos = self.pos.copy()
         renderPos.y -= self.hoverOffset
         
-        window.render(tex, renderPos)
+        if surf: window.blit(tex, renderPos.getTuple())
+        else: window.render(tex, renderPos)
     
     
     def renderDeco(self, window):

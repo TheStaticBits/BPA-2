@@ -185,13 +185,31 @@
         
         "images": {
             "bg": { "path": "res/ui/backgrounds/mainMenuBG.png",
-                    "pos": [ 0, 0 ], "centered": false }
+                    "pos": [ 0, 0 ], "centered": false },
+            
+            "logo": { "path": "res/ui/mainMenu/logo.png",
+                      "pos": [ 400, 100 ], "centered": true },
+            
+            "map": { "path": "res/ui/error.png",
+                     "pos": [ 400, 300 ], "centered": true }
         },
         "buttons": {
-
+            "play": { "path": "res/ui/buttons/play.png",
+                      "offsets": { "default": 4, "pressed": 12, "moveSpeed": 20 },
+                      "pos": [ 400, 500 ], "centered": true,
+                      "text": "playText", "chinHeight": 20 },
+            
+            "left": { "path": "res/ui/buttons/left.png",
+                      "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
+                      "pos": [ 200, 275 ], "centered": true },
+            
+            "right": { "path": "res/ui/buttons/right.png",
+                      "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
+                      "pos": [ 600, 275 ], "centered": true }
         },
         "text": {
-
+            "playText": { "text": "Play", "fontSize": 40,
+                          "color": [ 0, 0, 0 ] }
         }
     }
 }

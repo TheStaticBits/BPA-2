@@ -1,10 +1,10 @@
 {
     "jony aplseed": {
-        "animation": { "path": "res/enemies/jonyaplseed.png", 
-                       "frames": 2, 
+        "animation": { "path": "res/enemies/poop.png", 
+                       "frames": 1, 
                        "delay": 0.4 },
 
-        "speed": 200, "health": 1,
+        "speed": 60, "health": 1,
 
         "ability": { "delay": 7, "execute": "self.health += 1" },
 

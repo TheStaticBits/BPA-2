@@ -58,5 +58,10 @@
         "email": "reporterofcrashes@gmail.com",
         "encodedPassword": "dXNvcG90cG1leXVkamxsZg==",
         "numberOfLogs": 30
+    },
+
+    "maps": {
+        "wintermapone": "Winter 1",
+        "wintermaptwo": "Winter 2"
     }
 }

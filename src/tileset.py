@@ -75,6 +75,13 @@ class Tileset:
                 tile.render(window)
     
     
+    def renderToSurf(self, surface):
+        """ Renders tiles to a Pygame Surface """
+        for row in self.tiles:
+            for tile in row:
+                tile.render(surface, surf=True)
+    
+    
     def renderDeco(self, window):
         """ Renders any decoration on the tiles"""
         for row in self.tiles:
@@ -106,6 +113,6 @@ class Tileset:
     def getTilesSize(self): return Vect(len(self.tiles[0]), len(self.tiles))
 
     def getBoardSize(self):
-        tileSize = self.tiles[0][0].getSize()
+        tileSize = self.tiles[0][0].getSize().x
         size = self.getTilesSize() * tileSize
         return size

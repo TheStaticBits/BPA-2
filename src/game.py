@@ -27,12 +27,11 @@ class Game:
         self.errorUI = Error(self.constants, self.uiData)
         self.mainMenu = MainMenu(self.constants, self.uiData)
         
-        self.scene = "round"
+        self.scene = "mainMenu"
 
         try:
             # Init objects
             self.log.info("Loading game scene")
-            self.round = Round("wintermaptwo", self.constants, self.uiData)
 
         except Exception as exc:
             Error.createError("Error occured while loading game", self.log, exc)
@@ -66,6 +65,10 @@ class Game:
         if self.scene == "mainMenu":
             self.mainMenu.update(self.window)
             self.mainMenu.render(self.window)
+
+            if self.mainMenu.pressedPlay():
+                self.round = Round(self.mainMenu.getSelectedMap(), self.constants, self.uiData)
+                self.scene = "round"
 
         elif self.scene == "round":
             self.round.update(self.window, self.constants)
