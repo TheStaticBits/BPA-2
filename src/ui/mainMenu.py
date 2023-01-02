@@ -3,11 +3,11 @@ import logging
 
 from src.ui.ui import UI
 from src.ui.error import Error
-
+from src.utility.database import DatabaseHandler
 from src.tileset import Tileset
 
 class MainMenu(UI):
-    def __init__(self, consts, uiData):
+    def __init__(self, consts, uiData, saveDatabase):
         super().__init__(True, __name__)
         
         super().load(consts, "mainMenu", uiData) # Loading UI objects for specifically the upgrades menu
@@ -21,6 +21,7 @@ class MainMenu(UI):
         
         self.mapShown = 0 # index of map in self.mapsOrder
         self.consts = consts
+        self.saveDatabase = saveDatabase
 
         self.updateMapShown()
     
@@ -31,8 +32,6 @@ class MainMenu(UI):
             mapTiles = Tileset(self.getSelectedMap(), self.consts)
             mapImage = pygame.Surface(mapTiles.getBoardSize().getTuple())
 
-            print(mapTiles.getTilesSize())
-
             # Draw tiles to mapImage
             mapTiles.renderToSurf(mapImage)
 
@@ -41,8 +40,13 @@ class MainMenu(UI):
             self.loadedMaps[self.getSelectedMap()] = mapImage
 
         super().getObj("map").setImg(self.loadedMaps[self.getSelectedMap()])
-
         super().getObj("mapName").setText(self.mapsDict[self.getSelectedMap()])
+
+
+        highscore = self.saveDatabase.findValue("waveHighscores", "highscore", "map", self.getSelectedMap())
+        if highscore == None: highscore = 0 # If the map hasn't been played yet
+
+        super().getObj("highscore").setText(f"Wave Highscore: {highscore}")
 
 
     def update(self, window):

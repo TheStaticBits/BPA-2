@@ -220,7 +220,11 @@
             
             "mapName": { "text": "placeholder", "fontSize": 30,
                          "pos": [ 550, 100 ], "centered": true,
-                         "color": [ 0, 0, 0 ] }
+                         "color": [ 0, 0, 0 ] },
+            
+            "highscore": { "text": "Wave highscore: ", "fontSize": 15,
+                           "pos": [ 550, 140 ], "centered": true,
+                           "color": [ 0, 0, 0 ] }
         }
     }
 }

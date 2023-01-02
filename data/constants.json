@@ -3,7 +3,7 @@
         "level": "DEBUG",
         "output": "saves/log/log.txt",
         "errors": "saves/log/exceptions.txt",
-        "saveFile": "saves/save.dat"
+        "saveFile": "saves/save.db"
     },
     
     "window": {

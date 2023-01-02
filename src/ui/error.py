@@ -119,10 +119,11 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
 
     def emailCrash(self):
         """ Emails the error and some log lines above the crash to our email """
+        
+        self.log.info("Emailing error")
 
         # Decode email password from base64
         pwd = base64.b64decode(self.pwd).decode("utf-8")
-        print(pwd)
 
         # Loading logs to include some in the email
         with open(self.logsFilePath, "r") as file:
@@ -135,6 +136,8 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
         emailBody = Error.errorMsg + "\n"
         emailBody += "\n".join(logs) # Turns list into string separated by newlines
 
+        self.log.info("Compiling email message")
+
         # Sending crash error and logs from the email to the same email
         # for developers to look at
         message = EmailMessage()
@@ -142,6 +145,8 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
         message["From"] = self.email
         message["To"] = self.email
         message.set_content(emailBody)
+
+        self.log.info("Sending email")
 
         # Logging in and sending through SMPT Gmail
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as s:

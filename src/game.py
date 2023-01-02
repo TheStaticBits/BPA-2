@@ -29,13 +29,15 @@ class Game:
             self.log.info("Loading game...")
             
             self.window = Window(self.constants)
+
+            # Save file
+            self.save = DatabaseHandler(self.constants["log"]["saveFile"])
+            self.save.createTable("waveHighscores", "map TEXT, highscore INTEGER")
+            # Creates database table if not already created
             
             # Error menu handler
             self.errorUI = Error(self.constants, self.uiData)
-            self.mainMenu = MainMenu(self.constants, self.uiData)
-
-            self.save = DatabaseHandler(self.constants["log"]["saveFile"])
-            #self.save.createTable("waveHighscores", "(map TEXT, highscore INTEGER)")
+            self.mainMenu = MainMenu(self.constants, self.uiData, self.save)
 
         except Exception as exc:
             Error.createError("Error occured while loading game", self.log, exc)
