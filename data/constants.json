@@ -2,11 +2,12 @@
     "log": {
         "level": "DEBUG",
         "output": "saves/log/log.txt",
-        "errors": "saves/log/exceptions.txt"
+        "errors": "saves/log/exceptions.txt",
+        "saveFile": "saves/save.dat"
     },
     
     "window": {
-        "title": "BPA Game: 2022-2023",
+        "title": "Towers Of Time",
         "size": [ 800, 600 ],
         "maxFPS": -1,
         "outputFPS": true

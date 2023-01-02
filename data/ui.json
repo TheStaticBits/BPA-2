@@ -72,7 +72,11 @@
                              "color": [ 0, 0, 0 ] },
             "plasmaCost":  { "text": "", "fontSize": 15,
                              "pos": [ 155, 276 ], "centered": false,
-                             "color": [ 0, 0, 0 ] }
+                             "color": [ 0, 0, 0 ] },
+            
+            "waveNum": { "text": "Wave: ", "fontSize": 15,
+                         "pos": [ 100, 30 ], "centered": true,
+                         "color": [ 0, 0, 0 ] }
         }
     },
 

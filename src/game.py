@@ -6,6 +6,7 @@ from src.window import Window
 from src.round import Round
 from src.ui.error import Error
 from src.ui.mainMenu import MainMenu
+from src.utility.database import DatabaseHandler
 
 class Game:
     """ Handles scenes and the functionality of the entire game """
@@ -20,18 +21,21 @@ class Game:
         # Setup logging
         util.setupLogger(self.constants)
         self.log = logging.getLogger(__name__)
-
-        self.window = Window(self.constants)
-
-        # Error menu handler
-        self.errorUI = Error(self.constants, self.uiData)
-        self.mainMenu = MainMenu(self.constants, self.uiData)
         
         self.scene = "mainMenu"
 
         try:
             # Init objects
-            self.log.info("Loading game scene")
+            self.log.info("Loading game...")
+            
+            self.window = Window(self.constants)
+            
+            # Error menu handler
+            self.errorUI = Error(self.constants, self.uiData)
+            self.mainMenu = MainMenu(self.constants, self.uiData)
+
+            self.save = DatabaseHandler(self.constants["log"]["saveFile"])
+            #self.save.createTable("waveHighscores", "(map TEXT, highscore INTEGER)")
 
         except Exception as exc:
             Error.createError("Error occured while loading game", self.log, exc)
@@ -59,6 +63,8 @@ class Game:
 
             
             self.window.update(self.constants)
+        
+        self.save.close()
     
 
     def runFrame(self):
