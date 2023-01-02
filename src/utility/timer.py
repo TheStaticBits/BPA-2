@@ -18,10 +18,13 @@ class Timer:
         self.timer -= window.getDeltaTime()
 
         if self.timer <= 0:
-            self.timer = self.delay
-
+            self.timer += self.delay
             self.activate = True
     
 
     def activated(self): 
         return self.activate
+    
+
+    def changeDelay(self, newDelay):
+        self.delay = newDelay
