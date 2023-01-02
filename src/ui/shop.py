@@ -89,7 +89,7 @@ class Shop(UI):
                 text.changeColor([ 0, 0, 0 ]) # Set to black (has enough to buy it)
 
 
-    def update(self, window, resources, showingUpgrades, isPlacingTower):
+    def update(self, window, resources, showingUpgrades, isPlacingTower, waveNum):
         """ Updates everything within the shop menu """
         
         # If the upgrades menu is not open, update shop buttons
@@ -111,6 +111,9 @@ class Shop(UI):
         else:
             super().getObj("buy").setDisplaying(False)
             self.bought = False
+        
+
+        super().getObj("waveNum").setText(f"Wave: {waveNum + 1}")
 
     
     def getSelectedTowerName(self):

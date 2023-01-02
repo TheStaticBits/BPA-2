@@ -136,4 +136,5 @@ class Waves:
         return collided
     
 
-    def getFrameDrops(self): return self.drops
+    def getFrameDrops(self): return self.drops # Enemy drops from that frame
+    def getWaveNum(self): return self.waveNum

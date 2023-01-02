@@ -49,7 +49,7 @@ class Round:
         
         self.updateTowers(window, consts)
 
-        self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying(), self.isPlacingATower())
+        self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying(), self.isPlacingATower(), self.waves.getWaveNum())
         self.upgradeMenu.update(window, self.resources)
 
         self.checkPurchases()
