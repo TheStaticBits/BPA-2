@@ -2,7 +2,8 @@
     "log": {
         "level": "DEBUG",
         "output": "saves/log/log.txt",
-        "errors": "saves/log/exceptions.txt"
+        "errors": "saves/log/exceptions.txt",
+        "saveFile": "saves/save.dat"
     },
     
     "window": {

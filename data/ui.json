@@ -75,7 +75,7 @@
                              "color": [ 0, 0, 0 ] },
             
             "waveNum": { "text": "Wave: ", "fontSize": 15,
-                         "pos": [ 100, 300 ], "centered": true,
+                         "pos": [ 100, 30 ], "centered": true,
                          "color": [ 0, 0, 0 ] }
         }
     },

@@ -20,18 +20,18 @@ class Game:
         # Setup logging
         util.setupLogger(self.constants)
         self.log = logging.getLogger(__name__)
-
-        self.window = Window(self.constants)
-
-        # Error menu handler
-        self.errorUI = Error(self.constants, self.uiData)
-        self.mainMenu = MainMenu(self.constants, self.uiData)
         
         self.scene = "mainMenu"
 
         try:
             # Init objects
-            self.log.info("Loading game scene")
+            self.log.info("Loading game...")
+            
+            self.window = Window(self.constants)
+            
+            # Error menu handler
+            self.errorUI = Error(self.constants, self.uiData)
+            self.mainMenu = MainMenu(self.constants, self.uiData)
 
         except Exception as exc:
             Error.createError("Error occured while loading game", self.log, exc)
