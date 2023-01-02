@@ -1,5 +1,6 @@
 {
     "baseTile": " ",
+    "music": "",
 
     "tiles": {
         " ": { "move": "none",    "path": "res/tiles/exampleTiles/baseTile.png" },
