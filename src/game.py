@@ -35,6 +35,7 @@ class Game:
             self.mainMenu = MainMenu(self.constants, self.uiData)
 
             self.save = DatabaseHandler(self.constants["log"]["saveFile"])
+            #self.save.createTable("waveHighscores", "(map TEXT, highscore INTEGER)")
 
         except Exception as exc:
             Error.createError("Error occured while loading game", self.log, exc)
@@ -62,6 +63,8 @@ class Game:
 
             
             self.window.update(self.constants)
+        
+        self.save.close()
     
 
     def runFrame(self):

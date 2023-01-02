@@ -154,7 +154,7 @@ class Enemy(Entity):
     
     def getDrops(self):
         """ Returns a dictionary of how much of each resource the enemy dropped """
-        drops = { "wood": 0, "steel": 0, "uranium": 0 }
+        drops = {}
 
         for i in range(self.dropAmount):
             num = random.randint(0, 100)
@@ -162,10 +162,13 @@ class Enemy(Entity):
             # Matches up the random number with a drop chance and 
             # adds one drop to the resource randomly chosen
             for resource, chance in self.dropChances.items():
-                if num <= chance:
+                if resource not in drops:
+                    drops[resource] = 0
+                
+                if num <= chance: # Chosen resource!
                     drops[resource] += 1
                     break
                 else:
-                    num -= chance
+                    num -= chance # Moving onto the next resource's chances
         
         return drops
