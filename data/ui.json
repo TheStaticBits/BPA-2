@@ -232,13 +232,14 @@
         "offset": [ 0, 0 ],
 
         "images": {
-
+            "bg": { "path": "res/ui/backgrounds/deathScreenBG.png",
+                    "pos": [ 400, 300 ], "centered": true }
         },
         "buttons": {
 
         },
         "text": {
-            
+
         }
     }
 }

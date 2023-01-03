@@ -41,7 +41,7 @@ class Waves:
 
     def updateSpawnData(self, waveNum):
         """ Creates data dictionary for spawning enemies"""
-        self.log.info(f"Loading wave number {waveNum}:")
+        self.log.info(f"Loading wave {waveNum}:")
 
         self.spawnData = {}
         try:
@@ -65,7 +65,7 @@ class Waves:
             
             if enemy.hasReachedMapEnd(tileset):
                 self.health -= enemy.getDamage() # player take damage
-                # self.log.info(f"Player health now at {self.health}")
+                self.log.info(f"Player health now at {self.health}")
             
             elif not enemy.isDead(tileset): # Enemy alive still
                 stillAlive.append(enemy)
@@ -139,6 +139,7 @@ class Waves:
         return collided
     
 
+    def playerIsDead(self): return self.health <= 0
     def getFrameDrops(self): return self.drops # Enemy drops from that frame
     def getWaveNum(self): return self.waveNum
     def getWaveDelay(self): 

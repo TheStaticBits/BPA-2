@@ -109,9 +109,11 @@ class Tileset:
     def getTileAt(self, coords): 
         """ Returns the tile at the given board coordinates,
             returns False if the coordinates are outside of the tileset """
-        if coords.x < len(self.tiles[0]) and coords.y < len(self.tiles):
+        if coords.x < len(self.tiles[0]) and coords.y < len(self.tiles) and coords >= Vect(0, 0):
             return self.tiles[coords.y][coords.x]
-        else: return False # Out of index
+        
+        else: 
+            return False # Out of index
     
     def getMouseTile(self):
         """ Finds and returns the tile that the mouse is on,

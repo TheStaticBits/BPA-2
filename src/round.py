@@ -9,6 +9,7 @@ from src.waves import Waves
 from src.ui.shop import Shop
 from src.ui.upgrade import UpgradeMenu
 from src.ui.error import Error
+from src.ui.deathScreen import DeathScreen
 
 class Round:
     """ Handles the game content, such as the world, tileset, and towers
@@ -17,7 +18,7 @@ class Round:
     towersJson = None
     shopData = None
 
-    def __init__(self, map, consts, uiData):
+    def __init__(self, map, consts, uiData, saveDatabase):
         """ Setup tileset object, etc. """
         self.log = logging.getLogger(__name__)
 
@@ -31,6 +32,10 @@ class Round:
 
         self.shop = Shop(consts, uiData, self.towersJson)
         self.upgradeMenu = UpgradeMenu(consts, uiData)
+
+        self.deathScreen = DeathScreen(consts, uiData)
+
+        self.saveDatabase = saveDatabase
         
         self.towers = []
 
@@ -43,21 +48,27 @@ class Round:
     
     def update(self, window, consts):
         """ Updates everything for the frame """
-        self.tileset.update(window, consts)
-        self.waves.update(window, self.tileset)
-        self.resources += AdvDict(self.waves.getFrameDrops())
-        
-        self.updateTowers(window, consts)
+        if not self.deathScreen.isDisplaying():
+            self.tileset.update(window, consts)
+            self.waves.update(window, self.tileset)
+            self.resources += AdvDict(self.waves.getFrameDrops())
+            
+            self.updateTowers(window, consts)
 
-        self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying(), self.isPlacingATower(), self.waves.getWaveNum())
-        self.upgradeMenu.update(window, self.resources)
+            self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying(), self.isPlacingATower(), self.waves.getWaveNum())
+            self.upgradeMenu.update(window, self.resources)
 
-        self.checkPurchases()
+            self.checkPurchases()
+            
+            if window.getMouseReleased("right"):
+                if not self.isPlacingATower():
+                    self.unselectTowers()
+                    self.towers.append(Tower("Placeholder bro", self.towersJson))
         
-        if window.getMouseReleased("right"):
-            if not self.isPlacingATower():
-                self.unselectTowers()
-                self.towers.append(Tower("Placeholder bro", self.towersJson))
+            self.checkDeath()
+        
+        else:
+            self.deathScreen.update(window)
 
 
     def updateTowers(self, window, consts):
@@ -92,9 +103,15 @@ class Round:
         elif self.upgradeMenu.getBought():
             self.resources -= AdvDict(self.upgradeMenu.getTower().getCurrentCosts())
     
+
+    def checkDeath(self):
+        """ Checks player health """
+        if self.waves.playerIsDead():
+            self.deathScreen.display(self.waves.getWaveNum() + 1)
+    
     
     def render(self, window, consts):
-        """ Render tileset, enemies, and towers """
+        """ Render tileset, enemies, and towers and UI """
         self.tileset.renderTiles(window)
         self.tileset.renderDeco(window)
         self.waves.render(window)
@@ -102,6 +119,8 @@ class Round:
         self.upgradeMenu.render(window)
 
         self.renderTowers(window, consts)
+        
+        self.deathScreen.render(window)
     
     
     def renderTowers(self, window, consts):
