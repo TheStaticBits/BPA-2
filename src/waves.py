@@ -41,11 +41,14 @@ class Waves:
 
     def updateSpawnData(self, waveNum):
         """ Creates data dictionary for spawning enemies"""
+        self.log.info(f"Loading wave number {waveNum}:")
+
         self.spawnData = {}
         try:
             for enemy, data in self.wavesJson[waveNum]["enemies"].items():
                 self.spawnData[enemy] = { "amountLeft": data["amount"],
                                           "delay": Timer(data["startDelay"]) }
+                self.log.info(f"Adding {data['amount']} {enemy} enemies")
 
         except KeyError as exc:
             Error.createError(f"Unable to find wave enemy data for the wave {waveNum} in the waves JSON file.", self.log, exc)
