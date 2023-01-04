@@ -102,7 +102,7 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
             # Appending the error to the error text file
             if isinstance(self.errorFilePath, str):
                 with open(self.errorFilePath, "a") as file:
-                    file.write(self.errorMsg)
+                    file.write(self.errorMsg + "\n")
 
             textTitle = super().getObj("title")
 
