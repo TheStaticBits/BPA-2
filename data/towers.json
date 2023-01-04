@@ -62,7 +62,7 @@
         ]
     },
 
-    "Quick thing]]": {
+    "Quick thing]]]": {
       "animation": { "path": "res/towers/towerExample.png", 
                      "frames": 1, 
                      "delay": 0.4 },
