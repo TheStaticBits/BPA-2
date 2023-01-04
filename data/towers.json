@@ -17,7 +17,7 @@
     },
 
     "Wooden Tower": {
-        "animation": { "path": "res/towers/towerExample.png", 
+        "animation": { "path": "res/towers/Wooden_Tower.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
