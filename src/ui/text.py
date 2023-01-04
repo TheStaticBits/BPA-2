@@ -56,6 +56,9 @@ class Text(UIElement):
             # Finds the height of a character in the font
             self.charHeight = util.renderFont(".", self.fonts[self.fontSize], self.color).get_height()
         
+        else:
+            self.charHeight = None
+        
         self.updateTextImg()
 
 
@@ -81,6 +84,7 @@ class Text(UIElement):
             super().setImg(util.renderFont(self.text, self.fonts[self.fontSize], self.color))
 
         else: # Handling newlines in the text (Pygame does not automatically handle them)
+
             lineImages = []
             text = self.text.split("\n")
             widestLineSize = 0
@@ -104,7 +108,7 @@ class Text(UIElement):
                 # If the object is centered, also center the text
                 if super().getCentered():
                     # Centered x offset for the text inside the textbox image
-                    x = (image.get_width() + lineImg.get_width()) // 2
+                    x = (image.get_width() - lineImg.get_width()) // 2
                 else: 
                     x = 0
 

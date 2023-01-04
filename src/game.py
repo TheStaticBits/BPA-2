@@ -75,9 +75,15 @@ class Game:
             self.mainMenu.render(self.window)
 
             if self.mainMenu.pressedPlay():
-                self.round = Round(self.mainMenu.getSelectedMap(), self.constants, self.uiData, self.save)
+                self.round = Round(self.mainMenu.getSelectedMap(), self.constants, 
+                                   self.uiData, self.save, self.mainMenu.getHighscore())
+
                 self.scene = "round"
 
         elif self.scene == "round":
             self.round.update(self.window, self.constants)
             self.round.render(self.window, self.constants)
+
+            if self.round.isGameOver():
+                self.scene = "mainMenu"
+                del self.round

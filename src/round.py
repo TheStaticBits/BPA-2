@@ -18,7 +18,7 @@ class Round:
     towersJson = None
     shopData = None
 
-    def __init__(self, map, consts, uiData, saveDatabase):
+    def __init__(self, map, consts, uiData, saveDatabase, prevHighscore):
         """ Setup tileset object, etc. """
         self.log = logging.getLogger(__name__)
 
@@ -36,6 +36,7 @@ class Round:
         self.deathScreen = DeathScreen(consts, uiData)
 
         self.saveDatabase = saveDatabase
+        self.prevHighscore = prevHighscore
         
         self.towers = []
 
@@ -107,7 +108,7 @@ class Round:
     def checkDeath(self):
         """ Checks player health """
         if self.waves.playerIsDead():
-            self.deathScreen.display(self.waves.getWaveNum() + 1)
+            self.deathScreen.showDeath(self.waves.getWaveNum() + 1, self.prevHighscore)
     
     
     def render(self, window, consts):
@@ -151,3 +152,7 @@ class Round:
         """ Unhighlights every tower, turning off showRange """
         for tower in self.towers:
             tower.unselect()
+    
+
+    def isGameOver(self):
+        return self.deathScreen.pressedContinue()

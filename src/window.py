@@ -24,6 +24,7 @@ class Window:
 
         self.close = False
         
+
         try:
             pygame.display.set_caption(constants["window"]["title"])
         
@@ -47,6 +48,7 @@ class Window:
         except KeyError as exc:
             Error.createError("Unable to find window max FPS data within constants JSON file. Defaulting to no FPS cap.", self.log, exc)
             self.maxFPS = False
+            
 
         self.clock = pygame.time.Clock()
 

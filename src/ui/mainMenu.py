@@ -43,10 +43,11 @@ class MainMenu(UI):
         super().getObj("mapName").setText(self.mapsDict[self.getSelectedMap()])
 
 
-        highscore = self.saveDatabase.findValue("waveHighscores", "highscore", "map", self.getSelectedMap())
-        if highscore == None: highscore = 0 # If the map hasn't been played yet
+        self.highscore = self.saveDatabase.findValue("waveHighscores", "highscore", "map", self.getSelectedMap())
+        if self.highscore == None: 
+            self.highscore = 0 # If the map hasn't been played yet
 
-        super().getObj("highscore").setText(f"Wave Highscore: {highscore}")
+        super().getObj("highscore").setText(f"Wave Highscore: {self.highscore}")
 
 
     def update(self, window):
@@ -74,3 +75,6 @@ class MainMenu(UI):
     def getSelectedMap(self):
         """ Returns the name of the map chosen """
         return self.mapsOrder[self.mapShown]
+    
+
+    def getHighscore(self): return self.highscore

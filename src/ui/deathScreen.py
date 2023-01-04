@@ -17,8 +17,19 @@ class DeathScreen(UI):
         self.backgroundShade.set_alpha(100)
 
 
-    def display(self, waveNum):
+    def showDeath(self, prevHighscore, waveNum):
+        self.log.info(f"Showing death screen of wave {waveNum} with previous highscore of {prevHighscore}.")
+
         super().setDisplaying(True)
+        
+        message = f"You got to wave {waveNum}!\n"
+
+        if waveNum > prevHighscore:
+            message += f"You beat your previous\nhighscore of wave {prevHighscore}!"
+        else:
+            message += f"You didn't beat your previous\nhighscore of wave {prevHighscore}."
+        
+        super().getObj("waveNum").setText(message)
     
     
     def render(self, window):
@@ -27,3 +38,7 @@ class DeathScreen(UI):
             window.render(self.backgroundShade, Vect(0, 0))
 
         super().render(window)
+    
+    
+    def pressedContinue(self):
+        return super().getObj("continue").getPressed()

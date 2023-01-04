@@ -72,7 +72,7 @@ class Tileset:
             if musicPath != "":
                 pygame.mixer.music.load(musicPath)
                 pygame.mixer.set_volume(0.5)
-                pygame.mixer.play()
+                pygame.mixer.play(-1)
 
         except Exception as exc:
             Error.createError(f"Unable to load music at {musicPath}. Not playing music.", self.log, exc, recoverable=True)
