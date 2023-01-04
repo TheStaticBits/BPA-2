@@ -7,8 +7,6 @@
         "dealDMGFrame": 1,
         "attackMode": "one",
 
-        "attackSound": "res/sounds/pew.wav",
-
         "upgrades": [
             { "costs": { "wood": 10, "steel": 0, "uranium": 0, "plasma": 0 },
               "stats": { "range": 80, "damage": 1, "attackCooldown": 0.5   } },
