@@ -46,6 +46,8 @@ class MainMenu(UI):
         self.highscore = self.saveDatabase.findValue("waveHighscores", "highscore", "map", self.getSelectedMap())
         if self.highscore == None: 
             self.highscore = 0 # If the map hasn't been played yet
+        else:
+            self.highscore = self.highscore[0]
 
         super().getObj("highscore").setText(f"Wave Highscore: {self.highscore}")
 

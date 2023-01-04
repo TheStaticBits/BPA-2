@@ -22,6 +22,8 @@ class Round:
         """ Setup tileset object, etc. """
         self.log = logging.getLogger(__name__)
 
+        self.map = map
+
         self.tileset = Tileset(map, consts)
         self.waves = Waves(consts)
         
@@ -108,7 +110,7 @@ class Round:
     def checkDeath(self):
         """ Checks player health """
         if self.waves.playerIsDead():
-            self.deathScreen.showDeath(self.waves.getWaveNum() + 1, self.prevHighscore)
+            self.deathScreen.showDeath(self.prevHighscore, self.waves.getWaveNum() + 1)
     
     
     def render(self, window, consts):
@@ -156,3 +158,16 @@ class Round:
 
     def isGameOver(self):
         return self.deathScreen.pressedContinue()
+
+    
+    def save(self):
+        """ Changes wave highscore in the save database if it's a new highscore """
+        waveNum = self.waves.getWaveNum() + 1
+
+        if waveNum > self.prevHighscore:
+            self.log.info("Saving highscore")
+            
+            if self.saveDatabase.findValue("waveHighscores", "highscore", "map", self.map) != None:
+                self.saveDatabase.modify("waveHighscores", "map", self.map, "highscore", waveNum)
+            else:
+                self.saveDatabase.insert("waveHighscores", self.map, waveNum)

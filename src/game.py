@@ -86,4 +86,6 @@ class Game:
 
             if self.round.isGameOver():
                 self.scene = "mainMenu"
+                self.round.save()
+                self.mainMenu.updateMapShown()
                 del self.round

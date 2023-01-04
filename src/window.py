@@ -48,7 +48,7 @@ class Window:
         except KeyError as exc:
             Error.createError("Unable to find window max FPS data within constants JSON file. Defaulting to no FPS cap.", self.log, exc)
             self.maxFPS = False
-            
+
 
         self.clock = pygame.time.Clock()
 
@@ -61,6 +61,7 @@ class Window:
 
         self.FPSTimer = self.prevTime
         self.pastSecondFPS = []
+        self.speedup = False
 
 
     def update(self, constants):
@@ -77,6 +78,8 @@ class Window:
         self.deltaTime = time.time() - self.prevTime
         self.prevTime = time.time()
 
+        if self.speedup:
+            self.deltaTime *= 2
 
         # FPS tracker
         if self.outputFPS:
@@ -116,6 +119,10 @@ class Window:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.close = True
+            
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
+                    self.speedup = not self.speedup
 
     
     def render(self, tex, pos):
