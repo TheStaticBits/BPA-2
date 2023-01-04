@@ -52,7 +52,7 @@ class Round:
         if not self.deathScreen.isDisplaying():
             self.tileset.update(window, consts)
             self.waves.update(window, self.tileset)
-            self.resources += AdvDict(self.waves.getFrameDrops())
+            self.resources += self.waves.getFrameDrops()
             
             self.updateTowers(window, consts)
 

@@ -6,6 +6,7 @@ from src.entities.enemy import Enemy
 from src.utility.vector import Vect
 from src.ui.error import Error
 from src.utility.timer import Timer
+from src.utility.advDict import AdvDict
 
 class Waves:
     """ Handles waves interpreter and stores enemies """
@@ -34,7 +35,8 @@ class Waves:
         self.waveNum = 0
         self.waveDelay = Timer(self.getWaveDelay())
         self.enemies = []
-        self.drops = {}
+        self.resources = consts["startingResources"].keys()
+        self.drops = AdvDict({})
 
         self.updateSpawnData(0)
     
@@ -56,8 +58,8 @@ class Waves:
 
     def update(self, window, tileset):
         """ Update enemies and delays, and creates enemies """
-        
-        self.drops = { "wood": 0, "steel": 0, "uranium": 0 }
+        # Makes dictionary with the resources as keys and zero for values 
+        self.drops = AdvDict({ key: 0 for key in self.resources })
         
         stillAlive = []
         for enemy in self.enemies:
@@ -71,11 +73,7 @@ class Waves:
                 stillAlive.append(enemy)
             
             else: # Enemy died
-                drops = enemy.getDrops()
-                
-                # adding drops to the current frame's drops
-                for drop, amount in drops.items():
-                    self.drops[drop] += amount
+                self.drops += enemy.getDrops()
             
         self.enemies = stillAlive
         

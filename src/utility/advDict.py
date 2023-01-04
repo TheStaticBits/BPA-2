@@ -54,8 +54,11 @@ class AdvDict:
         return self.pyDict[key]
     
     def __setitem__(self, key, value):
-        """ [] = num  overload"""
+        """ [] = value  overload"""
         self.pyDict[key] = value
+    
+    def __contains__(self, item):
+        """ in operator overload """
     
     def items(self):
         return self.pyDict.items()

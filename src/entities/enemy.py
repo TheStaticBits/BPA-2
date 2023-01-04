@@ -7,6 +7,7 @@ from src.entities.entity import Entity
 from src.utility.timer import Timer
 from src.utility.vector import Vect
 from src.ui.error import Error
+from src.utility.advDict import AdvDict
 
 class Enemy(Entity):
     """ Any enemies are inherited from this class.
@@ -154,7 +155,7 @@ class Enemy(Entity):
     
     def getDrops(self):
         """ Returns a dictionary of how much of each resource the enemy dropped """
-        drops = {}
+        drops = AdvDict({}) # Empty adv dictionary
 
         for i in range(self.dropAmount):
             num = random.randint(0, 100)
