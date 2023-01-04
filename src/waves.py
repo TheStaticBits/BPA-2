@@ -41,11 +41,14 @@ class Waves:
 
     def updateSpawnData(self, waveNum):
         """ Creates data dictionary for spawning enemies"""
+        self.log.info(f"Loading wave {waveNum}:")
+
         self.spawnData = {}
         try:
             for enemy, data in self.wavesJson[waveNum]["enemies"].items():
                 self.spawnData[enemy] = { "amountLeft": data["amount"],
                                           "delay": Timer(data["startDelay"]) }
+                self.log.info(f"Adding {data['amount']} {enemy} enemies")
 
         except KeyError as exc:
             Error.createError(f"Unable to find wave enemy data for the wave {waveNum} in the waves JSON file.", self.log, exc)
@@ -62,7 +65,7 @@ class Waves:
             
             if enemy.hasReachedMapEnd(tileset):
                 self.health -= enemy.getDamage() # player take damage
-                # self.log.info(f"Player health now at {self.health}")
+                self.log.info(f"Player health now at {self.health}")
             
             elif not enemy.isDead(tileset): # Enemy alive still
                 stillAlive.append(enemy)
@@ -136,6 +139,7 @@ class Waves:
         return collided
     
 
+    def playerIsDead(self): return self.health <= 0
     def getFrameDrops(self): return self.drops # Enemy drops from that frame
     def getWaveNum(self): return self.waveNum
     def getWaveDelay(self): 

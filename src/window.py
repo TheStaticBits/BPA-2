@@ -119,12 +119,6 @@ class Window:
     def render(self, tex, pos):
         """ Render a texture to the window at pos """
         self.window.blit(tex, pos.getTuple())
-    
-
-    def draw(self, texture, position):
-        """ Draws texture to the window at the given position """
-        self.window.blit(texture, position)
-    
 
     # Getters
     def getMouse(self, button): return self.mousePressed[button]

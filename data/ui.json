@@ -226,5 +226,20 @@
                            "pos": [ 550, 140 ], "centered": true,
                            "color": [ 0, 0, 0 ] }
         }
+    },
+
+    "deathScreen": {
+        "offset": [ 0, 0 ],
+
+        "images": {
+            "bg": { "path": "res/ui/backgrounds/deathScreenBG.png",
+                    "pos": [ 400, 300 ], "centered": true }
+        },
+        "buttons": {
+
+        },
+        "text": {
+
+        }
     }
 }

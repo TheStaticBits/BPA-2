@@ -9,10 +9,9 @@ class UpgradeMenu(UI):
         inherits UI handling functionality from the UI class in ui.py """
     
     def __init__(self, consts, uiData):
-        super().__init__(True, __name__)
+        super().__init__(False, __name__)
 
         super().load(consts, "upgrades", uiData) # Loading UI objects for specifically the upgrades menu
-        super().setDisplaying(False)
 
         self.bought = False
         self.tower = None
