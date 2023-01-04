@@ -24,6 +24,13 @@ class Tower(Entity):
         except KeyError as exc:
             Error.createError(f"Unable to find required data within the JSON file for the {type} tower.", self.log, exc)
             return None
+        
+        
+        self.sound = None
+        if "attackSound" in towersJson[type]:
+            self.sound = pygame.mixer.Sound(towersJson[type]["attackSound"])
+            self.sound.set_volume(0.5)
+
 
         self.upgradeNum = 0
         
@@ -110,6 +117,10 @@ class Tower(Entity):
         elif self.attackMode == "all":
             for tower in collided:
                 tower.takeDamage(self.damage)
+
+        # Playing sound
+        if self.sound != None:
+            pygame.mixer.Sound.play(self.sound)
     
 
     def updateAttack(self, window, wavesObj):
