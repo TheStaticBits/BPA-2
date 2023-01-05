@@ -62,11 +62,6 @@ class Round:
             self.upgradeMenu.update(window, self.resources)
 
             self.checkPurchases()
-            
-            if window.getMouseReleased("right"):
-                if not self.isPlacingATower():
-                    self.unselectTowers()
-                    self.towers.append(Tower("Placeholder bro", self.towersJson))
         
             self.checkDeath()
         
