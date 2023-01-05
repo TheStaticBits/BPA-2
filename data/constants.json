@@ -52,8 +52,8 @@
     },
 
     "startingResources": {
-        "wood": 20,
-        "steel": 0,
+        "wood": 25,
+        "steel": 2,
         "uranium": 0,
         "plasma": 0
     },
