@@ -137,13 +137,13 @@
                        "pos": [ 90, 100 ], "centered": true },
             
             "woodImg":    { "path": "res/ui/shop/wood.png",
-                            "pos": [ 0, 240 ], "centered": false },
+                            "pos": [ 0, 238 ], "centered": false },
             "steelImg":   { "path": "res/ui/shop/steel.png",
-                            "pos": [ 95, 240 ], "centered": false },
+                            "pos": [ 95, 238 ], "centered": false },
             "uraniumImg": { "path": "res/ui/shop/uranium.png",
-                            "pos": [ 0, 280 ], "centered": false },
+                            "pos": [ 0, 278 ], "centered": false },
             "plasmaImg":  { "path": "res/ui/shop/plasma.png",
-                            "pos": [ 95, 280 ], "centered": false }
+                            "pos": [ 95, 278 ], "centered": false }
         },
         "buttons": {
             "upgrade": { "path": "res/ui/buttons/upgrade.png",
@@ -178,16 +178,16 @@
                               "color": [ 0, 0, 0 ], "lineSpacing": 0 },
                             
             "woodCost":    { "text": "0", "fontSize": 15,
-                             "pos": [ 50, 246 ], "centered": false,
+                             "pos": [ 50, 244 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "steelCost":   { "text": "0", "fontSize": 15,
-                             "pos": [ 145, 246 ], "centered": false,
+                             "pos": [ 145, 244 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "uraniumCost": { "text": "0", "fontSize": 15,
-                             "pos": [ 50, 286 ], "centered": false,
+                             "pos": [ 50, 284 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "plasmaCost":  { "text": "0", "fontSize": 15,
-                             "pos": [ 145, 286 ], "centered": false,
+                             "pos": [ 145, 284 ], "centered": false,
                              "color": [ 0, 0, 0 ] }
         }
     },
