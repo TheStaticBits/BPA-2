@@ -109,7 +109,7 @@
     },
 
     "Crusher Tower": {
-        "animation": { "path": "res/towers/towerExample.png", 
+        "animation": { "path": "res/towers/crusherTower.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
