@@ -201,7 +201,7 @@
     },
 
     "Triple-Hit Tower": {
-        "animation": { "path": "res/towers/towerExample.png", 
+        "animation": { "path": "res/towers/triple-hitTower.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
