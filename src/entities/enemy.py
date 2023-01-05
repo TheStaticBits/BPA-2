@@ -20,6 +20,8 @@ class Enemy(Entity):
         self.log = logging.getLogger(__name__)
 
         self.reachedEnd = False
+        self.showOutline = False
+        self.showOutlineTimer = None
         
         try:
             self.speed =  enemiesJson[type]["speed"]
@@ -27,6 +29,10 @@ class Enemy(Entity):
 
             self.dropAmount =  enemiesJson[type]["dropAmount"]
             self.dropChances = enemiesJson[type]["dropChances"]
+
+            self.damageOutlineColor = enemiesJson["damageOutlineColor"]
+            self.outlineWidth = enemiesJson["damageOutlineWidth"]
+            self.showOutlineTime = enemiesJson["damageOutlineTime"]
             
             animData = enemiesJson[type]["animation"]
 
@@ -57,11 +63,35 @@ class Enemy(Entity):
         # Position offscreen, moving onto the start tile
         pos = self.getPosOnTile(startTile) - (self.moveDir * startTile.getSize())
         super().setPos(pos) # setup position
+    
+
+    def getOutlineImg(self):
+        """ Draws four copies of the current frame in the animation one pixel off on each axis,
+            creating an outline for the enemy. """
+
+        frame = super().getAnim().getImgFrame()
+        frameSize = Vect(frame.get_size())
+
+        # Creates image 2 pixels larger in each direction than the original
+        outline = pygame.Surface((frameSize + self.outlineWidth * 2).getTuple(), flags=pygame.SRCALPHA)
+
+        # Drawing the image in the four corners of the image
+        for x in range(0, self.outlineWidth * 2 + 1 , self.outlineWidth * 2):
+            for y in range(0, self.outlineWidth * 2 + 1, self.outlineWidth * 2): 
+                outline.blit(frame, (x, y))
+        
+        # Turning the outline to the damage outline color
+        color = pygame.Surface(outline.get_size())
+        color.fill(self.damageOutlineColor)
+
+        # Blends alphas, leaving only the solid color silhouette
+        outline.blit(color, (0, 0), special_flags=pygame.BLEND_ADD)
+
+        return outline
 
 
     def update(self, window, tileset):
         """ Updates animation and position of enemy """
-        
         super().updateAnim(window)
 
         # Move
@@ -78,6 +108,13 @@ class Enemy(Entity):
             self.nextTile = onTile.getCoords() + self.moveDir
         
         self.updateAbility(window)
+
+        # Update outline timer
+        if self.showOutline:
+            self.showOutlineTimer.update(window)
+
+            if self.showOutlineTimer.activated(): # Show outline ended
+                self.showOutline = False
     
 
     def updateAbility(self, window):
@@ -127,8 +164,8 @@ class Enemy(Entity):
     def takeDamage(self, amount):
         """ Enemy takes damage of amount """
         self.health -= amount
-
-        # Future effects upon enemy death here
+        self.showOutline = True # Shows damage outline for a small period of time
+        self.showOutlineTimer = Timer(self.showOutlineTime)
     
     
     def getPosOnTile(self, tile):
@@ -173,3 +210,11 @@ class Enemy(Entity):
                     num -= chance # Moving onto the next resource's chances
         
         return drops
+    
+
+    def render(self, window):
+        """ Renders enemy with outline if taking damage """
+        if self.showOutline:
+            window.render(self.getOutlineImg(), super().getPos() - Vect(self.outlineWidth))
+
+        super().render(window)
