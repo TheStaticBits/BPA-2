@@ -1,21 +1,4 @@
 {
-    "Placeholder bro": { 
-        "animation": { "path": "res/towers/towerExample.png", 
-                       "frames": 1, 
-                       "delay": 0.4 },
-
-        "dealDMGFrame": 1,
-        "attackMode": "one",
-
-        "upgrades": [
-            { "costs": { "wood": 10, "steel": 0, "uranium": 0, "plasma": 0 },
-              "stats": { "range": 80, "damage": 1, "attackCooldown": 0.5   } },
-            
-            { "costs": { "wood": 5, "steel": 1, "uranium": 0, "plasma": 0  },
-              "stats": { "range": 120, "damage": 2, "attackCooldown": 0.25 } }
-        ]
-    },
-
     "Wooden Tower": {
         "animation": { "path": "res/towers/woodenTower.png", 
                        "frames": 1, 
@@ -131,8 +114,8 @@
         ]
     },
 
-    "Alpha Tower": {
-        "animation": { "path": "res/towers/towerExample.png", 
+    "Ocean Tower": {
+        "animation": { "path": "res/towers/oceanTower.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -154,8 +137,8 @@
         ]
     },
 
-    "Beta Tower": {
-        "animation": { "path": "res/towers/towerExample.png", 
+    "Crasher Tower": {
+        "animation": { "path": "res/towers/crasherTower.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -177,8 +160,8 @@
         ]
     },
 
-    "Gamma Tower": {
-        "animation": { "path": "res/towers/towerExample.png", 
+    "Space Tower": {
+        "animation": { "path": "res/towers/spaceTower.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -186,22 +169,22 @@
         "attackMode": "all",
 
         "upgrades": [
-            { "costs": { "wood": 0, "steel": 500, "uranium": 10, "plasma": 1   },
+            { "costs": { "wood": 0, "steel": 300, "uranium": 10, "plasma": 1   },
               "stats": { "range": 85, "damage": 2, "attackCooldown": 1         } },
 
-            { "costs": { "wood": 0, "steel": 300, "uranium": 20, "plasma": 2   },
+            { "costs": { "wood": 0, "steel": 260, "uranium": 20, "plasma": 2   },
               "stats": { "range": 95, "damage": 2.5, "attackCooldown": 1       } },
 
-            { "costs": { "wood": 0, "steel": 300, "uranium": 50, "plasma": 5   },
+            { "costs": { "wood": 0, "steel": 250, "uranium": 50, "plasma": 5   },
               "stats": { "range": 105, "damage": 3, "attackCooldown": 0.9      } },
 
-            { "costs": { "wood": 0, "steel": 250, "uranium": 100, "plasma": 10 },
+            { "costs": { "wood": 0, "steel": 240, "uranium": 100, "plasma": 10 },
               "stats": { "range": 135, "damage": 3.5, "attackCooldown": 0.8    } }
         ]
     },
 
-    "Epsilon Tower": {
-        "animation": { "path": "res/towers/towerExample.png", 
+    "Triple-Hit Tower": {
+        "animation": { "path": "res/towers/triple-hitTower.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -247,7 +230,7 @@
     },
 
     "Beacon Tower": {
-        "animation": { "path": "res/towers/towerExample.png", 
+        "animation": { "path": "res/towers/beaconTower.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -270,7 +253,7 @@
     },
 
     "Tesla Coil": {
-      "animation": { "path": "res/towers/towerExample.png", 
+      "animation": { "path": "res/towers/teslaCoil.png", 
                      "frames": 1, 
                      "delay": 0.4 },
 
@@ -292,8 +275,8 @@
       ]
     },
 
-    "Rocket Launcher": {
-      "animation": { "path": "res/towers/towerExample.png", 
+    "deadendTower": {
+      "animation": { "path": "res/towers/deadendTower.png", 
                      "frames": 1, 
                      "delay": 0.4 },
 
