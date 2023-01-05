@@ -24,7 +24,7 @@
             "plasmaImg":  { "path": "res/ui/shop/plasma.png",
                             "pos": [ 105, 270 ], "centered": false },
             
-            "tower": { "path": "res/towers/towerExample.png", 
+            "tower": { "path": "res/towers/placeholder.png", 
                        "pos": [ 100, 190 ], "centered": true }
         },
         "buttons": {
@@ -133,7 +133,7 @@
             "bg":    { "path": "res/ui/backgrounds/upgradeBG.png",
                        "pos": [ 0, 0 ], "centered": false },
             
-            "tower": { "path": "res/towers/towerExample.png", 
+            "tower": { "path": "res/towers/placeholder.png", 
                        "pos": [ 90, 100 ], "centered": true },
             
             "woodImg":    { "path": "res/ui/shop/wood.png",

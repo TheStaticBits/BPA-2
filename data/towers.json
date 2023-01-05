@@ -275,7 +275,7 @@
       ]
     },
 
-    "deadendTower": {
+    "Deadend Tower": {
       "animation": { "path": "res/towers/deadendTower.png", 
                      "frames": 1, 
                      "delay": 0.4 },
