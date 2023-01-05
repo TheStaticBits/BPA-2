@@ -177,8 +177,8 @@
         ]
     },
 
-    "Budget Tower": {
-        "animation": { "path": "res/towers/towerExample.png", 
+    "Space Tower": {
+        "animation": { "path": "res/towers/spaceTower.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
