@@ -28,3 +28,8 @@ class Timer:
 
     def changeDelay(self, newDelay):
         self.delay = newDelay
+    
+
+    def getPercentDone(self):
+        """ Returns a decimal for the percent that the timer is done """
+        return ( self.delay - self.timer ) / self.delay

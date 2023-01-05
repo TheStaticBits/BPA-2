@@ -132,7 +132,7 @@ class UpgradeMenu(UI):
 
             if super().getObj("upgrade").getPressed():
                 self.tower.upgrade()
-                self.selectTower(self.tower)
+                self.selectTower(self.tower, self.index)
                 self.bought = True
 
         else:
