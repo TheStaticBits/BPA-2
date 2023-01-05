@@ -117,6 +117,9 @@ class Tile:
             moveTo = self.getHeight() - self.getWidth()
             # slowly moves to moveTo
             self.hoverOffset += consts["game"]["tileHoverSpeed"] * window.getDeltaTime() * (moveTo - self.hoverOffset)
+
+            if self.hoverOffset > moveTo: self.hoverOffset = moveTo
+
         else:
             if self.hoverOffset < 0.5:
                 self.hoverOffset = 0
