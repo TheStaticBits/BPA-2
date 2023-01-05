@@ -85,7 +85,7 @@
         "ability": { "delay": 7, "execute": "" },
 
         "dropAmount": 34,
-        "dropChances": { "wood": 5, "steel": 70, "uranium": 15, "plasma": 10 }
+        "dropChances": { "wood": 15, "steel": 70, "uranium": 10, "plasma": 5 }
     },
     "e8": {
         "animation": { "path": "res/enemies/strawberry.png", 
