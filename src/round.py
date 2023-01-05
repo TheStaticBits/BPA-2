@@ -23,6 +23,7 @@ class Round:
         self.log = logging.getLogger(__name__)
 
         self.map = map
+        self.consts = consts
 
         self.tileset = Tileset(map, consts)
         self.waves = Waves(consts)
@@ -53,7 +54,7 @@ class Round:
         """ Updates everything for the frame """
         if not self.deathScreen.isDisplaying():
             self.tileset.update(window, consts)
-            self.waves.update(window, self.tileset)
+            self.waves.update(window, self.tileset, self.consts)
             self.resources += self.waves.getFrameDrops()
             
             self.updateTowers(window, consts)

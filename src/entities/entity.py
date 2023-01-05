@@ -54,3 +54,4 @@ class Entity:
     def setPos(self, pos): self.pos = pos
     def addToPos(self, x): self.pos += x
     def getPos(self): return self.pos
+    def getCenteredPos(self): return self.pos + (self.anim.getSize() / 2)

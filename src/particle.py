@@ -9,12 +9,13 @@ from src.utility.timer import Timer
 
 class Particle:
     """ Handles a single particle"""
-    def __init__(self, constsJson, pos, size, image, moveAngle):
+    def __init__(self, constsJson, pos, image, moveAngle):
         """ Chooses a random position in the image to be in the particle image """
         self.log = logging.getLogger(__name__)
         
         self.pos = pos
         self.moveAngle = math.radians(moveAngle)
+        print(moveAngle)
 
         try:
             self.speed = constsJson["game"]["particles"]["speed"]
@@ -27,8 +28,11 @@ class Particle:
         # Finding random position in the image for size
         imageSize = Vect(image.get_size())
 
-        imgOffset = -Vect( random.randint(0, imageSize.x - size.x),
-                           random.randint(0, imageSize.y - size.y) )
+        imgOffset = Vect( random.randint(0, imageSize.x - size.x),
+                          random.randint(0, imageSize.y - size.y) )
+        
+        # Multiplying by -1 to get the offset of the original image
+        imgOffset *= -1
 
         self.img = pygame.Surface(size.getTuple(), flags=pygame.SRCALPHA)
 
@@ -37,10 +41,18 @@ class Particle:
     
 
     def update(self, window):
+        """ Updates particle, moving it, updating its timer, etc. """
         self.timer.update(window)
 
-        self.pos.x += math.cos(self.moveAngle) * self.speed
-        self.pos.y += math.sin(self.moveAngle) * self.speed
+        percentDone = self.timer.getPercentDone()
+        # When the timer is 60 percent done, start adding transparency to the 
+        # particle based on how much percent is left.
+        if percentDone > 0.6:
+            percent = (percentDone - 0.6 ) / 0.4 # Percent of the last 40 percent of time left
+            self.img.set_alpha( (1 - percent) * 255 )
+
+        self.pos.x += math.cos(self.moveAngle) * self.speed * window.getDeltaTime()
+        self.pos.y += math.sin(self.moveAngle) * self.speed * window.getDeltaTime()
 
     
     def render(self, window):

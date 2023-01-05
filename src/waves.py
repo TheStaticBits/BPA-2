@@ -1,4 +1,5 @@
 import pygame
+import random
 import logging
 
 import src.utility.utility as util
@@ -7,6 +8,7 @@ from src.utility.vector import Vect
 from src.ui.error import Error
 from src.utility.timer import Timer
 from src.utility.advDict import AdvDict
+from src.particle import Particle
 
 class Waves:
     """ Handles waves interpreter and stores enemies """
@@ -23,18 +25,25 @@ class Waves:
             Error.createError("Unable to find JSON path data for waves or enemies.", self.log, exc)
             return None
         
-
+        # Loading constants.json data
         try:
             self.health = consts["game"]["playerHealth"]
         
         except KeyError as exc:
             Error.createError("Unable to find player health data within the constants JSON file.", self.log, exc)
             return None
+        
+        try:
+            self.particleAmount = consts["game"]["enemyParticleAmount"]
+        
+        except KeyError as exc:
+            Error.createError("Unable to find the enemy death particle amount in constants json.", self.log, exc)
 
 
         self.waveNum = 0
         self.waveDelay = Timer(self.getWaveDelay())
         self.enemies = []
+        self.particles = []
         self.resources = consts["startingResources"].keys()
         self.drops = AdvDict({})
 
@@ -56,11 +65,19 @@ class Waves:
             Error.createError(f"Unable to find wave enemy data for the wave {waveNum} in the waves JSON file.", self.log, exc)
     
 
-    def update(self, window, tileset):
+    def update(self, window, tileset, consts):
         """ Update enemies and delays, and creates enemies """
+        self.updateEnemies(window, tileset, consts)
+        self.updateWaveDelay(window)
+        self.spawnEnemies(window, tileset)
+        self.updateParticles(window)
+
+        
+    def updateEnemies(self, window, tileset, consts):
+        """ Updates enemies, detecting when they reach the end of the map or when they die """
         # Makes dictionary with the resources as keys and zero for values 
         self.drops = AdvDict({ key: 0 for key in self.resources })
-        
+
         stillAlive = []
         for enemy in self.enemies:
             enemy.update(window, tileset)
@@ -74,9 +91,18 @@ class Waves:
             
             else: # Enemy died
                 self.drops += enemy.getDrops()
+
+                self.log.info("Adding enemy death particles")
+                for i in range(self.particleAmount):
+                    self.particles.append( Particle(consts, enemy.getCenteredPos(), 
+                                                    enemy.getAnim().getImgFrame(), 
+                                                    random.randint( 0, 359 )) )
             
         self.enemies = stillAlive
-        
+    
+
+    def updateWaveDelay(self, window):
+        """ Updates the delay between waves """
         if len(self.spawnData) == 0: # Test for new wave
             self.waveDelay.update(window) # Delay timer for delay between waves
 
@@ -89,10 +115,9 @@ class Waves:
                 
                 self.updateSpawnData(self.waveNum)
 
-            else:
-                return None # no need to update spawning enemies when delaying between waves
 
-
+    def spawnEnemies(self, window, tileset):
+        """ Spawns enemies according to the waves.json file """
         # Update wave delays and spawn any enemies
         for enemy, data in self.spawnData.items():
             data["delay"].update(window)
@@ -111,12 +136,24 @@ class Waves:
         
         # Removes anything that has finished spawning enemies
         self.spawnData = { enemy: data for enemy, data in self.spawnData.items() if data["amountLeft"] > 0 }
+    
+
+    def updateParticles(self, window):
+        """ Updating particles, removing those that are done """
+        for particle in self.particles:
+            particle.update(window)
+
+        # Keeping particles that are not done
+        self.particles = [ particle for particle in self.particles if not particle.isDone() ]
             
     
     def render(self, window):
-        """ Renders enemies """
+        """ Renders enemies and particles """
         for enemy in self.enemies:
             enemy.render(window)
+
+        for particle in self.particles:
+            particle.render(window)
     
 
     def getCollided(self, img, pos):
