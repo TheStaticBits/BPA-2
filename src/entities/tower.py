@@ -223,6 +223,11 @@ class Tower(Entity):
     def getCirclePos(self): 
         """ Finds the top left of where the range circle should be rendered"""
         return self.tileOn.getCenter() - self.range
+    
+    def removeFromTile(self): 
+        """ Called when the tower is sold, removes the tower from the tile,
+            allowing future towers to be placed there """
+        self.tileOn.removeTower()
 
     # Basic getters
     def getTileOn(self): return self.tileOn

@@ -189,4 +189,4 @@ class Tile:
     
     # Setters
     def placedTower(self): self.hasTower = True
-    def removedTower(self): self.hasTower = False
+    def removeTower(self): self.hasTower = False

@@ -143,6 +143,7 @@ class UpgradeMenu(UI):
     def updateSell(self):
         if super().getObj("sell").getPressed():
             self.sell = True
+            self.tower.removeFromTile()
             super().setDisplaying(False)
     
     
