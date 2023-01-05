@@ -15,7 +15,6 @@ class Particle:
         
         self.pos = pos
         self.moveAngle = math.radians(moveAngle)
-        print(moveAngle)
 
         try:
             self.speed = constsJson["game"]["particles"]["speed"]
