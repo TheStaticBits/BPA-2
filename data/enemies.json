@@ -32,7 +32,7 @@
 
         "ability": { "delay": 7, "execute": "" },
 
-        "dropAmount": 5,
+        "dropAmount": 6,
         "dropChances": { "wood": 50, "steel": 50 }
     },
     "e4": {
@@ -45,7 +45,7 @@
         "ability": { "delay": 7, "execute": "" },
 
         "dropAmount": 8,
-        "dropChances": { "wood": 20, "steel": 70, "uranium": 10 }
+        "dropChances": { "wood": 20, "steel": 75, "uranium": 5 }
     },
     "e5": {
         "animation": { "path": "res/enemies/CYAN.png", 
@@ -56,8 +56,8 @@
 
         "ability": { "delay": 7, "execute": "" },
 
-        "dropAmount": 18,
-        "dropChances": { "wood": 15, "steel": 70, "uranium": 15 }
+        "dropAmount": 20,
+        "dropChances": { "wood": 15, "steel": 80, "uranium": 5 }
     },
     "e6": {
         "animation": { "path": "res/enemies/BLUE.png", 
@@ -68,7 +68,7 @@
 
         "ability": { "delay": 7, "execute": "" },
 
-        "dropAmount": 24,
+        "dropAmount": 26,
         "dropChances": { "wood": 35, "steel": 60, "uranium": 5 }
     },
     "e7": {
@@ -80,8 +80,8 @@
 
         "ability": { "delay": 7, "execute": "" },
 
-        "dropAmount": 30,
-        "dropChances": { "wood": 5, "steel": 55, "uranium": 25, "plasma": 15 }
+        "dropAmount": 34,
+        "dropChances": { "wood": 5, "steel": 70, "uranium": 15, "plasma": 10 }
     },
     "e8": {
         "animation": { "path": "res/enemies/PINK.png", 
@@ -92,7 +92,7 @@
 
         "ability": { "delay": 7, "execute": "" },
 
-        "dropAmount": 55,
-        "dropChances": { "wood": 10, "steel": 40, "uranium": 40, "plasma": 10 }
+        "dropAmount": 60,
+        "dropChances": { "wood": 10, "steel": 50, "uranium": 30, "plasma": 10 }
     }
 }
