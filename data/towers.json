@@ -131,8 +131,8 @@
         ]
     },
 
-    "Alpha Tower": {
-        "animation": { "path": "res/towers/towerExample.png", 
+    "Ocean Tower": {
+        "animation": { "path": "res/towers/oceanTower.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -154,7 +154,7 @@
         ]
     },
 
-    "Beta Tower": {
+    "Crasher Tower": {
         "animation": { "path": "res/towers/towerExample.png", 
                        "frames": 1, 
                        "delay": 0.4 },
@@ -177,7 +177,7 @@
         ]
     },
 
-    "Gamma Tower": {
+    "Budget Tower": {
         "animation": { "path": "res/towers/towerExample.png", 
                        "frames": 1, 
                        "delay": 0.4 },
@@ -200,7 +200,7 @@
         ]
     },
 
-    "Epsilon Tower": {
+    "Triple-Hit Tower": {
         "animation": { "path": "res/towers/towerExample.png", 
                        "frames": 1, 
                        "delay": 0.4 },
