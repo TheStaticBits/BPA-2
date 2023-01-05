@@ -1,6 +1,6 @@
 {
     "e1": {
-        "animation": { "path": "res/enemies/RED.png", 
+        "animation": { "path": "res/enemies/apple.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -12,7 +12,7 @@
         "dropChances": { "wood": 70, "steel": 30 }
     },
     "e2": {
-        "animation": { "path": "res/enemies/ORANGE.png", 
+        "animation": { "path": "res/enemies/orange.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -24,7 +24,7 @@
         "dropChances": { "wood": 65, "steel": 35 }
     },
     "e3": {
-        "animation": { "path": "res/enemies/YELLOW.png", 
+        "animation": { "path": "res/enemies/banana.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -36,7 +36,7 @@
         "dropChances": { "wood": 50, "steel": 50 }
     },
     "e4": {
-        "animation": { "path": "res/enemies/GREEN.png", 
+        "animation": { "path": "res/enemies/pear.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -48,7 +48,7 @@
         "dropChances": { "wood": 20, "steel": 75, "uranium": 5 }
     },
     "e5": {
-        "animation": { "path": "res/enemies/CYAN.png", 
+        "animation": { "path": "res/enemies/dragonfruit.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -60,7 +60,7 @@
         "dropChances": { "wood": 15, "steel": 80, "uranium": 5 }
     },
     "e6": {
-        "animation": { "path": "res/enemies/BLUE.png", 
+        "animation": { "path": "res/enemies/blueberry.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -72,7 +72,7 @@
         "dropChances": { "wood": 35, "steel": 60, "uranium": 5 }
     },
     "e7": {
-        "animation": { "path": "res/enemies/PURPLE.png", 
+        "animation": { "path": "res/enemies/grape.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
@@ -84,7 +84,7 @@
         "dropChances": { "wood": 5, "steel": 70, "uranium": 15, "plasma": 10 }
     },
     "e8": {
-        "animation": { "path": "res/enemies/PINK.png", 
+        "animation": { "path": "res/enemies/strawberry.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
