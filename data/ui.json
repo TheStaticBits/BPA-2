@@ -137,23 +137,31 @@
                        "pos": [ 90, 100 ], "centered": true },
             
             "woodImg":    { "path": "res/ui/shop/wood.png",
-                            "pos": [ 0, 260 ], "centered": false },
+                            "pos": [ 0, 250 ], "centered": false },
             "steelImg":   { "path": "res/ui/shop/steel.png",
-                            "pos": [ 95, 260 ], "centered": false },
+                            "pos": [ 95, 250 ], "centered": false },
             "uraniumImg": { "path": "res/ui/shop/uranium.png",
-                            "pos": [ 0, 300 ], "centered": false },
+                            "pos": [ 0, 290 ], "centered": false },
             "plasmaImg":  { "path": "res/ui/shop/plasma.png",
-                            "pos": [ 95, 300 ], "centered": false }
+                            "pos": [ 95, 290 ], "centered": false }
         },
         "buttons": {
             "upgrade": { "path": "res/ui/buttons/upgrade.png",
-                         "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 }, 
-                         "pos": [ 90, 400 ], "centered": true,
-                         "text": "upgradeText", "chinHeight": 16 }
+                         "offsets": { "default": 2, "pressed": 8, "moveSpeed": 25 }, 
+                         "pos": [ 90, 360 ], "centered": true,
+                         "text": "upgradeText", "chinHeight": 16 },
+                         
+            "sell": { "path": "res/ui/buttons/sell.png",
+                      "offsets": { "default": 2, "pressed": 8, "moveSpeed": 25 }, 
+                      "pos": [ 90, 425 ], "centered": true,
+                      "text": "sellText", "chinHeight": 16 }
         },
         "text": {
             "upgradeText":  { "text": "Upgrade", "fontSize": 15,
                               "color": [ 0, 0, 0 ] },
+
+            "sellText":  { "text": "Sell", "fontSize": 15,
+                           "color": [ 255, 255, 255 ] },
             
             "upgradeTitle": { "text": "Upgrade", "fontSize": 25,
                               "pos": [ 90, 15 ], "centered": true,
@@ -170,16 +178,16 @@
                               "color": [ 0, 0, 0 ], "lineSpacing": 0 },
                             
             "woodCost":    { "text": "0", "fontSize": 15,
-                             "pos": [ 50, 266 ], "centered": false,
+                             "pos": [ 50, 256 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "steelCost":   { "text": "0", "fontSize": 15,
-                             "pos": [ 145, 266 ], "centered": false,
+                             "pos": [ 145, 256 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "uraniumCost": { "text": "0", "fontSize": 15,
-                             "pos": [ 50, 306 ], "centered": false,
+                             "pos": [ 50, 296 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "plasmaCost":  { "text": "0", "fontSize": 15,
-                             "pos": [ 145, 306 ], "centered": false,
+                             "pos": [ 145, 296 ], "centered": false,
                              "color": [ 0, 0, 0 ] }
         }
     },

@@ -18,6 +18,7 @@
         "playerHealth": 200,
         "imgScale": 2,
         "tileHoverSpeed": 20,
+        "sellMultiplier": 0.8,
         "particles": {
             "size": [ 5, 5 ],
             "lastDuration": 0.5,
@@ -27,7 +28,7 @@
 
     "towers": {
         "tileYOffset": 10,
-        "rangeCircleRed":   [ 255, 0, 0, 80 ],
+        "rangeCircleRed":   [ 255, 0, 0, 80  ],
         "rangeCircleGreen": [ 0, 255, 0, 120 ]
     },
 

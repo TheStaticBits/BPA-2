@@ -10,7 +10,7 @@ class AdvDict:
 
 
     def __isub__(self, other):
-        """ -= overload """
+        """ -= overload, subtracts the values of the other dictionary"""
         self.checkType(other)
         
         for key, value in other.pyDict.items():
@@ -19,12 +19,24 @@ class AdvDict:
         return self
     
     def __iadd__(self, other):
-        """ += overload """
+        """ += overloading, adds the values of the other dictionary """
         self.checkType(other)
         
         for key, value in other.pyDict.items():
             self.pyDict[key] += value
 
+        return self
+    
+    def __imul__(self, other):
+        """ *= overloading, allows for int/float or another dictionary """
+        if isinstance(other, int) or isinstance(other, float):
+            for key in self.pyDict.keys():
+                self.pyDict[key] *= other
+        
+        else:
+            for key, value in other.pyDict.items():
+                self.pyDict[key] *= value
+        
         return self
 
 
@@ -50,11 +62,11 @@ class AdvDict:
     
 
     def __getitem__(self, key):
-        """ [] overload"""
+        """ [] overload """
         return self.pyDict[key]
     
     def __setitem__(self, key, value):
-        """ [] = value  overload"""
+        """ [] = value  overload """
         self.pyDict[key] = value
     
     def __contains__(self, item):
@@ -63,5 +75,12 @@ class AdvDict:
     def items(self):
         return self.pyDict.items()
     
+    
+    def int(self):
+        """ Casts all values in the dictionary to int """
+        for key in self.pyDict.keys():
+            self.pyDict[key] = int(self.pyDict[key])
+    
 
     def getDict(self): return self.pyDict
+    def copy(self): return AdvDict(self.pyDict.copy())

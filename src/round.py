@@ -64,6 +64,12 @@ class Round:
             self.checkPurchases()
         
             self.checkDeath()
+
+            if self.upgradeMenu.isSold():
+                self.log.info("Selling tower")
+                self.upgradeMenu.setSold(False)
+                self.resources += self.upgradeMenu.getSellPrice()
+                self.towers.pop(self.upgradeMenu.getTowerIndex())
         
         else:
             self.deathScreen.update(window)
@@ -73,12 +79,13 @@ class Round:
         """ Updates towers and tower selecting"""
         noTowers = True
 
-        for tower in self.towers:
+        # Iterate through towers and update them
+        for index, tower in enumerate(self.towers):
             tower.update(window, self.tileset, self.waves, consts)
 
             if tower.justSelected(): 
                 if not self.isPlacingATower(): # If not currently placing a tower
-                    self.upgradeMenu.selectTower(tower) # Display upgrades
+                    self.upgradeMenu.selectTower(tower, index) # Display upgrades
                     
                 else:
                     # A tower is being placed, and the player just clicked on a different tower

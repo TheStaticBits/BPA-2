@@ -3,6 +3,7 @@ import logging
 
 from src.ui.ui import UI
 from src.utility.advDict import AdvDict
+from src.ui.error import Error
 
 class UpgradeMenu(UI):
     """ Class handling the tower upgrade menu
@@ -16,6 +17,13 @@ class UpgradeMenu(UI):
         self.bought = False
         self.tower = None
         self.displayPrice = True
+        self.sell = False
+        self.sellPrice = None
+
+        try:
+            self.sellMultiplier = consts["game"]["sellMultiplier"]
+        except KeyError as exc:
+            Error.createError("Unable to find sell price multiplier in constants JSON.", self.log, exc)
     
 
     def format(self, stats):
@@ -34,13 +42,23 @@ class UpgradeMenu(UI):
             super().getObj(resource + "Cost").setDisplaying(bool)
     
 
-    def selectTower(self, tower):
+    def calculateSellPrice(self, tower):
+        """ Finds buy price and then updates the tower sell price to the purchasing price multiplied by the value in constants.json """
+        # Original price is the first index in upgrade costs
+        originalPrice = AdvDict(tower.getUpgradeInfo()[0]["costs"])
+        self.sellPrice = originalPrice.copy()
+        self.sellPrice *= self.sellMultiplier
+        self.sellPrice.int()
+
+
+    def selectTower(self, tower, index):
         """ Chooses a tower to show the upgrade menu for """
 
         self.log.info(f"Loaded upgrade menu for tower {tower.getType()}")
 
         super().setDisplaying(True)
         self.tower = tower
+        self.towerIndex = index
         
         # Change tower name displayed, upgrade level, image, price of upgrade, and upgrade stats here
         super().getObj("towerName").setText(tower.getType())
@@ -70,8 +88,9 @@ class UpgradeMenu(UI):
             super().getObj("upgrade").setDisplaying(False)
         
         super().getObj("towerStats").setText("\n".join(towerStatsStr))
-        
         super().getObj("tower").setImg(tower.getImg())
+
+        self.calculateSellPrice(tower)
     
 
     def getUpgradeCost(self):
@@ -100,8 +119,13 @@ class UpgradeMenu(UI):
         if not super().isDisplaying(): return None
             
         self.updatePrice(resources)
+        self.updateUpgrade(resources)
+        self.updateSell()
 
-        if self.displayPrice and resources >= self.getUpgradeCost():
+
+    def updateUpgrade(self, playerResources):
+        """ Updates the "Upgrade" button, testing if it's pressed when the player can buy it """
+        if self.displayPrice and playerResources >= self.getUpgradeCost():
             super().getObj("upgrade").setDisplaying(True)
             
             self.bought = False
@@ -115,6 +139,17 @@ class UpgradeMenu(UI):
             super().getObj("upgrade").setDisplaying(False)
             self.bought = False
     
+
+    def updateSell(self):
+        if super().getObj("sell").getPressed():
+            self.sell = True
+            super().setDisplaying(False)
+    
     
     def getBought(self): return self.bought
     def getTower(self): return self.tower
+
+    def isSold(self): return self.sell
+    def getSellPrice(self): return self.sellPrice
+    def getTowerIndex(self): return self.towerIndex
+    def setSold(self, val): self.sell = val
