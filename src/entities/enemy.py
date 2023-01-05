@@ -37,7 +37,7 @@ class Enemy(Entity):
                 self.ability = None
         
         except KeyError as exc:
-            Error.createError(f"Unable to find the following requried data value within the Enemy JSON file for the {type} enemy.", self.log, exc)
+            Error.createError(f"Unable to find the following required data value within the Enemy JSON file for the {type} enemy.", self.log, exc)
             return None
 
         startPos = tileset.getEnemyStartPos()
