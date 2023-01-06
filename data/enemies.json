@@ -20,7 +20,7 @@
                        "frames": 1, 
                        "delay": 0.4 },
 
-        "speed": 110, "health": 2,
+        "speed": 105, "health": 2,
 
         "ability": { "delay": 7, "execute": "" },
 
@@ -32,7 +32,7 @@
                        "frames": 1, 
                        "delay": 0.4 },
 
-        "speed": 130, "health": 3,
+        "speed": 125, "health": 3,
 
         "ability": { "delay": 7, "execute": "" },
 
@@ -48,7 +48,7 @@
 
         "ability": { "delay": 7, "execute": "" },
 
-        "dropAmount": 6,
+        "dropAmount": 4,
         "dropChances": { "wood": 20, "steel": 75, "uranium": 5 }
     },
     "e5": {
@@ -60,7 +60,7 @@
 
         "ability": { "delay": 7, "execute": "" },
 
-        "dropAmount": 18,
+        "dropAmount": 11,
         "dropChances": { "wood": 15, "steel": 80, "uranium": 5 }
     },
     "e6": {
@@ -72,7 +72,7 @@
 
         "ability": { "delay": 7, "execute": "" },
 
-        "dropAmount": 24,
+        "dropAmount": 21,
         "dropChances": { "wood": 35, "steel": 60, "uranium": 5 }
     },
     "e7": {
@@ -84,7 +84,7 @@
 
         "ability": { "delay": 7, "execute": "" },
 
-        "dropAmount": 30,
+        "dropAmount": 28,
         "dropChances": { "wood": 15, "steel": 70, "uranium": 10, "plasma": 5 }
     },
     "e8": {
@@ -96,7 +96,7 @@
 
         "ability": { "delay": 7, "execute": "" },
 
-        "dropAmount": 54,
+        "dropAmount": 40,
         "dropChances": { "wood": 10, "steel": 50, "uranium": 30, "plasma": 10 }
     }
 }
