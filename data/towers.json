@@ -105,6 +105,8 @@
         "dealDMGFrame": 1,
         "attackMode": "all",
 
+        "attackSound": "res/sounds/spaceBow.wav",
+
         "upgrades": [
             { "costs": { "wood": 20, "steel": 65, "uranium": 0, "plasma": 0  },
               "stats": { "range": 60, "damage": 18, "attackCooldown": 5      } },
@@ -128,6 +130,8 @@
         "dealDMGFrame": 1,
         "attackMode": "one",
 
+        "attackSound": "res/sounds/powThump.wav",
+
         "upgrades": [
             { "costs": { "wood": 0, "steel": 80, "uranium": 15, "plasma": 0  },
               "stats": { "range": 170, "damage": 4, "attackCooldown": 1.3    } },
@@ -150,6 +154,8 @@
 
         "dealDMGFrame": 1,
         "attackMode": "one",
+        
+        "attackSound": "res/sounds/crasher.wav",
 
         "upgrades": [
             { "costs": { "wood": 50, "steel": 180, "uranium": 20, "plasma": 0  },
@@ -174,6 +180,8 @@
         "dealDMGFrame": 1,
         "attackMode": "all",
 
+        "attackSound": "res/sounds/spaceBow.wav",
+
         "upgrades": [
             { "costs": { "wood": 0, "steel": 270, "uranium": 10, "plasma": 1   },
               "stats": { "range": 95, "damage": 2, "attackCooldown": 0.9       } },
@@ -196,6 +204,8 @@
 
         "dealDMGFrame": 1,
         "attackMode": "one",
+
+        "attackSound": "res/sounds/glitchy.wav",
 
         "upgrades": [
             { "costs": { "wood": 0, "steel": 380, "uranium": 45, "plasma": 20  },
@@ -265,6 +275,8 @@
 
       "dealDMGFrame": 1,
       "attackMode": "one",
+
+      "attackSound": "res/sounds/electricBang.wav",
 
       "upgrades": [
           { "costs": { "wood": 200, "steel": 230, "uranium": 0, "plasma": 0 },
