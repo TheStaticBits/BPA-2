@@ -88,8 +88,11 @@ class Enemy(Entity):
         color = pygame.Surface(damageFlash.get_size())
         color.fill(self.flashColor)
 
-        # Blends alphas, leaving only the solid color silhouette
+        # Multiplies alphas, leaving a solid color silhouette
         damageFlash.blit(color, (0, 0), special_flags=pygame.BLEND_PREMULTIPLIED)
+
+        # Set transparency of the flash to correspond with how much time is left showing the flash
+        damageFlash.set_alpha((1 - self.showFlashTimer.getPercentDone()) * 255)
 
         return damageFlash
 
@@ -217,8 +220,8 @@ class Enemy(Entity):
     
 
     def render(self, window):
-        """ Renders enemy or red flash if taking damage """
+        """ Renders enemy and red flash if taking damage """
+        super().render(window)
+
         if self.showFlash:
             window.render(self.getDamageFlashImg(), super().getPos() - Vect(self.flashExtensionWidth))
-        else:
-            super().render(window)
