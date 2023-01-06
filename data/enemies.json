@@ -1,14 +1,14 @@
 {
-    "damageOutlineWidth": 2,
-    "damageOutlineColor": [ 255, 40, 40 ],
-    "damageOutlineTime": 0.15,
+    "damageFlashSizeExtention": 2,
+    "damageFlashColor": [ 255, 40, 40 ],
+    "damageFlashTime": 0.075,
 
     "e1": {
         "animation": { "path": "res/enemies/apple.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
-        "speed": 70, "health": 1,
+        "speed": 70, "health": 10,
 
         "ability": { "delay": 7, "execute": "" },
 
