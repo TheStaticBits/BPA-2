@@ -200,7 +200,7 @@ class Enemy(Entity):
             # Matches up the random number with a drop chance and 
             # adds one drop to the resource randomly chosen
             for resource, chance in self.dropChances.items():
-                if resource not in drops:
+                if resource not in drops.keys():
                     drops[resource] = 0
                 
                 if num <= chance: # Chosen resource!
