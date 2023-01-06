@@ -8,7 +8,7 @@
                        "frames": 1, 
                        "delay": 0.4 },
 
-        "speed": 70, "health": 10,
+        "speed": 70, "health": 1,
 
         "ability": { "delay": 7, "execute": "" },
 
