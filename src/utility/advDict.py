@@ -71,11 +71,12 @@ class AdvDict:
     
     def __contains__(self, item):
         """ in operator overload """
+        return item in self.pyDict
     
 
     def items(self):
         return self.pyDict.items()
-        
+
     def keys(self):
         return self.pyDict.keys()
     
