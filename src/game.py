@@ -65,8 +65,8 @@ class Game:
 
             
             self.window.update(self.constants)
-        
-        self.save.close()
+
+        self.saveAndClose()
     
 
     def runFrame(self):
@@ -89,3 +89,11 @@ class Game:
                 self.round.save()
                 self.mainMenu.updateMapShown()
                 del self.round
+    
+
+    def saveAndClose(self):
+        """ Saves highscore and closes database """
+        if self.scene == "round": # If the player closed in the middle of a round
+            self.round.save()
+
+        self.save.close()
