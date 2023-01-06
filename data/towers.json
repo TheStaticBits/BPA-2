@@ -57,6 +57,8 @@
       "dealDMGFrame": 1,
       "attackMode": "one",
 
+      "attackSound": "res/sounds/sunBlast.wav",
+
       "upgrades": [
           { "costs": { "wood": 22, "steel": 18, "uranium": 0, "plasma": 0  },
             "stats": { "range": 90, "damage": 1.5, "attackCooldown": 0.7   } },
@@ -229,6 +231,8 @@
 
         "dealDMGFrame": 1,
         "attackMode": "all",
+
+        "attackSound": "res/sounds/crasher.wav",
 
         "upgrades": [
             { "costs": { "wood": 0, "steel": 200, "uranium": 150, "plasma": 0 },
