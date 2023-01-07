@@ -45,7 +45,7 @@ class Round:
 
         try:
             # Default resources
-            self.resources = AdvDict(consts["startingResources"])
+            self.resources = AdvDict(consts["startingResources"].copy())
         except KeyError as exc:
             Error.createError("Unable to find starting resources for the player in the constants JSON file.", self.log, exc)
     
