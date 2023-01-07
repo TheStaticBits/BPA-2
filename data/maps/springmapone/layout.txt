@@ -1,0 +1,15 @@
+               
+   K-r   K-r   
+   | |   | |   
+ K-l I---l |   
+ |         |   
+ I-L i-L   I-r 
+   | | |     | 
+   k-R k-L i-R 
+         | |   
+ K---r K-l I-r 
+ |   | |     | 
+ k-L I-l i-L | 
+   |     | | | 
+ K-l   i-R k-R 
+ |     |       

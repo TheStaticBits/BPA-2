@@ -67,6 +67,7 @@
     "maps": {
         "wintermapone": "Winter 1",
         "wintermaptwo": "Winter 2",
-        "wintermapthree": "Winter 3"
+        "wintermapthree": "Winter 3",
+        "springmapone": "Spring 1"
     }
 }
