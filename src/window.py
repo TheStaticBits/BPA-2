@@ -5,6 +5,7 @@ import time
 
 from src.utility.vector import Vect
 from src.ui.error import Error
+import src.utility.utility as util 
 
 class Window:
     """ Handles window and inputs """
@@ -32,6 +33,13 @@ class Window:
             Error.createError("Unable to find window tile in the constants JSON file. Defaulting to \"Game\".",
                               self.log, exc, recoverable=True)
             pygame.display.set_caption("Game")
+        
+        try:
+            icon = util.loadTexTransparent(constants["window"]["icon"])
+            pygame.display.set_icon(icon)
+        
+        except KeyError as exc:
+            Error.createError("Unable to find the icon path in constants.json", self.log, exc, recoverable=True)
         
 
         try:
