@@ -187,7 +187,7 @@ class Enemy(Entity):
         return not util.rectCollision(super().getPos(), super().getAnim().getSize(),
                                       Vect(0, 0),       tileset.getBoardSize())
     
-    def isDead(self, tileset):
+    def isDead(self):
         """ Returns true if the enemy has died """
         return self.health <= 0
 

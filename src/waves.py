@@ -86,7 +86,7 @@ class Waves:
                 self.health -= enemy.getDamage() # player take damage
                 self.log.info(f"Player health now at {self.health}")
             
-            elif not enemy.isDead(tileset): # Enemy alive still
+            elif not enemy.isDead(): # Enemy alive still
                 stillAlive.append(enemy)
             
             else: # Enemy died
@@ -165,11 +165,19 @@ class Waves:
 
             # Testing rectangle collision first,
             # to save performance on the costly pixel perfect collision
-            if util.rectCollision(pos1=Vect(enemyPos), size1=Vect(enemyImg.get_size()),
-                                  pos2=pos, size2=Vect(img.get_size())):
-                                  
-                if util.pixelPerfectCollision(img1=img, pos1=pos, img2=enemyImg, pos2=enemyPos):
-                    collided.append(enemy)
+            if not util.rectCollision(pos1=Vect(enemyPos), size1=Vect(enemyImg.get_size()),
+                                      pos2=pos, size2=Vect(img.get_size())):
+                continue # Move on to the next enemy without the rest of the checks
+
+            # Test pixel perfect collision between tower damage range and the enemy    
+            if not util.pixelPerfectCollision(img1=img, pos1=pos, img2=enemyImg, pos2=enemyPos):
+                continue
+            
+            # Make sure the enemy hasn't died from another tower in the same frame already
+            if enemy.isDead():
+                continue
+            
+            collided.append(enemy)
         
         return collided
     

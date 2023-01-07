@@ -101,6 +101,7 @@ class Tower(Entity):
     
 
     def getCollidedEnemies(self, waves):
+        """ Returns a list of enemies that the tower's range has collided with """
         return waves.getCollided(self.getRangeCircle(), self.getCirclePos())
 
     
