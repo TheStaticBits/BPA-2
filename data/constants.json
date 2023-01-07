@@ -15,7 +15,7 @@
 
     "game": {
         "mapOffset": [ 0, 0 ],
-        "playerHealth": 200,
+        "playerHealth": 150,
         "imgScale": 2,
         "tileHoverSpeed": 20,
         "sellMultiplier": 0.8,
@@ -67,6 +67,9 @@
     "maps": {
         "wintermapone": "Winter 1",
         "wintermaptwo": "Winter 2",
-        "wintermapthree": "Winter 3"
+        "wintermapthree": "Winter 3",
+        "springmapone": "Spring 1",
+        "springmaptwo": "Spring 2",
+        "springmapthree": "Spring 3"
     }
 }

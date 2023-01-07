@@ -1,0 +1,15 @@
+               
+ i-----------r 
+ |           | 
+ Ir        Kr|  
+  Ir       |Il 
+   |       |   
+  iR       |iL 
+ iR        kR| 
+ |           | 
+ Ir        Kr| 
+  Ir       |Il 
+   |       |   
+  iR       |iL 
+ iR        kR| 
+ |           | 
