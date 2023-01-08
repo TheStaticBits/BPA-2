@@ -99,10 +99,9 @@ class Button(UIElement):
 
         if not self.disabled: # Update the button normally with movement etc.
             self.updateMovement(window)
-            self.heightOffset = 0
         
         else: # Button is disabled, so don't update mouse collisions, animation, etc.
-            self.heightOffset = 0 # Default offset
+            self.heightOffset = self.offsets["default"] # Default offset
 
         # In case the text was updated, center its position on the button
         self.centerText()
