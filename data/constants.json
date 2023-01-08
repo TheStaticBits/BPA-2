@@ -54,7 +54,8 @@
         "wintermapthree": "Winter 3",
         "springmapone": "Spring 1",
         "springmaptwo": "Spring 2",
-        "springmapthree": "Spring 3"
+        "springmapthree": "Spring 3",
+        "summermapone": "Summer 1"
     },
 
     "mapPaths": {
