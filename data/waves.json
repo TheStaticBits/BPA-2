@@ -118,6 +118,13 @@
     },
     {
         "enemies": {
+            "e6": { "amount": 10,   "startDelay": 0,   "spawnDelay": 1 },
+            "e2": { "amount": 5,   "startDelay": 10,   "spawnDelay": 0.2 }
+        },
+        "delay": 26
+    },
+    {
+        "enemies": {
             "e6": { "amount": 10,  "startDelay": 0,   "spawnDelay": 1.2 },
             "e4": { "amount": 15,  "startDelay": 15,  "spawnDelay": 0.1 }
         },
@@ -201,5 +208,82 @@
             "e4": { "amount": 40,  "startDelay": 0,   "spawnDelay": 0.1 }
         },
         "delay": 17
+    },
+    {
+        "enemies": {
+            "e8": { "amount": 3,   "startDelay": 0,   "spawnDelay": 5 },
+            "e4": { "amount": 5,   "startDelay": 0,   "spawnDelay": 3 }
+        },
+        "delay": 28
+    },
+    {
+        "enemies": {
+            "e5": { "amount": 10,   "startDelay": 0,   "spawnDelay": 0.3 }
+        },
+        "delay": 21
+    },
+    {
+        "enemies": {
+            "e8": { "amount": 5,   "startDelay": 0,   "spawnDelay": 3 },
+            "e4": { "amount": 10,   "startDelay": 0,   "spawnDelay": 1.5 }
+        },
+        "delay": 28
+    },
+    {
+        "enemies": {
+            "e8": { "amount": 6,   "startDelay": 0,   "spawnDelay": 3 },
+            "e4": { "amount": 12,   "startDelay": 0,   "spawnDelay": 1.5 }
+        },
+        "delay": 29
+    },
+    {
+        "enemies": {
+            "e8": { "amount": 8,   "startDelay": 0,   "spawnDelay": 3 },
+            "e4": { "amount": 16,   "startDelay": 0,   "spawnDelay": 1.5 }
+        },
+        "delay": 30
+    },
+    {
+        "enemies": {
+            "e1": { "amount": 10,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e2": { "amount": 10,   "startDelay": 7,   "spawnDelay": 0.1 },
+            "e3": { "amount": 10,   "startDelay": 14,   "spawnDelay": 0.1 },
+            "e4": { "amount": 10,   "startDelay": 21,   "spawnDelay": 0.1 },
+            "e5": { "amount": 10,   "startDelay": 28,   "spawnDelay": 0.1 }
+        },
+        "delay": 38
+    },
+    {
+        "enemies": {
+            "e1": { "amount": 10,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e2": { "amount": 10,   "startDelay": 4,   "spawnDelay": 0.1 },
+            "e3": { "amount": 10,   "startDelay": 8,   "spawnDelay": 0.1 },
+            "e4": { "amount": 10,   "startDelay": 12,   "spawnDelay": 0.1 },
+            "e5": { "amount": 10,   "startDelay": 16,   "spawnDelay": 0.1 },
+            "e6": { "amount": 10,   "startDelay": 20,   "spawnDelay": 0.1 }
+        },
+        "delay": 38
+    },
+    {
+        "enemies": {
+            "e4": { "amount": 40,   "startDelay": 0,   "spawnDelay": 0.8 }
+        },
+        "delay": 45
+    },
+    {
+        "enemies": {
+            "e5": { "amount": 24,   "startDelay": 0,   "spawnDelay": 0.5 },
+            "e8": { "amount": 4,   "startDelay": 12,   "spawnDelay": 2 }
+        },
+        "delay": 29
+    },
+    {
+        "enemies": {
+            "e5": { "amount": 11,   "startDelay": 0,   "spawnDelay": 1 },
+            "e6": { "amount": 11,   "startDelay": 12,   "spawnDelay": 1 },
+            "e7": { "amount": 8,   "startDelay": 24,   "spawnDelay": 1 },
+            "e8": { "amount": 5,   "startDelay": 36,   "spawnDelay": 1 }
+        },
+        "delay": 49
     }
 ]
