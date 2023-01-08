@@ -99,9 +99,10 @@ class Button(UIElement):
 
         if not self.disabled: # Update the button normally with movement etc.
             self.updateMovement(window)
+            self.heightOffset = 0
         
         else: # Button is disabled, so don't update mouse collisions, animation, etc.
-            self.heightOffset = self.offsets["default"] # Default offset
+            self.heightOffset = 0 # Default offset
 
         # In case the text was updated, center its position on the button
         self.centerText()
@@ -131,9 +132,11 @@ class Button(UIElement):
             img = pygame.Surface(super().getSize().getTuple(), 
                                  flags=pygame.SRCALPHA)
             img.blit(super().getImg(), (0, self.heightOffset))
+            # Any part of the button below its bottom will be cut off because the button
+            # is being drawn on another surface with the same size as the button
 
         else:
-            img = super().getImg()
+            img = super().getImg().copy()
         
         if self.disabled: # Gray out the button since it is disabled
             graySurf = pygame.Surface(img.get_size()) # Same size as the button image
