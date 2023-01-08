@@ -128,6 +128,8 @@ class Window:
             if event.type == pygame.QUIT:
                 self.close = True
             
+            # Pressing shift will toggle the doubling of delta time,
+            # which doubles the speed of the entire game.
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
                     self.speedup = not self.speedup
