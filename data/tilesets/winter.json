@@ -1,7 +1,7 @@
 {
     "name": "Winter",
     "baseTile": " ",
-    "music": "",
+    "music": "res/sounds/music/woahExtendedModified.wav",
 
     "tiles": {
         " ": { "move": "none",    "path": "res/tiles/winter/tile.png"      },

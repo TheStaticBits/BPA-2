@@ -28,6 +28,8 @@ class Round:
         self.consts = consts
 
         self.tileset = Tileset(map, consts)
+        self.tileset.playMusic()
+        
         self.waves = Waves(consts)
         
         try:

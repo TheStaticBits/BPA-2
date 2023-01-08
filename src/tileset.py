@@ -18,7 +18,7 @@ class Tileset:
         self.createTiles(self.layout, map, consts)
         
         try:
-            self.playMusic(self.tileJson["music"])
+            self.musicPath = self.tileJson["music"]
         except KeyError as exc:
             Error.createError("Unable to find music path in tileset JSON file. Set to empty string for no music. ", self.log, exc, recoverable=True)
     
@@ -67,16 +67,17 @@ class Tileset:
             self.tiles.append(rowList)
     
     
-    def playMusic(self, musicPath):
+    def playMusic(self):
         """ Plays music on loop """
+        self.music = None
         try:
-            if musicPath != "":
-                pygame.mixer.music.load(musicPath)
-                pygame.mixer.set_volume(0.5)
-                pygame.mixer.play(-1)
+            if self.musicPath != "":
+                self.music = pygame.mixer.Sound(self.musicPath)
+                self.music.play(-1) # Play on repeat
+                self.music.set_volume(0.5)
 
         except Exception as exc:
-            Error.createError(f"Unable to load music at {musicPath}. Not playing music.", self.log, exc, recoverable=True)
+            Error.createError(f"Unable to load music at {self.musicPath}. Not playing music.", self.log, exc, recoverable=True)
 
 
     def update(self, window, consts):
@@ -145,3 +146,7 @@ class Tileset:
                     return True
         
         return False
+    
+    def __del__(self): # Deconstructor
+        if self.music != None:
+            self.music.stop() # Stops music
