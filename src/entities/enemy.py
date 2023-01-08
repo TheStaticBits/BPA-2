@@ -192,7 +192,7 @@ class Enemy(Entity):
         return self.health <= 0
 
     def getDamage(self):
-        return self.health
+        return int(self.health)
         # Damage done to the player's health upon reaching the end,
         # the health remaining on the enemy is dealt to the player's health as 
 

@@ -78,6 +78,7 @@ class Round:
             self.checkDeath()
             self.checkSkipButton()
             self.checkPauseButton()
+            self.capResources()
 
             # Player pressed "sell" button in upgrades menu
             if self.upgradeMenu.isSold():
@@ -145,17 +146,24 @@ class Round:
             self.pauseMenu.setDisplaying(True)
     
     
+    def capResources(self):
+        """ Caps resources at 999, so they don't overlap the UI """
+        for resource in self.resources.keys():
+            if self.resources[resource] > 999:
+                self.resources[resource] = 999
+    
+    
     def render(self, window, consts):
         """ Render tileset, enemies, and towers and UI """
-        self.tileset.renderTiles(window)
+        self.tileset.renderTiles(window) # Render tiles
         self.tileset.renderDeco(window)
-        self.waves.render(window)
-        self.shop.render(window)
-        self.upgradeMenu.render(window)
+        self.waves.render(window) # Render enemies
+        self.renderTowers(window, consts) # Render towers
 
-        self.renderTowers(window, consts)
+        self.shop.render(window) # Render shop and upgrades menu
+        self.upgradeMenu.render(window)
         
-        self.deathScreen.render(window)
+        self.deathScreen.render(window) # Render deathscreen or pause if they're displaying
         self.pauseMenu.render(window)
     
     
