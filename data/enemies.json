@@ -73,14 +73,14 @@
         "ability": { "delay": 7, "execute": "" },
 
         "dropAmount": 21,
-        "dropChances": { "wood": 35, "steel": 60, "uranium": 5 }
+        "dropChances": { "wood": 30, "steel": 60, "uranium": 10 }
     },
     "e7": {
         "animation": { "path": "res/enemies/grape.png", 
                        "frames": 1, 
                        "delay": 0.4 },
 
-        "speed": 110, "health": 50,
+        "speed": 110, "health": 55,
 
         "ability": { "delay": 7, "execute": "" },
 
@@ -92,7 +92,7 @@
                        "frames": 1, 
                        "delay": 0.4 },
 
-        "speed": 160, "health": 100,
+        "speed": 160, "health": 110,
 
         "ability": { "delay": 7, "execute": "" },
 
