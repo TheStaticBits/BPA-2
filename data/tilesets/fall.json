@@ -1,0 +1,42 @@
+{
+    "name": "Fall",
+    "baseTile": " ",
+    "music": "",
+
+    "tiles": {
+        " ": { "move": "none",    "path": "res/tiles/fall/tile.png"      },
+        "-": { "move": "forward", "path": "res/tiles/fall/path.png"      },
+        "l": { "move": "left",    "path": "res/tiles/fall/turnLeft.png"  },
+        "r": { "move": "right",   "path": "res/tiles/fall/turnRight.png" },
+        "+": { "move": "forward", "path": "res/tiles/fall/cross.png"     },
+        "T": { "move": "left",    "path": "res/tiles/fall/tPath.png"     }
+    },
+    "rotated": {
+        "|": { "tile": "-", "degrees":  90 },
+
+        "R": { "tile": "r", "degrees": -90 },
+        "k": { "tile": "r", "degrees": 180 },
+        "K": { "tile": "r", "degrees":  90 },
+        
+        "L": { "tile": "l", "degrees":  90 },
+        "i": { "tile": "l", "degrees": 180 },
+        "I": { "tile": "l", "degrees": -90 },
+
+        "t": { "tile": "T", "degrees": 180, "move": "right" }
+    },
+    "unmovable": {
+        "e": { "tile": " " }
+    },
+    "deco": {
+        "s": {
+            "tile": " ",
+            "placable": false, "moveWithTile": true, "offset": [ 20, 15 ],
+            "animation": { "path": "res/tiles/fall/deco/leafPile.png", "frames": 1, "delay": 1 }
+        },
+        "1": {
+            "tile": " ",
+            "placable": false, "moveWithTile": true, "offset": [ 20, 20 ],
+            "animation": { "path": "res/tiles/fall/deco/tree.png", "frames": 1, "delay": 1 }
+        }
+    }
+}

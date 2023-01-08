@@ -1,14 +1,15 @@
 {
+    "name": "Winter",
     "baseTile": " ",
     "music": "",
 
     "tiles": {
-        " ": { "move": "none",    "path": "res/tiles/winter/winterTile.png"      },
-        "-": { "move": "forward", "path": "res/tiles/winter/winterPath.png"      },
-        "l": { "move": "left",    "path": "res/tiles/winter/winterTurnLeft.png"  },
-        "r": { "move": "right",   "path": "res/tiles/winter/winterTurnRight.png" },
-        "+": { "move": "forward", "path": "res/tiles/winter/winterCross.png"     },
-        "T": { "move": "left",    "path": "res/tiles/winter/winterTPath.png"     }
+        " ": { "move": "none",    "path": "res/tiles/winter/tile.png"      },
+        "-": { "move": "forward", "path": "res/tiles/winter/path.png"      },
+        "l": { "move": "left",    "path": "res/tiles/winter/turnLeft.png"  },
+        "r": { "move": "right",   "path": "res/tiles/winter/turnRight.png" },
+        "+": { "move": "forward", "path": "res/tiles/winter/cross.png"     },
+        "T": { "move": "left",    "path": "res/tiles/winter/tPath.png"     }
     },
     "rotated": {
         "|": { "tile": "-", "degrees":  90 },

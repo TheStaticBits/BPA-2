@@ -9,7 +9,7 @@ from src.ui.error import Error
 class Tile:
     """ Handles each tile and the images and functionality """
     
-    textures = {} # Dict, {tileTypeChar: pygame.Surface} 
+    textures = {} # Dict, { tilesetName: {tileTypeChar: pygame.Surface} } 
 
     def __init__(self, type, coords, tileJson):
         """ Setup tile """
@@ -39,7 +39,7 @@ class Tile:
 
         # Coordinates given multiplied by the tile size
         # (position on screen)
-        self.pos = coords * self.textures[self.type].get_width()
+        self.pos = coords * self.textures[self.tilesetName][self.type].get_width()
 
         if self.hasDeco:
             # Setup decoration centered at offset
@@ -53,6 +53,7 @@ class Tile:
         self.hasDeco = type in tileJson["deco"]
         self.rotate = None
         self.unmovable = False
+        self.tilesetName = tileJson["name"]
 
         if self.hasDeco: # Decoration tile, has to load animation on tile and stuff
             self.type = tileJson["deco"][type]["tile"] # Tile type of the tile behind deco
@@ -77,7 +78,7 @@ class Tile:
                     self.move = tileJson["tiles"][self.type]["move"]
 
             
-            # Tile that have towers placed on it
+            # Tile that can have towers placed on it
             else: 
                 if type in tileJson["unmovable"]:
                     type = tileJson["unmovable"][type]["tile"]
@@ -90,17 +91,23 @@ class Tile:
     def loadTex(self, tileJson):
         """ Loads texture into class variable if it hasn't already been loaded """
         
-        if self.type not in self.textures:
-            # load and add tex to class variable textures, for future
-            # tiles of the same type
-            path = tileJson["tiles"][self.type]["path"]
-            self.textures[self.type] = util.loadTexTransparent(path)
-        
+        if self.tilesetName not in self.textures:
+            self.textures[self.tilesetName] = {}
+
+        self.loadTile(self.type, tileJson)
+
         # loading base tile
         self.baseTile = tileJson["baseTile"]
-        if tileJson["baseTile"] not in self.textures:
-            path = tileJson["tiles"][tileJson["baseTile"]]
-            self.textures[tileJson["baseTile"]] = util.loadTexTransparent(path)
+        self.loadTile(self.baseTile, tileJson)
+    
+
+    def loadTile(self, tile, tileJson):
+        """ If the tile is not loaded yet, load it and store in cache for the future """
+        if tile not in self.textures[self.tilesetName]:
+            # load and add tex to class variable textures, for future
+            # tiles of the same type
+            path = tileJson["tiles"][tile]["path"]
+            self.textures[self.tilesetName][tile] = util.loadTexTransparent(path)
     
 
     def updateMouseHover(self, window, consts):
@@ -136,17 +143,20 @@ class Tile:
         self.updateMouseHover(window, consts)
 
     
-    def render(self, window, surf=False): # window is the Window object
+    def render(self, window, surf=False): # window is Window object or an image (if surf is True)
         """ Render the tile itself """ 
-        tex = self.textures[self.type]
+        tex = self.textures[self.tilesetName][self.type]
 
-        if self.type != self.baseTile:
-            if surf: window.blit(self.textures[self.baseTile], self.pos.getTuple())
-            else: window.render(self.textures[self.baseTile], self.pos)
+        if self.type != self.baseTile: # Draw base tile below the tile itself
+            baseTileImg = self.textures[self.tilesetName][self.baseTile]
 
-        if self.rotate != None: 
+            if surf: window.blit(baseTileImg, self.pos.getTuple()) # Draw to an image
+            else: window.render(baseTileImg, self.pos) # Draw to the window
+
+        if self.rotate != None: # Rotate if necessary
             tex = pygame.transform.rotate(tex, self.rotate)
 
+        # Applying mouse hover offset
         renderPos = self.pos.copy()
         renderPos.y -= self.hoverOffset
         
@@ -172,7 +182,7 @@ class Tile:
         """ Returns center of tile position """ 
         return self.pos + (self.getWidth() // 2)
     
-    def getSize(self):   return Vect(self.textures[self.type].get_size())
+    def getSize(self):   return Vect(self.textures[self.tilesetName][self.type].get_size())
     def getWidth(self):  return self.getSize().x
     def getHeight(self): return self.getSize().y
 

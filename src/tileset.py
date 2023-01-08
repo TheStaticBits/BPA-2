@@ -48,6 +48,7 @@ class Tileset:
         try:
             mapDataJson = util.loadJson(f"{consts['mapPaths']['maps']}/{map}/{consts['mapPaths']['mapDataJson']}")
 
+
             self.tileJson = util.loadJson(mapDataJson["tileset"])
             self.enemyStartPos = mapDataJson["start"]
         
