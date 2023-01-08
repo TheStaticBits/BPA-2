@@ -88,6 +88,7 @@ class Game:
                 self.scene = "mainMenu"
                 self.round.save()
                 self.mainMenu.updateMapShown()
+                self.round.stopMusic()
                 del self.round
     
 

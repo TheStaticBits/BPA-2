@@ -29,7 +29,7 @@ class Round:
 
         self.tileset = Tileset(map, consts)
         self.tileset.playMusic()
-        
+
         self.waves = Waves(consts)
         
         try:
@@ -204,6 +204,10 @@ class Round:
 
     def isGameOver(self):
         return self.deathScreen.pressedContinue() or self.pauseMenu.getQuitPressed()
+    
+
+    def stopMusic(self):
+        self.tileset.stopMusic()
 
     
     def save(self):

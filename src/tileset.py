@@ -16,6 +16,8 @@ class Tileset:
         self.offset = Vect(consts["game"]["mapOffset"])
         
         self.createTiles(self.layout, map, consts)
+
+        self.music = None
         
         try:
             self.musicPath = self.tileJson["music"]
@@ -69,7 +71,6 @@ class Tileset:
     
     def playMusic(self):
         """ Plays music on loop """
-        self.music = None
         try:
             if self.musicPath != "":
                 self.music = pygame.mixer.Sound(self.musicPath)
@@ -78,6 +79,11 @@ class Tileset:
 
         except Exception as exc:
             Error.createError(f"Unable to load music at {self.musicPath}. Not playing music.", self.log, exc, recoverable=True)
+    
+    
+    def stopMusic(self):
+        if self.music != None:
+            self.music.stop() # Stops music
 
 
     def update(self, window, consts):
@@ -146,7 +152,3 @@ class Tileset:
                     return True
         
         return False
-    
-    def __del__(self): # Deconstructor
-        if self.music != None:
-            self.music.stop() # Stops music
