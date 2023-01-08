@@ -165,12 +165,16 @@ class Round:
 
         height = self.tileset.getTilesSize().y
 
-        for row in range(height):
+        for row in range(height): # Iterate through rows top to bottom
             for tower in self.towers:
                 if tower.getTileOn() == None: continue
 
-                elif tower.getTileOn().getCoords().y == row:
-                    tower.render(window, consts)
+                elif tower.getTileOn().getCoords().y == row: # Render this row of towers
+                    tower.render(window)
+        
+        # Render tower range circle if it's selected
+        for tower in self.towers:
+            tower.renderRange(window, consts)
     
     
     def isPlacingATower(self):

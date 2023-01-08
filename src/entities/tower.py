@@ -194,31 +194,34 @@ class Tower(Entity):
                 self.tileOn.placedTower()
     
 
-    def render(self, window, consts):
-        """ Renders the tower to the screen, 
-            with range circle if selected,
-            and with transparency if being placed. """
-
-        # Does not render if the mouse is not on any tile
-        if self.tileOn == None: return None 
-
-        if self.showRange:
-            # Render range circle
-            try:
-                if self.canBePlaced: color = consts["towers"]["rangeCircleGreen"]
-                else:                color = consts["towers"]["rangeCircleRed"]
-            
-            except KeyError as exc:
-                Error.createError("Unable to find tower range circle color data within the constants JSON file.", self.log, exc)
-            
-            # Center circle on the tower
-            window.render(self.getRangeCircle(color), self.getCirclePos())
+    def render(self, window):
+        """ Renders the tower to the screen """
         
         if self.tileOn == None: offset = 0
         else: offset = -self.tileOn.getHoverOffset()
         
         # Render tower at offset of the tile hovering effect
         super().render(window, yOffset=offset)
+    
+
+    def renderRange(self, window, consts):
+        """ Renders tower range circle if the tower is selected """
+        # Does not render if the mouse is not on any tile
+        if self.tileOn == None: return None 
+        # Does not render if the tower is not selected
+        if not self.showRange: return None
+
+        # Render range circle
+        # Get circle color
+        try:
+            if self.canBePlaced: color = consts["towers"]["rangeCircleGreen"]
+            else:                color = consts["towers"]["rangeCircleRed"]
+        
+        except KeyError as exc:
+            Error.createError("Unable to find tower range circle color data within the constants JSON file.", self.log, exc)
+        
+        # Center circle on the tower
+        window.render(self.getRangeCircle(color), self.getCirclePos())
     
 
     def getCirclePos(self): 
