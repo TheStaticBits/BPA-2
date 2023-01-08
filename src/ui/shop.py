@@ -89,7 +89,7 @@ class Shop(UI):
                 text.changeColor([ 0, 0, 0 ]) # Set to black (has enough to buy it)
 
 
-    def update(self, window, resources, showingUpgrades, isPlacingTower, wavesHandler):
+    def update(self, window, resources, showingUpgrades, isPlacingTower, wavesHandler, tileset):
         """ Updates everything within the shop menu """
         
         # If the upgrades menu is not open, update shop buttons
@@ -101,12 +101,13 @@ class Shop(UI):
         self.updateTowerCosts(resources)
 
         if not isPlacingTower and resources >= self.towerPrice:
-            super().getObj("buy").setDisabled(False)
+            if tileset.hasAvailableTile(): # If at least one tile doesn't have a tower 
+                super().getObj("buy").setDisabled(False)
 
-            # Test for player buying a tower
-            self.bought = False
-            if super().getObj("buy").getPressed():
-                self.bought = True
+                # Test for player buying a tower
+                self.bought = False
+                if super().getObj("buy").getPressed():
+                    self.bought = True
 
         else:
             super().getObj("buy").setDisabled(True)

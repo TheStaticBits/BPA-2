@@ -70,7 +70,6 @@ class UpgradeMenu(UI):
         # If the tower has another level to upgrade to
         if len(tower.getUpgradeInfo()) - 1 > tower.getLevel():
             self.setPriceVisible(True)
-            super().getObj("upgrade").setDisplaying(True)
 
             newTowerStats = self.format(tower.getUpgradeInfo()[tower.getLevel() + 1]["stats"])
 
@@ -85,7 +84,7 @@ class UpgradeMenu(UI):
 
         else:
             self.setPriceVisible(False)
-            super().getObj("upgrade").setDisplaying(False)
+            super().getObj("upgrade").setDisabled(True)
         
         super().getObj("towerStats").setText("\n".join(towerStatsStr))
         super().getObj("tower").setImg(tower.getImg())

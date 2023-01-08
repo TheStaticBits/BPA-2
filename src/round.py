@@ -66,11 +66,12 @@ class Round:
             self.tileset.update(window, consts)
             self.waves.update(window, self.tileset, self.consts)
             self.resources += self.waves.getFrameDrops()
+            self.capResources()
             
             self.updateTowers(window, consts)
 
             self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying(), 
-                             self.isPlacingATower(), self.waves)
+                             self.isPlacingATower(), self.waves, self.tileset)
 
             self.upgradeMenu.update(window, self.resources)
 
@@ -78,7 +79,6 @@ class Round:
             self.checkDeath()
             self.checkSkipButton()
             self.checkPauseButton()
-            self.capResources()
 
             # Player pressed "sell" button in upgrades menu
             if self.upgradeMenu.isSold():
