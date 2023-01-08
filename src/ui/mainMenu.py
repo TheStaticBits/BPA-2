@@ -5,6 +5,7 @@ from src.ui.ui import UI
 from src.ui.error import Error
 from src.utility.database import DatabaseHandler
 from src.tileset import Tileset
+from src.waves import Waves
 
 class MainMenu(UI):
     def __init__(self, consts, uiData, saveDatabase):
@@ -18,6 +19,15 @@ class MainMenu(UI):
             self.loadedMaps = {}
         except KeyError as exc:
             Error.createError("Failed to retrieve maps from constants JSON.", self.log, exc)
+        
+
+        try:
+            bgMap = consts["backgroundMaps"]["mainMenu"]
+        except KeyError as exc:
+            Error.createError("Unable to find background map name for the main menu in constants.json", self.log, exc)
+        
+        self.bgTilset = Tileset(bgMap, consts)
+        self.bgEnemies = Waves(consts)
         
         self.mapShown = 0 # index of map in self.mapsOrder
         self.consts = consts
@@ -52,8 +62,12 @@ class MainMenu(UI):
         super().getObj("highscore").setText(f"Wave Highscore: {self.highscore}")
 
 
-    def update(self, window):
+    def update(self, window, consts):
         """ Updates button functionality on main menu """
+
+        self.bgTilset.update(window, consts, animateTile=False)
+        self.bgEnemies.update(window, self.bgTilset, consts)
+
         super().update(window)
 
         # Left and right buttons on the menu
@@ -68,6 +82,15 @@ class MainMenu(UI):
             if self.mapShown >= len(self.mapsOrder):
                 self.mapShown = 0
             self.updateMapShown()
+    
+
+    def render(self, window):
+        """ Renders background enemies and tileset and the UI elements """
+        self.bgTilset.renderTiles(window)
+        self.bgTilset.renderDeco(window)
+        self.bgEnemies.render(window)
+
+        super().render(window)
 
     
     def pressedPlay(self):

@@ -214,9 +214,6 @@
         "offset": [ 0, 0 ],
         
         "images": {
-            "bg": { "path": "res/ui/backgrounds/mainMenuBG.png",
-                    "pos": [ 0, 0 ], "centered": false },
-            
             "logo": { "path": "res/ui/mainMenu/logo.png",
                       "pos": [ 150, 100 ], "centered": true },
             

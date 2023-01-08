@@ -131,9 +131,11 @@ class Button(UIElement):
             img = pygame.Surface(super().getSize().getTuple(), 
                                  flags=pygame.SRCALPHA)
             img.blit(super().getImg(), (0, self.heightOffset))
+            # Any part of the button below its bottom will be cut off because the button
+            # is being drawn on another surface with the same size as the button
 
         else:
-            img = super().getImg()
+            img = super().getImg().copy()
         
         if self.disabled: # Gray out the button since it is disabled
             graySurf = pygame.Surface(img.get_size()) # Same size as the button image

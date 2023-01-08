@@ -71,7 +71,7 @@ class Game:
 
     def runFrame(self):
         if self.scene == "mainMenu":
-            self.mainMenu.update(self.window)
+            self.mainMenu.update(self.window, self.constants)
             self.mainMenu.render(self.window)
 
             if self.mainMenu.pressedPlay():
@@ -88,6 +88,7 @@ class Game:
                 self.scene = "mainMenu"
                 self.round.save()
                 self.mainMenu.updateMapShown()
+                self.round.stopMusic()
                 del self.round
     
 

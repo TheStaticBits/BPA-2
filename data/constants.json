@@ -16,7 +16,7 @@
 
     "game": {
         "mapOffset": [ 0, 0 ],
-        "playerHealth": 150,
+        "playerHealth": 100,
         "imgScale": 2,
         "tileHoverSpeed": 20,
         "sellMultiplier": 0.8,
@@ -58,6 +58,11 @@
         "summermapone": "Summer 1",
         "summermaptwo": "Summer 2",
         "summermapthree": "Summer 3"
+    },
+
+    "backgroundMaps": {
+        "mainMenu": "mainMenuBG",
+        "tutorial": "none"
     },
 
     "mapPaths": {
