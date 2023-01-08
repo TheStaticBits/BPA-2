@@ -89,7 +89,7 @@ class Shop(UI):
                 text.changeColor([ 0, 0, 0 ]) # Set to black (has enough to buy it)
 
 
-    def update(self, window, resources, showingUpgrades, isPlacingTower, waveNum):
+    def update(self, window, resources, showingUpgrades, isPlacingTower, wavesHandler):
         """ Updates everything within the shop menu """
         
         # If the upgrades menu is not open, update shop buttons
@@ -101,7 +101,7 @@ class Shop(UI):
         self.updateTowerCosts(resources)
 
         if not isPlacingTower and resources >= self.towerPrice:
-            super().getObj("buy").setDisplaying(True)
+            super().getObj("buy").setDisabled(False)
 
             # Test for player buying a tower
             self.bought = False
@@ -109,11 +109,15 @@ class Shop(UI):
                 self.bought = True
 
         else:
-            super().getObj("buy").setDisplaying(False)
+            super().getObj("buy").setDisabled(True)
             self.bought = False
         
+        # Updates stats for wave number and player health on screen
+        super().getObj("waveNum").setText(f"Wave: {wavesHandler.getWaveNum() + 1}")
+        super().getObj("playerHealth").setText(f"HP: {wavesHandler.getPlayerHealth()}")
 
-        super().getObj("waveNum").setText(f"Wave: {waveNum + 1}")
+        # Sets skip button to be disabled if it isn't currently between waves
+        super().getObj("skip").setDisabled(not wavesHandler.isBetweenWaves())
 
     
     def getSelectedTowerName(self):
@@ -129,3 +133,9 @@ class Shop(UI):
     
 
     def getBought(self): return self.bought
+
+    def pauseButtonPressed(self): 
+        return super().getObj("pause").getPressed()
+    
+    def skipButtonPressed(self):
+        return super().getObj("skip").getPressed()

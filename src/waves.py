@@ -181,12 +181,24 @@ class Waves:
         
         return collided
     
-
+    # Getters
+    def getPlayerHealth(self): return self.health
     def playerIsDead(self): return self.health <= 0
+
     def getFrameDrops(self): return self.drops # Enemy drops from that frame
+
     def getWaveNum(self): return self.waveNum
     def getWaveDelay(self): 
+        """ Returns the delay between waves """
         try:
             return self.wavesJson[self.waveNum]["delay"]
         except KeyError as exc:
             Error.createError(f"Unable to find wave delay number for wave {self.waveNum}.", self.log, exc)
+    
+    def isBetweenWaves(self):
+        """ Checks if it is currently between two waves """
+        return len(self.spawnData) == 0 # No enemies being spawned
+    
+    def skipWaveDelay(self):
+        """ Skips the delay between waves """
+        self.waveDelay.setToEnd()

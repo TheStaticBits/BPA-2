@@ -37,3 +37,5 @@ class Timer:
     
     def getDelay(self): return self.delay
     def getTimeLeft(self): return self.timer
+
+    def setToEnd(self): self.timer = 0

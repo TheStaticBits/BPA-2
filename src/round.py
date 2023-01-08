@@ -2,6 +2,7 @@ import pygame
 import logging
 
 import src.utility.utility as util
+from src.utility.vector import Vect
 from src.tileset import Tileset
 from src.utility.advDict import AdvDict
 from  src.entities.tower import Tower
@@ -35,8 +36,15 @@ class Round:
 
         self.shop = Shop(consts, uiData, self.towersJson)
         self.upgradeMenu = UpgradeMenu(consts, uiData)
+        
+        # Make rectangle of size of the window screen
+        windowSize = Vect(consts["window"]["size"]).getTuple()
+        bgShade = pygame.Surface(windowSize)
+        bgShade.fill((0, 0, 0)) # Fill with black
+        bgShade.set_alpha(100) # Set semi-transparent
+        # For background of the pause and death screens
 
-        self.deathScreen = DeathScreen(consts, uiData)
+        self.deathScreen = DeathScreen(consts, uiData, bgShade)
 
         self.saveDatabase = saveDatabase
         self.prevHighscore = prevHighscore
@@ -59,18 +67,21 @@ class Round:
             
             self.updateTowers(window, consts)
 
-            self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying(), self.isPlacingATower(), self.waves.getWaveNum())
+            self.shop.update(window, self.resources, self.upgradeMenu.isDisplaying(), 
+                             self.isPlacingATower(), self.waves)
+
             self.upgradeMenu.update(window, self.resources)
 
             self.checkPurchases()
-        
             self.checkDeath()
+            self.checkSkipButton()
 
+            # Player pressed "sell" button in upgrades menu
             if self.upgradeMenu.isSold():
                 self.log.info("Selling tower")
                 self.upgradeMenu.setSold(False)
-                self.resources += self.upgradeMenu.getSellPrice()
-                self.towers.pop(self.upgradeMenu.getTowerIndex())
+                self.resources += self.upgradeMenu.getSellPrice() # Adding sell price
+                self.towers.pop(self.upgradeMenu.getTowerIndex()) # Removing tower
         
         else:
             self.deathScreen.update(window)
@@ -114,6 +125,12 @@ class Round:
         """ Checks player health """
         if self.waves.playerIsDead():
             self.deathScreen.showDeath(self.prevHighscore, self.waves.getWaveNum() + 1)
+    
+
+    def checkSkipButton(self):
+        """ Checks if the player pressed the skip forward button in the shop """
+        if self.shop.skipButtonPressed():
+            self.waves.skipWaveDelay()
     
     
     def render(self, window, consts):

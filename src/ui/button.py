@@ -15,6 +15,7 @@ class Button(UIElement):
 
         self.pressed = False
         self.text = text
+        self.disabled = False
 
         # Loading button data from the JSON file, along with catching any potential errors
         try:
@@ -62,16 +63,11 @@ class Button(UIElement):
         textPos.y += self.heightOffset
 
         self.text.setPos(textPos)
+    
 
-
-    def update(self, window):
-        """ Updates the button hover based on the mouse position, etc. """
-        # if not displaying, don't update anything and break out of the function
-        if not super().getDisplaying(): 
-            return None
-
-        self.pressed = False
-
+    def updateMovement(self, window):
+        """ Updates button animation and button press detection"""
+        # Test if the mouse is not near the button, hovering over it, or clicking it
         if util.pointRectCollision(window.getMousePos(), super().getPos(), super().getSize()):
             if window.getMouse("left"):
                 self.moveToOffset = self.offsets["pressed"] # Moves down
@@ -87,10 +83,27 @@ class Button(UIElement):
         # Moves the y position slowly to the offset
         self.heightOffset += (self.moveToOffset - self.heightOffset) * window.getDeltaTime() * self.offsets["moveSpeed"]
 
-        # Only for when the deltaTime is very high, when the game freezes for a bit or more
+        # Only for when the deltaTime is very high, when the game freezes for a bit or more,
+        # cap it at the max offset
         if self.heightOffset < 0:
             self.heightOffset = 0
 
+
+    def update(self, window):
+        """ Updates the button hover based on the mouse position, etc. """
+        # if not displaying, don't update anything and break out of the function
+        if not super().getDisplaying(): 
+            return None
+
+        self.pressed = False
+
+        if not self.disabled: # Update the button normally with movement etc.
+            self.updateMovement(window)
+        
+        else: # Button is disabled, so don't update mouse collisions, animation, etc.
+            self.heightOffset = self.offsets["default"] # Default offset
+
+        # In case the text was updated, center its position on the button
         self.centerText()
     
 
@@ -105,13 +118,14 @@ class Button(UIElement):
         if not super().getDisplaying(): 
             # Makes button not visible when button is invisible
             if self.text != None:
-                self.text.setDisplaying(False)
+                self.text.setDisplaying(False) # Set the text displaying as the same as the button
 
-            return False
-            
+            return False # Do not render the button or text, exit the function
+
         else:
             if self.text != None:
                 self.text.setDisplaying(True)
+        
 
         if self.heightOffset != 0:
             img = pygame.Surface(super().getSize().getTuple(), 
@@ -121,9 +135,17 @@ class Button(UIElement):
         else:
             img = super().getImg()
         
+        if self.disabled: # Gray out the button since it is disabled
+            graySurf = pygame.Surface(img.get_size()) # Same size as the button image
+            graySurf.fill((150, 150, 150)) # Fill with a gray
+            graySurf.set_alpha(150) # Set alpha to 150/255
+            img.blit(graySurf, (0, self.heightOffset)) # Fill the button part with gray
+        
         super().render(window, img=img)
         self.renderText(window)
-    
+
 
     def getPressed(self): return self.pressed
     def getTextObj(self): return self.text
+
+    def setDisabled(self, bool): self.disabled = bool

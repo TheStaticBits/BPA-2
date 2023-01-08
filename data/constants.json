@@ -35,23 +35,6 @@
         "rangeCircleGreen": [ 0, 255, 0, 120 ]
     },
 
-    "mapPaths": {
-        "maps": "data/maps",
-        "mapDataJson": "mapData.json",
-        "layoutFile": "layout.txt"
-    },
-
-    "jsonPaths": {
-        "enemies": "data/enemies.json",
-        "towers": "data/towers.json",
-        "waves": "data/waves.json",
-        "ui": "data/ui.json"
-    },
-
-    "miscPaths": {
-        "font": "res/font/monogram.ttf"
-    },
-
     "startingResources": {
         "wood": 25,
         "steel": 2,
@@ -72,5 +55,22 @@
         "springmapone": "Spring 1",
         "springmaptwo": "Spring 2",
         "springmapthree": "Spring 3"
+    },
+
+    "mapPaths": {
+        "maps": "data/maps",
+        "mapDataJson": "mapData.json",
+        "layoutFile": "layout.txt"
+    },
+
+    "jsonPaths": {
+        "enemies": "data/enemies.json",
+        "towers": "data/towers.json",
+        "waves": "data/waves.json",
+        "ui": "data/ui.json"
+    },
+
+    "miscPaths": {
+        "font": "res/font/monogram.ttf"
     }
 }

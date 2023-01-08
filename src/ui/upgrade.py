@@ -126,7 +126,7 @@ class UpgradeMenu(UI):
     def updateUpgrade(self, playerResources):
         """ Updates the "Upgrade" button, testing if it's pressed when the player can buy it """
         if self.displayPrice and playerResources >= self.getUpgradeCost():
-            super().getObj("upgrade").setDisplaying(True)
+            super().getObj("upgrade").setDisabled(False)
             
             self.bought = False
 
@@ -136,7 +136,7 @@ class UpgradeMenu(UI):
                 self.bought = True
 
         else:
-            super().getObj("upgrade").setDisplaying(False)
+            super().getObj("upgrade").setDisabled(True)
             self.bought = False
     
 

@@ -28,21 +28,36 @@
                        "pos": [ 100, 210 ], "centered": true }
         },
         "buttons": {
-            "buy": { "path": "res/ui/buttons/example.png", 
-                     "offsets": { "default": 6, "pressed": 14, "moveSpeed": 20 },
-                     "pos": [ 100, 400 ], "centered": true,
-                     "text": "buyText", "chinHeight": 18 },
-
             "left":  { "path": "res/ui/buttons/left.png",
                        "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
                        "pos": [ 50, 210 ], "centered": true },
             "right": { "path": "res/ui/buttons/right.png",
                        "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
-                       "pos": [ 150, 210 ], "centered": true }
+                       "pos": [ 150, 210 ], "centered": true },
+            
+                       
+            "buy": { "path": "res/ui/buttons/buy.png", 
+                     "offsets": { "default": 6, "pressed": 14, "moveSpeed": 20 },
+                     "pos": [ 100, 390 ], "centered": true,
+                     "text": "buyText", "chinHeight": 22 },
+            
+            "skip": { "path": "res/ui/buttons/skip.png",
+                       "offsets": { "default": 3, "pressed": 8, "moveSpeed": 25 },
+                       "pos": [ 26, 505 ], "centered": false },
+            
+            "pause": { "path": "res/ui/buttons/pause.png",
+                       "offsets": { "default": 3, "pressed": 8, "moveSpeed": 25 },
+                       "pos": [ 110, 505 ], "centered": false }
         },
         "text": { 
+            
             "buyText": { "text": "Buy", "fontSize": 30,
                          "color": [ 255, 255, 255 ] },
+
+                         
+            "resources": { "text": "Resources", "fontSize": 15,
+                           "pos": [ 100, 30 ], "centered": true,
+                           "color": [ 0, 0, 0 ] },
             
             "towerName": { "text": "placeholder", "fontSize": 15,
                            "pos": [ 100, 160 ], "centered": true,
@@ -75,8 +90,11 @@
                              "color": [ 0, 0, 0 ] },
             
             "waveNum": { "text": "Wave: ", "fontSize": 15,
-                         "pos": [ 100, 30 ], "centered": true,
-                         "color": [ 0, 0, 0 ] }
+                         "pos": [ 100, 450 ], "centered": true,
+                         "color": [ 0, 0, 0 ] },
+            "playerHealth": { "text": "HP: 200", "fontSize": 15,
+                              "pos": [ 100, 480 ], "centered": true,
+                              "color": [ 0, 0, 0 ] }
         }
     },
 
