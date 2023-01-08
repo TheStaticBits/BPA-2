@@ -3,7 +3,7 @@
    | |   | |   
  K-l I---l |   
  |         |   
- I-L i-L   I-r 
+ k-L i-L   I-r 
    | | |     | 
    k-R k-L i-R 
          | |   
