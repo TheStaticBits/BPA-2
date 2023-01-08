@@ -16,7 +16,7 @@
 
     "game": {
         "mapOffset": [ 0, 0 ],
-        "playerHealth": 150,
+        "playerHealth": 100,
         "imgScale": 2,
         "tileHoverSpeed": 20,
         "sellMultiplier": 0.8,
