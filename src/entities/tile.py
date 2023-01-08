@@ -135,12 +135,13 @@ class Tile:
                 self.hoverOffset -= consts["game"]["tileHoverSpeed"] * window.getDeltaTime() * self.hoverOffset
 
 
-    def update(self, window, consts):
+    def update(self, window, consts, updateAnim):
         """ Updates tile hovering, deco animations """
         if self.hasDeco: 
             self.deco.updateAnim(window)
 
-        self.updateMouseHover(window, consts)
+        if updateAnim:
+            self.updateMouseHover(window, consts)
 
     
     def render(self, window, surf=False): # window is Window object or an image (if surf is True)

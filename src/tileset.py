@@ -86,11 +86,11 @@ class Tileset:
             self.music.stop() # Stops music
 
 
-    def update(self, window, consts):
+    def update(self, window, consts, animateTile=True):
         """ New frame, updates all tiles """
         for row in self.tiles:
             for tile in row:
-                tile.update(window, consts)
+                tile.update(window, consts, animateTile)
     
 
     def renderTiles(self, window):

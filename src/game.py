@@ -71,7 +71,7 @@ class Game:
 
     def runFrame(self):
         if self.scene == "mainMenu":
-            self.mainMenu.update(self.window)
+            self.mainMenu.update(self.window, self.constants)
             self.mainMenu.render(self.window)
 
             if self.mainMenu.pressedPlay():
