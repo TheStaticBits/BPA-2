@@ -279,5 +279,35 @@
                          "pos": [ 400, 300 ], "centered": true,
                          "color": [ 0, 0, 0 ], "lineSpacing": 0 }
         }
+    },
+
+    "pauseMenu": {
+        "offset": [ 0, 0 ],
+
+        "images": {
+            "bg": { "path": "res/ui/backgrounds/pauseMenuBG.png",
+                    "pos": [ 400, 300 ], "centered": true }
+        },
+        "buttons": {
+            "resume": { "path": "res/ui/buttons/pauseMenuButton.png",
+                        "offsets": { "default": 4, "pressed": 10, "moveSpeed": 30 },
+                        "pos": [ 400, 290 ], "centered": true,
+                        "text": "resumeText", "chinHeight": 14 },
+            
+            "mainMenu": { "path": "res/ui/buttons/pauseMenuButton.png",
+                        "offsets": { "default": 4, "pressed": 10, "moveSpeed": 30 },
+                        "pos": [ 400, 370 ], "centered": true,
+                        "text": "mainMenuText", "chinHeight": 14 }
+        },
+        "text": {
+            "resumeText": { "text": "Resume", "fontSize": 30,
+                            "color": [ 0, 0, 0 ] },
+            "mainMenuText": { "text": "Quit", "fontSize": 30,
+                              "color": [ 0, 0, 0 ] },
+
+            "paused": { "text": "Paused", "fontSize": 40,
+                        "pos": [ 400, 210 ], "centered": true,
+                        "color": [ 0, 0, 0 ] }
+        }
     }
 }

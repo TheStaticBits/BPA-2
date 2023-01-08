@@ -11,6 +11,7 @@ from src.ui.shop import Shop
 from src.ui.upgrade import UpgradeMenu
 from src.ui.error import Error
 from src.ui.deathScreen import DeathScreen
+from src.ui.pause import PauseMenu
 
 class Round:
     """ Handles the game content, such as the world, tileset, and towers
@@ -45,6 +46,7 @@ class Round:
         # For background of the pause and death screens
 
         self.deathScreen = DeathScreen(consts, uiData, bgShade)
+        self.pauseMenu = PauseMenu(consts, uiData, bgShade)
 
         self.saveDatabase = saveDatabase
         self.prevHighscore = prevHighscore
@@ -60,7 +62,7 @@ class Round:
     
     def update(self, window, consts):
         """ Updates everything for the frame """
-        if not self.deathScreen.isDisplaying():
+        if not self.deathScreen.isDisplaying() and not self.pauseMenu.isDisplaying():
             self.tileset.update(window, consts)
             self.waves.update(window, self.tileset, self.consts)
             self.resources += self.waves.getFrameDrops()
@@ -75,6 +77,7 @@ class Round:
             self.checkPurchases()
             self.checkDeath()
             self.checkSkipButton()
+            self.checkPauseButton()
 
             # Player pressed "sell" button in upgrades menu
             if self.upgradeMenu.isSold():
@@ -83,13 +86,16 @@ class Round:
                 self.resources += self.upgradeMenu.getSellPrice() # Adding sell price
                 self.towers.pop(self.upgradeMenu.getTowerIndex()) # Removing tower
         
-        else:
+        elif self.deathScreen.isDisplaying():
             self.deathScreen.update(window)
+        
+        elif self.pauseMenu.isDisplaying():
+            self.pauseMenu.update(window)
 
 
     def updateTowers(self, window, consts):
-        """ Updates towers and tower selecting"""
-        noTowers = True
+        """ Updates towers and tower selecting """
+        noTowers = True # Testing if the player has a tower selected
 
         # Iterate through towers and update them
         for index, tower in enumerate(self.towers):
@@ -132,6 +138,12 @@ class Round:
         if self.shop.skipButtonPressed():
             self.waves.skipWaveDelay()
     
+
+    def checkPauseButton(self):
+        """ Checks if the player pressed the pause button """
+        if self.shop.pauseButtonPressed():
+            self.pauseMenu.setDisplaying(True)
+    
     
     def render(self, window, consts):
         """ Render tileset, enemies, and towers and UI """
@@ -144,6 +156,7 @@ class Round:
         self.renderTowers(window, consts)
         
         self.deathScreen.render(window)
+        self.pauseMenu.render(window)
     
     
     def renderTowers(self, window, consts):
@@ -162,7 +175,6 @@ class Round:
     
     def isPlacingATower(self):
         """ Returns true if there is a tower being placed currently """
-
         for tower in self.towers:
             if tower.isPlacing():
                 return True
@@ -177,7 +189,7 @@ class Round:
     
 
     def isGameOver(self):
-        return self.deathScreen.pressedContinue()
+        return self.deathScreen.pressedContinue() or self.pauseMenu.getQuitPressed()
 
     
     def save(self):

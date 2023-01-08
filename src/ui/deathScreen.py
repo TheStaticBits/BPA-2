@@ -5,6 +5,8 @@ from src.ui.ui import UI
 from src.utility.vector import Vect
 
 class DeathScreen(UI):
+    """ Handles the simple ui that pops up upon the player losing all health and dying. """
+
     def __init__(self, consts, uiData, bgShade):
         super().__init__(False, __name__)
 
