@@ -8,7 +8,7 @@ from src.ui.error import Error
 from src.utility.timer import Timer
 
 class Particle:
-    """ Handles a single particle"""
+    """ Handles a single particle """
     def __init__(self, constsJson, pos, image, moveAngle):
         """ Chooses a random position in the image to be in the particle image """
         self.log = logging.getLogger(__name__)
