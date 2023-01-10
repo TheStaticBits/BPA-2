@@ -59,9 +59,8 @@ class Tile:
             self.type = tileJson["deco"][type]["tile"] # Tile type of the tile behind deco
             self.decoTile = type
             self.decoOffset = Vect(tileJson["deco"][type]["offset"])
-            self.isPlacable = tileJson["deco"][type]["placable"]
+            self.unmovable = not tileJson["deco"][type]["placable"]
             self.moveWithTile = tileJson["deco"][type]["moveWithTile"]
-            self.unmovable = True
 
             animData = tileJson["deco"][type]["animation"]
             self.deco = Entity(animData)
@@ -196,8 +195,12 @@ class Tile:
 
     def canBePlacedOn(self): 
         """ Returns true if towers can be placed on the tile """
-        if self.unmovable: return False
-        else: return self.move == "none"
+        if self.unmovable: 
+            return False
+        elif not self.hasDeco:
+            return self.move == "none"
+        
+        return True
 
     def getHasTower(self): return self.hasTower
     
