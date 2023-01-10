@@ -26,6 +26,14 @@ class MainMenu(UI):
         except KeyError as exc:
             Error.createError("Unable to find background map name for the main menu in constants.json", self.log, exc)
         
+
+        self.music = None
+        try:
+            self.music = pygame.mixer.Sound(consts["music"]["mainMenu"])
+        except KeyError as exc:
+            Error.createError("Unable to find main menu music in constants.json. Not playing music.", self.log, exc, recoverable=True)
+
+        
         self.bgTilset = Tileset(bgMap, consts)
         self.bgEnemies = Waves(consts)
         
@@ -33,7 +41,39 @@ class MainMenu(UI):
         self.consts = consts
         self.saveDatabase = saveDatabase
 
+        # Creating table if there isn't one already for storing settings such as volume
+        self.saveDatabase.createTable("settings", "name TEXT, value INTEGER")
+        self.findVolume()
+        
+        self.playMusic()
+
         self.updateMapShown()
+    
+
+    def playMusic(self):
+        """ Play music on loop """
+        self.music.set_volume(self.getMusicVolume())
+        self.music.play(-1)
+    
+    def stopMusic(self):
+        self.music.stop()
+    
+
+    def findVolume(self):
+        """ Finding sfx and music volumes in the save database """
+        self.sfxVolume = self.saveDatabase.findValue("settings", "value", "name", "sfxVolume")
+        self.musicVolume = self.saveDatabase.findValue("settings", "value", "name", "musicVolume")
+
+        # If the user has or has not saved volume settings by closing the game yet
+        self.volumeIsSaved = not (self.sfxVolume is None)
+
+        # Set to default of 50
+        if not self.volumeIsSaved: 
+            self.sfxVolume = 50
+            self.musicVolume = 50
+        else: # fetchone returns a tuple, choose first value
+            self.sfxVolume = self.sfxVolume[0]
+            self.musicVolume = self.musicVolume[0]
     
 
     def updateMapShown(self):
@@ -60,17 +100,30 @@ class MainMenu(UI):
             self.highscore = self.highscore[0]
 
         super().getObj("highscore").setText(f"Wave Highscore: {self.highscore}")
+    
+
+    def updateBG(self, window, consts):
+        """ Updates background tileset and enemies of main menu (and for tutorial background) """
+        self.bgTilset.update(window, consts, animateTile=False)
+        self.bgEnemies.update(window, self.bgTilset, consts)
 
 
     def update(self, window, consts):
         """ Updates button functionality on main menu """
 
-        self.bgTilset.update(window, consts, animateTile=False)
-        self.bgEnemies.update(window, self.bgTilset, consts)
+        self.updateBG(window, consts)
 
         super().update(window)
+        
+        self.checkMapButtons()
+        self.checkVolumeButtons()
 
-        # Left and right buttons on the menu
+        if self.getVolumeChanged():
+            self.music.set_volume(self.getMusicVolume())
+    
+
+    def checkMapButtons(self):
+        """ Checks if left or right buttons on the menu have been pressed """
         if super().getObj("left").getPressed():
             self.mapShown -= 1
             if self.mapShown < 0:
@@ -83,13 +136,45 @@ class MainMenu(UI):
                 self.mapShown = 0
             self.updateMapShown()
     
+    
+    def checkVolumeButtons(self):
+        """ Checks the volume buttons of being pressed """
+        self.volumeChanged = False
 
-    def render(self, window):
-        """ Renders background enemies and tileset and the UI elements """
+        # Music volume up and down buttons
+        if super().getObj("musicVolumeUp").getPressed():
+            self.musicVolume += 5
+            if self.musicVolume > 100: self.musicVolume = 100
+            self.volumeChanged = True
+        elif super().getObj("musicVolumeDown").getPressed():
+            self.musicVolume -= 5
+            if self.musicVolume < 0: self.musicVolume = 0
+            self.volumeChanged = True
+        
+        # SFX volume up and down buttons
+        if super().getObj("sfxVolumeUp").getPressed():
+            self.sfxVolume += 5
+            if self.sfxVolume > 100: self.sfxVolume = 100
+            self.volumeChanged = True
+        elif super().getObj("sfxVolumeDown").getPressed():
+            self.sfxVolume -= 5
+            if self.sfxVolume < 0: self.sfxVolume = 0
+            self.volumeChanged = True
+
+        super().getObj("musicVolume").setText(f"{self.musicVolume}%")
+        super().getObj("sfxVolume").setText(f"{self.sfxVolume}%")
+    
+
+    def renderBG(self, window):
+        """ Renders background tileset and enemies """
         self.bgTilset.renderTiles(window)
         self.bgTilset.renderDeco(window)
         self.bgEnemies.render(window)
+    
 
+    def render(self, window):
+        """ Renders background enemies and tileset and the UI elements """
+        self.renderBG(window)
         super().render(window)
 
     
@@ -102,4 +187,19 @@ class MainMenu(UI):
         return self.mapsOrder[self.mapShown]
     
 
+    def saveVolume(self):
+        """ Saves volume settings to the database """
+        if self.volumeIsSaved: # In the database already, so just modify it
+            self.saveDatabase.modify("settings", "name", "sfxVolume", "value", self.sfxVolume)
+            self.saveDatabase.modify("settings", "name", "musicVolume", "value", self.musicVolume)
+        else: # Not yet in the database, insert it
+            self.saveDatabase.insert("settings", "sfxVolume", self.sfxVolume)
+            self.saveDatabase.insert("settings", "musicVolume", self.musicVolume)
+    
+
     def getHighscore(self): return self.highscore
+    def getTutorialButton(self): return super().getObj("tutorial").getPressed()
+
+    def getVolumeChanged(self): return self.volumeChanged
+    def getMusicVolume(self): return self.musicVolume * 0.01
+    def getSFXVolume(self): return self.sfxVolume * 0.01

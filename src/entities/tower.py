@@ -11,7 +11,7 @@ class Tower(Entity):
         Manages the placement and rendering """
     
     # Tile parameter is the tile object the tower was placed on
-    def __init__(self, type, towersJson): 
+    def __init__(self, type, towersJson, sfxVolume): 
         self.log = logging.getLogger(__name__)
 
         animData = towersJson[type]["animation"]
@@ -29,7 +29,7 @@ class Tower(Entity):
         self.sound = None
         if "attackSound" in towersJson[type]:
             self.sound = pygame.mixer.Sound(towersJson[type]["attackSound"])
-            self.sound.set_volume(0.5)
+            self.sound.set_volume(sfxVolume)
 
 
         self.upgradeNum = 0
@@ -119,8 +119,8 @@ class Tower(Entity):
             for tower in collided:
                 tower.takeDamage(self.damage)
 
-        # Playing sound
-        if self.sound != None:
+        # Playing sound if there is a sound and if the tower hit at least one enemy
+        if self.sound != None and len(collided) != 0:
             pygame.mixer.Sound.play(self.sound)
     
 
@@ -249,3 +249,6 @@ class Tower(Entity):
 
     # Setters
     def unselect(self): self.showRange = False
+    def setVolume(self, volume): 
+        if self.sound is not None:
+            self.sound.set_volume(volume)

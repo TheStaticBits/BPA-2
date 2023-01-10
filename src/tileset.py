@@ -69,13 +69,14 @@ class Tileset:
             self.tiles.append(rowList)
     
     
-    def playMusic(self):
+    def playMusic(self, volume):
         """ Plays music on loop """
+        self.music = None
         try:
             if self.musicPath != "":
                 self.music = pygame.mixer.Sound(self.musicPath)
                 self.music.play(-1) # Play on repeat
-                self.music.set_volume(0.5)
+                self.music.set_volume(volume)
 
         except Exception as exc:
             Error.createError(f"Unable to load music at {self.musicPath}. Not playing music.", self.log, exc, recoverable=True)
@@ -84,6 +85,11 @@ class Tileset:
     def stopMusic(self):
         if self.music != None:
             self.music.stop() # Stops music
+    
+
+    def setVolume(self, volume):
+        if self.music is not None:
+            self.music.set_volume(volume)
 
 
     def update(self, window, consts, animateTile=True):

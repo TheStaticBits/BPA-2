@@ -20,7 +20,7 @@ class Round:
     towersJson = None
     shopData = None
 
-    def __init__(self, map, consts, uiData, saveDatabase, prevHighscore):
+    def __init__(self, map, consts, uiData, saveDatabase, prevHighscore, musicVolume, sfxVolume):
         """ Setup tileset object, etc. """
         self.log = logging.getLogger(__name__)
 
@@ -28,7 +28,8 @@ class Round:
         self.consts = consts
 
         self.tileset = Tileset(map, consts)
-        self.tileset.playMusic()
+        self.tileset.playMusic(musicVolume)
+        self.sfxVolume = sfxVolume
 
         self.waves = Waves(consts)
         
@@ -124,7 +125,7 @@ class Round:
             # Charging the player for the resources
             self.resources -= AdvDict(self.shop.getTowerPrice())
             # Adding the tower to the tower list
-            self.towers.append(Tower(self.shop.getSelectedTowerName(), self.towersJson))
+            self.towers.append(Tower(self.shop.getSelectedTowerName(), self.towersJson, self.sfxVolume))
         
         elif self.upgradeMenu.getBought():
             self.resources -= AdvDict(self.upgradeMenu.getTower().getCurrentCosts())

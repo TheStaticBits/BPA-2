@@ -218,7 +218,7 @@
                       "pos": [ 150, 100 ], "centered": true },
             
             "mapBG": { "path": "res/ui/mainMenu/mapBackground.png",
-                       "pos": [ 550, 300 ], "centered": true }, 
+                       "pos": [ 550, 300 ], "centered": true },
             
             "map": { "path": "res/ui/error.png",
                      "pos": [ 550, 300 ], "centered": true }
@@ -229,17 +229,43 @@
                       "pos": [ 550, 505 ], "centered": true,
                       "text": "playText", "chinHeight": 20 },
             
+
             "left": { "path": "res/ui/buttons/left.png",
                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
                       "pos": [ 375, 300 ], "centered": true },
             
             "right": { "path": "res/ui/buttons/right.png",
                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
-                      "pos": [ 725, 300 ], "centered": true }
+                      "pos": [ 725, 300 ], "centered": true },
+            
+
+            "tutorial": { "path": "res/ui/buttons/tutorial.png",
+                          "offsets": { "default": 4, "pressed": 10, "moveSpeed": 30 },
+                          "pos": [ 150, 505 ], "centered": true,
+                          "text": "tutorialText", "chinHeight": 14 },
+            
+
+            "musicVolumeUp" : { "path": "res/ui/buttons/volumeUp.png",
+                           "offsets": { "default": 2, "pressed": 8, "moveSpeed": 30 },
+                           "pos": [ 105, 340 ], "centered": true },
+            
+            "musicVolumeDown" : { "path": "res/ui/buttons/volumeDown.png",
+                             "offsets": { "default": 2, "pressed": 8, "moveSpeed": 30 },
+                             "pos": [ 105, 420 ], "centered": true },
+            
+            "sfxVolumeUp" : { "path": "res/ui/buttons/volumeUp.png",
+                              "offsets": { "default": 2, "pressed": 8, "moveSpeed": 30 },
+                              "pos": [ 195, 340 ], "centered": true },
+            
+            "sfxVolumeDown" : { "path": "res/ui/buttons/volumeDown.png",
+                                "offsets": { "default": 2, "pressed": 8, "moveSpeed": 30 },
+                                "pos": [ 195, 420 ], "centered": true }
         },
         "text": {
             "playText": { "text": "Play", "fontSize": 40,
                           "color": [ 0, 0, 0 ] },
+            "tutorialText": { "text": "Tutorial", "fontSize": 30,
+                              "color": [ 0, 0, 0 ] },
             
             "mapName": { "text": "placeholder", "fontSize": 30,
                          "pos": [ 550, 100 ], "centered": true,
@@ -247,6 +273,25 @@
             
             "highscore": { "text": "Wave highscore: ", "fontSize": 15,
                            "pos": [ 550, 140 ], "centered": true,
+                           "color": [ 0, 0, 0 ] },
+            
+
+            "volumeTitle": { "text": "Volume", "fontSize": 30,
+                             "pos": [ 148, 260 ], "centered": true,
+                             "color": [ 0, 0, 0 ] },
+            
+            "musicTitle": { "text": "Music", "fontSize": 15,
+                            "pos": [ 105, 300 ], "centered": true,
+                            "color": [ 0, 0, 0 ] },
+            "sfxTitle": { "text": "SFX", "fontSize": 15,
+                          "pos": [ 195, 300 ], "centered": true,
+                          "color": [ 0, 0, 0 ] },
+            
+            "musicVolume": { "text": "%", "fontSize": 15,
+                             "pos": [ 105, 380 ], "centered": true,
+                             "color": [ 0, 0, 0 ] },
+            "sfxVolume": { "text": "%", "fontSize": 15,
+                           "pos": [ 195, 380 ], "centered": true,
                            "color": [ 0, 0, 0 ] }
         }
     },
@@ -292,9 +337,9 @@
                         "text": "resumeText", "chinHeight": 14 },
             
             "mainMenu": { "path": "res/ui/buttons/pauseMenuButton.png",
-                        "offsets": { "default": 4, "pressed": 10, "moveSpeed": 30 },
-                        "pos": [ 400, 370 ], "centered": true,
-                        "text": "mainMenuText", "chinHeight": 14 }
+                          "offsets": { "default": 4, "pressed": 10, "moveSpeed": 30 },
+                          "pos": [ 400, 370 ], "centered": true,
+                          "text": "mainMenuText", "chinHeight": 14 }
         },
         "text": {
             "resumeText": { "text": "Resume", "fontSize": 30,
@@ -305,6 +350,20 @@
             "paused": { "text": "Paused", "fontSize": 40,
                         "pos": [ 400, 210 ], "centered": true,
                         "color": [ 0, 0, 0 ] }
+        }
+    },
+
+    "tutorial": {
+        "offset": [ 0, 0 ],
+        
+        "images": {
+            
+        },
+        "buttons": {
+
+        },
+        "text": {
+
         }
     }
 }
