@@ -152,27 +152,27 @@
                        "pos": [ 0, 0 ], "centered": false },
             
             "tower": { "path": "res/towers/placeholder.png", 
-                       "pos": [ 100, 100 ], "centered": true },
+                       "pos": [ 100, 82 ], "centered": true },
             
             "woodImg":    { "path": "res/ui/shop/wood.png",
-                            "pos": [ 10, 238 ], "centered": false },
+                            "pos": [ 10, 206 ], "centered": false },
             "steelImg":   { "path": "res/ui/shop/steel.png",
-                            "pos": [ 105, 238 ], "centered": false },
+                            "pos": [ 105, 206 ], "centered": false },
             "uraniumImg": { "path": "res/ui/shop/uranium.png",
-                            "pos": [ 10, 278 ], "centered": false },
+                            "pos": [ 10, 246 ], "centered": false },
             "plasmaImg":  { "path": "res/ui/shop/plasma.png",
-                            "pos": [ 105, 278 ], "centered": false }
+                            "pos": [ 105, 246 ], "centered": false }
         },
         "buttons": {
             "upgrade": { "path": "res/ui/buttons/upgrade.png",
-                         "offsets": { "default": 2, "pressed": 6, "moveSpeed": 25 }, 
-                         "pos": [ 100, 350 ], "centered": true,
-                         "text": "upgradeText", "chinHeight": 10 },
+                         "offsets": { "default": 4, "pressed": 10, "moveSpeed": 25 }, 
+                         "pos": [ 100, 322 ], "centered": true,
+                         "text": "upgradeText", "chinHeight": 14 },
                          
             "sell": { "path": "res/ui/buttons/sell.png",
-                      "offsets": { "default": 2, "pressed": 6, "moveSpeed": 25 }, 
-                      "pos": [ 100, 410 ], "centered": true,
-                      "text": "sellText", "chinHeight": 10 }
+                      "offsets": { "default": 4, "pressed": 10, "moveSpeed": 25 }, 
+                      "pos": [ 100, 392 ], "centered": true,
+                      "text": "sellText", "chinHeight": 14 }
         },
         "text": {
             "upgradeText":  { "text": "Upgrade", "fontSize": 15,
@@ -180,32 +180,29 @@
 
             "sellText":  { "text": "Sell", "fontSize": 15,
                            "color": [ 255, 255, 255 ] },
-            
-            "upgradeTitle": { "text": "Upgrade", "fontSize": 25,
-                              "pos": [ 100, 15 ], "centered": true,
-                              "color": [ 0, 0, 0 ] },
+
             "towerName":    { "text": "Placeholder", "fontSize": 15,
-                              "pos": [ 100, 50 ], "centered": true,
+                              "pos": [ 100, 10 ], "centered": true,
                               "color": [ 0, 0, 0 ] },
-            "upgradeLevel": { "text": "Lvl: 0", "fontSize": 15,
-                              "pos": [ 100, 145 ], "centered": true,
+            "upgradeLevel": { "text": "Level: 0", "fontSize": 15,
+                              "pos": [ 100, 34 ], "centered": true,
                               "color": [ 0, 0, 0 ] },
             
             "towerStats":   { "text": "Placeholder", "fontSize": 15,
-                              "pos": [ 20, 160 ], "centered": false,
+                              "pos": [ 20, 116 ], "centered": false,
                               "color": [ 0, 0, 0 ], "lineSpacing": 0 },
                             
             "woodCost":    { "text": "0", "fontSize": 15,
-                             "pos": [ 60, 244 ], "centered": false,
+                             "pos": [ 60, 212 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "steelCost":   { "text": "0", "fontSize": 15,
-                             "pos": [ 155, 244 ], "centered": false,
+                             "pos": [ 155, 212 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "uraniumCost": { "text": "0", "fontSize": 15,
-                             "pos": [ 60, 284 ], "centered": false,
+                             "pos": [ 60, 252 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "plasmaCost":  { "text": "0", "fontSize": 15,
-                             "pos": [ 155, 284 ], "centered": false,
+                             "pos": [ 155, 252 ], "centered": false,
                              "color": [ 0, 0, 0 ] }
         }
     },
