@@ -12,9 +12,12 @@ class DatabaseHandler:
     def createTable(self, name, content):
         """ Tests if the table already exists, if it does not, creates it """
         tables = self.cursor.execute("SELECT name FROM sqlite_master")
-        tables = tables.fetchone() # Returns tuple of all table names in the database
+        tables = tables.fetchall() # Returns tuple of all table names in the database
+        
+        # Turning the list of single-element tuples into one list
+        tables = [ element[0] for element in tables ]
 
-        if tables is None:
+        if name not in tables:
             self.cursor.execute(f"CREATE TABLE {name} ({content})")
             self.log.info(f"Creating table {name} with content: {content}")
             

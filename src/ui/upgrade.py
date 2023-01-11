@@ -62,7 +62,7 @@ class UpgradeMenu(UI):
         
         # Change tower name displayed, upgrade level, image, price of upgrade, and upgrade stats here
         super().getObj("towerName").setText(tower.getType())
-        super().getObj("upgradeLevel").setText(f"Lvl: {tower.getLevel() + 1}")
+        super().getObj("upgradeLevel").setText(f"Level: {tower.getLevel() + 1}")
 
         towerStats = self.format(tower.getCurrentStats())
         towerStatsStr = [f"{key}: {value}" for key, value in towerStats.items()]

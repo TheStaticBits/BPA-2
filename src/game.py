@@ -7,6 +7,7 @@ from src.round import Round
 from src.ui.error import Error
 from src.ui.mainMenu import MainMenu
 from src.utility.database import DatabaseHandler
+from src.ui.tutorial import Tutorial
 
 class Game:
     """ Handles scenes and the functionality of the entire game """
@@ -35,9 +36,10 @@ class Game:
             self.save.createTable("waveHighscores", "map TEXT, highscore INTEGER")
             # Creates database table if not already created
             
-            # Error menu handler
+            # Error menu handler and other UIs
             self.errorUI = Error(self.constants, self.uiData)
             self.mainMenu = MainMenu(self.constants, self.uiData, self.save)
+            self.tutorial = Tutorial(self.constants, self.uiData)
 
         except Exception as exc:
             Error.createError("Error occured while loading game", self.log, exc)
@@ -75,10 +77,22 @@ class Game:
             self.mainMenu.render(self.window)
 
             if self.mainMenu.pressedPlay():
-                self.round = Round(self.mainMenu.getSelectedMap(), self.constants, 
-                                   self.uiData, self.save, self.mainMenu.getHighscore())
+                self.round = Round( self.mainMenu.getSelectedMap(), self.constants, 
+                                    self.uiData, self.save, self.mainMenu.getHighscore(),
+                                    self.mainMenu.getMusicVolume(),
+                                    self.mainMenu.getSFXVolume() )
 
                 self.scene = "round"
+                self.mainMenu.stopMusic()
+            
+            elif self.mainMenu.getTutorialButton():
+                self.scene = "tutorial"
+                self.mainMenu.stopMusic()
+            
+
+            elif self.mainMenu.getVolumeChanged(): # Volume changed, update it everywhere
+                pass # Update main menu music and stuff
+
 
         elif self.scene == "round":
             self.round.update(self.window, self.constants)
@@ -86,15 +100,25 @@ class Game:
 
             if self.round.isGameOver():
                 self.scene = "mainMenu"
+                self.mainMenu.playMusic()
                 self.round.save()
                 self.mainMenu.updateMapShown()
                 self.round.stopMusic()
                 del self.round
+        
+
+        elif self.scene == "tutorial":
+            self.mainMenu.updateBG(self.window, self.constants)
+            self.tutorial.update(self.window)
+
+            self.mainMenu.renderBG(self.window)
+            self.tutorial.render(self.window)
     
 
     def saveAndClose(self):
         """ Saves highscore and closes database """
         if self.scene == "round": # If the player closed in the middle of a round
             self.round.save()
-
+        
+        self.mainMenu.saveVolume()
         self.save.close()

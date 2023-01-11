@@ -7,25 +7,25 @@
                     "pos": [ 0, 0 ], "centered": false },
 
             "sWood":    { "path": "res/ui/shop/wood.png",
-                          "pos": [ 10, 50 ], "centered": false },
+                          "pos": [ 10, 52 ], "centered": false },
             "sSteel":   { "path": "res/ui/shop/steel.png",
-                          "pos": [ 105, 50 ], "centered": false },
+                          "pos": [ 105, 52 ], "centered": false },
             "sUranium": { "path": "res/ui/shop/uranium.png",
-                          "pos": [ 10, 100 ], "centered": false },
+                          "pos": [ 10, 98 ], "centered": false },
             "sPlasma":  { "path": "res/ui/shop/plasma.png",
-                          "pos": [ 105, 100 ], "centered": false },
+                          "pos": [ 105, 98 ], "centered": false },
             
             "woodImg":    { "path": "res/ui/shop/wood.png",
-                            "pos": [ 10, 255 ], "centered": false },
+                            "pos": [ 10, 256 ], "centered": false },
             "steelImg":   { "path": "res/ui/shop/steel.png",
-                            "pos": [ 105, 255 ], "centered": false },
+                            "pos": [ 105, 256 ], "centered": false },
             "uraniumImg": { "path": "res/ui/shop/uranium.png",
-                            "pos": [ 10, 305 ], "centered": false },
+                            "pos": [ 10, 306 ], "centered": false },
             "plasmaImg":  { "path": "res/ui/shop/plasma.png",
-                            "pos": [ 105, 305 ], "centered": false },
+                            "pos": [ 105, 306 ], "centered": false },
             
             "tower": { "path": "res/towers/placeholder.png", 
-                       "pos": [ 100, 210 ], "centered": true }
+                       "pos": [ 100, 214 ], "centered": true }
         },
         "buttons": {
             "left":  { "path": "res/ui/buttons/left.png",
@@ -38,16 +38,16 @@
                        
             "buy": { "path": "res/ui/buttons/buy.png", 
                      "offsets": { "default": 6, "pressed": 14, "moveSpeed": 20 },
-                     "pos": [ 100, 390 ], "centered": true,
+                     "pos": [ 100, 386 ], "centered": true,
                      "text": "buyText", "chinHeight": 22 },
             
             "skip": { "path": "res/ui/buttons/skip.png",
                        "offsets": { "default": 3, "pressed": 8, "moveSpeed": 25 },
-                       "pos": [ 26, 505 ], "centered": false },
+                       "pos": [ 28, 506 ], "centered": false },
             
             "pause": { "path": "res/ui/buttons/pause.png",
                        "offsets": { "default": 3, "pressed": 8, "moveSpeed": 25 },
-                       "pos": [ 110, 505 ], "centered": false }
+                       "pos": [ 112, 506 ], "centered": false }
         },
         "text": { 
             
@@ -56,44 +56,44 @@
 
                          
             "resources": { "text": "Resources", "fontSize": 15,
-                           "pos": [ 100, 30 ], "centered": true,
+                           "pos": [ 100, 22 ], "centered": true,
                            "color": [ 0, 0, 0 ] },
             
             "towerName": { "text": "placeholder", "fontSize": 15,
-                           "pos": [ 100, 160 ], "centered": true,
+                           "pos": [ 100, 166 ], "centered": true,
                            "color": [ 0, 0, 0 ] },
 
             "woodAmount":    { "text": "", "fontSize": 15,
-                               "pos": [ 60, 56 ], "centered": false,
+                               "pos": [ 60, 58 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
             "steelAmount":   { "text": "", "fontSize": 15,
-                               "pos": [ 155, 56 ], "centered": false,
+                               "pos": [ 155, 58 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
             "uraniumAmount": { "text": "", "fontSize": 15,
-                               "pos": [ 60, 106 ], "centered": false,
+                               "pos": [ 60, 104 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
             "plasmaAmount":  { "text": "", "fontSize": 15,
-                               "pos": [ 155, 106 ], "centered": false,
+                               "pos": [ 155, 104 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
                             
             "woodCost":    { "text": "", "fontSize": 15,
-                             "pos": [ 60, 261 ], "centered": false,
+                             "pos": [ 60, 262 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "steelCost":   { "text": "", "fontSize": 15,
-                             "pos": [ 155, 261 ], "centered": false,
+                             "pos": [ 155, 262 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "uraniumCost": { "text": "", "fontSize": 15,
-                             "pos": [ 60, 311 ], "centered": false,
+                             "pos": [ 60, 312 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "plasmaCost":  { "text": "", "fontSize": 15,
-                             "pos": [ 155, 311 ], "centered": false,
+                             "pos": [ 155, 312 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             
             "waveNum": { "text": "Wave: ", "fontSize": 15,
-                         "pos": [ 100, 450 ], "centered": true,
+                         "pos": [ 100, 454 ], "centered": true,
                          "color": [ 0, 0, 0 ] },
             "playerHealth": { "text": "HP: 200", "fontSize": 15,
-                              "pos": [ 100, 480 ], "centered": true,
+                              "pos": [ 100, 476 ], "centered": true,
                               "color": [ 0, 0, 0 ] }
         }
     },
@@ -145,34 +145,34 @@
     },
 
     "upgrades": {
-        "offset": [ 610, 150 ],
+        "offset": [ 600, 156 ],
         
         "images": {
             "bg":    { "path": "res/ui/backgrounds/upgradeBG.png",
                        "pos": [ 0, 0 ], "centered": false },
             
             "tower": { "path": "res/towers/placeholder.png", 
-                       "pos": [ 90, 100 ], "centered": true },
+                       "pos": [ 100, 82 ], "centered": true },
             
             "woodImg":    { "path": "res/ui/shop/wood.png",
-                            "pos": [ 0, 238 ], "centered": false },
+                            "pos": [ 10, 206 ], "centered": false },
             "steelImg":   { "path": "res/ui/shop/steel.png",
-                            "pos": [ 95, 238 ], "centered": false },
+                            "pos": [ 105, 206 ], "centered": false },
             "uraniumImg": { "path": "res/ui/shop/uranium.png",
-                            "pos": [ 0, 278 ], "centered": false },
+                            "pos": [ 10, 246 ], "centered": false },
             "plasmaImg":  { "path": "res/ui/shop/plasma.png",
-                            "pos": [ 95, 278 ], "centered": false }
+                            "pos": [ 105, 246 ], "centered": false }
         },
         "buttons": {
             "upgrade": { "path": "res/ui/buttons/upgrade.png",
-                         "offsets": { "default": 2, "pressed": 6, "moveSpeed": 25 }, 
-                         "pos": [ 90, 350 ], "centered": true,
-                         "text": "upgradeText", "chinHeight": 10 },
+                         "offsets": { "default": 4, "pressed": 10, "moveSpeed": 25 }, 
+                         "pos": [ 100, 322 ], "centered": true,
+                         "text": "upgradeText", "chinHeight": 14 },
                          
             "sell": { "path": "res/ui/buttons/sell.png",
-                      "offsets": { "default": 2, "pressed": 6, "moveSpeed": 25 }, 
-                      "pos": [ 90, 410 ], "centered": true,
-                      "text": "sellText", "chinHeight": 10 }
+                      "offsets": { "default": 4, "pressed": 10, "moveSpeed": 25 }, 
+                      "pos": [ 100, 392 ], "centered": true,
+                      "text": "sellText", "chinHeight": 14 }
         },
         "text": {
             "upgradeText":  { "text": "Upgrade", "fontSize": 15,
@@ -180,32 +180,29 @@
 
             "sellText":  { "text": "Sell", "fontSize": 15,
                            "color": [ 255, 255, 255 ] },
-            
-            "upgradeTitle": { "text": "Upgrade", "fontSize": 25,
-                              "pos": [ 90, 15 ], "centered": true,
-                              "color": [ 0, 0, 0 ] },
+
             "towerName":    { "text": "Placeholder", "fontSize": 15,
-                              "pos": [ 90, 50 ], "centered": true,
+                              "pos": [ 100, 10 ], "centered": true,
                               "color": [ 0, 0, 0 ] },
-            "upgradeLevel": { "text": "Lvl: 0", "fontSize": 15,
-                              "pos": [ 90, 145 ], "centered": true,
+            "upgradeLevel": { "text": "Level: 0", "fontSize": 15,
+                              "pos": [ 100, 34 ], "centered": true,
                               "color": [ 0, 0, 0 ] },
             
             "towerStats":   { "text": "Placeholder", "fontSize": 15,
-                              "pos": [ 10, 160 ], "centered": false,
+                              "pos": [ 20, 116 ], "centered": false,
                               "color": [ 0, 0, 0 ], "lineSpacing": 0 },
                             
             "woodCost":    { "text": "0", "fontSize": 15,
-                             "pos": [ 50, 244 ], "centered": false,
+                             "pos": [ 60, 212 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "steelCost":   { "text": "0", "fontSize": 15,
-                             "pos": [ 145, 244 ], "centered": false,
+                             "pos": [ 155, 212 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "uraniumCost": { "text": "0", "fontSize": 15,
-                             "pos": [ 50, 284 ], "centered": false,
+                             "pos": [ 60, 252 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "plasmaCost":  { "text": "0", "fontSize": 15,
-                             "pos": [ 145, 284 ], "centered": false,
+                             "pos": [ 155, 252 ], "centered": false,
                              "color": [ 0, 0, 0 ] }
         }
     },
@@ -218,7 +215,7 @@
                       "pos": [ 150, 100 ], "centered": true },
             
             "mapBG": { "path": "res/ui/mainMenu/mapBackground.png",
-                       "pos": [ 550, 300 ], "centered": true }, 
+                       "pos": [ 550, 300 ], "centered": true },
             
             "map": { "path": "res/ui/error.png",
                      "pos": [ 550, 300 ], "centered": true }
@@ -229,17 +226,43 @@
                       "pos": [ 550, 505 ], "centered": true,
                       "text": "playText", "chinHeight": 20 },
             
+
             "left": { "path": "res/ui/buttons/left.png",
                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
                       "pos": [ 375, 300 ], "centered": true },
             
             "right": { "path": "res/ui/buttons/right.png",
                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
-                      "pos": [ 725, 300 ], "centered": true }
+                      "pos": [ 725, 300 ], "centered": true },
+            
+
+            "tutorial": { "path": "res/ui/buttons/tutorial.png",
+                          "offsets": { "default": 4, "pressed": 10, "moveSpeed": 30 },
+                          "pos": [ 150, 505 ], "centered": true,
+                          "text": "tutorialText", "chinHeight": 14 },
+            
+
+            "musicVolumeUp" : { "path": "res/ui/buttons/volumeUp.png",
+                           "offsets": { "default": 2, "pressed": 8, "moveSpeed": 30 },
+                           "pos": [ 105, 340 ], "centered": true },
+            
+            "musicVolumeDown" : { "path": "res/ui/buttons/volumeDown.png",
+                             "offsets": { "default": 2, "pressed": 8, "moveSpeed": 30 },
+                             "pos": [ 105, 420 ], "centered": true },
+            
+            "sfxVolumeUp" : { "path": "res/ui/buttons/volumeUp.png",
+                              "offsets": { "default": 2, "pressed": 8, "moveSpeed": 30 },
+                              "pos": [ 195, 340 ], "centered": true },
+            
+            "sfxVolumeDown" : { "path": "res/ui/buttons/volumeDown.png",
+                                "offsets": { "default": 2, "pressed": 8, "moveSpeed": 30 },
+                                "pos": [ 195, 420 ], "centered": true }
         },
         "text": {
             "playText": { "text": "Play", "fontSize": 40,
                           "color": [ 0, 0, 0 ] },
+            "tutorialText": { "text": "Tutorial", "fontSize": 30,
+                              "color": [ 255, 255, 255 ] },
             
             "mapName": { "text": "placeholder", "fontSize": 30,
                          "pos": [ 550, 100 ], "centered": true,
@@ -247,6 +270,25 @@
             
             "highscore": { "text": "Wave highscore: ", "fontSize": 15,
                            "pos": [ 550, 140 ], "centered": true,
+                           "color": [ 0, 0, 0 ] },
+            
+
+            "volumeTitle": { "text": "Volume", "fontSize": 30,
+                             "pos": [ 148, 260 ], "centered": true,
+                             "color": [ 0, 0, 0 ] },
+            
+            "musicTitle": { "text": "Music", "fontSize": 15,
+                            "pos": [ 105, 300 ], "centered": true,
+                            "color": [ 0, 0, 0 ] },
+            "sfxTitle": { "text": "SFX", "fontSize": 15,
+                          "pos": [ 195, 300 ], "centered": true,
+                          "color": [ 0, 0, 0 ] },
+            
+            "musicVolume": { "text": "%", "fontSize": 15,
+                             "pos": [ 105, 380 ], "centered": true,
+                             "color": [ 0, 0, 0 ] },
+            "sfxVolume": { "text": "%", "fontSize": 15,
+                           "pos": [ 195, 380 ], "centered": true,
                            "color": [ 0, 0, 0 ] }
         }
     },
@@ -292,9 +334,9 @@
                         "text": "resumeText", "chinHeight": 14 },
             
             "mainMenu": { "path": "res/ui/buttons/pauseMenuButton.png",
-                        "offsets": { "default": 4, "pressed": 10, "moveSpeed": 30 },
-                        "pos": [ 400, 370 ], "centered": true,
-                        "text": "mainMenuText", "chinHeight": 14 }
+                          "offsets": { "default": 4, "pressed": 10, "moveSpeed": 30 },
+                          "pos": [ 400, 370 ], "centered": true,
+                          "text": "mainMenuText", "chinHeight": 14 }
         },
         "text": {
             "resumeText": { "text": "Resume", "fontSize": 30,
@@ -305,6 +347,20 @@
             "paused": { "text": "Paused", "fontSize": 40,
                         "pos": [ 400, 210 ], "centered": true,
                         "color": [ 0, 0, 0 ] }
+        }
+    },
+
+    "tutorial": {
+        "offset": [ 0, 0 ],
+        
+        "images": {
+            
+        },
+        "buttons": {
+
+        },
+        "text": {
+
         }
     }
 }

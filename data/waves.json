@@ -12,8 +12,8 @@
         "delay": 14
     },
     {
+        "e1": { "amount": 5,   "startDelay": 0,   "spawnDelay": 0.5 },
         "enemies": {
-            "e1": { "amount": 5,   "startDelay": 0,   "spawnDelay": 0.5 },
             "e2": { "amount": 4,   "startDelay": 3,   "spawnDelay": 2   }
         },
         "delay": 19

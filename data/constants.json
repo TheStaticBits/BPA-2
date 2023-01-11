@@ -83,5 +83,9 @@
 
     "miscPaths": {
         "font": "res/font/monogram.ttf"
+    },
+
+    "music": {
+        "mainMenu": "res/sounds/music/scales2scaledBackVictorianEra.wav"
     }
 }
