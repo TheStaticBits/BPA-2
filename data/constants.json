@@ -50,16 +50,18 @@
 
     "maps": {
         "wintermapone": "Winter 1",
-        "wintermaptwo": "Winter 2",
-        "wintermapthree": "Winter 3",
         "springmapone": "Spring 1",
-        "springmaptwo": "Spring 2",
-        "springmapthree": "Spring 3",
         "summermapone": "Summer 1",
-        "summermaptwo": "Summer 2",
-        "summermapthree": "Summer 3",
         "fallmapone": "Fall 1",
+
+        "wintermaptwo": "Winter 2",
+        "springmaptwo": "Spring 2",
+        "summermaptwo": "Summer 2",
         "fallmaptwo": "Fall 2",
+
+        "wintermapthree": "Winter 3",
+        "springmapthree": "Spring 3",
+        "summermapthree": "Summer 3",
         "fallmapthree": "Fall 3"
     },
 

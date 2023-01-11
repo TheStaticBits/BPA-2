@@ -1,4 +1,4 @@
 {
     "start": { "tile": [ 1, 0 ], "facingDir": [ 0, 1 ] },
-    "tileset": "data/tilesets/winter.json"
+    "tileset": "data/tilesets/fall.json"
 }
