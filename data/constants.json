@@ -57,7 +57,10 @@
         "springmapthree": "Spring 3",
         "summermapone": "Summer 1",
         "summermaptwo": "Summer 2",
-        "summermapthree": "Summer 3"
+        "summermapthree": "Summer 3",
+        "fallmapone": "Fall 1",
+        "fallmaptwo": "Fall 2",
+        "fallmapthree": "Fall 3"
     },
 
     "backgroundMaps": {
