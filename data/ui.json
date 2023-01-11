@@ -145,33 +145,33 @@
     },
 
     "upgrades": {
-        "offset": [ 610, 150 ],
+        "offset": [ 600, 156 ],
         
         "images": {
             "bg":    { "path": "res/ui/backgrounds/upgradeBG.png",
                        "pos": [ 0, 0 ], "centered": false },
             
             "tower": { "path": "res/towers/placeholder.png", 
-                       "pos": [ 90, 100 ], "centered": true },
+                       "pos": [ 100, 100 ], "centered": true },
             
             "woodImg":    { "path": "res/ui/shop/wood.png",
-                            "pos": [ 0, 238 ], "centered": false },
+                            "pos": [ 10, 238 ], "centered": false },
             "steelImg":   { "path": "res/ui/shop/steel.png",
-                            "pos": [ 95, 238 ], "centered": false },
+                            "pos": [ 105, 238 ], "centered": false },
             "uraniumImg": { "path": "res/ui/shop/uranium.png",
-                            "pos": [ 0, 278 ], "centered": false },
+                            "pos": [ 10, 278 ], "centered": false },
             "plasmaImg":  { "path": "res/ui/shop/plasma.png",
-                            "pos": [ 95, 278 ], "centered": false }
+                            "pos": [ 105, 278 ], "centered": false }
         },
         "buttons": {
             "upgrade": { "path": "res/ui/buttons/upgrade.png",
                          "offsets": { "default": 2, "pressed": 6, "moveSpeed": 25 }, 
-                         "pos": [ 90, 350 ], "centered": true,
+                         "pos": [ 100, 350 ], "centered": true,
                          "text": "upgradeText", "chinHeight": 10 },
                          
             "sell": { "path": "res/ui/buttons/sell.png",
                       "offsets": { "default": 2, "pressed": 6, "moveSpeed": 25 }, 
-                      "pos": [ 90, 410 ], "centered": true,
+                      "pos": [ 100, 410 ], "centered": true,
                       "text": "sellText", "chinHeight": 10 }
         },
         "text": {
@@ -182,30 +182,30 @@
                            "color": [ 255, 255, 255 ] },
             
             "upgradeTitle": { "text": "Upgrade", "fontSize": 25,
-                              "pos": [ 90, 15 ], "centered": true,
+                              "pos": [ 100, 15 ], "centered": true,
                               "color": [ 0, 0, 0 ] },
             "towerName":    { "text": "Placeholder", "fontSize": 15,
-                              "pos": [ 90, 50 ], "centered": true,
+                              "pos": [ 100, 50 ], "centered": true,
                               "color": [ 0, 0, 0 ] },
             "upgradeLevel": { "text": "Lvl: 0", "fontSize": 15,
-                              "pos": [ 90, 145 ], "centered": true,
+                              "pos": [ 100, 145 ], "centered": true,
                               "color": [ 0, 0, 0 ] },
             
             "towerStats":   { "text": "Placeholder", "fontSize": 15,
-                              "pos": [ 10, 160 ], "centered": false,
+                              "pos": [ 20, 160 ], "centered": false,
                               "color": [ 0, 0, 0 ], "lineSpacing": 0 },
                             
             "woodCost":    { "text": "0", "fontSize": 15,
-                             "pos": [ 50, 244 ], "centered": false,
+                             "pos": [ 60, 244 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "steelCost":   { "text": "0", "fontSize": 15,
-                             "pos": [ 145, 244 ], "centered": false,
+                             "pos": [ 155, 244 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "uraniumCost": { "text": "0", "fontSize": 15,
-                             "pos": [ 50, 284 ], "centered": false,
+                             "pos": [ 60, 284 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "plasmaCost":  { "text": "0", "fontSize": 15,
-                             "pos": [ 145, 284 ], "centered": false,
+                             "pos": [ 155, 284 ], "centered": false,
                              "color": [ 0, 0, 0 ] }
         }
     },
@@ -265,7 +265,7 @@
             "playText": { "text": "Play", "fontSize": 40,
                           "color": [ 0, 0, 0 ] },
             "tutorialText": { "text": "Tutorial", "fontSize": 30,
-                              "color": [ 0, 0, 0 ] },
+                              "color": [ 255, 255, 255 ] },
             
             "mapName": { "text": "placeholder", "fontSize": 30,
                          "pos": [ 550, 100 ], "centered": true,
