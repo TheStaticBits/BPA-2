@@ -84,7 +84,7 @@ class Shop(UI):
             text.setText(str(self.towerPrice[resource]))
             
             if amount < self.towerPrice[resource]:
-                text.changeColor([ 200, 0, 0 ]) # Set to red color
+                text.changeColor([ 220, 0, 0 ]) # Set to red color
             else:
                 text.changeColor([ 0, 0, 0 ]) # Set to black (has enough to buy it)
 

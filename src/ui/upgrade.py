@@ -107,7 +107,7 @@ class UpgradeMenu(UI):
             text.setText(str(price[resource]))
 
             if amount < price[resource]: 
-                text.changeColor([ 255, 0, 0 ])
+                text.changeColor([ 220, 0, 0 ])
             else: 
                 text.changeColor([ 0, 0, 0 ])
     
