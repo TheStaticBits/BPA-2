@@ -7,25 +7,25 @@
                     "pos": [ 0, 0 ], "centered": false },
 
             "sWood":    { "path": "res/ui/shop/wood.png",
-                          "pos": [ 10, 50 ], "centered": false },
+                          "pos": [ 10, 52 ], "centered": false },
             "sSteel":   { "path": "res/ui/shop/steel.png",
-                          "pos": [ 105, 50 ], "centered": false },
+                          "pos": [ 105, 52 ], "centered": false },
             "sUranium": { "path": "res/ui/shop/uranium.png",
-                          "pos": [ 10, 100 ], "centered": false },
+                          "pos": [ 10, 98 ], "centered": false },
             "sPlasma":  { "path": "res/ui/shop/plasma.png",
-                          "pos": [ 105, 100 ], "centered": false },
+                          "pos": [ 105, 98 ], "centered": false },
             
             "woodImg":    { "path": "res/ui/shop/wood.png",
-                            "pos": [ 10, 255 ], "centered": false },
+                            "pos": [ 10, 256 ], "centered": false },
             "steelImg":   { "path": "res/ui/shop/steel.png",
-                            "pos": [ 105, 255 ], "centered": false },
+                            "pos": [ 105, 256 ], "centered": false },
             "uraniumImg": { "path": "res/ui/shop/uranium.png",
-                            "pos": [ 10, 305 ], "centered": false },
+                            "pos": [ 10, 306 ], "centered": false },
             "plasmaImg":  { "path": "res/ui/shop/plasma.png",
-                            "pos": [ 105, 305 ], "centered": false },
+                            "pos": [ 105, 306 ], "centered": false },
             
             "tower": { "path": "res/towers/placeholder.png", 
-                       "pos": [ 100, 210 ], "centered": true }
+                       "pos": [ 100, 214 ], "centered": true }
         },
         "buttons": {
             "left":  { "path": "res/ui/buttons/left.png",
@@ -38,16 +38,16 @@
                        
             "buy": { "path": "res/ui/buttons/buy.png", 
                      "offsets": { "default": 6, "pressed": 14, "moveSpeed": 20 },
-                     "pos": [ 100, 390 ], "centered": true,
+                     "pos": [ 100, 386 ], "centered": true,
                      "text": "buyText", "chinHeight": 22 },
             
             "skip": { "path": "res/ui/buttons/skip.png",
                        "offsets": { "default": 3, "pressed": 8, "moveSpeed": 25 },
-                       "pos": [ 26, 505 ], "centered": false },
+                       "pos": [ 28, 506 ], "centered": false },
             
             "pause": { "path": "res/ui/buttons/pause.png",
                        "offsets": { "default": 3, "pressed": 8, "moveSpeed": 25 },
-                       "pos": [ 110, 505 ], "centered": false }
+                       "pos": [ 112, 506 ], "centered": false }
         },
         "text": { 
             
@@ -56,44 +56,44 @@
 
                          
             "resources": { "text": "Resources", "fontSize": 15,
-                           "pos": [ 100, 30 ], "centered": true,
+                           "pos": [ 100, 22 ], "centered": true,
                            "color": [ 0, 0, 0 ] },
             
             "towerName": { "text": "placeholder", "fontSize": 15,
-                           "pos": [ 100, 160 ], "centered": true,
+                           "pos": [ 100, 166 ], "centered": true,
                            "color": [ 0, 0, 0 ] },
 
             "woodAmount":    { "text": "", "fontSize": 15,
-                               "pos": [ 60, 56 ], "centered": false,
+                               "pos": [ 60, 58 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
             "steelAmount":   { "text": "", "fontSize": 15,
-                               "pos": [ 155, 56 ], "centered": false,
+                               "pos": [ 155, 58 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
             "uraniumAmount": { "text": "", "fontSize": 15,
-                               "pos": [ 60, 106 ], "centered": false,
+                               "pos": [ 60, 104 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
             "plasmaAmount":  { "text": "", "fontSize": 15,
-                               "pos": [ 155, 106 ], "centered": false,
+                               "pos": [ 155, 104 ], "centered": false,
                                "color": [ 0, 0, 0 ] },
                             
             "woodCost":    { "text": "", "fontSize": 15,
-                             "pos": [ 60, 261 ], "centered": false,
+                             "pos": [ 60, 262 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "steelCost":   { "text": "", "fontSize": 15,
-                             "pos": [ 155, 261 ], "centered": false,
+                             "pos": [ 155, 262 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "uraniumCost": { "text": "", "fontSize": 15,
-                             "pos": [ 60, 311 ], "centered": false,
+                             "pos": [ 60, 312 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             "plasmaCost":  { "text": "", "fontSize": 15,
-                             "pos": [ 155, 311 ], "centered": false,
+                             "pos": [ 155, 312 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             
             "waveNum": { "text": "Wave: ", "fontSize": 15,
-                         "pos": [ 100, 450 ], "centered": true,
+                         "pos": [ 100, 454 ], "centered": true,
                          "color": [ 0, 0, 0 ] },
             "playerHealth": { "text": "HP: 200", "fontSize": 15,
-                              "pos": [ 100, 480 ], "centered": true,
+                              "pos": [ 100, 476 ], "centered": true,
                               "color": [ 0, 0, 0 ] }
         }
     },
