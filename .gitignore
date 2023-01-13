@@ -3,3 +3,4 @@ saves/
 *.spec
 build/
 dist/
+*.exe
