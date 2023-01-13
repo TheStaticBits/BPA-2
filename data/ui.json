@@ -354,17 +354,32 @@
         "offset": [ 0, 0 ],
         
         "images": {
-            
+            "0": { "path": "res/ui/tutorial/slide0.png",
+                   "pos": [ 400, 300 ], "centered": true },
+            "1": { "path": "res/ui/tutorial/slide1.png",
+                   "pos": [ 400, 300 ], "centered": true }
         },
         "buttons": {
             "xButton": { "path": "res/ui/buttons/xButton.png",
                          "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
-                         "pos": [ 40, 40 ], "centered": true }
+                         "pos": [ 40, 40 ], "centered": true },
+            
+            "left": { "path": "res/ui/buttons/left.png",
+                      "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
+                      "pos": [ 150, 300 ], "centered": true },
+            
+            "right": { "path": "res/ui/buttons/right.png",
+                      "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
+                      "pos": [ 650, 300 ], "centered": true }
         },
         "text": {
             "tutorialTitle": { "text": "Tutorial", "fontSize": 40,
                                "pos": [ 400, 40 ], "centered": true,
-                               "color": [ 0, 0, 0 ] }
+                               "color": [ 0, 0, 0 ] },
+            
+            "0 - info": { "text": "Hello", "fontSize": 15,
+                          "pos": [ 400, 300 ], "centered": true,
+                          "color": [ 0, 0, 0 ] }
         }
     }
 }

@@ -65,6 +65,12 @@ class UI:
 
         except KeyError as exc:
             error.Error.createError(f"Unable to find required UI element object \"{name}\" in \"{self.type}\" UI.", self.log, exc)
+    
+    def objExists(self, name):
+        """ Tests if an object name is in the ui objects """
+        return name in self.objects
+    
+    def getAllObjects(self): return self.objects
 
     def getLogger(self): return self.log
     def isDisplaying(self): return self.displaying
