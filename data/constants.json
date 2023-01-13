@@ -88,6 +88,7 @@
     },
 
     "music": {
-        "mainMenu": "res/sounds/music/scales2scaledBackVictorianEra.wav"
+        "mainMenu": "res/sounds/music/scales2scaledBackVictorianEra.wav",
+        "tutorial": "res/sounds/music/trainingroom.wav"
     }
 }

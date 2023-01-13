@@ -72,11 +72,14 @@ class Game:
     
 
     def runFrame(self):
+        """ Everything that happens in a frame of the game. Handles scenes, etc. """
+        # Main menu
         if self.scene == "mainMenu":
             self.mainMenu.update(self.window, self.constants)
             self.mainMenu.render(self.window)
 
-            if self.mainMenu.pressedPlay():
+            if self.mainMenu.pressedPlay(): # Play button pressed
+                # Initializing the round
                 self.round = Round( self.mainMenu.getSelectedMap(), self.constants, 
                                     self.uiData, self.save, self.mainMenu.getHighscore(),
                                     self.mainMenu.getMusicVolume(),
@@ -85,15 +88,12 @@ class Game:
                 self.scene = "round"
                 self.mainMenu.stopMusic()
             
-            elif self.mainMenu.getTutorialButton():
+            elif self.mainMenu.getTutorialButton(): # Tutorial button pressed
                 self.scene = "tutorial"
-                self.mainMenu.stopMusic()
-            
+                self.mainMenu.stopMusic() # Stopping main menu music and playing tutorial music
+                self.tutorial.playMusic(self.mainMenu.getMusicVolume())
 
-            elif self.mainMenu.getVolumeChanged(): # Volume changed, update it everywhere
-                pass # Update main menu music and stuff
-
-
+        # In a round
         elif self.scene == "round":
             self.round.update(self.window, self.constants)
             self.round.render(self.window, self.constants)
@@ -106,13 +106,17 @@ class Game:
                 self.round.stopMusic()
                 del self.round
         
-
+        # On the tutorial menu
         elif self.scene == "tutorial":
             self.mainMenu.updateBG(self.window, self.constants)
             self.tutorial.update(self.window)
 
             self.mainMenu.renderBG(self.window)
             self.tutorial.render(self.window)
+            
+            if self.tutorial.exit():
+                self.scene = "mainMenu"
+                self.mainMenu.playMusic()
     
 
     def saveAndClose(self):

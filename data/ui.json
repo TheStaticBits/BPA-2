@@ -357,10 +357,14 @@
             
         },
         "buttons": {
-
+            "xButton": { "path": "res/ui/buttons/xButton.png",
+                         "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
+                         "pos": [ 40, 40 ], "centered": true }
         },
         "text": {
-
+            "tutorialTitle": { "text": "Tutorial", "fontSize": 40,
+                               "pos": [ 400, 40 ], "centered": true,
+                               "color": [ 0, 0, 0 ] }
         }
     }
 }
