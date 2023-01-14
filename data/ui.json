@@ -49,8 +49,7 @@
                        "offsets": { "default": 3, "pressed": 8, "moveSpeed": 25 },
                        "pos": [ 112, 506 ], "centered": false }
         },
-        "text": { 
-            
+        "text": {
             "buyText": { "text": "Buy", "fontSize": 30,
                          "color": [ 255, 255, 255 ] },
 
@@ -189,7 +188,7 @@
                               "color": [ 0, 0, 0 ] },
             
             "towerStats":   { "text": "Placeholder", "fontSize": 15,
-                              "pos": [ 20, 116 ], "centered": false,
+                              "pos": [ 100, 150 ], "centered": true,
                               "color": [ 0, 0, 0 ], "lineSpacing": 0 },
                             
             "woodCost":    { "text": "0", "fontSize": 15,
@@ -203,7 +202,11 @@
                              "color": [ 0, 0, 0 ] },
             "plasmaCost":  { "text": "0", "fontSize": 15,
                              "pos": [ 155, 252 ], "centered": false,
-                             "color": [ 0, 0, 0 ] }
+                             "color": [ 0, 0, 0 ] },
+            
+            "maxLevelText": { "text": "Max level!", "fontSize": 15,
+                              "pos": [ 100, 250 ], "centered": true,
+                              "color": [ 0, 0, 0 ] }
         }
     },
 
