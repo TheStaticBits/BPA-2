@@ -357,7 +357,15 @@
             "0": { "path": "res/ui/tutorial/slide0.png",
                    "pos": [ 400, 300 ], "centered": true },
             "1": { "path": "res/ui/tutorial/slide1.png",
-                   "pos": [ 400, 300 ], "centered": true }
+                   "pos": [ 400, 300 ], "centered": true },
+            "2": { "path": "res/ui/tutorial/slide2.png",
+                "pos": [ 400, 300 ], "centered": true },
+            "3": { "path": "res/ui/tutorial/slide3.png",
+                "pos": [ 400, 300 ], "centered": true },
+            "4": { "path": "res/ui/tutorial/slide4.png",
+                "pos": [ 400, 300 ], "centered": true },
+            "5": { "path": "res/ui/tutorial/slide5.png",
+                "pos": [ 400, 300 ], "centered": true }
         },
         "buttons": {
             "xButton": { "path": "res/ui/buttons/xButton.png",
