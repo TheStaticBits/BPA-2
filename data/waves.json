@@ -928,5 +928,15 @@
             "e4": { "amount": 400000,   "startDelay": 0,   "spawnDelay": 0.005 }
         },
         "delay": 2002
+    },
+    {
+        "enemies": {
+            "e7": { "amount": 720000,   "startDelay": 0,   "spawnDelay": 0.005 },
+            "e8": { "amount": 720000,   "startDelay": 0,   "spawnDelay": 0.005 },
+            "e6": { "amount": 720000,   "startDelay": 0,   "spawnDelay": 0.005 },
+            "e5": { "amount": 720000,   "startDelay": 0,   "spawnDelay": 0.005 },
+            "e4": { "amount": 720000,   "startDelay": 0,   "spawnDelay": 0.005 }
+        },
+        "delay": 3600
     }
 ]
