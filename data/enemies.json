@@ -96,7 +96,7 @@
 
         "ability": { "delay": 7, "execute": "" },
 
-        "dropAmount": 36,
+        "dropAmount": 34,
         "dropChances": { "wood": 10, "steel": 50, "uranium": 30, "plasma": 10 }
     }
 }
