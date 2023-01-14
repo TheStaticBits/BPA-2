@@ -38,7 +38,7 @@
         ,"p": {
             "tile": " ",
             "placable": false, "moveWithTile": true, "offset": [ 20, 20 ],
-            "animation": { "path": "res/tiles/spring/deco/pondDeco.png", "frames": 1, "delay": 0.7 }
+            "animation": { "path": "res/tiles/spring/deco/pondDeco.png", "frames": 2, "delay": 0.7 }
         }
     }
 }
