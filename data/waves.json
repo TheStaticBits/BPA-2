@@ -1,6 +1,12 @@
 [
     {
         "enemies": {
+            "e1": { "amount": 10,  "startDelay": 0,  "spawnDelay": 0.6 }
+        },
+        "delay": 16
+    },
+    {
+        "enemies": {
             "e1": { "amount": 12,  "startDelay": 0,  "spawnDelay": 0.5 }
         },
         "delay": 16
@@ -303,5 +309,12 @@
             "e8": { "amount": 4,   "startDelay": 12,   "spawnDelay": 2 }
         },
         "delay": 29
+    },
+    {
+        "enemies": {
+            "e4": { "amount": 30,   "startDelay": 0,   "spawnDelay": 0.5 },
+            "e5": { "amount": 15,   "startDelay": 15,   "spawnDelay": 1 }
+        },
+        "delay": 36
     }
 ]
