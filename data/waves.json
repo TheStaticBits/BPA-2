@@ -285,5 +285,23 @@
             "e8": { "amount": 5,   "startDelay": 36,   "spawnDelay": 1 }
         },
         "delay": 49
+    },
+    {
+        "enemies": {
+            "e1": { "amount": 15,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e2": { "amount": 15,   "startDelay": 4,   "spawnDelay": 0.1 },
+            "e3": { "amount": 15,   "startDelay": 8,   "spawnDelay": 0.1 },
+            "e4": { "amount": 15,   "startDelay": 12,   "spawnDelay": 0.1 },
+            "e5": { "amount": 15,   "startDelay": 16,   "spawnDelay": 0.1 },
+            "e6": { "amount": 15,   "startDelay": 20,   "spawnDelay": 0.1 }
+        },
+        "delay": 38
+    },
+    {
+        "enemies": {
+            "e6": { "amount": 24,   "startDelay": 0,   "spawnDelay": 0.5 },
+            "e8": { "amount": 4,   "startDelay": 12,   "spawnDelay": 2 }
+        },
+        "delay": 29
     }
 ]
