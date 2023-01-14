@@ -138,6 +138,16 @@ class Tileset:
                     return tile
         
         return False
+    
+
+    def hasAvailableTile(self):
+        """ Tests if there is at least one tile that a tower can be placed on """
+        for row in self.tiles:
+            for tile in row:
+                if tile.canBePlacedOn() and not tile.getHasTower():
+                    return True
+        
+        return False
         
 
     def getTileJson(self): return self.tileJson
@@ -149,12 +159,3 @@ class Tileset:
         tileSize = self.tiles[0][0].getSize().x
         size = self.getTilesSize() * tileSize
         return size
-    
-    def hasAvailableTile(self):
-        """ Checks if at least one tile has no tower on it """
-        for row in self.tiles:
-            for tile in row:
-                if tile.canBePlacedOn():
-                    return True
-        
-        return False
