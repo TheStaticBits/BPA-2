@@ -100,14 +100,16 @@ class Shop(UI):
         self.updateResources(resources)
         self.updateTowerCosts(resources)
 
-        if not isPlacingTower and resources >= self.towerPrice:
-            if tileset.hasAvailableTile(): # If at least one tile doesn't have a tower 
-                super().getObj("buy").setDisabled(False)
+        # If the player isn't placing a tower, if the player has enough resources, and
+        # if there is at least one available tile to place a tower, then set buy button to
+        # not disbabled.
+        if not isPlacingTower and resources >= self.towerPrice and tileset.hasAvailableTile():
+            super().getObj("buy").setDisabled(False)
 
-                # Test for player buying a tower
-                self.bought = False
-                if super().getObj("buy").getPressed():
-                    self.bought = True
+            # Test for player buying a tower
+            self.bought = False
+            if super().getObj("buy").getPressed():
+                self.bought = True
 
         else:
             super().getObj("buy").setDisabled(True)
