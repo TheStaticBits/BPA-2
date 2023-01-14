@@ -28,10 +28,19 @@
     },
 
     "unmovable": {
-
+        "e": { "tile": " " }
     },
 
     "deco": {
-        
+        "1": {
+            "tile": " ",
+            "placable": false, "moveWithTile": true, "offset": [ 20, 20 ],
+            "animation": { "path": "res/tiles/summer/Deco/Beachtowel.png", "frames": 1, "delay": 1 }
+        }
+        ,"2": {
+            "tile": " ",
+            "placable": false, "moveWithTile": true, "offset": [ 20, 20 ],
+            "animation": { "path": "res/tiles/summer/Deco/Sandcastle.png", "frames": 1, "delay": 1 }
+        }
     }
 }
