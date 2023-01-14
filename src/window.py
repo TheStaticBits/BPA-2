@@ -63,6 +63,8 @@ class Window:
         self.mousePos = (0, 0)
         self.mousePressed =  { "left": False, "right": False }
         self.mouseReleased = { "left": False, "right": False }
+        
+        self.escapePressed = False
 
         self.prevTime = time.time() # seconds
         self.deltaTime = 0
@@ -113,6 +115,8 @@ class Window:
     
     def handleInputs(self):
         """ Handling inputs """
+        self.escapePressed = False
+
         self.mousePos = pygame.mouse.get_pos()
         
         pressed = pygame.mouse.get_pressed()
@@ -133,6 +137,9 @@ class Window:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
                     self.speedup = not self.speedup
+                
+                if event.key == pygame.K_ESCAPE:
+                    self.escapePressed = True
 
     
     def render(self, tex, pos):
@@ -143,6 +150,8 @@ class Window:
     def getMouse(self, button): return self.mousePressed[button]
     def getMouseReleased(self, button): return self.mouseReleased[button]
     def getMousePos(self): return Vect(self.mousePos)
+    
+    def getEscapeKey(self): return self.escapePressed
 
     def getDeltaTime(self): return self.deltaTime
 

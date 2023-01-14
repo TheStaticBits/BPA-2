@@ -26,8 +26,8 @@ class PauseMenu(UI):
             if not util.pointRectCollision(mousePos, bg.getPos(), bg.getSize()):
                 super().setDisplaying(False)
         
-        
-        if super().getObj("resume").getPressed(): # Resume button pressed
+        # Resume button pressed or escape key pressed
+        if super().getObj("resume").getPressed() or window.getEscapeKey():
             super().setDisplaying(False)
     
 

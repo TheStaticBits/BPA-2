@@ -65,11 +65,13 @@ class Round:
     
     def update(self, window, consts):
         """ Updates everything for the frame """
+        # Normal game, no pause or death screen up
         if not self.deathScreen.isDisplaying() and not self.pauseMenu.isDisplaying():
+            # Updating each section of the game
             self.tileset.update(window, consts)
             self.waves.update(window, self.tileset, self.consts)
             self.resources += self.waves.getFrameDrops()
-            self.capResources()
+            self.capResources() # Cap resources at 999
             
             self.updateTowers(window, consts)
 
@@ -78,10 +80,11 @@ class Round:
 
             self.upgradeMenu.update(window, self.resources)
 
+            # Checking buttons
             self.checkPurchases()
             self.checkDeath()
             self.checkSkipButton()
-            self.checkPauseButton()
+            self.checkPauseButton(window)
 
             # Player pressed "sell" button in upgrades menu
             if self.upgradeMenu.isSold():
@@ -143,9 +146,9 @@ class Round:
             self.waves.skipWaveDelay()
     
 
-    def checkPauseButton(self):
-        """ Checks if the player pressed the pause button """
-        if self.shop.pauseButtonPressed():
+    def checkPauseButton(self, window):
+        """ Checks if the player pressed the pause button or pressed escape """
+        if self.shop.pauseButtonPressed() or window.getEscapeKey():
             self.pauseMenu.setDisplaying(True)
     
     
