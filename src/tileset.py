@@ -114,7 +114,7 @@ class Tileset:
     
     
     def renderDeco(self, window):
-        """ Renders any decoration on the tiles"""
+        """ Renders any decoration on the tiles """
         for row in self.tiles:
             for tile in row:
                 tile.renderDeco(window)
