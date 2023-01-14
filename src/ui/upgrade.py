@@ -53,7 +53,7 @@ class UpgradeMenu(UI):
 
     def roundIfInt(self, num):
         """ Removes decimal point if it ends in .0 """
-        if num % 1 == 0.0: # Ends in .0
+        if num % 1 == 0: # Ends in .0
             return int(num)
         else:
             return num
