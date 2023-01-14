@@ -678,5 +678,95 @@
             "e4": { "amount": 120,   "startDelay": 0,   "spawnDelay": 0.3 }
         },
         "delay": 50
+    },
+    {
+        "enemies": {
+            "e7": { "amount": 45,   "startDelay": 0,   "spawnDelay": 0.4 },
+            "e8": { "amount": 90,   "startDelay": 0,   "spawnDelay": 0.2 },
+            "e6": { "amount": 45,   "startDelay": 0,   "spawnDelay": 0.4 },
+            "e5": { "amount": 45,   "startDelay": 0,   "spawnDelay": 0.4 },
+            "e4": { "amount": 90,   "startDelay": 0,   "spawnDelay": 0.2 }
+        },
+        "delay": 28
+    },
+    {
+        "enemies": {
+            "e7": { "amount": 70,   "startDelay": 0,   "spawnDelay": 0.4 },
+            "e8": { "amount": 140,   "startDelay": 0,   "spawnDelay": 0.2 },
+            "e6": { "amount": 70,   "startDelay": 0,   "spawnDelay": 0.4 },
+            "e5": { "amount": 70,   "startDelay": 0,   "spawnDelay": 0.4 },
+            "e4": { "amount": 140,   "startDelay": 0,   "spawnDelay": 0.2 }
+        },
+        "delay": 28
+    },
+    {
+        "enemies": {
+            "e7": { "amount": 45,   "startDelay": 0,   "spawnDelay": 0.2 },
+            "e8": { "amount": 90,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e6": { "amount": 45,   "startDelay": 0,   "spawnDelay": 0.2 },
+            "e5": { "amount": 45,   "startDelay": 0,   "spawnDelay": 0.2 },
+            "e4": { "amount": 90,   "startDelay": 0,   "spawnDelay": 0.1 }
+        },
+        "delay": 29
+    },
+    {
+        "enemies": {
+            "e7": { "amount": 60,   "startDelay": 0,   "spawnDelay": 0.2 },
+            "e8": { "amount": 120,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e6": { "amount": 60,   "startDelay": 0,   "spawnDelay": 0.2 },
+            "e5": { "amount": 60,   "startDelay": 0,   "spawnDelay": 0.2 },
+            "e4": { "amount": 120,   "startDelay": 0,   "spawnDelay": 0.1 }
+        },
+        "delay": 29
+    },
+    {
+        "enemies": {
+            "e7": { "amount": 100,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e8": { "amount": 100,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e6": { "amount": 100,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e5": { "amount": 100,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e4": { "amount": 100,   "startDelay": 0,   "spawnDelay": 0.1 }
+        },
+        "delay": 32
+    },
+    {
+        "enemies": {
+            "e7": { "amount": 130,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e8": { "amount": 130,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e6": { "amount": 130,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e5": { "amount": 130,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e4": { "amount": 130,   "startDelay": 0,   "spawnDelay": 0.1 }
+        },
+        "delay": 34
+    },
+    {
+        "enemies": {
+            "e7": { "amount": 170,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e8": { "amount": 170,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e6": { "amount": 170,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e5": { "amount": 170,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e4": { "amount": 170,   "startDelay": 0,   "spawnDelay": 0.1 }
+        },
+        "delay": 34
+    },
+    {
+        "enemies": {
+            "e7": { "amount": 220,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e8": { "amount": 220,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e6": { "amount": 220,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e5": { "amount": 220,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e4": { "amount": 220,   "startDelay": 0,   "spawnDelay": 0.1 }
+        },
+        "delay": 42
+    },
+    {
+        "enemies": {
+            "e7": { "amount": 300,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e8": { "amount": 300,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e6": { "amount": 300,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e5": { "amount": 300,   "startDelay": 0,   "spawnDelay": 0.1 },
+            "e4": { "amount": 300,   "startDelay": 0,   "spawnDelay": 0.1 }
+        },
+        "delay": 42
     }
 ]
