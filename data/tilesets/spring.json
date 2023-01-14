@@ -26,7 +26,7 @@
     },
 
     "unmovable": {
-
+        "e": { "tile": " " }
     },
 
     "deco": {
@@ -34,6 +34,11 @@
             "tile": " ",
             "placable": true, "moveWithTile": true, "offset": [ 20, 20 ],
             "animation": { "path": "res/tiles/spring2/deco/flowers.png", "frames": 1, "delay": 0.7 }
+        }
+        ,"p": {
+            "tile": " ",
+            "placable": false, "moveWithTile": true, "offset": [ 20, 20 ],
+            "animation": { "path": "res/tiles/spring/deco/pondDeco.png", "frames": 1, "delay": 0.7 }
         }
     }
 }
