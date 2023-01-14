@@ -70,7 +70,7 @@ class Round:
             # Updating each section of the game
             self.tileset.update(window, consts)
             self.waves.update(window, self.tileset, self.consts)
-            self.resources += self.waves.getFrameDrops()
+            self.resources += self.waves.getFrameDrops() # Adding any enemy drops
             self.capResources() # Cap resources at 999
             
             self.updateTowers(window, consts)
@@ -93,9 +93,11 @@ class Round:
                 self.resources += self.upgradeMenu.getSellPrice() # Adding sell price
                 self.towers.pop(self.upgradeMenu.getTowerIndex()) # Removing tower
         
+        # Death screen
         elif self.deathScreen.isDisplaying():
             self.deathScreen.update(window)
         
+        # Pause menu
         elif self.pauseMenu.isDisplaying():
             self.pauseMenu.update(window)
 
