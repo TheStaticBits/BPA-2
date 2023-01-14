@@ -1,15 +1,15 @@
                
  i-----------L 
- |           | 
- Ir        Kr| 
-  Ir       |Il 
-   |       |   
+ |  ff       | 
+ Ir     f  Kr| 
+  Ir  f    |Il 
+ f |       |   
   iR       |iL 
- iR        kR| 
- |           | 
+ iR    f   kR| 
+ | f     f   | 
  Ir        Kr| 
-  Ir       |Il 
-   |       |   
+  Ir  f    |Il 
+   |   f   | f 
   iR       |iL 
- iR        kR| 
- |           | 
+ iR   f    kR| 
+ | f    f    | 
