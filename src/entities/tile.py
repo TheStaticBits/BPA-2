@@ -77,9 +77,8 @@ class Tile:
                     self.move = tileJson["tiles"][self.type]["move"]
 
             
-            # Tile that can have towers placed on it
             else: 
-                if type in tileJson["unmovable"]:
+                if type in tileJson["unmovable"]: # Normal tiles that cannot have towers
                     type = tileJson["unmovable"][type]["tile"]
                     self.unmovable = True
                 
@@ -98,6 +97,10 @@ class Tile:
         # loading base tile
         self.baseTile = tileJson["baseTile"]
         self.loadTile(self.baseTile, tileJson)
+
+        if self.canBePlacedOn():
+            # The chin/shadow under the square tile height
+            self.moveTo = self.getHeight() - self.getWidth()
     
 
     def loadTile(self, tile, tileJson):
@@ -119,12 +122,8 @@ class Tile:
             return None
 
         if self.mouseOnTile and not window.getMouse("left"):
-            # The chin/shadow under the square tile height
-            moveTo = self.getHeight() - self.getWidth()
             # slowly moves to moveTo
-            self.hoverOffset += consts["game"]["tileHoverSpeed"] * window.getDeltaTime() * (moveTo - self.hoverOffset)
-
-            if self.hoverOffset > moveTo: self.hoverOffset = moveTo
+            self.hoverOffset += consts["game"]["tileHoverSpeed"] * window.getDeltaTime() * (self.moveTo - self.hoverOffset)
 
         else:
             if self.hoverOffset < 0.5:
@@ -132,6 +131,10 @@ class Tile:
             else:
                 # Move down to zero
                 self.hoverOffset -= consts["game"]["tileHoverSpeed"] * window.getDeltaTime() * self.hoverOffset
+
+        # Capping at both ends for low framerates for high deltatime values
+        if self.hoverOffset > self.moveTo: self.hoverOffset = self.moveTo
+        elif self.hoverOffset < 0: self.hoverOffset = 0
 
 
     def update(self, window, consts, updateAnim):
