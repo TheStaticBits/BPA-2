@@ -355,17 +355,17 @@
         
         "images": {
             "0": { "path": "res/ui/tutorial/slide0.png",
-                   "pos": [ 400, 300 ], "centered": true },
+                   "pos": [ 400, 210 ], "centered": true },
             "1": { "path": "res/ui/tutorial/slide1.png",
-                   "pos": [ 400, 300 ], "centered": true },
+                   "pos": [ 400, 250 ], "centered": true },
             "2": { "path": "res/ui/tutorial/slide2.png",
-                "pos": [ 400, 300 ], "centered": true },
+                "pos": [ 400, 260 ], "centered": true },
             "3": { "path": "res/ui/tutorial/slide3.png",
-                "pos": [ 400, 300 ], "centered": true },
+                "pos": [ 400, 260 ], "centered": true },
             "4": { "path": "res/ui/tutorial/slide4.png",
-                "pos": [ 400, 300 ], "centered": true },
+                "pos": [ 560, 340 ], "centered": true },
             "5": { "path": "res/ui/tutorial/slide5.png",
-                "pos": [ 400, 300 ], "centered": true }
+                "pos": [ 400, 200 ], "centered": true }
         },
         "buttons": {
             "xButton": { "path": "res/ui/buttons/xButton.png",
@@ -374,20 +374,40 @@
             
             "left": { "path": "res/ui/buttons/left.png",
                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
-                      "pos": [ 150, 300 ], "centered": true },
+                      "pos": [ 80, 300 ], "centered": true },
             
             "right": { "path": "res/ui/buttons/right.png",
                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
-                      "pos": [ 650, 300 ], "centered": true }
+                      "pos": [ 720, 300 ], "centered": true }
         },
         "text": {
             "tutorialTitle": { "text": "Tutorial", "fontSize": 40,
-                               "pos": [ 400, 40 ], "centered": true,
+                               "pos": [ 400, 60 ], "centered": true,
                                "color": [ 0, 0, 0 ] },
             
-            "0 - info": { "text": "Hello", "fontSize": 15,
-                          "pos": [ 400, 300 ], "centered": true,
-                          "color": [ 0, 0, 0 ] }
+            "0 Enemies": { "text": "Enemies are fruits that\nhave different health\npoints and speeds! You must\ndestroy them before they\nreach the end. Otherwise, they\nwill deal their remaining HP\nnumber as damage to you.", "fontSize": 15,
+                          "pos": [ 400, 365 ], "centered": true,
+                          "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            
+            "1 Towers": { "text": "How do you destroy the fruits? By using towers.\nTowers deal a specific amount of damage to enemies\nat different speeds to stop them! You can click\non towers to see their range (the green circle).", "fontSize": 15,
+                          "pos": [ 400, 455 ], "centered": true,
+                          "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            
+            "2 Sidebar Top Right": { "text": "On the top of the right sidebar, you can find\nthe amount of resources you have. You gain these\nresources by destroying enemies, and you can use\nthese resources to buy or upgrade towers.", "fontSize": 15,
+                          "pos": [ 400, 410 ], "centered": true,
+                          "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            
+            "3 Purchase Towers": { "text": "In the middle of the right sidebar,\nyou can find the different towers you\ncan buy and how many resources they cost.\nAfter pressing buy, you may place\nthe tower on the map.", "fontSize": 15,
+                                   "pos": [ 400, 490 ], "centered": true,
+                                   "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            
+            "4 Upgrades Menu": { "text": "The upgrade menu appears\nupon clicking a tower\nyou've placed on the map,\nwhere you can see the\nstatistics of the tower and\nhow much each would\nincrease if you upgrade\nthe tower. It also\nshows you the cost in\nresources to upgrade the\ntower, as well as an option\nto sell the tower. The\nhigher number for RANG,\nDMG, and SPD, the better\neach is (wider range,\nhigher damage, and\nquicker speed).", "fontSize": 15,
+                                   "pos": [ 275, 330 ], "centered": true,
+                                   "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            
+            "5 Sidebar Bottom Right": { "text": "On the bottom part of the right sidebar, you\ncan see the amount of HP that you, the player,\ncurrently have. For every enemy that gets\nthrough the entire map, the remaining HP of that enemy\nis subtracted from your overall HP. You can also see\nthe wave number you are on, and also click the\narrow to skip to the next wave if there are no\nenemies arriving (if the arrow is not shaded).\nYou can also click the pause button in\nthe bottom left to pause.", "fontSize": 15,
+                                        "pos": [ 400, 410 ], "centered": true,
+                                        "color": [ 0, 0, 0 ], "lineSpacing": 0 }
         }
     }
 }
