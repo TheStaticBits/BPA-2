@@ -211,13 +211,13 @@
 
         "upgrades": [
             { "costs": { "wood": 0, "steel": 330, "uranium": 50, "plasma": 25  },
-              "stats": { "range": 100, "damage": 1, "attackCooldown": 0.18     } },
+              "stats": { "range": 110, "damage": 1, "attackCooldown": 0.18     } },
 
             { "costs": { "wood": 0, "steel": 400, "uranium": 40, "plasma": 10  },
-              "stats": { "range": 110, "damage": 2.5, "attackCooldown": 0.14   } },
+              "stats": { "range": 110, "damage": 2.5, "attackCooldown": 0.16   } },
 
-            { "costs": { "wood": 0, "steel": 400, "uranium": 60, "plasma": 15  },
-              "stats": { "range": 110, "damage": 3, "attackCooldown": 0.09     } },
+            { "costs": { "wood": 0, "steel": 380, "uranium": 60, "plasma": 15  },
+              "stats": { "range": 115, "damage": 3, "attackCooldown": 0.08     } },
 
             { "costs": { "wood": 0, "steel": 250, "uranium": 90, "plasma": 20  },
               "stats": { "range": 150, "damage": 3, "attackCooldown": 0.08     } }
@@ -236,16 +236,16 @@
 
         "upgrades": [
             { "costs": { "wood": 0, "steel": 230, "uranium": 100, "plasma": 1 },
-              "stats": { "range": 50, "damage": 7.5, "attackCooldown": 3.3    } },
+              "stats": { "range": 50, "damage": 7.5, "attackCooldown": 3.1    } },
 
             { "costs": { "wood": 0, "steel": 170, "uranium": 120, "plasma": 0 },
-              "stats": { "range": 70, "damage": 11, "attackCooldown": 3.1     } },
+              "stats": { "range": 70, "damage": 11, "attackCooldown": 2.8     } },
 
             { "costs": { "wood": 0, "steel": 180, "uranium": 160, "plasma": 1 },
-              "stats": { "range": 90, "damage": 12.5, "attackCooldown": 2.9   } },
+              "stats": { "range": 90, "damage": 12.5, "attackCooldown": 2.4   } },
 
             { "costs": { "wood": 0, "steel": 220, "uranium": 180, "plasma": 2 },
-              "stats": { "range": 120, "damage": 16, "attackCooldown": 2.6    } }
+              "stats": { "range": 120, "damage": 16, "attackCooldown": 2      } }
         ]
     },
 
