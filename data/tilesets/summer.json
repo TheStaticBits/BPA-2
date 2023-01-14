@@ -22,7 +22,9 @@
         "i": { "tile": "l", "degrees": 180 },
         "I": { "tile": "l", "degrees": -90 },
 
-        "t": { "tile": "T", "degrees": 180, "move": "right" }
+        "t": { "tile": "T", "degrees": 180, "move": "right" },
+        "y": { "tile": "T", "degrees": 90,  "move": "left"  },
+        "Y": { "tile": "T", "degrees": -90, "move": "left"  }
     },
 
     "unmovable": {
