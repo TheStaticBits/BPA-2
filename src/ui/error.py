@@ -150,8 +150,8 @@ class Error(ui.UI): # Inherits from the UI class in src/ui/ui.py
 
         # Logging in and sending through SMPT Gmail
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as s:
-            s.login(self.email, pwd)
-            s.send_message(message)
+            s.login(self.email, pwd) # Logging into the email with the decrypted password
+            s.send_message(message) # Sending the email
     
 
     def hasCrashed(self): 
