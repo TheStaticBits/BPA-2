@@ -45,7 +45,7 @@ class Text(UIElement):
 
         if self.fontSize not in self.fonts: 
             try:
-                self.fonts[self.fontSize] = pygame.font.Font(consts["miscPaths"]["font"], self.fontSize)
+                self.fonts[self.fontSize] = pygame.font.Font(consts["misc"]["font"], self.fontSize)
 
             except KeyError as exc:
                 error.Error.createError("Unable to find and load font path from constants file.", self.log, exc)
