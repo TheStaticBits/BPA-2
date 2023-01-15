@@ -103,6 +103,10 @@ class Window:
                 fpsAverage = 0 
                 for fps in self.pastSecondFPS: fpsAverage += fps
                 fpsAverage /= len(self.pastSecondFPS)
+
+                if self.speedup:
+                    # Accounting for double the game speed in order to show actual FPS
+                    fpsAverage *= 2 
                 
                 self.log.info(f"FPS: {round(fpsAverage)}")
                 self.pastSecondFPS.clear()
