@@ -33,7 +33,7 @@
         "f": {
             "tile": " ",
             "placable": true, "moveWithTile": true, "offset": [ 20, 20 ],
-            "animation": { "path": "res/tiles/spring2/deco/flowers.png", "frames": 1, "delay": 0.7 }
+            "animation": { "path": "res/tiles/spring/deco/flowers.png", "frames": 1, "delay": 0.7 }
         }
         ,"p": {
             "tile": " ",

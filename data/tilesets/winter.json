@@ -36,7 +36,7 @@
         "1": {
             "tile": " ",
             "placable": false, "moveWithTile": true, "offset": [ 20, 20 ],
-            "animation": { "path": "res/tiles/winter/deco/tree1.png", "frames": 1, "delay": 1 }
+            "animation": { "path": "res/tiles/winter/deco/tree1.png", "frames": 2, "delay": 2.5 }
         },
         "2": {
             "tile": " ",
