@@ -118,14 +118,9 @@ class Window:
         self.escapePressed = False
 
         self.mousePos = pygame.mouse.get_pos()
-        
-        pressed = pygame.mouse.get_pressed()
 
-        self.mouseReleased["left"] = not pressed[0] and self.mousePressed["left"]
-        self.mouseReleased["right"] = not pressed[2] and self.mousePressed["right"]
-
-        self.mousePressed["left"] =  pressed[0]
-        self.mousePressed["right"] = pressed[2]
+        self.mouseReleased["left"] = False
+        self.mouseReleased["right"] = False
 
         # Handle events
         for event in pygame.event.get():
@@ -138,8 +133,23 @@ class Window:
                 if event.key == pygame.K_LSHIFT or event.key == pygame.K_RSHIFT:
                     self.speedup = not self.speedup
                 
-                if event.key == pygame.K_ESCAPE:
+                elif event.key == pygame.K_ESCAPE:
                     self.escapePressed = True
+                
+
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1: # left click down
+                    self.mousePressed["left"] = True
+                elif event.button == 3: # right click down
+                    self.mousePressed["right"] = True
+            
+            elif event.type == pygame.MOUSEBUTTONUP:
+                if event.button == 1: # left click up
+                    self.mousePressed["left"] = False
+                    self.mouseReleased["left"] = True
+                elif event.button == 3: # right click up
+                    self.mousePressed["right"] = False
+                    self.mouseReleased["right"] = True
 
     
     def render(self, tex, pos):
