@@ -28,11 +28,6 @@
         "e": { "tile": " " }
     },
     "deco": {
-        "p": {
-            "tile": " ",
-            "placable": false, "moveWithTile": true, "offset": [ 20, 15 ],
-            "animation": { "path": "res/tiles/fall/deco/leafPile.png", "frames": 1, "delay": 1 }
-        },
         "1": {
             "tile": " ",
             "placable": false, "moveWithTile": true, "offset": [ 20, 20 ],
