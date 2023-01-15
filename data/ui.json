@@ -375,7 +375,7 @@
         "buttons": {
             "xButton": { "path": "res/ui/buttons/xButton.png",
                          "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
-                         "pos": [ 40, 40 ], "centered": true },
+                         "pos": [ 80, 80 ], "centered": true },
             
             "left": { "path": "res/ui/buttons/left.png",
                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
@@ -387,7 +387,7 @@
         },
         "text": {
             "tutorialTitle": { "text": "Tutorial", "fontSize": 40,
-                               "pos": [ 400, 60 ], "centered": true,
+                               "pos": [ 400, 70 ], "centered": true,
                                "color": [ 0, 0, 0 ] },
             
             "0 Enemies": { "text": "Enemies are fruits that\nhave different health\npoints and speeds! You must\ndestroy them before they\nreach the end. Otherwise, they\nwill deal their remaining HP\nnumber as damage to you.", "fontSize": 15,
