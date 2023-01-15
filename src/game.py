@@ -65,7 +65,7 @@ class Game:
                 except Exception as exc:
                     Error.createError("An unhandled error occured while the game was running.", self.log, exc)
 
-            
+            self.window.renderSpeedupIcon()
             self.window.update(self.constants)
 
         self.saveAndClose()

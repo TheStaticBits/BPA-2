@@ -56,6 +56,14 @@ class Window:
         except KeyError as exc:
             Error.createError("Unable to find window max FPS data within constants JSON file. Defaulting to no FPS cap.", self.log, exc)
             self.maxFPS = False
+        
+
+        try:
+            self.speedupIcon = util.loadTexTransparent(constants["misc"]["speedup"]["icon"])
+            self.speedupPos = Vect(constants["misc"]["speedup"]["pos"])
+        
+        except KeyError as exc:
+            Error.createError("Unable to find speedup icon information in constants JSON file.", self.log, exc)
 
 
         self.clock = pygame.time.Clock()
@@ -112,7 +120,7 @@ class Window:
                 self.pastSecondFPS.clear()
 
 
-            # Cap framerate
+        # Cap framerate
         if self.maxFPS >= 0:
             self.clock.tick(self.maxFPS)
     
@@ -159,6 +167,13 @@ class Window:
     def render(self, tex, pos):
         """ Render a texture to the window at pos """
         self.window.blit(tex, pos.getTuple())
+    
+
+    def renderSpeedupIcon(self):
+        """ Renders speedup icon in the top right if 2x speedup mode is active """
+        if self.speedup:
+            self.render(self.speedupIcon, self.speedupPos)
+    
 
     # Getters
     def getMouse(self, button): return self.mousePressed[button]

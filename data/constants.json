@@ -83,8 +83,13 @@
         "ui": "data/ui.json"
     },
 
-    "miscPaths": {
-        "font": "res/font/monogram.ttf"
+    "misc": {
+        "font": "res/font/monogram.ttf",
+
+        "speedup": {
+            "icon": "res/ui/speedup.png",
+            "pos": [ 763, 11 ]
+        }
     },
 
     "music": {
