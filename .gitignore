@@ -1,7 +1,9 @@
-__pycache__
+__pycache__/
 saves/
-*.spec
+
 build/
 dist/
+*.spec
+
 *.exe
 *.zip
