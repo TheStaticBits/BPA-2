@@ -4,3 +4,4 @@ saves/
 build/
 dist/
 *.exe
+*.zip
