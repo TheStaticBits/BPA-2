@@ -7,11 +7,13 @@ from src.tileset import Tileset
 from src.utility.advDict import AdvDict
 from  src.entities.tower import Tower
 from src.waves import Waves
+
 from src.ui.shop import Shop
 from src.ui.upgrade import UpgradeMenu
 from src.ui.error import Error
 from src.ui.deathScreen import DeathScreen
 from src.ui.pause import PauseMenu
+from src.ui.warning import Warning
 
 class Round:
     """ Handles the game content, such as the world, tileset, and towers
@@ -50,6 +52,7 @@ class Round:
 
         self.deathScreen = DeathScreen(consts, uiData, bgShade)
         self.pauseMenu = PauseMenu(consts, uiData, bgShade)
+        self.warning = Warning(consts, uiData, bgShade)
 
         self.saveDatabase = saveDatabase
         self.prevHighscore = prevHighscore
@@ -66,7 +69,7 @@ class Round:
     def update(self, window, consts):
         """ Updates everything for the frame """
         # Normal game, no pause or death screen up
-        if not self.deathScreen.isDisplaying() and not self.pauseMenu.isDisplaying():
+        if not self.deathScreen.isDisplaying() and not self.pauseMenu.isDisplaying() and not self.warning.isDisplaying():
             # Updating each section of the game
             self.tileset.update(window, consts)
             self.waves.update(window, self.tileset, self.consts)
@@ -79,6 +82,8 @@ class Round:
                              self.isPlacingATower(), self.waves, self.tileset)
 
             self.upgradeMenu.update(window, self.resources)
+
+            self.warning.detect(self.waves)
 
             # Checking buttons
             self.checkPurchases()
@@ -100,6 +105,9 @@ class Round:
         # Pause menu
         elif self.pauseMenu.isDisplaying():
             self.pauseMenu.update(window)
+        
+        elif self.warning.isDisplaying():
+            self.warning.update(window)
 
 
     def updateTowers(self, window, consts):
@@ -164,15 +172,19 @@ class Round:
     def render(self, window, consts):
         """ Render tileset, enemies, and towers and UI """
         self.tileset.renderTiles(window) # Render tiles
-        self.tileset.renderDeco(window)
         self.waves.render(window) # Render enemies
+        self.tileset.renderDeco(window)
         self.renderTowers(window, consts) # Render towers
 
-        self.shop.render(window) # Render shop and upgrades menu
+        # Render shop and upgrades menu
+        self.shop.render(window) 
         self.upgradeMenu.render(window)
-        
-        self.deathScreen.render(window) # Render deathscreen or pause if they're displaying
+
+        # Render deathscreen or pause if they're displaying or the warning message
+        self.deathScreen.render(window) 
         self.pauseMenu.render(window)
+        self.warning.render(window)
+
     
     
     def renderTowers(self, window, consts):

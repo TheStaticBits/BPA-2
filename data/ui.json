@@ -418,5 +418,28 @@
                        "pos": [ 400, 300 ], "centered": true,
                        "color": [ 0, 0, 0 ], "lineSpacing": 0 }
         }
+    },
+
+    "warning": {
+        "offset": [ 0, 0 ],
+
+        "images": {
+            "bg": { "path": "res/ui/backgrounds/deathScreenBG.png",
+                    "pos": [ 400, 300 ], "centered": true }
+        },
+        "buttons": {
+            "continue": { "path": "res/ui/buttons/continue.png",
+                          "offsets": { "default": 4, "pressed": 10, "moveSpeed": 25 },
+                          "pos": [ 400, 370 ], "centered": true,
+                          "text": "continueText", "chinHeight": 12 }
+        },
+        "text": {
+            "continueText": { "text": "Continue", "fontSize": 15,
+                              "color": [ 0, 0, 0 ] },
+            
+            "warningMsg": { "text": "Warning: Beyond this point, the\ngame will most likely become\nextremely laggy, unfair, and\neven unplayable.\n\nThanks for playing so far!", "fontSize": 15,
+                            "pos": [ 400, 266 ], "centered": true,
+                            "color": [ 0, 0, 0 ], "lineSpacing": 0 }
+        }
     }
 }
