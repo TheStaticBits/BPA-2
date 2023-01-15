@@ -1,7 +1,7 @@
 {
     "name": "Summer",
     "baseTile": " ",
-    "music": "",
+    "music": "res/sounds/music/summersong.wav",
     
     "tiles": {
         " ": { "move": "none",    "path": "res/tiles/summer/tile.png"      },
