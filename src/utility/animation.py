@@ -35,20 +35,32 @@ class Animation:
             self.imgs.append(frame)
 
     
-    def update(self, window):
+    def update(self, window, testTimer=True):
         """ Moves to the next frame if the delay is up """
         self.hasFinished = False
         self.flippedFrame = False
 
         self.timer.update(window)
+        
+        if testTimer:
+            self.testGoToNextFrame()
+    
 
-        if self.timer.activated():
-            self.currentFrame += 1
-            self.flippedFrame = True
+    def testGoToNextFrame(self):
+        if self.timer.overActivated(): # Activated
+            self.incrementFrame()
+            return True
 
-            if self.currentFrame >= self.totalFrames:
-                self.currentFrame = 0
-                self.hasFinished = True
+        return False
+
+
+    def incrementFrame(self):
+        self.currentFrame += 1
+        self.flippedFrame = True
+
+        if self.currentFrame >= self.totalFrames:
+            self.currentFrame = 0
+            self.hasFinished = True
     
 
     def render(self, window, pos):

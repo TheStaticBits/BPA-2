@@ -124,34 +124,45 @@ class Tower(Entity):
             pygame.mixer.Sound.play(self.sound)
     
 
-    def updateAttack(self, window, wavesObj):
-        """ Updates delay between attacks, then updates attack 
-            animation when a tower is in range and deals damage """
-        if not self.attacking:
-            self.attackTimer.update(window)
-            if self.attackTimer.activated():
-                self.attacking = True
+    def updateAttack(self, window, wavesObj, initial=True):
+        """ Updates the attack animation and itself """
         
-        else:
-            if self.waitingForEnemy:
-                # Test to see if there is an enemy in the tower range
-                if len(self.getCollidedEnemies(wavesObj)) != 0:
-                    self.waitingForEnemy = False
-                    # Allows the enemy to attack the frame it detects an enemy
+        # Test to see if there is an enemy in the tower range
+        if self.waitingForEnemy:
+            if len(self.getCollidedEnemies(wavesObj)) != 0:
+                self.waitingForEnemy = False
+                # Allows the enemy to attack the frame it detects an enemy
 
-            if not self.waitingForEnemy: # Attacking
-                super().updateAnim(window)
+        if not self.waitingForEnemy: # Attacking
+            if initial:
+                super().updateAnim(window, testTimer=False)
 
-                
-                if super().getAnim().changedFrame():
-                    # Animation reached frame on which it deals damage to enemies
-                    if super().getAnim().getFrameNum() == self.damageFrame - 1:
-                        self.dealDamage(wavesObj)
+            # Accounting for multiple animation frame updates in one game frame (for low FPS)
+            while super().getAnim().testGoToNextFrame():
+                # Animation reached frame on which it deals damage to enemies
+                if super().getAnim().getFrameNum() == self.damageFrame - 1:
+                    self.dealDamage(wavesObj)
 
                 # Finished attack animation
                 if super().getAnim().finished():
                     self.attacking = False
                     self.waitingForEnemy = True
+                    return None
+    
+
+    def updateAttackTimer(self, window, wavesObj):
+        """ Updates delay between attacks, then updates attack 
+            animation when a tower is in range and deals damage """
+        if not self.attacking:
+            if self.attackTimer.activated(window):
+                self.attacking = True
+        
+        if self.attacking:
+            self.updateAttack(window, wavesObj, initial=True)
+
+            # Continue updating attack if the timer activated multiple times in the last frame
+            while self.attackTimer.overActivated():
+                self.updateAttack(window, wavesObj, initial=False)
     
     
     def update(self, window, tileset, wavesObj, consts):
@@ -159,7 +170,7 @@ class Tower(Entity):
         self.clickedOn = False
 
         if not self.placing:
-            self.updateAttack(window, wavesObj)
+            self.updateAttackTimer(window, wavesObj)
 
             if window.getMouseReleased("left"):
                 mouseTile = tileset.getMouseTile()

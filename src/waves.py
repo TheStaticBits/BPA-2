@@ -58,7 +58,9 @@ class Waves:
         try:
             for enemy, data in self.wavesJson[waveNum]["enemies"].items():
                 self.spawnData[enemy] = { "amountLeft": data["amount"],
-                                          "delay": Timer(data["startDelay"]) }
+                                          "delay": Timer(data["startDelay"]),
+                                          "startDelaying": True }
+
                 self.log.info(f"Adding {data['amount']} {enemy} enemies")
 
         except KeyError as exc:
@@ -104,9 +106,7 @@ class Waves:
     def updateWaveDelay(self, window):
         """ Updates the delay between waves """
         if len(self.spawnData) == 0: # Test for new wave
-            self.waveDelay.update(window) # Delay timer for delay between waves
-
-            if self.waveDelay.activated(): # Start next wave
+            if self.waveDelay.activated(window): # Start next wave
                 self.waveNum += 1
 
                 if self.waveNum >= len(self.wavesJson):
@@ -122,14 +122,18 @@ class Waves:
         for enemy, data in self.spawnData.items():
             data["delay"].update(window)
 
-            if data["delay"].activated(): 
-                # Reset delay and spawn enemy
-                try:
-                    data["delay"].changeDelay(self.wavesJson[self.waveNum]["enemies"][enemy]["spawnDelay"])
-                
-                except KeyError as exc:
-                    Error.createError("Unable to find enemy spawn data in the waves JSON file.", self.log, exc)
-                    return None
+            # Iterate through the number of times that the timer has activated in the past frame
+            # (for low FPS)
+            while data["delay"].overActivated():
+
+                if data["startDelaying"]:
+                    try: # Changing from start delay to spawn delay
+                        data["delay"].changeDelay(self.wavesJson[self.waveNum]["enemies"][enemy]["spawnDelay"])
+                        data["startDelaying"] = False
+                    
+                    except KeyError as exc:
+                        Error.createError("Unable to find enemy spawn data in the waves JSON file.", self.log, exc)
+                        return None
 
                 data["amountLeft"] -= 1
                 self.enemies.append(Enemy(enemy, tileset, self.enemiesJson))

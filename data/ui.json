@@ -49,8 +49,7 @@
                        "offsets": { "default": 3, "pressed": 8, "moveSpeed": 25 },
                        "pos": [ 112, 506 ], "centered": false }
         },
-        "text": { 
-            
+        "text": {
             "buyText": { "text": "Buy", "fontSize": 30,
                          "color": [ 255, 255, 255 ] },
 
@@ -189,7 +188,7 @@
                               "color": [ 0, 0, 0 ] },
             
             "towerStats":   { "text": "Placeholder", "fontSize": 15,
-                              "pos": [ 20, 116 ], "centered": false,
+                              "pos": [ 100, 150 ], "centered": true,
                               "color": [ 0, 0, 0 ], "lineSpacing": 0 },
                             
             "woodCost":    { "text": "0", "fontSize": 15,
@@ -203,7 +202,11 @@
                              "color": [ 0, 0, 0 ] },
             "plasmaCost":  { "text": "0", "fontSize": 15,
                              "pos": [ 155, 252 ], "centered": false,
-                             "color": [ 0, 0, 0 ] }
+                             "color": [ 0, 0, 0 ] },
+            
+            "maxLevelText": { "text": "Max level!", "fontSize": 15,
+                              "pos": [ 100, 250 ], "centered": true,
+                              "color": [ 0, 0, 0 ] }
         }
     },
 
@@ -212,51 +215,51 @@
         
         "images": {
             "logo": { "path": "res/ui/mainMenu/logo.png",
-                      "pos": [ 150, 100 ], "centered": true },
+                      "pos": [ 180, 130 ], "centered": true },
             
             "mapBG": { "path": "res/ui/mainMenu/mapBackground.png",
-                       "pos": [ 550, 300 ], "centered": true },
+                       "pos": [ 530, 280 ], "centered": true },
             
             "map": { "path": "res/ui/error.png",
-                     "pos": [ 550, 300 ], "centered": true }
+                     "pos": [ 530, 280 ], "centered": true }
         },
         "buttons": {
             "play": { "path": "res/ui/buttons/play.png",
                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 20 },
-                      "pos": [ 550, 505 ], "centered": true,
+                      "pos": [ 530, 485 ], "centered": true,
                       "text": "playText", "chinHeight": 20 },
             
 
             "left": { "path": "res/ui/buttons/left.png",
                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
-                      "pos": [ 375, 300 ], "centered": true },
+                      "pos": [ 355, 280 ], "centered": true },
             
             "right": { "path": "res/ui/buttons/right.png",
                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
-                      "pos": [ 725, 300 ], "centered": true },
+                      "pos": [ 705, 280 ], "centered": true },
             
 
             "tutorial": { "path": "res/ui/buttons/tutorial.png",
                           "offsets": { "default": 4, "pressed": 10, "moveSpeed": 30 },
-                          "pos": [ 150, 505 ], "centered": true,
+                          "pos": [ 178, 505 ], "centered": true,
                           "text": "tutorialText", "chinHeight": 14 },
             
 
             "musicVolumeUp" : { "path": "res/ui/buttons/volumeUp.png",
                            "offsets": { "default": 2, "pressed": 8, "moveSpeed": 30 },
-                           "pos": [ 105, 340 ], "centered": true },
+                           "pos": [ 133, 340 ], "centered": true },
             
             "musicVolumeDown" : { "path": "res/ui/buttons/volumeDown.png",
                              "offsets": { "default": 2, "pressed": 8, "moveSpeed": 30 },
-                             "pos": [ 105, 420 ], "centered": true },
+                             "pos": [ 133, 420 ], "centered": true },
             
             "sfxVolumeUp" : { "path": "res/ui/buttons/volumeUp.png",
                               "offsets": { "default": 2, "pressed": 8, "moveSpeed": 30 },
-                              "pos": [ 195, 340 ], "centered": true },
+                              "pos": [ 223, 340 ], "centered": true },
             
             "sfxVolumeDown" : { "path": "res/ui/buttons/volumeDown.png",
                                 "offsets": { "default": 2, "pressed": 8, "moveSpeed": 30 },
-                                "pos": [ 195, 420 ], "centered": true }
+                                "pos": [ 223, 420 ], "centered": true }
         },
         "text": {
             "playText": { "text": "Play", "fontSize": 40,
@@ -265,30 +268,30 @@
                               "color": [ 255, 255, 255 ] },
             
             "mapName": { "text": "placeholder", "fontSize": 30,
-                         "pos": [ 550, 100 ], "centered": true,
+                         "pos": [ 530, 80 ], "centered": true,
                          "color": [ 0, 0, 0 ] },
             
             "highscore": { "text": "Wave highscore: ", "fontSize": 15,
-                           "pos": [ 550, 140 ], "centered": true,
+                           "pos": [ 530, 120 ], "centered": true,
                            "color": [ 0, 0, 0 ] },
             
 
             "volumeTitle": { "text": "Volume", "fontSize": 30,
-                             "pos": [ 148, 260 ], "centered": true,
+                             "pos": [ 180, 260 ], "centered": true,
                              "color": [ 0, 0, 0 ] },
             
             "musicTitle": { "text": "Music", "fontSize": 15,
-                            "pos": [ 105, 300 ], "centered": true,
+                            "pos": [ 133, 300 ], "centered": true,
                             "color": [ 0, 0, 0 ] },
             "sfxTitle": { "text": "SFX", "fontSize": 15,
-                          "pos": [ 195, 300 ], "centered": true,
+                          "pos": [ 223, 300 ], "centered": true,
                           "color": [ 0, 0, 0 ] },
             
             "musicVolume": { "text": "%", "fontSize": 15,
-                             "pos": [ 105, 380 ], "centered": true,
+                             "pos": [ 133, 380 ], "centered": true,
                              "color": [ 0, 0, 0 ] },
             "sfxVolume": { "text": "%", "fontSize": 15,
-                           "pos": [ 195, 380 ], "centered": true,
+                           "pos": [ 223, 380 ], "centered": true,
                            "color": [ 0, 0, 0 ] }
         }
     },
@@ -355,39 +358,65 @@
         
         "images": {
             "0": { "path": "res/ui/tutorial/slide0.png",
-                   "pos": [ 400, 300 ], "centered": true },
+                   "pos": [ 400, 210 ], "centered": true },
             "1": { "path": "res/ui/tutorial/slide1.png",
-                   "pos": [ 400, 300 ], "centered": true },
+                   "pos": [ 400, 250 ], "centered": true },
             "2": { "path": "res/ui/tutorial/slide2.png",
-                "pos": [ 400, 300 ], "centered": true },
+                   "pos": [ 400, 260 ], "centered": true },
             "3": { "path": "res/ui/tutorial/slide3.png",
-                "pos": [ 400, 300 ], "centered": true },
+                   "pos": [ 400, 260 ], "centered": true },
             "4": { "path": "res/ui/tutorial/slide4.png",
-                "pos": [ 400, 300 ], "centered": true },
+                   "pos": [ 560, 330 ], "centered": true },
             "5": { "path": "res/ui/tutorial/slide5.png",
-                "pos": [ 400, 300 ], "centered": true }
+                   "pos": [ 400, 200 ], "centered": true },
+            "6": { "path": "res/ui/tutorial/slide6.png",
+                   "pos": [ 400, 300 ], "centered": true }
         },
         "buttons": {
             "xButton": { "path": "res/ui/buttons/xButton.png",
                          "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
-                         "pos": [ 40, 40 ], "centered": true },
+                         "pos": [ 80, 80 ], "centered": true },
             
             "left": { "path": "res/ui/buttons/left.png",
                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
-                      "pos": [ 150, 300 ], "centered": true },
+                      "pos": [ 80, 300 ], "centered": true },
             
             "right": { "path": "res/ui/buttons/right.png",
                       "offsets": { "default": 4, "pressed": 12, "moveSpeed": 25 },
-                      "pos": [ 650, 300 ], "centered": true }
+                      "pos": [ 720, 300 ], "centered": true }
         },
         "text": {
             "tutorialTitle": { "text": "Tutorial", "fontSize": 40,
-                               "pos": [ 400, 40 ], "centered": true,
+                               "pos": [ 400, 70 ], "centered": true,
                                "color": [ 0, 0, 0 ] },
             
-            "0 - info": { "text": "Hello", "fontSize": 15,
-                          "pos": [ 400, 300 ], "centered": true,
-                          "color": [ 0, 0, 0 ] }
+            "0 Enemies": { "text": "Enemies are fruits that\nhave different health\npoints and speeds! You must\ndestroy them before they\nreach the end. Otherwise, they\nwill deal their remaining HP\nnumber as damage to you.", "fontSize": 15,
+                          "pos": [ 400, 365 ], "centered": true,
+                          "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            
+            "1 Towers": { "text": "How do you destroy the fruits? By using towers.\nTowers deal a specific amount of damage to enemies\nat different speeds to stop them! You can click\non towers to see their range (the green circle).", "fontSize": 15,
+                          "pos": [ 400, 455 ], "centered": true,
+                          "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            
+            "2 Sidebar Top Right": { "text": "On the top of the right sidebar, you can find\nthe amount of resources you have. You gain these\nresources by destroying enemies, and you can use\nthese resources to buy or upgrade towers.", "fontSize": 15,
+                          "pos": [ 400, 410 ], "centered": true,
+                          "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            
+            "3 Purchase Towers": { "text": "In the middle of the right sidebar,\nyou can find the different towers you\ncan buy and how many resources they cost.\nAfter pressing buy, you may place\nthe tower on the map.", "fontSize": 15,
+                                   "pos": [ 400, 490 ], "centered": true,
+                                   "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            
+            "4 Upgrades Menu": { "text": "The upgrade menu appears\nupon clicking a tower\nyou've placed on the map,\nwhere you can see the\nstatistics of the tower and\nhow much each would\nincrease if you upgrade\nthe tower. It also\nshows you the cost in\nresources to upgrade the\ntower, as well as an option\nto sell the tower. The\nhigher number for RANG,\nDMG, and SPD, the better\neach is (wider range,\nhigher damage, and\nquicker speed).", "fontSize": 15,
+                                   "pos": [ 275, 330 ], "centered": true,
+                                   "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            
+            "5 Sidebar Bottom Right": { "text": "On the bottom part of the right sidebar, you\ncan see the amount of HP that you, the player,\ncurrently have. For every enemy that gets\nthrough the entire map, the remaining HP of that\nenemy is subtracted from your overall HP. You can\nsee the wave number you are on, and also click the\narrow to skip to the next wave if there are no\nenemies arriving (if the arrow is not shaded).\nYou can also click the pause button in\nthe bottom left to pause.", "fontSize": 15,
+                                        "pos": [ 400, 410 ], "centered": true,
+                                        "color": [ 0, 0, 0 ], "lineSpacing": 0 },
+            
+            "6 Tip": { "text": "Tip: Press shift to toggle a 2x\nincrease in speed during the\ngame!\n\nHave fun playing!", "fontSize": 15,
+                       "pos": [ 400, 300 ], "centered": true,
+                       "color": [ 0, 0, 0 ], "lineSpacing": 0 }
         }
     }
 }

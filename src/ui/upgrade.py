@@ -29,7 +29,7 @@ class UpgradeMenu(UI):
     def format(self, stats):
         """ Takes in tower stats dictionary and formats it for display """
         return { "RANG": int(stats["range"] / 10),
-                 "DMG": stats["damage"],
+                 "DMG": self.roundIfInt(stats["damage"]),
                  "SPD": int(10 / stats["attackCooldown"]) }
     
 
@@ -49,6 +49,14 @@ class UpgradeMenu(UI):
         self.sellPrice = originalPrice.copy()
         self.sellPrice *= self.sellMultiplier
         self.sellPrice.int()
+    
+
+    def roundIfInt(self, num):
+        """ Removes decimal point if it ends in .0 """
+        if num % 1 == 0: # Ends in .0
+            return int(num)
+        else:
+            return num
 
 
     def selectTower(self, tower, index):
@@ -60,16 +68,18 @@ class UpgradeMenu(UI):
         self.tower = tower
         self.towerIndex = index
         
-        # Change tower name displayed, upgrade level, image, price of upgrade, and upgrade stats here
+        # Updating UI elements
         super().getObj("towerName").setText(tower.getType())
         super().getObj("upgradeLevel").setText(f"Level: {tower.getLevel() + 1}")
 
         towerStats = self.format(tower.getCurrentStats())
-        towerStatsStr = [f"{key}: {value}" for key, value in towerStats.items()]
+        # Iterates through all tower statistics and turns it into a list of each text row
+        towerStatsStr = [ f"{key}: {value}" for key, value in towerStats.items() ]
 
         # If the tower has another level to upgrade to
         if len(tower.getUpgradeInfo()) - 1 > tower.getLevel():
             self.setPriceVisible(True)
+            super().getObj("maxLevelText").setDisplaying(False)
 
             newTowerStats = self.format(tower.getUpgradeInfo()[tower.getLevel() + 1]["stats"])
 
@@ -80,10 +90,11 @@ class UpgradeMenu(UI):
 
             # Add difference to the end of the stats displayed
             for index, key in enumerate(diff.keys()):
-                towerStatsStr[index] += f" + {diff[key]}"
+                towerStatsStr[index] += f" + {self.roundIfInt(diff[key])}"
 
-        else:
+        else: # Max level
             self.setPriceVisible(False)
+            super().getObj("maxLevelText").setDisplaying(True)
             super().getObj("upgrade").setDisabled(True)
         
         super().getObj("towerStats").setText("\n".join(towerStatsStr))

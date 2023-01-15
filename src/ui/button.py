@@ -16,6 +16,7 @@ class Button(UIElement):
         self.pressed = False
         self.text = text
         self.disabled = False
+        self.moveToDir = None
 
         # Loading button data from the JSON file, along with catching any potential errors
         try:
@@ -65,28 +66,54 @@ class Button(UIElement):
         self.text.setPos(textPos)
     
 
+    def changeMoveDir(self, offset):
+        """ Changes button animation movement direction to the offset """
+        if self.moveToOffset != offset:
+            self.moveToOffset = offset
+            
+            # Used for capping button movement for low framerates
+            if self.heightOffset > self.moveToOffset: 
+                self.moveToDir = "down"
+            else: 
+                self.moveToDir = "up"
+    
+
     def updateMovement(self, window):
         """ Updates button animation and button press detection"""
         # Test if the mouse is not near the button, hovering over it, or clicking it
         if util.pointRectCollision(window.getMousePos(), super().getPos(), super().getSize()):
+            
+            # Mouse holding down left click on button
             if window.getMouse("left"):
-                self.moveToOffset = self.offsets["pressed"] # Moves down
-            elif window.getMouseReleased("left"):
-                self.pressed = True
-                self.log.info(f"Pressed button")
+                self.changeMoveDir(self.offsets["pressed"])
+
+            # Mouse hovering over button
             else:
-                self.moveToOffset = 0 # Moves all the way to the top
+                # Moves all the way to the top
+                self.changeMoveDir(0)
+
+                # Pressed button (mouse click released)
+                if window.getMouseReleased("left"):
+                    self.pressed = True
+                    self.log.info(f"Pressed button")
         
         else:
-            self.moveToOffset = self.offsets["default"]
+            self.changeMoveDir(self.offsets["default"])
         
         # Moves the y position slowly to the offset
+        # This decreases in speed as it approaches the offset it's moving to
         self.heightOffset += (self.moveToOffset - self.heightOffset) * window.getDeltaTime() * self.offsets["moveSpeed"]
 
-        # Only for when the deltaTime is very high, when the game freezes for a bit or more,
-        # cap it at the max offset
-        if self.heightOffset < 0:
-            self.heightOffset = 0
+
+        # When the deltatime value is really high (when FPS is low),
+        # cap button movement at the offsets so it doesn't bounce back and forth
+        if self.moveToDir == "down": # Animation direction was down, cap low end
+            if self.heightOffset < self.moveToOffset:
+                self.heightOffset = self.moveToOffset
+        
+        elif self.moveToDir == "up": # Animation direction was up, cap high end
+            if self.heightOffset > self.moveToOffset:
+                self.heightOffset = self.moveToOffset
 
 
     def update(self, window):
