@@ -1,7 +1,7 @@
 {
     "name": "Spring",
     "baseTile": " ",
-    "music": "",
+    "music": "res/sounds/music/springtho.wav",
 
     "tiles": {
         " ": { "move": "none",    "path": "res/tiles/spring/tile.png"      },

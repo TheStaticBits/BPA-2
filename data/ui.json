@@ -410,7 +410,7 @@
                                    "pos": [ 275, 330 ], "centered": true,
                                    "color": [ 0, 0, 0 ], "lineSpacing": 0 },
             
-            "5 Sidebar Bottom Right": { "text": "On the bottom part of the right sidebar, you\ncan see the amount of HP that you, the player,\ncurrently have. For every enemy that gets\nthrough the entire map, the remaining HP of that\nenemy is subtracted from your overall HP. You can\nsee the wave number you are on, and also click the\narrow to skip to the next wave if there are no\nenemies arriving (if the arrow is not shaded).\nYou can also click the pause button in\nthe bottom left to pause.", "fontSize": 15,
+            "5 Sidebar Bottom Right": { "text": "On the bottom part of the right sidebar, you\ncan see the amount of HP that you, the player,\ncurrently have. For every enemy that gets\nthrough the entire map, the remaining HP of that\nenemy is subtracted from your overall HP. You can\nsee the wave number you are on, and also click the\narrow to skip to the next wave if there are no\nenemies arriving (if the arrow is not shaded).\nYou can also click the pause button in\nthe bottom right to pause.", "fontSize": 15,
                                         "pos": [ 400, 410 ], "centered": true,
                                         "color": [ 0, 0, 0 ], "lineSpacing": 0 },
             
