@@ -1,15 +1,15 @@
  K---l   I---r 
- |           | 
- |     1     | 
- |           | 
+ |    eee    | 
+ |    e1e    | 
+ |    eee    | 
  k---L   i---R 
      |   |     
  K---l   I---r 
  |           | 
- |  p    p   | 
+ |  p        | 
  |           | 
- |eeei---Leee| 
- |e1e|   |e1e| 
- |eee|eee|eee| 
+ |eeei---L   | 
+ |e1e|   |   | 
+ |eee|eee|   | 
  k---Reeek---R 
                
