@@ -39,9 +39,9 @@ class Entity:
                               animData["frames"], animData["delay"])
 
 
-    def updateAnim(self, window):
+    def updateAnim(self, window, testTimer=True):
         """ Updates animation """
-        self.anim.update(window)
+        self.anim.update(window, testTimer)
     
     
     def render(self, window, xOffset=0, yOffset=0):

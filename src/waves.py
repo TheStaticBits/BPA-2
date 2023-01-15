@@ -104,9 +104,7 @@ class Waves:
     def updateWaveDelay(self, window):
         """ Updates the delay between waves """
         if len(self.spawnData) == 0: # Test for new wave
-            self.waveDelay.update(window) # Delay timer for delay between waves
-
-            if self.waveDelay.activated(): # Start next wave
+            if self.waveDelay.activated(window): # Start next wave
                 self.waveNum += 1
 
                 if self.waveNum >= len(self.wavesJson):
@@ -120,9 +118,7 @@ class Waves:
         """ Spawns enemies according to the waves.json file """
         # Update wave delays and spawn any enemies
         for enemy, data in self.spawnData.items():
-            data["delay"].update(window)
-
-            if data["delay"].activated(): 
+            if data["delay"].activated(window): 
                 # Reset delay and spawn enemy
                 try:
                     data["delay"].changeDelay(self.wavesJson[self.waveNum]["enemies"][enemy]["spawnDelay"])

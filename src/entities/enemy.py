@@ -118,18 +118,14 @@ class Enemy(Entity):
 
         # Update outline timer
         if self.showFlash:
-            self.showFlashTimer.update(window)
-
-            if self.showFlashTimer.activated(): # Show outline ended
+            if self.showFlashTimer.activated(window): # Show outline ended
                 self.showFlash = False
     
 
     def updateAbility(self, window):
         """ Updates ability timer if there is one """
         if self.ability != None:
-            self.abilityTimer.update(window)
-
-            if self.abilityTimer.activated():
+            if self.abilityTimer.activated(window):
                 exec(self.ability) 
     
 

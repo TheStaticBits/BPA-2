@@ -1,7 +1,7 @@
 [
     {
         "enemies": {
-            "e1": { "amount": 10,  "startDelay": 0,  "spawnDelay": 0.6 }
+            "e1": { "amount": 10,  "startDelay": 0,  "spawnDelay": 0.001 }
         },
         "delay": 16
     },
