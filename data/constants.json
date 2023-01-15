@@ -10,7 +10,7 @@
         "title": "Towers Of Time",
         "icon": "res/game/icon.png",
         "size": [ 800, 600 ],
-        "maxFPS": 1,
+        "maxFPS": -1,
         "outputFPS": true
     },
 
