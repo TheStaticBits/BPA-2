@@ -41,6 +41,7 @@ class Waves:
 
 
         self.waveNum = 0
+        self.changedWave = False
         self.waveDelay = Timer(self.getWaveDelay())
         self.enemies = []
         self.particles = []
@@ -105,9 +106,12 @@ class Waves:
 
     def updateWaveDelay(self, window):
         """ Updates the delay between waves """
+        self.changedWave = False
+
         if len(self.spawnData) == 0: # Test for new wave
             if self.waveDelay.activated(window): # Start next wave
                 self.waveNum += 1
+                self.changedWave = True
 
                 if self.waveNum >= len(self.wavesJson):
                     self.log.error("Reached the end of the waves?? Oops!")
@@ -192,6 +196,7 @@ class Waves:
     def getFrameDrops(self): return self.drops # Enemy drops from that frame
 
     def getWaveNum(self): return self.waveNum
+    def getChangedWave(self): return self.changedWave
     def getWaveDelay(self): 
         """ Returns the delay between waves """
         try:
