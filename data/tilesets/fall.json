@@ -1,7 +1,7 @@
 {
     "name": "Fall",
     "baseTile": " ",
-    "music": "",
+    "music": "res/sounds/music/ranDom2.wav",
 
     "tiles": {
         " ": { "move": "none",    "path": "res/tiles/fall/tile.png"      },
