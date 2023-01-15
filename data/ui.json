@@ -215,7 +215,7 @@
         
         "images": {
             "logo": { "path": "res/ui/mainMenu/logo.png",
-                      "pos": [ 150, 100 ], "centered": true },
+                      "pos": [ 180, 130 ], "centered": true },
             
             "mapBG": { "path": "res/ui/mainMenu/mapBackground.png",
                        "pos": [ 550, 300 ], "centered": true },
