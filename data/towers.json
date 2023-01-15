@@ -92,10 +92,10 @@
               "stats": { "range": 120, "damage": 5.5, "attackCooldown": 1.9  } },
 
             { "costs": { "wood": 25, "steel": 65, "uranium": 0, "plasma": 0  },
-              "stats": { "range": 125, "damage": 5.5, "attackCooldown": 1.7  } },
+              "stats": { "range": 130, "damage": 5.5, "attackCooldown": 1.7  } },
 
             { "costs": { "wood": 30, "steel": 120, "uranium": 0, "plasma": 0 },
-              "stats": { "range": 135, "damage": 6.5, "attackCooldown": 1.5  } }
+              "stats": { "range": 140, "damage": 6.5, "attackCooldown": 1.5  } }
         ]
     },
 
@@ -135,16 +135,16 @@
         "attackSound": "res/sounds/powThump.wav",
 
         "upgrades": [
-            { "costs": { "wood": 0, "steel": 115, "uranium": 25, "plasma": 0 },
-              "stats": { "range": 170, "damage": 3.5, "attackCooldown": 1.7  } },
+            { "costs": { "wood": 0, "steel": 100, "uranium": 20, "plasma": 0 },
+              "stats": { "range": 175, "damage": 3.5, "attackCooldown": 1.7  } },
 
             { "costs": { "wood": 0, "steel": 110, "uranium": 8, "plasma": 0  },
               "stats": { "range": 200, "damage": 4.5, "attackCooldown": 1.6  } },
 
-            { "costs": { "wood": 0, "steel": 200, "uranium": 12, "plasma": 0 },
+            { "costs": { "wood": 0, "steel": 180, "uranium": 12, "plasma": 0 },
               "stats": { "range": 230, "damage": 5.5, "attackCooldown": 1.5  } },
 
-            { "costs": { "wood": 0, "steel": 400, "uranium": 25, "plasma": 0 },
+            { "costs": { "wood": 0, "steel": 380, "uranium": 25, "plasma": 0 },
               "stats": { "range": 260, "damage": 7, "attackCooldown": 1.4    } }
         ]
     },
@@ -238,13 +238,13 @@
             { "costs": { "wood": 0, "steel": 230, "uranium": 100, "plasma": 1 },
               "stats": { "range": 50, "damage": 7.5, "attackCooldown": 3.2    } },
 
-            { "costs": { "wood": 0, "steel": 170, "uranium": 190, "plasma": 0 },
+            { "costs": { "wood": 0, "steel": 170, "uranium": 220, "plasma": 0 },
               "stats": { "range": 80, "damage": 13, "attackCooldown": 2.9     } },
 
-            { "costs": { "wood": 0, "steel": 180, "uranium": 350, "plasma": 1 },
+            { "costs": { "wood": 0, "steel": 180, "uranium": 380, "plasma": 1 },
               "stats": { "range": 100, "damage": 14.5, "attackCooldown": 2.6   } },
 
-            { "costs": { "wood": 0, "steel": 220, "uranium": 460, "plasma": 2 },
+            { "costs": { "wood": 0, "steel": 220, "uranium": 500, "plasma": 2 },
               "stats": { "range": 125, "damage": 18, "attackCooldown": 2.3    } }
         ]
     },
@@ -283,17 +283,17 @@
       "attackSound": "res/sounds/electricBang.wav",
 
       "upgrades": [
-          { "costs": { "wood": 150, "steel": 260, "uranium": 22, "plasma": 0  },
-            "stats": { "range": 100, "damage": 3.5, "attackCooldown": 2.2     } },
+          { "costs": { "wood": 120, "steel": 180, "uranium": 22, "plasma": 0  },
+            "stats": { "range": 100, "damage": 4.5, "attackCooldown": 2.2     } },
 
           { "costs": { "wood": 100, "steel": 60, "uranium": 2, "plasma": 0    },
             "stats": { "range": 125, "damage": 6.5, "attackCooldown": 2       } },
 
-          { "costs": { "wood": 110, "steel": 120, "uranium": 10, "plasma": 2  },
+          { "costs": { "wood": 110, "steel": 100, "uranium": 10, "plasma": 2  },
             "stats": { "range": 145, "damage": 7.5, "attackCooldown": 2       } },
 
-          { "costs": { "wood": 120, "steel": 250, "uranium": 30, "plasma": 12 },
-            "stats": { "range": 225, "damage": 8, "attackCooldown": 1.4       } }
+          { "costs": { "wood": 120, "steel": 210, "uranium": 30, "plasma": 12 },
+            "stats": { "range": 225, "damage": 9, "attackCooldown": 1.4       } }
       ]
     },
 
