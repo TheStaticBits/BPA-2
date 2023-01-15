@@ -366,7 +366,7 @@
             "3": { "path": "res/ui/tutorial/slide3.png",
                    "pos": [ 400, 260 ], "centered": true },
             "4": { "path": "res/ui/tutorial/slide4.png",
-                   "pos": [ 560, 340 ], "centered": true },
+                   "pos": [ 560, 330 ], "centered": true },
             "5": { "path": "res/ui/tutorial/slide5.png",
                    "pos": [ 400, 200 ], "centered": true },
             "6": { "path": "res/ui/tutorial/slide6.png",
