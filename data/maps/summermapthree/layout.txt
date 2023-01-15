@@ -4,12 +4,12 @@
     Ir    1  | 
  i-L |       | 
  | k-R       | 
- |           | 
- |   2       | 
- |           | 
+ |    e      | 
+ |   e2e     | 
+ |   eee     | 
  | K-r   K-r | 
  I-l |   | I-l 
-    iR   kL    
-    |  1  |    
+    iR 1 kL    
+    |     |    
     I-----l    
                
