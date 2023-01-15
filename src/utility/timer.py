@@ -36,7 +36,6 @@ class Timer:
 
     def changeDelay(self, newDelay):
         self.delay = newDelay
-        self.timer = newDelay
     
 
     def getPercentDone(self):

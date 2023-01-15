@@ -118,9 +118,14 @@ class Waves:
         """ Spawns enemies according to the waves.json file """
         # Update wave delays and spawn any enemies
         for enemy, data in self.spawnData.items():
-            if data["delay"].activated(window): 
+            data["delay"].update(window)
+
+            # Iterate through the number of times that the timer has activated in the past frame
+            # (for low FPS)
+            while data["delay"].overActivated():
                 # Reset delay and spawn enemy
                 try:
+                    # Changing from start delay to spawn delay
                     data["delay"].changeDelay(self.wavesJson[self.waveNum]["enemies"][enemy]["spawnDelay"])
                 
                 except KeyError as exc:

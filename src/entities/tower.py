@@ -147,7 +147,6 @@ class Tower(Entity):
                 if super().getAnim().finished():
                     self.attacking = False
                     self.waitingForEnemy = True
-                    print("Attack")
                     return None
     
 
