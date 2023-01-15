@@ -283,17 +283,17 @@
       "attackSound": "res/sounds/electricBang.wav",
 
       "upgrades": [
-          { "costs": { "wood": 150, "steel": 260, "uranium": 22, "plasma": 0  },
-            "stats": { "range": 100, "damage": 3.5, "attackCooldown": 2.2     } },
+          { "costs": { "wood": 120, "steel": 180, "uranium": 22, "plasma": 0  },
+            "stats": { "range": 100, "damage": 4.5, "attackCooldown": 2.2     } },
 
           { "costs": { "wood": 100, "steel": 60, "uranium": 2, "plasma": 0    },
             "stats": { "range": 125, "damage": 6.5, "attackCooldown": 2       } },
 
-          { "costs": { "wood": 110, "steel": 120, "uranium": 10, "plasma": 2  },
+          { "costs": { "wood": 110, "steel": 100, "uranium": 10, "plasma": 2  },
             "stats": { "range": 145, "damage": 7.5, "attackCooldown": 2       } },
 
-          { "costs": { "wood": 120, "steel": 250, "uranium": 30, "plasma": 12 },
-            "stats": { "range": 225, "damage": 8, "attackCooldown": 1.4       } }
+          { "costs": { "wood": 120, "steel": 210, "uranium": 30, "plasma": 12 },
+            "stats": { "range": 225, "damage": 9, "attackCooldown": 1.4       } }
       ]
     },
 
