@@ -58,7 +58,9 @@ class Waves:
         try:
             for enemy, data in self.wavesJson[waveNum]["enemies"].items():
                 self.spawnData[enemy] = { "amountLeft": data["amount"],
-                                          "delay": Timer(data["startDelay"]) }
+                                          "delay": Timer(data["startDelay"]),
+                                          "startDelaying": True }
+
                 self.log.info(f"Adding {data['amount']} {enemy} enemies")
 
         except KeyError as exc:
@@ -123,14 +125,15 @@ class Waves:
             # Iterate through the number of times that the timer has activated in the past frame
             # (for low FPS)
             while data["delay"].overActivated():
-                # Reset delay and spawn enemy
-                try:
-                    # Changing from start delay to spawn delay
-                    data["delay"].changeDelay(self.wavesJson[self.waveNum]["enemies"][enemy]["spawnDelay"])
-                
-                except KeyError as exc:
-                    Error.createError("Unable to find enemy spawn data in the waves JSON file.", self.log, exc)
-                    return None
+
+                if data["startDelaying"]:
+                    try: # Changing from start delay to spawn delay
+                        data["delay"].changeDelay(self.wavesJson[self.waveNum]["enemies"][enemy]["spawnDelay"])
+                        data["startDelaying"] = False
+                    
+                    except KeyError as exc:
+                        Error.createError("Unable to find enemy spawn data in the waves JSON file.", self.log, exc)
+                        return None
 
                 data["amountLeft"] -= 1
                 self.enemies.append(Enemy(enemy, tileset, self.enemiesJson))
