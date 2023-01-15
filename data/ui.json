@@ -204,9 +204,9 @@
                              "pos": [ 155, 252 ], "centered": false,
                              "color": [ 0, 0, 0 ] },
             
-            "maxLevelText": { "text": "Max level!", "fontSize": 15,
+            "maxLevelText": { "text": "Max\nlevel", "fontSize": 15,
                               "pos": [ 100, 250 ], "centered": true,
-                              "color": [ 0, 0, 0 ] }
+                              "color": [ 0, 0, 0 ], "lineSpacing": 0 }
         }
     },
 
