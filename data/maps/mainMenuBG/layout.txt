@@ -1,15 +1,15 @@
-         r---r      
- l---l l-+-l | l--l 
+         K---r      
+ i---L i-+-L | i--L 
  |   | | | | | |  | 
- | r-+-+-+-l | lr | 
+ | K-+-+-+-l | Ir | 
  | | | | |   |  | | 
- l-l | l-l r-+--+-l 
+ I-l | I-l K-+--+-l 
      |     | |  |   
-  r--l r-r r-r  l-r 
+  K--l K-r k-R  I-r 
   |    | |        | 
-  r----+-r ll r---+-
+  k----+-R iL K---+-
        |   || |   | 
- r--r  | l-rr-+-l | 
+ K--r  | i-Rk-+-L | 
  |  |  | |    | | | 
- |  l--l l----l r-r 
+ |  I--l I----l k-R 
  |                  
