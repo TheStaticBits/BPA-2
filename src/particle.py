@@ -59,4 +59,4 @@ class Particle:
 
 
     def isDone(self):
-        return self.timer.getActivate()
+        return self.timer.overActivated()
