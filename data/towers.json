@@ -242,7 +242,7 @@
               "stats": { "range": 80, "damage": 13, "attackCooldown": 2.9     } },
 
             { "costs": { "wood": 0, "steel": 180, "uranium": 460, "plasma": 1 },
-              "stats": { "range": 100, "damage": 14.5, "attackCooldown": 2.6   } },
+              "stats": { "range": 100, "damage": 14.5, "attackCooldown": 2.6  } },
 
             { "costs": { "wood": 0, "steel": 220, "uranium": 540, "plasma": 2 },
               "stats": { "range": 125, "damage": 18, "attackCooldown": 2.3    } }
